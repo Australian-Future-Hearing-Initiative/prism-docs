@@ -33,12 +33,5 @@
     "title": "PRISM",
     "section": "License",
     "text": "License\nCode is licensed under the MIT License or Apache 2.0 depending on the component. Please check individual LICENCE.txt files in each subdirectory."
-  },
-  {
-    "objectID": "index.html#setting-up-this-repo-for-auto-building-the-github-pages-site",
-    "href": "index.html#setting-up-this-repo-for-auto-building-the-github-pages-site",
-    "title": "PRISM",
-    "section": "Setting up this repo for auto-building the github pages site",
-    "text": "Setting up this repo for auto-building the github pages site\nFYI, this only has to be done once. And has already been done. Now just fork this repo or use it as a template when making a new page!\nBuild the workshop files locally with\ngit clone  \ncd prism-docs\nquarto render index.qmd \ngit commit -am \"New build\"\ngit push\nYou must also make a gh-pages branch and publish the quarto pages to it locally first. Probably better ways to do this:\ngit checkout -b gh-pages\nquarto publish gh-pages\ngit push origin gh-pages \ngit checkout main\nOn the repo turn on github pages at: https://github.com/Australian-Future-Hearing-Initiative/prism-docs/settings/pages And have it render from gh-pages branch.\nAdd this github action file to render the quarto page on any repo updates. Note any code execution (e.g Python or executable blocks with {} syntax will need more installations).\nname: Quarto Publish\n\non:\n  push:\n    branches: main\n\npermissions:\n  contents: write\n  \njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v3\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          tinytex: true\n\n      - name: Publish to GitHub Pages (and render)\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n          path: ."
   }
 ]

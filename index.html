@@ -197,49 +197,6 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">License</h2>
 <p>Code is licensed under the <strong>MIT License</strong> or <strong>Apache 2.0</strong> depending on the component. Please check individual <code>LICENCE.txt</code> files in each subdirectory.</p>
-</section>
-<section id="setting-up-this-repo-for-auto-building-the-github-pages-site" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-this-repo-for-auto-building-the-github-pages-site">Setting up this repo for auto-building the github pages site</h2>
-<p>FYI, this only has to be done once. And has already been done. Now just fork this repo or use it as a template when making a new page!</p>
-<p>Build the workshop files locally with</p>
-<pre><code>git clone  
-cd prism-docs
-quarto render index.qmd 
-git commit -am "New build"
-git push</code></pre>
-<p>You must also make a <code>gh-pages</code> branch and publish the quarto pages to it locally first. Probably better ways to do this:</p>
-<pre><code>git checkout -b gh-pages
-quarto publish gh-pages
-git push origin gh-pages 
-git checkout main</code></pre>
-<p>On the repo turn on github pages at: https://github.com/Australian-Future-Hearing-Initiative/prism-docs/settings/pages And have it render from <code>gh-pages</code> branch.</p>
-<p>Add this github action file to render the quarto page on any repo updates. Note any code execution (e.g Python or executable blocks with <code>{}</code> syntax will need more installations).</p>
-<pre><code>name: Quarto Publish
-
-on:
-  push:
-    branches: main
-
-permissions:
-  contents: write
-  
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
-
-      - name: Publish to GitHub Pages (and render)
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
-          path: .</code></pre>
 
 
 </section>
