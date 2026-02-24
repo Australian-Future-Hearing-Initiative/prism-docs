@@ -1,0 +1,18 @@
+project:
+  type: website
+  resources:
+    - styles.css
+
+website:
+  title: "PRISM" 
+  google-analytics:
+    tracking-id: "G-Z7E5C7LLKG"
+    storage: cookies
+    anonymize-ip: true
+  repo-url: https://github.com/Australian-Future-Hearing-Initiative/prism-docs
+  repo-actions: [edit]
+
+format:
+  html:
+    css: styles.css
+    code-overflow: wrap
