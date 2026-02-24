@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -39,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-37bd681c9155c350c4c7cf1c823428af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e85eba1097e763ab92a8026b31d9210d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,9 +146,103 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 </header>
 
 
-<p>AFHI and PRISM</p>
+<p><strong>PRISM</strong> is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.</p>
+<p>PRISM might stand for: * <strong>PRedicting Interaction difficulty using Sensors and Micro-EMA”</strong> * <strong>Personalized Real-time Interaction difficulty for Sounds Measurement</strong> * <strong>Platform for Research In Situational Momentary assessment</strong>.</p>
+<hr>
+<section id="prism" class="level2">
+<h2 class="anchored" data-anchor-id="prism">PRISM</h2>
+<p>Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
+<section id="what-is-ecological-momentary-assessment-ema" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-ecological-momentary-assessment-ema">What is “Ecological Momentary Assessment” (EMA)?</h3>
+<p>EMA is used to “catch you in the moment.” When you interact with the PRISM app, we capture a snapshot of your real-world environment. This includes: - <strong>Audio</strong>: A short 30-second clip of the sound around you. - <strong>Context</strong>: Your rating of how hard it was to hear speech.</p>
+<p>This data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.</p>
+</section>
+<section id="key-resources" class="level3">
+<h3 class="anchored" data-anchor-id="key-resources">Key Resources</h3>
+<ul>
+<li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2508.10360">A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet</a> (arXiv:2508.10360)</li>
+<li><strong>Datasets:</strong>
+<ul>
+<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds"><strong>AHEAD-DS</strong> (HuggingFace)</a>: The primary dataset for training and benchmarking.</li>
+<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed"><strong>AHEAD-DS Unmixed</strong> (HuggingFace)</a>: Component audio files before mixing, useful for custom augmentation strategies.</li>
+</ul></li>
+<li><strong>Models:</strong>
+<ul>
+<li><a href="https://huggingface.co/hzhongresearch/yamnetp_ahead_ds"><strong>OpenYAMNet Models</strong> (HuggingFace)</a>: Pre-trained models ready for inference or fine-tuning.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="capabilities" class="level2">
+<h2 class="anchored" data-anchor-id="capabilities">Capabilities</h2>
+<ul>
+<li><strong>Benchmark New Models:</strong> Use the standardized <code>ahead_ds</code> split to compare your model’s performance against the OpenYAMNet baseline.</li>
+<li><strong>Fine-Tuning:</strong> Leverage pre-trained YAMNet+ weights to adapt the model to new acoustic domains with minimal data.</li>
+<li><strong>Reproducibility:</strong> Full scripts for dataset generation (<code>prism-ml-dataset-ahead-ds</code>) and model training (<code>prism-ml-yamnetp-tune</code>) are provided.</li>
+</ul>
+</section>
+<section id="citation" class="level2">
+<h2 class="anchored" data-anchor-id="citation">Citation</h2>
+<p>If you use this code, model, or dataset in your research, please cite:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">zhong2026datasetmodelauditoryscene</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span>={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">author</span>={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">year</span>={2026},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">eprint</span>={2508.10360},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">archivePrefix</span>={arXiv},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">primaryClass</span>={cs.SD},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">url</span>={https://arxiv.org/abs/2508.10360}, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
+<p>Code is licensed under the <strong>MIT License</strong> or <strong>Apache 2.0</strong> depending on the component. Please check individual <code>LICENCE.txt</code> files in each subdirectory.</p>
+</section>
+<section id="setting-up-this-repo-for-auto-building-the-github-pages-site" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-this-repo-for-auto-building-the-github-pages-site">Setting up this repo for auto-building the github pages site</h2>
+<p>FYI, this only has to be done once. And has already been done. Now just fork this repo or use it as a template when making a new page!</p>
+<p>Build the workshop files locally with</p>
+<pre><code>git clone  
+cd prism-docs
+quarto render index.qmd 
+git commit -am "New build"
+git push</code></pre>
+<p>You must also make a <code>gh-pages</code> branch and publish the quarto pages to it locally first. Probably better ways to do this:</p>
+<pre><code>git checkout -b gh-pages
+quarto publish gh-pages
+git push origin gh-pages 
+git checkout main</code></pre>
+<p>On the repo turn on github pages at: https://github.com/Australian-Future-Hearing-Initiative/prism-docs/settings/pages And have it render from <code>gh-pages</code> branch.</p>
+<p>Add this github action file to render the quarto page on any repo updates. Note any code execution (e.g Python or executable blocks with <code>{}</code> syntax will need more installations).</p>
+<pre><code>name: Quarto Publish
+
+on:
+  push:
+    branches: main
+
+permissions:
+  contents: write
+  
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Publish to GitHub Pages (and render)
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          path: .</code></pre>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -189,7 +318,7 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/Australian-Future-Hearing-Initiative\.github\.io\/prism-docs\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
