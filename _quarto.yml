@@ -5,6 +5,14 @@ project:
 
 website:
   title: "PRISM" 
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: developer.qmd
+        text: Developer Guide
+      - href: user.qmd
+        text: User Guide
   google-analytics:
     tracking-id: "G-Z7E5C7LLKG"
     storage: cookies
