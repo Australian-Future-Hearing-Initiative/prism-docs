@@ -88,7 +88,14 @@
     "href": "guide/developer.html#unified-setup-via-docker",
     "title": "Developer Guide",
     "section": "Unified Setup via Docker",
-    "text": "Unified Setup via Docker\nThe easiest way to install and run both the PRISM Backend and Frontend is via the prism-setup repository, which uses Docker Compose."
+    "text": "Unified Setup via Docker\nThe easiest way to install and run both the PRISM Backend and Frontend is via the prism-setup repository, which uses Docker Compose.\nXXXXXXXXXXXXxDocs here!"
+  },
+  {
+    "objectID": "guide/developer.html#xxxxxxxxxxxxxend-here",
+    "href": "guide/developer.html#xxxxxxxxxxxxxend-here",
+    "title": "Developer Guide",
+    "section": "XXXXXXXXXXXXxEnd here!",
+    "text": "XXXXXXXXXXXXxEnd here!"
   },
   {
     "objectID": "guide/developer.html#manual-backend-setup",
