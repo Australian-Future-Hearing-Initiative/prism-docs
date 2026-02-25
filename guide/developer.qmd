@@ -20,7 +20,7 @@ The easiest way to install and run both the PRISM Backend and Frontend is via th
 XXXXXXXXXXXXxDocs here!
 {{< include _setup_readme.qmd >}}
 XXXXXXXXXXXXxEnd here!
----
+***
 
 ## Manual Backend Setup
 
@@ -28,7 +28,7 @@ If you wish to run the FastAPI backend independently without Docker:
 
 {{< include _flutter-backend_readme.qmd >}}
 
----
+***
 
 ## Manual Frontend Setup
 
