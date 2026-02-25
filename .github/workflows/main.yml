@@ -22,6 +22,7 @@ jobs:
           # Create sibling directories to match local structure
           mkdir -p ../prism-setup
           mkdir -p ../prism-flutter-backend
+          mkdir -p ../prism-flutter-web-frontend
           
           # Download single files securely using the token in the header
           curl -sL -H "Authorization: token $ORG_PAT" \
