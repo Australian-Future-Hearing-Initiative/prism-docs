@@ -14,10 +14,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Fetch README files
-        env:
-          # Requires a PAT with 'repo' scope stored as a repository secret
-          ORG_PAT: ${{ secrets.ORG_PAT }}
+      # - name: Fetch README files
+      #   env:
+      #     # Requires a PAT with 'repo' scope stored as a repository secret
+      #     ORG_PAT: ${{ secrets.ORG_PAT }}
       #   run: |
       #     set -euo pipefail
 
