@@ -1,3 +1,6 @@
+
+The PRISM web frontend serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem as part of the [Australian Future Hearing Initiative](https://github.com/Australian-Future-Hearing-Initiative).
+
 ---
 
 ### For Researchers

@@ -34,7 +34,7 @@ jobs:
 
           curl -sL -H "Authorization: token $ORG_PAT" \
             "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend/main/README.md" \
-            -o ../prism-flutter-backend/README.md
+            -o ../prism-flutter-web-frontend/README.md
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
