@@ -1,0 +1,167 @@
+---
+title: "User Guide"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+## Introduction to the PRISM Ecosystem
+
+**PRISM** is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the "Australian Future Hearing Initiative". 
+
+PRISM helps researchers collect real-world data ("catch you in the moment") through the smartphone application. When a participant interacts with the PRISM app, we capture a snapshot of your real-world environment. This includes:
+- **Audio**: A short 30-second clip of the sound around you.
+- **Context**: Your rating of how hard it was to hear speech.
+
+This data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.
+
+The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.
+
+---
+
+## Experimenter Flow
+
+### Step 1: Sign up
+
+Click "Sign up with Email". 
+
+![Sign up](images/image28.png)
+
+Then you should receive a verification email:
+
+![Verification email](images/image17.png)
+
+Note: If you try to click "Sign up" again, it will show you "An account with this email already exists." You won't be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:
+
+![Verification prompt](images/image20.png)
+
+### Step 2: Notification
+
+![Notification](images/image6.png)
+
+Click "Set up", it will guide you to the first page.
+
+### Step 3: Setup the first experiment
+
+![Setup the first experiment](images/image8.png)
+
+Click "Create experiment".
+
+### Step 4: Fill up the basic information
+
+![Fill up the basic information](images/image11.png)
+
+### Step 5: Fill up sensor details
+
+![Fill up sensor details](images/image22.png)
+
+![Step 5 (New): Fill up sensor details](images/image23.png)
+
+### Step 6: Feedback Buttons
+
+![Feedback Buttons](images/image12.png)
+
+Confirm your feedback buttons.
+
+### Step 7: (Optional) Give a google form survey link
+
+![Google form survey link](images/image4.png)
+
+### Step 7B (New): Asking for ML Model
+
+![Asking for ML Model](images/image5.png)
+
+### Step 7C (New): Triggers
+
+![Triggers](images/image21.png)
+
+![Triggers 2](images/image18.png)
+
+#### Sensor Lists
+
+| Sensor Source (Input) | Allowed Metrics (Units) | Allowed Operators | Compatible Target Models (Output) | Min/Max Threshold Range (Validation) |
+|---|---|---|---|---|
+| Phone Microphone | Decibel (dB) | > | e.g., YAMNet+, WONU? All? | e.g., 0 - 120 dB |
+| Heart Rate | BPM | >, < | e.g., YAMNet+ only? All? | e.g., 30 - 220 BPM |
+| Temperature | Celsius (°C) | e.g., >, < | e.g., All? | e.g., -10 - 50 °C |
+| Watch Microphone | Decibel (dB) | > | e.g., All? | e.g., 0 - 120 dB |
+
+### Step 8: Confirm the detail
+
+![Confirm the detail](images/image27.png)
+
+### Step 9: View all experiments
+
+![View all experiments](images/image13.png)
+
+### Step 10: Add participants
+
+![View all experiments](images/image13.png)
+
+Click "My First Experiment".
+
+![Save and add participants](images/image1.png)
+
+Confirm it by clicking "Save and add participants".
+
+![CSV Upload](images/image9.png)
+
+Example CSV file formatting:
+
+![Example CSV](images/image7.png)
+
+Drag your csv file then you should be able to see participants.
+
+![See participants](images/image25.png)
+
+You can edit participants by clicking on it and you should be able to see "Email", "View data", "Remove". Note: Here the "View data" is disabled, that’s because there’s no response for that participant yet.
+
+![Edit participants](images/image26.png)
+
+Click save, it will show "Saving…". Afterward it will guide you back to the experiment list.
+
+![Experiment list](images/image14.png)
+
+---
+
+## Participant Flow
+
+### Step 1: Join the experiment
+
+Once the participant clicks the invite link from their email, they will be able to see this interface. Click "Open".
+
+![Join the experiment](images/image2.png)
+
+### Step 2: Starting the experiment
+
+![Starting the experiment](images/image10.png)
+
+**The Recording Period**: This is the block of time (Like a 4 hour window)
+**The Recording Session**: Those are the individual "sessions" (short recordings) that happen inside it.
+
+### Step 3: Sending a recording
+
+![Sending a recording](images/image3.png)
+
+### Step 4: Finish the session
+
+![Finish the session](images/image16.png)
+
+---
+
+## Experimenter Flow (Continued)
+
+### Step 11: Check recording
+
+Click "View data" for a particular participant.
+
+![Check recording](images/image15.png)
+
+### Step 12: View the recordings
+
+![View the recordings](images/image24.png)
+
+### Step 13: Download recordings
+
+![Download recordings](images/image19.png)

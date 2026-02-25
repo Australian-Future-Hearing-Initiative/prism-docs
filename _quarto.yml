@@ -9,9 +9,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: developer.qmd
+      - href: guide/developer.qmd
         text: Developer Guide
-      - href: user.qmd
+      - href: guide/user.qmd
         text: User Guide
   google-analytics:
     tracking-id: "G-Z7E5C7LLKG"
