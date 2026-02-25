@@ -8,10 +8,10 @@ website:
   title: "PRISM" 
   navbar:
     left:
-      - href: index.qmd
-        text: Home
+      # - href: index.qmd
+      #   text: Home
       - href: guide/developer.qmd
-        text: Developer Guide
+        text: Admin Guide
       - href: guide/user.qmd
         text: User Guide
   google-analytics:

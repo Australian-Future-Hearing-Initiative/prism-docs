@@ -15,24 +15,21 @@ Get a paid project on Firebase and make a new project.
 
 ## Unified Setup via Docker
 
-The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup`](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) repository, which uses Docker Compose.
-
- here!
+The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-setup), which uses Docker Compose.
 
 {{< include _setup_readme.qmd >}}
-
-XXXXXXXXXXXXxEnd here!
 
 
 ## Manual Backend Setup
 
-If you wish to run the FastAPI backend independently without Docker:
+If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed inthe [`prism-flutter-backend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend).
 
+{{< include _flutter-backend_readme.qmd >}}
 
 
 ## Manual Frontend Setup
 
-The frontend is a Flutter web application.
+If you wish to run the front end Flutter web application without docker, follow the instructions as detailed in the [`prism-flutter-web-frontend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend).
 
 {{< include _flutter-web-frontend_readme.qmd >}}
 
