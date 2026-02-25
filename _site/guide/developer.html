@@ -165,16 +165,13 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   <li><a href="#firebase" id="toc-firebase" class="nav-link" data-scroll-target="#firebase">Firebase</a></li>
   <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a>
   <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">1. Prerequisites</a></li>
   <li><a href="#first-time-setup" id="toc-first-time-setup" class="nav-link" data-scroll-target="#first-time-setup">2. First-time Setup</a></li>
   <li><a href="#run-the-installer-script" id="toc-run-the-installer-script" class="nav-link" data-scroll-target="#run-the-installer-script">3. Run the installer script:</a></li>
   <li><a href="#launch-prism" id="toc-launch-prism" class="nav-link" data-scroll-target="#launch-prism">4. Launch PRISM</a></li>
   <li><a href="#deploy-to-production" id="toc-deploy-to-production" class="nav-link" data-scroll-target="#deploy-to-production">5. Deploy to production</a></li>
   </ul></li>
-  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a>
-  <ul class="collapse">
-  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">📁 Project Structure</a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">📬 Contact</a></li>
-  </ul></li>
+  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a></li>
   <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a>
   <ul class="collapse">
   <li><a href="#for-researchers" id="toc-for-researchers" class="nav-link" data-scroll-target="#for-researchers">For Researchers</a></li>
@@ -216,7 +213,11 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <section id="unified-setup-via-docker" class="level2">
 <h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
 <p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code></a> repository, which uses Docker Compose.</p>
-<p>XXXXXXXXXXXXxDocs here! ### 1. Prerequisites Ensure the following are installed and running: - <a href="https://desktop.docker.com/"><strong>Docker Desktop</strong></a> - <a href="https://git-scm.com/download/win"><strong>Git</strong> for Windows</a>, or for Mac and Linux git is pre-installed. - <a href="https://console.firebase.google.com/">A <strong>Firebase</strong> project</a> with paid usage enabled. - <a href="https://www.mailgun.com/">A <strong>Mailgun</strong> account</a> for sending emails.</p>
+<p>XXXXXXXXXXXXxDocs here!</p>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">1. Prerequisites</h3>
+<p>Ensure the following are installed and running: - <a href="https://desktop.docker.com/"><strong>Docker Desktop</strong></a> - <a href="https://git-scm.com/download/win"><strong>Git</strong> for Windows</a>, or for Mac and Linux git is pre-installed. - <a href="https://console.firebase.google.com/">A <strong>Firebase</strong> project</a> with paid usage enabled. - <a href="https://www.mailgun.com/">A <strong>Mailgun</strong> account</a> for sending emails.</p>
+</section>
 <section id="first-time-setup" class="level3">
 <h3 class="anchored" data-anchor-id="first-time-setup">2. First-time Setup</h3>
 <section id="clone-the-repository" class="level4">
@@ -295,175 +296,12 @@ VALIDATE_CERTS=True</code></pre>
 <section id="deploy-to-production" class="level3">
 <h3 class="anchored" data-anchor-id="deploy-to-production">5. Deploy to production</h3>
 <p>TODO</p>
-<p>XXXXXXXXXXXXxEnd here! ***</p>
+<p>XXXXXXXXXXXXxEnd here!</p>
 </section>
 </section>
 <section id="manual-backend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-backend-setup">Manual Backend Setup</h2>
 <p>If you wish to run the FastAPI backend independently without Docker:</p>
-<section id="set-up-a-virtual-environment" class="level4">
-<h4 class="anchored" data-anchor-id="set-up-a-virtual-environment">1. Set up a virtual environment</h4>
-<section id="option-1-using-uv-recommended-for-speed" class="level5">
-<h5 class="anchored" data-anchor-id="option-1-using-uv-recommended-for-speed">Option 1: Using <code>uv</code> (recommended for speed)</h5>
-<ol type="1">
-<li>Make sure <code>uv</code> is installed:</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If not installed:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv             <span class="co"># macOS (Homebrew)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> install uv             <span class="co"># cross-platform alternative</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="2" type="1">
-<li>Create a virtual environment</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="3" type="1">
-<li>Activate</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="option-2-using-venv" class="level5">
-<h5 class="anchored" data-anchor-id="option-2-using-venv">Option 2: Using <code>venv</code></h5>
-<ol start="0" type="1">
-<li>Delete the current virtual environment (If you created a virtual environment in another project)</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>or</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> .venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="2" type="1">
-<li>Create and activate the virtual environment</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>or</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="2" type="1">
-<li>Activate the virtual environment</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate  <span class="co"># On Windows: venv\Scripts\activate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<blockquote class="blockquote">
-<p>Q: <strong>Why use a virtual environment?</strong> A: It ensures isolated package versions, so dependencies from one project don’t affect another.</p>
-</blockquote>
-<hr>
-</section>
-</section>
-<section id="add-dependencies" class="level4">
-<h4 class="anchored" data-anchor-id="add-dependencies">2. Add dependencies</h4>
-<p>Use</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="co"># This will install all dependencies that you need for the project</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Tips: How to add new dependencies:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add your_dependency</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="firebase-environment-variables-setup" class="level4">
-<h4 class="anchored" data-anchor-id="firebase-environment-variables-setup">3. Firebase &amp; Environment variables Setup</h4>
-<section id="firebase_key_path" class="level5">
-<h5 class="anchored" data-anchor-id="firebase_key_path"><code>FIREBASE_KEY_PATH</code></h5>
-<p>If you don’t have the access to the Firebase, please contact your firebase admin. For firebase Admin: They need to have “Editor” or “Owner” to be able to get the private key.</p>
-<ol type="1">
-<li>In Firebase Console: <strong>PrismData → Project settings → Service accounts → Firebase Admin SDK → Generate new private key</strong>.</li>
-<li>Save the downloaded file as <code>serviceAccountKey.json</code> in this <strong>backend repo root</strong>.</li>
-<li>Add <code>.env</code> by using</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">touch</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Open your <code>.env</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and add:</p>
-<pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code></pre>
-</section>
-<section id="firebase_api_key" class="level5">
-<h5 class="anchored" data-anchor-id="firebase_api_key"><code>FIREBASE_API_KEY</code></h5>
-<p>Find it in <strong>Project settings → General → prism (web) -&gt; apiKey</strong>, then add:</p>
-<pre class="dotenv"><code>FIREBASE_API_KEY=YOUR_WEB_API_KEY</code></pre>
-</section>
-<section id="jwt_secret" class="level5">
-<h5 class="anchored" data-anchor-id="jwt_secret"><code>JWT_SECRET</code></h5>
-<p>Generate a long random string by going to this website: https://jwtsecretkeygenerator.com/</p>
-<p>Once you have got the JWT then copy it to here:</p>
-<pre class="dotenv"><code>JWT_SECRET=YOUR_RANDOM_SECRET</code></pre>
-</section>
-<section id="example-.env" class="level5">
-<h5 class="anchored" data-anchor-id="example-.env">Example <code>.env</code></h5>
-<pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json
-FIREBASE_API_KEY=AIza...yourkey
-JWT_SECRET=paste_a_long_random_string_here</code></pre>
-</section>
-<section id="email-smtp-setup" class="level5">
-<h5 class="anchored" data-anchor-id="email-smtp-setup"><code>Email (SMTP) Setup</code></h5>
-<p>Add these to your .env to enable outbound email:</p>
-<p>Option 1. Via Mailgun: Get your API key from <a href="https://app.mailgun.com/settings/api_security">Mailgun API Key page</a>, and setup Mailgun with a domain you can send from.</p>
-<pre class="dotenv"><code>MAILGUN_API_KEY=your_mailgun_api_key
-MAILGUN_AUTHORIZED_DOMAIN=yourdomain.com</code></pre>
-<p>Option 2. Via Gmail’s SMTP server</p>
-<pre class="dotenv"><code>MAIL_USERNAME=your@gmail.com
-MAIL_FROM=your@gmail.com            # must match or be a verified alias
-MAIL_PASSWORD=xxxxxxxxxxxxxxxx      # 16‑char Google App Password
-MAIL_SERVER=smtp.gmail.com
-MAIL_PORT=587
-MAIL_STARTTLS=True                  # or: MAIL_PORT=465 + MAIL_SSL_TLS=True
-MAIL_SSL_TLS=False
-MAIL_FROM_NAME=PRISM
-USE_CREDENTIALS=True
-VALIDATE_CERTS=True</code></pre>
-<p>MAIL_PASSWORD=xxxxxxxxxxxxxxxx: Google.com -&gt; Google Account → Security → turn 2‑Step Verification ON → App passwords → generate one, copy the 16‑char code (no spaces) into MAIL_PASSWORD.</p>
-<p>Troubleshooting (535 BadCredentials): use the app password (not your login), choose exactly one TLS mode (587+STARTTLS or 465+SSL/TLS), restart after .env changes, and ensure MAIL_FROM is allowed.</p>
-</section>
-</section>
-<section id="run-the-development-server" class="level4">
-<h4 class="anchored" data-anchor-id="run-the-development-server">3. Run the development server</h4>
-<p>Navigate to the directory where <code>main.py</code> is located, then run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--</span> uvicorn app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>or</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uvicorn</span> app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="deactivate-the-virtual-environment-when-youre-done" class="level4">
-<h4 class="anchored" data-anchor-id="deactivate-the-virtual-environment-when-youre-done">4. Deactivate the virtual environment when you’re done</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This returns your shell to the global Python environment.</p>
-<hr>
-</section>
-<section id="view-api-documentation" class="level4">
-<h4 class="anchored" data-anchor-id="view-api-documentation">5. View API documentation</h4>
-<p>Once the server is running, you can explore the API docs at:</p>
-<ul>
-<li><strong>Swagger UI</strong>: <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a><br>
-</li>
-<li><strong>ReDoc</strong>: <a href="http://127.0.0.1:8000/redoc">http://127.0.0.1:8000/redoc</a></li>
-</ul>
-<p>These documents list all available endpoints and describe how to interact with them.</p>
-<hr>
-</section>
-<section id="debug" class="level4">
-<h4 class="anchored" data-anchor-id="debug">6. Debug</h4>
-<p>You should go to the root and run</p>
-<pre><code>uv run -- python -m debugpy --listen 127.0.0.1:5678 --wait-for-client \
-  -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000</code></pre>
-<p>Then you can run the debugger.</p>
-</section>
-<section id="test" class="level4">
-<h4 class="anchored" data-anchor-id="test">7. Test</h4>
-<pre><code>uv run pytest</code></pre>
-</section>
-<section id="project-structure" class="level3">
-<h3 class="anchored" data-anchor-id="project-structure">📁 Project Structure</h3>
-<pre class="plaintext"><code>app/
-├── main.py                 # FastAPI application entry point
-├── api/
-│   └── routes/             # Route definitions (e.g., /experiments, /participants)
-├── domain/                 # Pydantic models and schemas
-├── services/               # Core business logic (e.g., experiment handling, exports)
-├── infrastructure/         # Integrations with Firebase, Firestore, and email
-└── utils/                  # Helper functions (e.g., CSV export utilities)
-
-requirements.txt            # Python package dependencies
-.env                        # Environment variable configuration (not committed)
-README.md                   # Project overview and instructions</code></pre>
-<p>This structure follows a modular design that separates concerns across routing, logic, data modeling, and infrastructure. It ensures maintainability and scalability of the backend.</p>
-<hr>
-</section>
-<section id="contact" class="level3">
-<h3 class="anchored" data-anchor-id="contact">📬 Contact</h3>
-<p><strong>Alan Wang</strong></p>
-<hr>
-</section>
 </section>
 <section id="manual-frontend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-frontend-setup">Manual Frontend Setup</h2>
@@ -474,7 +312,8 @@ README.md                   # Project overview and instructions</code></pre>
 <h3 class="anchored" data-anchor-id="for-researchers">For Researchers</h3>
 <p>Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.</p>
 <p><strong>How to use:</strong> 1. <strong>Login</strong>: Access the researcher dashboard securely. 2. <strong>Manage Projects</strong>: Create new projects to house specific studies or experiments. 3. <strong>Configure Experiments</strong>: * Set up various experiment types (e.g., Ecological Momentary Assessment (EMA) surveys, sensor-thresholds). * Define parameters and logical flows for the experiments. 4. <strong>Manage Participants</strong>: * Add new participants to the system. * Assign participants to specific projects/cohorts. * Monitor participant progress through assigned tasks. * Email participants. * Download audiograms</p>
-<p>See the complete userguide: https://docs.google.com/document/d/1_FZVBiN1QqhP50A2izS7KlW_Y021koJM45pSYcHEkMw/edit?tab=t.0#heading=h.qbhdu5cvo4bq ***</p>
+See the complete userguide: https://docs.google.com/document/d/1_FZVBiN1QqhP50A2izS7KlW_Y021koJM45pSYcHEkMw/edit?tab=t.0#heading=h.qbhdu5cvo4bq
+<hr>
 </section>
 <section id="developer-instructions" class="level3">
 <h3 class="anchored" data-anchor-id="developer-instructions">Developer Instructions</h3>
@@ -500,11 +339,11 @@ API_BASE_URL=http://127.0.0.1:8000</code></pre>
 <section id="run-the-app" class="level4">
 <h4 class="anchored" data-anchor-id="run-the-app">4. Run the App</h4>
 <p>Execute the following commands from the root of this repository:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome             <span class="co"># Run the app in Chrome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome             <span class="co"># Run the app in Chrome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="testing-architecture" class="level4">
 <h4 class="anchored" data-anchor-id="testing-architecture">🧪 Testing &amp; Architecture</h4>

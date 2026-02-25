@@ -28,7 +28,6 @@ XXXXXXXXXXXXxEnd here!
 
 If you wish to run the FastAPI backend independently without Docker:
 
-{{< include _flutter-backend_readme.qmd >}}
 
 
 ## Manual Frontend Setup
