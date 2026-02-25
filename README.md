@@ -1,6 +1,6 @@
 # PRISM Documentation
 
-Documentation for the PRISM ecosystem. This site is built using [Quarto](https://quarto.org/) and hosted on GitHub Pages.
+Documentation for the PRISM ecosystem. This site is built using [Quarto](https://quarto.org/) and hosted on [GitHub Pages](https://miniature-carnival-v9nmwzn.pages.github.io/).
 
 ## 🛠️ Setup & Development
 
@@ -11,7 +11,8 @@ Documentation for the PRISM ecosystem. This site is built using [Quarto](https:/
 ### Local Development
 To preview the site locally:
 ```bash
-# Render and serve the site
+git clone https://github.com/Australian-Future-Hearing-Initiative/prism-docs.git
+cd prism-docs
 quarto preview index.qmd --no-browser
 ```
 

@@ -5,16 +5,14 @@ execute:
   output: false
 ---
 
-**PRISM** is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the "Australian Future Hearing Initiative". 
+**PRISM** is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, models, and tools developed for the "Australian Future Hearing Initiative". 
 
 PRISM might stand for:
+
 * **PRedicting Interaction difficulty using Sensors and Micro-EMA"**
 * **Personalized Real-time Interaction difficulty for Sounds Measurement**
 * **Platform for Research In Situational Momentary assessment**. 
 
----
-
-## PRISM
 Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.
 
 ### What is "Ecological Momentary Assessment" (EMA)?
