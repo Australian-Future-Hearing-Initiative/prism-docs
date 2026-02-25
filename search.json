@@ -39,14 +39,7 @@
     "href": "index.html",
     "title": "PRISM",
     "section": "",
-    "text": "PRISM is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.\nPRISM might stand for: * PRedicting Interaction difficulty using Sensors and Micro-EMA” * Personalized Real-time Interaction difficulty for Sounds Measurement * Platform for Research In Situational Momentary assessment."
-  },
-  {
-    "objectID": "index.html#prism",
-    "href": "index.html#prism",
-    "title": "PRISM",
-    "section": "PRISM",
-    "text": "PRISM\nModern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.\n\nWhat is “Ecological Momentary Assessment” (EMA)?\nEMA is used to “catch you in the moment.” When you interact with the PRISM app, we capture a snapshot of your real-world environment. This includes: - Audio: A short 30-second clip of the sound around you. - Context: Your rating of how hard it was to hear speech.\nThis data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.\n\n\nKey Resources\n\nPaper: A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet (arXiv:2508.10360)\nDatasets:\n\nAHEAD-DS (HuggingFace): The primary dataset for training and benchmarking.\nAHEAD-DS Unmixed (HuggingFace): Component audio files before mixing, useful for custom augmentation strategies.\n\nModels:\n\nOpenYAMNet Models (HuggingFace): Pre-trained models ready for inference or fine-tuning."
+    "text": "PRISM is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.\nPRISM might stand for:\nModern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users."
   },
   {
     "objectID": "index.html#capabilities",
