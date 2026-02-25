@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -103,18 +68,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z7E5C7LLKG"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
+gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -163,25 +127,10 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">1. Prerequisites</a></li>
-  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository">2. Clone the Repository</a></li>
-  <li><a href="#configure-keys-and-secrets" id="toc-configure-keys-and-secrets" class="nav-link" data-scroll-target="#configure-keys-and-secrets">3. Configure Keys and Secrets</a></li>
-  <li><a href="#install-and-run" id="toc-install-and-run" class="nav-link" data-scroll-target="#install-and-run">4. Install and Run</a></li>
-  </ul></li>
-  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a>
-  <ul class="collapse">
-  <li><a href="#python-environment" id="toc-python-environment" class="nav-link" data-scroll-target="#python-environment">1. Python Environment</a></li>
-  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables">2. Environment Variables</a></li>
-  <li><a href="#run-the-development-server" id="toc-run-the-development-server" class="nav-link" data-scroll-target="#run-the-development-server">3. Run the Development Server</a></li>
-  </ul></li>
-  <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a>
-  <ul class="collapse">
-  <li><a href="#setup-environment-variables" id="toc-setup-environment-variables" class="nav-link" data-scroll-target="#setup-environment-variables">1. Setup Environment Variables</a></li>
-  <li><a href="#flutter-version-management-fvm" id="toc-flutter-version-management-fvm" class="nav-link" data-scroll-target="#flutter-version-management-fvm">2. Flutter Version Management (FVM)</a></li>
-  <li><a href="#run-the-app" id="toc-run-the-app" class="nav-link" data-scroll-target="#run-the-app">3. Run the App</a></li>
-  </ul></li>
+  <li><a href="#firebase" id="toc-firebase" class="nav-link" data-scroll-target="#firebase">Firebase</a></li>
+  <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a></li>
+  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a></li>
+  <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -209,90 +158,27 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and some database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.</p>
+<p>The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.</p>
+</section>
+<section id="firebase" class="level2">
+<h2 class="anchored" data-anchor-id="firebase">Firebase</h2>
+<p>Get a paid project on Firebase and make a new project.</p>
 </section>
 <section id="unified-setup-via-docker" class="level2">
 <h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
-<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <code>prism-setup</code> repository, which uses Docker Compose.</p>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">1. Prerequisites</h3>
-<p>Ensure the following are installed and running: * <strong><a href="https://desktop.docker.com/">Docker Desktop</a></strong> * <strong>Git</strong> * <strong>A Firebase project</strong> with paid usage enabled (Blaze plan). * <strong>A Mailgun account</strong> (or a Gmail account with 2-Step Verification and App Password) for sending emails to participants.</p>
-</section>
-<section id="clone-the-repository" class="level3">
-<h3 class="anchored" data-anchor-id="clone-the-repository">2. Clone the Repository</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="configure-keys-and-secrets" class="level3">
-<h3 class="anchored" data-anchor-id="configure-keys-and-secrets">3. Configure Keys and Secrets</h3>
-<p>Create a <code>.env</code> file in the <code>prism-setup</code> directory:</p>
-<ol type="1">
-<li><strong>JWT Secret</strong>: Generate a 32-character hex string (e.g.&nbsp;<code>openssl rand -hex 32</code>) and set <code>JWT_SECRET=xxxx</code>.</li>
-<li><strong>Email Settings</strong>:
-<ul>
-<li><strong>Mailgun</strong>: Add <code>MAILGUN_API_KEY</code> and <code>MAILGUN_AUTHORIZED_DOMAIN</code>.</li>
-<li><strong>Gmail</strong>: Enable an App Password, and define <code>MAIL_USERNAME</code>, <code>MAIL_FROM</code>, <code>MAIL_PASSWORD</code>, <code>MAIL_SERVER=smtp.gmail.com</code>, <code>MAIL_PORT=587</code>, <code>MAIL_STARTTLS=True</code>, etc.</li>
-</ul></li>
-<li><strong>Firebase Web API Key</strong>: Find your Web API Key in your Firebase Console under “Project settings → General” and set <code>FIREBASE_API_KEY=xxxxx</code>.</li>
-<li><strong>Firebase Service Account Key</strong>: Download an Admin SDK Private Key as a JSON file, rename it <code>serviceAccountKey.json</code>, place it in the <code>prism-setup</code> directory, and set <code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code>.</li>
-</ol>
-</section>
-<section id="install-and-run" class="level3">
-<h3 class="anchored" data-anchor-id="install-and-run">4. Install and Run</h3>
-<p>Run the installer script to prepare Dockerfiles and clone necessary repositories:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> install.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Launch both frontend and backend using Docker Compose:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><strong>Frontend Dashboard</strong>: http://localhost:3000</li>
-<li><strong>Backend API</strong>: http://localhost:8000 (Swagger docs at <code>/docs</code>)</li>
-</ul>
+<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code></a> repository, which uses Docker Compose.</p>
 <hr>
-</section>
 </section>
 <section id="manual-backend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-backend-setup">Manual Backend Setup</h2>
 <p>If you wish to run the FastAPI backend independently without Docker:</p>
-<section id="python-environment" class="level3">
-<h3 class="anchored" data-anchor-id="python-environment">1. Python Environment</h3>
-<p>We recommend using <strong><code>uv</code></strong> for managing dependencies and virtual environments.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="environment-variables" class="level3">
-<h3 class="anchored" data-anchor-id="environment-variables">2. Environment Variables</h3>
-<p>Add <code>.env</code> to the root of the backend directory containing: * <code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code> * <code>FIREBASE_API_KEY</code> * <code>JWT_SECRET</code> * Email variables (<code>MAILGUN_*</code> or <code>MAIL_*</code>)</p>
-</section>
-<section id="run-the-development-server" class="level3">
-<h3 class="anchored" data-anchor-id="run-the-development-server">3. Run the Development Server</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--</span> uvicorn app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>View the Swagger UI documentation at <code>http://127.0.0.1:8000/docs</code>.</p>
 <hr>
-</section>
 </section>
 <section id="manual-frontend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-frontend-setup">Manual Frontend Setup</h2>
 <p>The frontend is a Flutter web application.</p>
-<section id="setup-environment-variables" class="level3">
-<h3 class="anchored" data-anchor-id="setup-environment-variables">1. Setup Environment Variables</h3>
-<p>Create a <code>.env</code> file in the root of the <code>prism-flutter-web-frontend</code> directory to link your backend:</p>
-<pre class="env"><code>API_BASE_URL=http://127.0.0.1:8000</code></pre>
-</section>
-<section id="flutter-version-management-fvm" class="level3">
-<h3 class="anchored" data-anchor-id="flutter-version-management-fvm">2. Flutter Version Management (FVM)</h3>
-<p>The project utilizes <a href="https://fvm.app/">FVM</a> to ensure version consistency. Install it via <code>dart pub global activate fvm</code> or <code>brew install fvm</code>.</p>
-</section>
-<section id="run-the-app" class="level3">
-<h3 class="anchored" data-anchor-id="run-the-app">3. Run the App</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Run tests with <code>flutter test</code> or integration tests via <code>flutter drive</code>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
