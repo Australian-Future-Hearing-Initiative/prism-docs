@@ -33,6 +33,13 @@ git push origin new-changes
 - [Quarto](https://quarto.org/docs/get-started/) installed
 - Git
 
+### Setup a GitHub PAT
+
+1. Generate a [Personal Access Token with Fine-Grained restrictions](https://github.com/settings/personal-access-tokens/new) for the AFHI. Set the **Resource owner** to AFHI, then **+Add permission** and select `Contents` and `Metadata` will auto-select. Leave it as **Read-only**
+2. Navigate to your Quarto repository on GitHub. Go to Settings > Secrets and variables > [Actions](https://github.com/Australian-Future-Hearing-Initiative/prism-docs/settings/secrets/actions).
+3. Click New repository secret.
+4. Name the secret `ORG_PAT` and paste your token as the value.
+
 
 ### Automatic publishing to GitHub Pages
 
