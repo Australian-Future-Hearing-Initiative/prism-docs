@@ -1,7 +1,7 @@
 
 The PRISM web frontend serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem as part of the [Australian Future Hearing Initiative](https://github.com/Australian-Future-Hearing-Initiative).
 
-***
+---
 
 ### For Researchers
 Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.
@@ -20,7 +20,7 @@ Researchers use this application to design experiments, manage study cohorts, an
     *   Download audiograms
 
 See the complete userguide: https://docs.google.com/document/d/1_FZVBiN1QqhP50A2izS7KlW_Y021koJM45pSYcHEkMw/edit?tab=t.0#heading=h.qbhdu5cvo4bq
-***
+---
 
 ### Developer Instructions
 

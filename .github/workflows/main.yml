@@ -20,22 +20,22 @@ jobs:
           ORG_PAT: ${{ secrets.ORG_PAT }}
         run: |
           # Create sibling directories to match local structure
-          mkdir -p ../prism-setup
-          mkdir -p ../prism-flutter-backend
-          mkdir -p ../prism-flutter-web-frontend
+          mkdir -p .deps/prism-setup
+          mkdir -p .deps/prism-flutter-backend
+          mkdir -p .deps/prism-flutter-web-frontend
           
           # Download single files securely using the token in the header
           curl -sL -H "Authorization: token $ORG_PAT" \
             "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-setup/main/README.md" \
-            -o ../prism-setup/README.md
+            -o .deps/prism-setup/README.md
             
           curl -sL -H "Authorization: token $ORG_PAT" \
             "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-backend/main/README.md" \
-            -o ../prism-flutter-backend/README.md
+            -o .deps/prism-flutter-backend/README.md
 
           curl -sL -H "Authorization: token $ORG_PAT" \
             "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend/main/README.md" \
-            -o ../prism-flutter-web-frontend/README.md
+            -o .deps/prism-flutter-web-frontend/README.md
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2

@@ -53,7 +53,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 > Q: **Why use a virtual environment?**
 > A: It ensures isolated package versions, so dependencies from one project don’t affect another.
 
-***
+---
 
 #### 2. Add dependencies
 
@@ -67,7 +67,7 @@ Tips: How to add new dependencies:
 uv add your_dependency
 ```
 
-***
+---
 #### 3. Firebase & Environment variables Setup
 
 ##### `FIREBASE_KEY_PATH`
@@ -162,7 +162,7 @@ deactivate
 ```
 This returns your shell to the global Python environment.
 
-***
+---
 
 #### 5. View API documentation
 
@@ -173,7 +173,7 @@ Once the server is running, you can explore the API docs at:
 
 These documents list all available endpoints and describe how to interact with them.
 
-***
+---
 
 #### 6. Debug
 You should go to the root and run
@@ -208,7 +208,7 @@ README.md                   # Project overview and instructions
 
 This structure follows a modular design that separates concerns across routing, logic, data modeling, and infrastructure. It ensures maintainability and scalability of the backend.
 
-***
+---
 
 ### 📬 Contact
 **Alan Wang**  
