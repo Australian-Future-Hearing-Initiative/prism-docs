@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -128,9 +163,20 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#firebase" id="toc-firebase" class="nav-link" data-scroll-target="#firebase">Firebase</a></li>
-  <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a></li>
+  <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">1. Prerequisites</a></li>
+  <li><a href="#first-time-setup" id="toc-first-time-setup" class="nav-link" data-scroll-target="#first-time-setup">2. First-time Setup</a></li>
+  <li><a href="#run-the-installer-script" id="toc-run-the-installer-script" class="nav-link" data-scroll-target="#run-the-installer-script">3. Run the installer script:</a></li>
+  <li><a href="#launch-prism" id="toc-launch-prism" class="nav-link" data-scroll-target="#launch-prism">4. Launch PRISM</a></li>
+  <li><a href="#deploy-to-production" id="toc-deploy-to-production" class="nav-link" data-scroll-target="#deploy-to-production">5. Deploy to production</a></li>
+  </ul></li>
   <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a></li>
-  <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a></li>
+  <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a>
+  <ul class="collapse">
+  <li><a href="#for-researchers" id="toc-for-researchers" class="nav-link" data-scroll-target="#for-researchers">For Researchers</a></li>
+  <li><a href="#developer-instructions" id="toc-developer-instructions" class="nav-link" data-scroll-target="#developer-instructions">Developer Instructions</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -167,8 +213,91 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <section id="unified-setup-via-docker" class="level2">
 <h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
 <p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code></a> repository, which uses Docker Compose.</p>
-<p>XXXXXXXXXXXXxDocs here!</p>
+<p>here!</p>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">1. Prerequisites</h3>
+<p>Ensure the following are installed and running: - <a href="https://desktop.docker.com/"><strong>Docker Desktop</strong></a> - <a href="https://git-scm.com/download/win"><strong>Git</strong> for Windows</a>, or for Mac and Linux git is pre-installed. - <a href="https://console.firebase.google.com/">A <strong>Firebase</strong> project</a> with paid usage enabled. - <a href="https://www.mailgun.com/">A <strong>Mailgun</strong> account</a> for sending emails.</p>
+</section>
+<section id="first-time-setup" class="level3">
+<h3 class="anchored" data-anchor-id="first-time-setup">2. First-time Setup</h3>
+<section id="clone-the-repository" class="level4">
+<h4 class="anchored" data-anchor-id="clone-the-repository">1. <strong>Clone the repository</strong>:</h4>
+<p>Clone this repository and move into it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="configure-your-keys-and-secrets" class="level4">
+<h4 class="anchored" data-anchor-id="configure-your-keys-and-secrets">2. Configure your keys and secrets:</h4>
+<p>Create a <code>.env</code> file in the <code>prism-setup</code> directory with the following keys.</p>
+<section id="jwt-secret" class="level5">
+<h5 class="anchored" data-anchor-id="jwt-secret">1. <strong>JWT Secret</strong></h5>
+<p>Generate a unique secret for your session tokens using <code>openssl rand -hex 32</code> or from https://jwtsecretkeygenerator.com/ the set the value:</p>
+<pre class="dotenv"><code>JWT_SECRET=xxxx</code></pre>
+</section>
+<section id="email-settings" class="level5">
+<h5 class="anchored" data-anchor-id="email-settings">2. <strong>Email Settings</strong></h5>
+<p><strong>Option A: Mailgun</strong></p>
+<ol type="1">
+<li>Sign up for a free account at https://www.mailgun.com/</li>
+<li>Follow the instructions to add a domain and verify your email address.</li>
+<li>Copy the API key and domain name into your <code>.env</code> file.</li>
+</ol>
+<pre class="dotenv"><code>MAILGUN_API_KEY=xxxx
+MAILGUN_AUTHORIZED_DOMAIN=xxxx.mailgun.org</code></pre>
+<p><strong>Option 2. Via Gmail’s SMTP server</strong></p>
+<p>To allow PRISM to send emails via Gmail, you need to enable 2-Step Verification and generate an App Password. * <strong>Gmail App Password (MAIL_PASSWORD)</strong>: <a href="https://myaccount.google.com/security">Google Account</a> → Security &amp; Sign-in → turn 2‑Step Verification ON * Then navigate to your <a href="https://myaccount.google.com/apppasswords">App passwords</a> → create a new app password, give it a name (<code>PRISM</code>) copy the 16‑char code (no spaces) into MAIL_PASSWORD.</p>
+<p>Add the following to your <code>.env</code> file:</p>
+<pre class="dotenv"><code>MAIL_USERNAME=xxxxx@gmail.com
+MAIL_FROM=xxxxxx@gmail.com            # must match or be a verified alias
+MAIL_PASSWORD=xxxxxxxxxxxxxxxx      # 16‑char Google App Password, NOT EMAIL PASSWORD, see below
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=587
+MAIL_STARTTLS=True                  # or: MAIL_PORT=465 + MAIL_SSL_TLS=True
+MAIL_SSL_TLS=False
+MAIL_FROM_NAME=PRISM
+USE_CREDENTIALS=True
+VALIDATE_CERTS=True</code></pre>
+</section>
+<section id="firebase-web-api-key" class="level5">
+<h5 class="anchored" data-anchor-id="firebase-web-api-key">3. <strong>Firebase Web API Key</strong></h5>
+<blockquote class="blockquote">
+<p>You must have access to a paid Firebase project with an “Editor” or “Owner” role to be able to get a private key.</p>
+</blockquote>
+<p>From the Firebase Console, find it in <strong>PrismData → Project settings → General</strong></p>
+<p>Scroll down to <strong>Your apps → Web apps → prism (web) → Config (radio button) &gt; apiKey</strong>, then add:</p>
+<pre class="dotenv"><code>FIREBASE_API_KEY=xxxxx</code></pre>
+<p>Replace <em>PrismData</em> and <em>prism (web)</em> with the corresponding names of your Firebase project and web app.</p>
+</section>
+<section id="firebase-service-account-key-file" class="level5">
+<h5 class="anchored" data-anchor-id="firebase-service-account-key-file">4. <strong>Firebase Service Account Key file</strong></h5>
+<p>From the Firebase Console: <strong>PrismData → Project settings → Service accounts → Firebase Admin SDK → Generate new private key</strong>.</p>
+<p>Rename the file to <code>serviceAccountKey.json</code> and place it in the <code>prism-setup</code> directory, then add:</p>
+<pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code></pre>
+</section>
+</section>
+</section>
+<section id="run-the-installer-script" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-installer-script">3. Run the installer script:</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> install.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will create the Dockerfiles for the backend and frontend, clone the repos and check for the presence of your keys. If it fails, simply fix the errors as suggested and run the script again.</p>
+</section>
+<section id="launch-prism" class="level3">
+<h3 class="anchored" data-anchor-id="launch-prism">4. Launch PRISM</h3>
+<p>Now to launch the frontend and backend services on your local machine run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wait until setup completes then interact with the app via:</p>
+<ul>
+<li><strong>Frontend Dashboard</strong>: http://localhost:3000</li>
+<li><strong>Backend API</strong>: http://localhost:8000</li>
+</ul>
+<p>To stop the frontend and backend services run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="deploy-to-production" class="level3">
+<h3 class="anchored" data-anchor-id="deploy-to-production">5. Deploy to production</h3>
+<p>TODO</p>
 <p>XXXXXXXXXXXXxEnd here!</p>
+</section>
 </section>
 <section id="manual-backend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-backend-setup">Manual Backend Setup</h2>
@@ -177,8 +306,61 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <section id="manual-frontend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-frontend-setup">Manual Frontend Setup</h2>
 <p>The frontend is a Flutter web application.</p>
+<p>The PRISM web frontend serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem as part of the <a href="https://github.com/Australian-Future-Hearing-Initiative">Australian Future Hearing Initiative</a>.</p>
+<hr>
+<section id="for-researchers" class="level3">
+<h3 class="anchored" data-anchor-id="for-researchers">For Researchers</h3>
+<p>Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.</p>
+<p><strong>How to use:</strong> 1. <strong>Login</strong>: Access the researcher dashboard securely. 2. <strong>Manage Projects</strong>: Create new projects to house specific studies or experiments. 3. <strong>Configure Experiments</strong>: * Set up various experiment types (e.g., Ecological Momentary Assessment (EMA) surveys, sensor-thresholds). * Define parameters and logical flows for the experiments. 4. <strong>Manage Participants</strong>: * Add new participants to the system. * Assign participants to specific projects/cohorts. * Monitor participant progress through assigned tasks. * Email participants. * Download audiograms</p>
+See the complete userguide: https://docs.google.com/document/d/1_FZVBiN1QqhP50A2izS7KlW_Y021koJM45pSYcHEkMw/edit?tab=t.0#heading=h.qbhdu5cvo4bq
+<hr>
+</section>
+<section id="developer-instructions" class="level3">
+<h3 class="anchored" data-anchor-id="developer-instructions">Developer Instructions</h3>
+<section id="launch-the-backend-server" class="level4">
+<h4 class="anchored" data-anchor-id="launch-the-backend-server">1. Launch the Backend Server</h4>
+<p>This frontend relies on the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend/blob/main/README.md">prism-flutter-backend</a>. See the repo for launch instructions.</p>
+</section>
+<section id="configure-environment" class="level4">
+<h4 class="anchored" data-anchor-id="configure-environment">2. Configure Environment</h4>
+<p>Create a <code>.env</code> file in the <strong>root directory</strong> and add the URL of the backedn server, e.g.:</p>
+<pre class="env"><code>## Base URL for API calls when running locally
+API_BASE_URL=http://127.0.0.1:8000</code></pre>
+</section>
+<section id="install-fvm-flutter-version-management" class="level4">
+<h4 class="anchored" data-anchor-id="install-fvm-flutter-version-management">3. Install FVM (Flutter Version Management)</h4>
+<p>We use FVM to ensure consistent Flutter versions.</p>
+<ul>
+<li>Option 1 <strong>Dart Pub</strong>: <code>dart pub global activate fvm</code></li>
+<li>Option 2 <strong>Homebrew</strong>: <code>brew tap leoafarias/fvm &amp;&amp; brew install fvm</code></li>
+<li>Option 3 <strong>Install Script</strong>: <code>curl -fsSL https://fvm.app/install.sh | bash</code></li>
+</ul>
+</section>
+<section id="run-the-app" class="level4">
+<h4 class="anchored" data-anchor-id="run-the-app">4. Run the App</h4>
+<p>Execute the following commands from the root of this repository:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome             <span class="co"># Run the app in Chrome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="testing-architecture" class="level4">
+<h4 class="anchored" data-anchor-id="testing-architecture">🧪 Testing &amp; Architecture</h4>
+<ul>
+<li><strong>Unit &amp; Widget Tests</strong>: <code>flutter test</code></li>
+<li><strong>Specific Test</strong>: <code>flutter test &lt;path/to/test.dart&gt;</code></li>
+<li><strong>Integration Tests</strong>: <code>bash     flutter drive --driver=test_driver/integration_test.dart --target=integration_test/participant_flow_test.dart -d chrome</code> <em>Note: Web integration tests inject bytes directly as WebDriver screens cannot handle drag-and-drop.</em></li>
+<li><strong>Coverage</strong>: <code>flutter test --coverage</code></li>
+</ul>
+<p><strong>Key Directory Structure:</strong> * <code>lib/ui</code>: Contains all screens and widgets, separated by feature (e.g., <code>experiment</code>, <code>participant</code>, <code>auth</code>). * <code>lib/domain</code>: Business logic and models. * <code>lib/data</code>: Data repositories and API services.</p>
+</section>
+<section id="todo-deployment-instructions" class="level4">
+<h4 class="anchored" data-anchor-id="todo-deployment-instructions">TODO: Deployment Instructions</h4>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
