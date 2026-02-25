@@ -17,7 +17,7 @@ Get a paid project on Firebase and make a new project.
 
 The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup`](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) repository, which uses Docker Compose.
 
-XXXXXXXXXXXXxDocs here!
+ here!
 
 {{< include _setup_readme.qmd >}}
 
