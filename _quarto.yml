@@ -1,5 +1,6 @@
 project:
   type: website
+  pre-render: bash sync-docs.sh
   resources:
     - styles.css
 
@@ -14,7 +15,7 @@ website:
       - href: guide/user.qmd
         text: User Guide
   google-analytics:
-    tracking-id: "G-Z7E5C7LLKG"
+    tracking-id: "G-XXXXXXXX"
     storage: cookies
     anonymize-ip: true
   repo-url: https://github.com/Australian-Future-Hearing-Initiative/prism-docs
@@ -22,5 +23,5 @@ website:
 
 format:
   html:
-    css: styles.css
+    # css: styles.css
     code-overflow: wrap

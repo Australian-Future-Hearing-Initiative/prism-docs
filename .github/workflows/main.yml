@@ -12,7 +12,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Fetch README files
+        env:
+          # Requires a PAT with 'repo' scope stored as a repository secret
+          ORG_PAT: ${{ secrets.ORG_PAT }}
+        run: |
+          # Create sibling directories to match local structure
+          mkdir -p ../prism-setup
+          mkdir -p ../prism-flutter-backend
+          
+          # Download single files securely using the token in the header
+          curl -sL -H "Authorization: token $ORG_PAT" \
+            "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-setup/main/README.md" \
+            -o ../prism-setup/README.md
+            
+          curl -sL -H "Authorization: token $ORG_PAT" \
+            "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-backend/main/README.md" \
+            -o ../prism-flutter-backend/README.md
+
+          curl -sL -H "Authorization: token $ORG_PAT" \
+            "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend/main/README.md" \
+            -o ../prism-flutter-backend/README.md
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2

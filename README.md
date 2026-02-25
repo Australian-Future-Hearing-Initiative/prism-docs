@@ -1,29 +1,48 @@
 # PRISM Documentation
 
-Documentation for the PRISM ecosystem. This site is built using [Quarto](https://quarto.org/) and hosted on [GitHub Pages](https://miniature-carnival-v9nmwzn.pages.github.io/).
+Documentation for the PRISM ecosystem within the Australian Future Hearing Initiative. This site is built using [Quarto](https://quarto.org/) and hosted on [GitHub Pages](https://miniature-carnival-v9nmwzn.pages.github.io/).
 
-## 🛠️ Setup & Development
+
+## Local Development
+To preview the site locally:
+```bash
+git clone git@github.com:Australian-Future-Hearing-Initiative/prism-docs.git
+cd prism-docs
+quarto preview index.qmd --no-browser
+```
+
+Make changes in a branch and push to GitHub. The site will be automatically rendered and deployed to GitHub Pages (once pulled to the `main` branch).
+```
+git checkout -b new-changes
+# make changes
+git commit -am "new changes"
+git push origin new-changes
+```
+
+## Repository structure
+
+- `index.qmd`: The main homepage and entry point for the documentation website.
+- `guide/`: Sub pages for the documentation website.
+- `_quarto.yml`: Quarto project configuration file.
+- `sync-docs.sh`: Script to link documentation from prism repositories.
+
+
+## Initial Setup
 
 ### Prerequisites
 - [Quarto](https://quarto.org/docs/get-started/) installed
 - Git
 
-### Local Development
-To preview the site locally:
-```bash
-git clone https://github.com/Australian-Future-Hearing-Initiative/prism-docs.git
-cd prism-docs
-quarto preview index.qmd --no-browser
-```
 
-### Publishing to GitHub Pages
+### Automatic publishing to GitHub Pages
 
-#### One-Time Setup
 1. **Create `gh-pages` branch**:
    ```bash
+   # quarto first needs a branch to publish to
    git checkout -b gh-pages
-   quarto publish gh-pages
    git push origin gh-pages 
+   quarto publish gh-pages
+   # switch back to main (or your dev branch) and continue working
    git checkout main
    ```
 

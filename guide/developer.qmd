@@ -8,46 +8,16 @@ format:
 
 ## Overview
 
-The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and some database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.
+The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.
+
+## Firebase
+Get a paid project on Firebase and make a new project.
 
 ## Unified Setup via Docker
 
-The easiest way to install and run both the PRISM Backend and Frontend is via the `prism-setup` repository, which uses Docker Compose.
+The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup`](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) repository, which uses Docker Compose.
 
-### 1. Prerequisites
-Ensure the following are installed and running:
-* **[Docker Desktop](https://desktop.docker.com/)**
-* **Git** 
-* **A Firebase project** with paid usage enabled (Blaze plan).
-* **A Mailgun account** (or a Gmail account with 2-Step Verification and App Password) for sending emails to participants.
-
-### 2. Clone the Repository
-```bash
-git clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git
-cd prism-setup
-```
-
-### 3. Configure Keys and Secrets
-Create a `.env` file in the `prism-setup` directory:
-
-1. **JWT Secret**: Generate a 32-character hex string (e.g. `openssl rand -hex 32`) and set `JWT_SECRET=xxxx`.
-2. **Email Settings**:
-   * **Mailgun**: Add `MAILGUN_API_KEY` and `MAILGUN_AUTHORIZED_DOMAIN`.
-   * **Gmail**: Enable an App Password, and define `MAIL_USERNAME`, `MAIL_FROM`, `MAIL_PASSWORD`, `MAIL_SERVER=smtp.gmail.com`, `MAIL_PORT=587`, `MAIL_STARTTLS=True`, etc.
-3. **Firebase Web API Key**: Find your Web API Key in your Firebase Console under "Project settings → General" and set `FIREBASE_API_KEY=xxxxx`.
-4. **Firebase Service Account Key**: Download an Admin SDK Private Key as a JSON file, rename it `serviceAccountKey.json`, place it in the `prism-setup` directory, and set `FIREBASE_KEY_PATH=./serviceAccountKey.json`.
-
-### 4. Install and Run
-Run the installer script to prepare Dockerfiles and clone necessary repositories:
-```bash
-bash install.sh
-```
-Launch both frontend and backend using Docker Compose:
-```bash
-docker compose up --build
-```
-* **Frontend Dashboard**: http://localhost:3000
-* **Backend API**: http://localhost:8000 (Swagger docs at `/docs`)
+{{< include _setup_readme.qmd >}}
 
 ---
 
@@ -55,26 +25,7 @@ docker compose up --build
 
 If you wish to run the FastAPI backend independently without Docker:
 
-### 1. Python Environment
-We recommend using **`uv`** for managing dependencies and virtual environments.
-```bash
-uv venv
-source .venv/bin/activate
-uv sync
-```
-
-### 2. Environment Variables
-Add `.env` to the root of the backend directory containing:
-* `FIREBASE_KEY_PATH=./serviceAccountKey.json`
-* `FIREBASE_API_KEY`
-* `JWT_SECRET`
-* Email variables (`MAILGUN_*` or `MAIL_*`)
-
-### 3. Run the Development Server
-```bash
-uv run -- uvicorn app.main:app --reload
-```
-View the Swagger UI documentation at `http://127.0.0.1:8000/docs`.
+{{< include _flutter-backend_readme.qmd >}}
 
 ---
 
@@ -82,21 +33,5 @@ View the Swagger UI documentation at `http://127.0.0.1:8000/docs`.
 
 The frontend is a Flutter web application.
 
-### 1. Setup Environment Variables
-Create a `.env` file in the root of the `prism-flutter-web-frontend` directory to link your backend:
-```env
-API_BASE_URL=http://127.0.0.1:8000
-```
+{{< include _flutter-web-frontend_readme.qmd >}}
 
-### 2. Flutter Version Management (FVM)
-The project utilizes [FVM](https://fvm.app/) to ensure version consistency. Install it via `dart pub global activate fvm` or `brew install fvm`.
-
-### 3. Run the App
-```bash
-fvm flutter channel stable
-fvm flutter upgrade
-fvm flutter pub get
-fvm flutter run -d chrome
-```
-
-Run tests with `flutter test` or integration tests via `flutter drive`.

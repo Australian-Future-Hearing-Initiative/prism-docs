@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PRISM",
+    "section": "",
+    "text": "PRISM is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.\nPRISM might stand for:\nModern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users."
+  },
+  {
+    "objectID": "index.html#prism",
+    "href": "index.html#prism",
+    "title": "PRISM",
+    "section": "PRISM",
+    "text": "PRISM\nModern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.\n\nWhat is “Ecological Momentary Assessment” (EMA)?\nEMA is used to “catch you in the moment.” When you interact with the PRISM app, we capture a snapshot of your real-world environment. This includes: - Audio: A short 30-second clip of the sound around you. - Context: Your rating of how hard it was to hear speech.\nThis data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.\n\n\nKey Resources\n\nPaper: A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet (arXiv:2508.10360)\nDatasets:\n\nAHEAD-DS (HuggingFace): The primary dataset for training and benchmarking.\nAHEAD-DS Unmixed (HuggingFace): Component audio files before mixing, useful for custom augmentation strategies.\n\nModels:\n\nOpenYAMNet Models (HuggingFace): Pre-trained models ready for inference or fine-tuning."
+  },
+  {
+    "objectID": "index.html#capabilities",
+    "href": "index.html#capabilities",
+    "title": "PRISM",
+    "section": "Capabilities",
+    "text": "Capabilities\n\nBenchmark New Models: Use the standardized ahead_ds split to compare your model’s performance against the OpenYAMNet baseline.\nFine-Tuning: Leverage pre-trained YAMNet+ weights to adapt the model to new acoustic domains with minimal data.\nReproducibility: Full scripts for dataset generation (prism-ml-dataset-ahead-ds) and model training (prism-ml-yamnetp-tune) are provided."
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "PRISM",
+    "section": "Citation",
+    "text": "Citation\nIf you use this code, model, or dataset in your research, please cite:\n@misc{zhong2026datasetmodelauditoryscene,\n      title={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, \n      author={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},\n      year={2026},\n      eprint={2508.10360},\n      archivePrefix={arXiv},\n      primaryClass={cs.SD},\n      url={https://arxiv.org/abs/2508.10360}, \n}"
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "PRISM",
+    "section": "License",
+    "text": "License\nCode is licensed under the MIT License or Apache 2.0 depending on the component. Please check individual LICENCE.txt files in each subdirectory."
+  },
+  {
+    "objectID": "guide/developer.html",
+    "href": "guide/developer.html",
+    "title": "Developer Guide",
+    "section": "",
+    "text": "The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and some database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment."
+  },
+  {
+    "objectID": "guide/developer.html#overview",
+    "href": "guide/developer.html#overview",
+    "title": "Developer Guide",
+    "section": "",
+    "text": "The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and some database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment."
+  },
+  {
+    "objectID": "guide/developer.html#unified-setup-via-docker",
+    "href": "guide/developer.html#unified-setup-via-docker",
+    "title": "Developer Guide",
+    "section": "Unified Setup via Docker",
+    "text": "Unified Setup via Docker\nThe easiest way to install and run both the PRISM Backend and Frontend is via the prism-setup repository, which uses Docker Compose.\n\n1. Prerequisites\nEnsure the following are installed and running: * Docker Desktop * Git * A Firebase project with paid usage enabled (Blaze plan). * A Mailgun account (or a Gmail account with 2-Step Verification and App Password) for sending emails to participants.\n\n\n2. Clone the Repository\ngit clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git\ncd prism-setup\n\n\n3. Configure Keys and Secrets\nCreate a .env file in the prism-setup directory:\n\nJWT Secret: Generate a 32-character hex string (e.g. openssl rand -hex 32) and set JWT_SECRET=xxxx.\nEmail Settings:\n\nMailgun: Add MAILGUN_API_KEY and MAILGUN_AUTHORIZED_DOMAIN.\nGmail: Enable an App Password, and define MAIL_USERNAME, MAIL_FROM, MAIL_PASSWORD, MAIL_SERVER=smtp.gmail.com, MAIL_PORT=587, MAIL_STARTTLS=True, etc.\n\nFirebase Web API Key: Find your Web API Key in your Firebase Console under “Project settings → General” and set FIREBASE_API_KEY=xxxxx.\nFirebase Service Account Key: Download an Admin SDK Private Key as a JSON file, rename it serviceAccountKey.json, place it in the prism-setup directory, and set FIREBASE_KEY_PATH=./serviceAccountKey.json.\n\n\n\n4. Install and Run\nRun the installer script to prepare Dockerfiles and clone necessary repositories:\nbash install.sh\nLaunch both frontend and backend using Docker Compose:\ndocker compose up --build\n\nFrontend Dashboard: http://localhost:3000\nBackend API: http://localhost:8000 (Swagger docs at /docs)"
+  },
+  {
+    "objectID": "guide/developer.html#manual-backend-setup",
+    "href": "guide/developer.html#manual-backend-setup",
+    "title": "Developer Guide",
+    "section": "Manual Backend Setup",
+    "text": "Manual Backend Setup\nIf you wish to run the FastAPI backend independently without Docker:\n\n1. Python Environment\nWe recommend using uv for managing dependencies and virtual environments.\nuv venv\nsource .venv/bin/activate\nuv sync\n\n\n2. Environment Variables\nAdd .env to the root of the backend directory containing: * FIREBASE_KEY_PATH=./serviceAccountKey.json * FIREBASE_API_KEY * JWT_SECRET * Email variables (MAILGUN_* or MAIL_*)\n\n\n3. Run the Development Server\nuv run -- uvicorn app.main:app --reload\nView the Swagger UI documentation at http://127.0.0.1:8000/docs."
+  },
+  {
+    "objectID": "guide/developer.html#manual-frontend-setup",
+    "href": "guide/developer.html#manual-frontend-setup",
+    "title": "Developer Guide",
+    "section": "Manual Frontend Setup",
+    "text": "Manual Frontend Setup\nThe frontend is a Flutter web application.\n\n1. Setup Environment Variables\nCreate a .env file in the root of the prism-flutter-web-frontend directory to link your backend:\nAPI_BASE_URL=http://127.0.0.1:8000\n\n\n2. Flutter Version Management (FVM)\nThe project utilizes FVM to ensure version consistency. Install it via dart pub global activate fvm or brew install fvm.\n\n\n3. Run the App\nfvm flutter channel stable\nfvm flutter upgrade\nfvm flutter pub get\nfvm flutter run -d chrome\nRun tests with flutter test or integration tests via flutter drive."
+  },
+  {
+    "objectID": "guide/user.html",
+    "href": "guide/user.html",
+    "title": "User Guide",
+    "section": "",
+    "text": "PRISM is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.\nPRISM helps researchers collect real-world data (“catch you in the moment”) through the smartphone application. When a participant interacts with the PRISM app, we capture a snapshot of your real-world environment. This includes: - Audio: A short 30-second clip of the sound around you. - Context: Your rating of how hard it was to hear speech.\nThis data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.\nThe PRISM web frontend serves as the interface for data collection and study management for Researchers conducting “experiments” within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs."
+  },
+  {
+    "objectID": "guide/user.html#introduction-to-the-prism-ecosystem",
+    "href": "guide/user.html#introduction-to-the-prism-ecosystem",
+    "title": "User Guide",
+    "section": "",
+    "text": "PRISM is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.\nPRISM helps researchers collect real-world data (“catch you in the moment”) through the smartphone application. When a participant interacts with the PRISM app, we capture a snapshot of your real-world environment. This includes: - Audio: A short 30-second clip of the sound around you. - Context: Your rating of how hard it was to hear speech.\nThis data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.\nThe PRISM web frontend serves as the interface for data collection and study management for Researchers conducting “experiments” within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs."
+  },
+  {
+    "objectID": "guide/user.html#experimenter-flow",
+    "href": "guide/user.html#experimenter-flow",
+    "title": "User Guide",
+    "section": "Experimenter Flow",
+    "text": "Experimenter Flow\n\nStep 1: Sign up\nClick “Sign up with Email”.\n\n\n\nSign up\n\n\nThen you should receive a verification email:\n\n\n\nVerification email\n\n\nNote: If you try to click “Sign up” again, it will show you “An account with this email already exists.” You won’t be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:\n\n\n\nVerification prompt\n\n\n\n\nStep 2: Notification\n\n\n\nNotification\n\n\nClick “Set up”, it will guide you to the first page.\n\n\nStep 3: Setup the first experiment\n\n\n\nSetup the first experiment\n\n\nClick “Create experiment”.\n\n\nStep 4: Fill up the basic information\n\n\n\nFill up the basic information\n\n\n\n\nStep 5: Fill up sensor details\n\n\n\nFill up sensor details\n\n\n\n\n\nStep 5 (New): Fill up sensor details\n\n\n\n\nStep 6: Feedback Buttons\n\n\n\nFeedback Buttons\n\n\nConfirm your feedback buttons.\n\n\nStep 7: (Optional) Give a google form survey link\n\n\n\nGoogle form survey link\n\n\n\n\nStep 7B (New): Asking for ML Model\n\n\n\nAsking for ML Model\n\n\n\n\nStep 7C (New): Triggers\n\n\n\nTriggers\n\n\n\n\n\nTriggers 2\n\n\n\nSensor Lists\n\n\n\n\n\n\n\n\n\n\nSensor Source (Input)\nAllowed Metrics (Units)\nAllowed Operators\nCompatible Target Models (Output)\nMin/Max Threshold Range (Validation)\n\n\n\n\nPhone Microphone\nDecibel (dB)\n&gt;\ne.g., YAMNet+, WONU? All?\ne.g., 0 - 120 dB\n\n\nHeart Rate\nBPM\n&gt;, &lt;\ne.g., YAMNet+ only? All?\ne.g., 30 - 220 BPM\n\n\nTemperature\nCelsius (°C)\ne.g., &gt;, &lt;\ne.g., All?\ne.g., -10 - 50 °C\n\n\nWatch Microphone\nDecibel (dB)\n&gt;\ne.g., All?\ne.g., 0 - 120 dB\n\n\n\n\n\n\nStep 8: Confirm the detail\n\n\n\nConfirm the detail\n\n\n\n\nStep 9: View all experiments\n\n\n\nView all experiments\n\n\n\n\nStep 10: Add participants\n\n\n\nView all experiments\n\n\nClick “My First Experiment”.\n\n\n\nSave and add participants\n\n\nConfirm it by clicking “Save and add participants”.\n\n\n\nCSV Upload\n\n\nExample CSV file formatting:\n\n\n\nExample CSV\n\n\nDrag your csv file then you should be able to see participants.\n\n\n\nSee participants\n\n\nYou can edit participants by clicking on it and you should be able to see “Email”, “View data”, “Remove”. Note: Here the “View data” is disabled, that’s because there’s no response for that participant yet.\n\n\n\nEdit participants\n\n\nClick save, it will show “Saving…”. Afterward it will guide you back to the experiment list.\n\n\n\nExperiment list"
+  },
+  {
+    "objectID": "guide/user.html#participant-flow",
+    "href": "guide/user.html#participant-flow",
+    "title": "User Guide",
+    "section": "Participant Flow",
+    "text": "Participant Flow\n\nStep 1: Join the experiment\nOnce the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.\n\n\n\nJoin the experiment\n\n\n\n\nStep 2: Starting the experiment\n\n\n\nStarting the experiment\n\n\nThe Recording Period: This is the block of time (Like a 4 hour window) The Recording Session: Those are the individual “sessions” (short recordings) that happen inside it.\n\n\nStep 3: Sending a recording\n\n\n\nSending a recording\n\n\n\n\nStep 4: Finish the session\n\n\n\nFinish the session"
+  },
+  {
+    "objectID": "guide/user.html#experimenter-flow-continued",
+    "href": "guide/user.html#experimenter-flow-continued",
+    "title": "User Guide",
+    "section": "Experimenter Flow (Continued)",
+    "text": "Experimenter Flow (Continued)\n\nStep 11: Check recording\nClick “View data” for a particular participant.\n\n\n\nCheck recording\n\n\n\n\nStep 12: View the recordings\n\n\n\nView the recordings\n\n\n\n\nStep 13: Download recordings\n\n\n\nDownload recordings"
+  }
+]
