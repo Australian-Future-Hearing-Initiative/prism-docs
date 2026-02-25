@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PRISM – PRISM</title>
+<title>Developer Guide – PRISM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,24 +58,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e85eba1097e763ab92a8026b31d9210d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e85eba1097e763ab92a8026b31d9210d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,14 +117,14 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PRISM</span>
     </a>
   </div>
@@ -135,15 +135,15 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./guide/developer.html"> 
+    <a class="nav-link active" href="../guide/developer.html" aria-current="page"> 
 <span class="menu-text">Developer Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./guide/user.html"> 
+    <a class="nav-link" href="../guide/user.html"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
 </ul>
@@ -157,13 +157,40 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">1. Prerequisites</a></li>
+  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository">2. Clone the Repository</a></li>
+  <li><a href="#configure-keys-and-secrets" id="toc-configure-keys-and-secrets" class="nav-link" data-scroll-target="#configure-keys-and-secrets">3. Configure Keys and Secrets</a></li>
+  <li><a href="#install-and-run" id="toc-install-and-run" class="nav-link" data-scroll-target="#install-and-run">4. Install and Run</a></li>
+  </ul></li>
+  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a>
+  <ul class="collapse">
+  <li><a href="#python-environment" id="toc-python-environment" class="nav-link" data-scroll-target="#python-environment">1. Python Environment</a></li>
+  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables">2. Environment Variables</a></li>
+  <li><a href="#run-the-development-server" id="toc-run-the-development-server" class="nav-link" data-scroll-target="#run-the-development-server">3. Run the Development Server</a></li>
+  </ul></li>
+  <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a>
+  <ul class="collapse">
+  <li><a href="#setup-environment-variables" id="toc-setup-environment-variables" class="nav-link" data-scroll-target="#setup-environment-variables">1. Setup Environment Variables</a></li>
+  <li><a href="#flutter-version-management-fvm" id="toc-flutter-version-management-fvm" class="nav-link" data-scroll-target="#flutter-version-management-fvm">2. Flutter Version Management (FVM)</a></li>
+  <li><a href="#run-the-app" id="toc-run-the-app" class="nav-link" data-scroll-target="#run-the-app">3. Run the App</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong>PRISM</strong></h1>
+<h1 class="title">Developer Guide</h1>
 </div>
 
 
@@ -180,59 +207,92 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 </header>
 
 
-<p><strong>PRISM</strong> is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment-EMA) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.</p>
-<p>PRISM might stand for: * <strong>PRedicting Interaction difficulty using Sensors and Micro-EMA”</strong> * <strong>Personalized Real-time Interaction difficulty for Sounds Measurement</strong> * <strong>Platform for Research In Situational Momentary assessment</strong>.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and some database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.</p>
+</section>
+<section id="unified-setup-via-docker" class="level2">
+<h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
+<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <code>prism-setup</code> repository, which uses Docker Compose.</p>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">1. Prerequisites</h3>
+<p>Ensure the following are installed and running: * <strong><a href="https://desktop.docker.com/">Docker Desktop</a></strong> * <strong>Git</strong> * <strong>A Firebase project</strong> with paid usage enabled (Blaze plan). * <strong>A Mailgun account</strong> (or a Gmail account with 2-Step Verification and App Password) for sending emails to participants.</p>
+</section>
+<section id="clone-the-repository" class="level3">
+<h3 class="anchored" data-anchor-id="clone-the-repository">2. Clone the Repository</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="configure-keys-and-secrets" class="level3">
+<h3 class="anchored" data-anchor-id="configure-keys-and-secrets">3. Configure Keys and Secrets</h3>
+<p>Create a <code>.env</code> file in the <code>prism-setup</code> directory:</p>
+<ol type="1">
+<li><strong>JWT Secret</strong>: Generate a 32-character hex string (e.g.&nbsp;<code>openssl rand -hex 32</code>) and set <code>JWT_SECRET=xxxx</code>.</li>
+<li><strong>Email Settings</strong>:
+<ul>
+<li><strong>Mailgun</strong>: Add <code>MAILGUN_API_KEY</code> and <code>MAILGUN_AUTHORIZED_DOMAIN</code>.</li>
+<li><strong>Gmail</strong>: Enable an App Password, and define <code>MAIL_USERNAME</code>, <code>MAIL_FROM</code>, <code>MAIL_PASSWORD</code>, <code>MAIL_SERVER=smtp.gmail.com</code>, <code>MAIL_PORT=587</code>, <code>MAIL_STARTTLS=True</code>, etc.</li>
+</ul></li>
+<li><strong>Firebase Web API Key</strong>: Find your Web API Key in your Firebase Console under “Project settings → General” and set <code>FIREBASE_API_KEY=xxxxx</code>.</li>
+<li><strong>Firebase Service Account Key</strong>: Download an Admin SDK Private Key as a JSON file, rename it <code>serviceAccountKey.json</code>, place it in the <code>prism-setup</code> directory, and set <code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code>.</li>
+</ol>
+</section>
+<section id="install-and-run" class="level3">
+<h3 class="anchored" data-anchor-id="install-and-run">4. Install and Run</h3>
+<p>Run the installer script to prepare Dockerfiles and clone necessary repositories:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> install.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Launch both frontend and backend using Docker Compose:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Frontend Dashboard</strong>: http://localhost:3000</li>
+<li><strong>Backend API</strong>: http://localhost:8000 (Swagger docs at <code>/docs</code>)</li>
+</ul>
 <hr>
-<section id="prism" class="level2">
-<h2 class="anchored" data-anchor-id="prism">PRISM</h2>
-<p>Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
-<section id="what-is-ecological-momentary-assessment-ema" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-ecological-momentary-assessment-ema">What is “Ecological Momentary Assessment” (EMA)?</h3>
-<p>EMA is used to “catch you in the moment.” When you interact with the PRISM app, we capture a snapshot of your real-world environment. This includes: - <strong>Audio</strong>: A short 30-second clip of the sound around you. - <strong>Context</strong>: Your rating of how hard it was to hear speech.</p>
-<p>This data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.</p>
-</section>
-<section id="key-resources" class="level3">
-<h3 class="anchored" data-anchor-id="key-resources">Key Resources</h3>
-<ul>
-<li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2508.10360">A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet</a> (arXiv:2508.10360)</li>
-<li><strong>Datasets:</strong>
-<ul>
-<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds"><strong>AHEAD-DS</strong> (HuggingFace)</a>: The primary dataset for training and benchmarking.</li>
-<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed"><strong>AHEAD-DS Unmixed</strong> (HuggingFace)</a>: Component audio files before mixing, useful for custom augmentation strategies.</li>
-</ul></li>
-<li><strong>Models:</strong>
-<ul>
-<li><a href="https://huggingface.co/hzhongresearch/yamnetp_ahead_ds"><strong>OpenYAMNet Models</strong> (HuggingFace)</a>: Pre-trained models ready for inference or fine-tuning.</li>
-</ul></li>
-</ul>
 </section>
 </section>
-<section id="capabilities" class="level2">
-<h2 class="anchored" data-anchor-id="capabilities">Capabilities</h2>
-<ul>
-<li><strong>Benchmark New Models:</strong> Use the standardized <code>ahead_ds</code> split to compare your model’s performance against the OpenYAMNet baseline.</li>
-<li><strong>Fine-Tuning:</strong> Leverage pre-trained YAMNet+ weights to adapt the model to new acoustic domains with minimal data.</li>
-<li><strong>Reproducibility:</strong> Full scripts for dataset generation (<code>prism-ml-dataset-ahead-ds</code>) and model training (<code>prism-ml-yamnetp-tune</code>) are provided.</li>
-</ul>
+<section id="manual-backend-setup" class="level2">
+<h2 class="anchored" data-anchor-id="manual-backend-setup">Manual Backend Setup</h2>
+<p>If you wish to run the FastAPI backend independently without Docker:</p>
+<section id="python-environment" class="level3">
+<h3 class="anchored" data-anchor-id="python-environment">1. Python Environment</h3>
+<p>We recommend using <strong><code>uv</code></strong> for managing dependencies and virtual environments.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>If you use this code, model, or dataset in your research, please cite:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">zhong2026datasetmodelauditoryscene</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span>={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">author</span>={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">year</span>={2026},</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">eprint</span>={2508.10360},</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">archivePrefix</span>={arXiv},</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">primaryClass</span>={cs.SD},</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">url</span>={https://arxiv.org/abs/2508.10360}, </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="environment-variables" class="level3">
+<h3 class="anchored" data-anchor-id="environment-variables">2. Environment Variables</h3>
+<p>Add <code>.env</code> to the root of the backend directory containing: * <code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code> * <code>FIREBASE_API_KEY</code> * <code>JWT_SECRET</code> * Email variables (<code>MAILGUN_*</code> or <code>MAIL_*</code>)</p>
 </section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>Code is licensed under the <strong>MIT License</strong> or <strong>Apache 2.0</strong> depending on the component. Please check individual <code>LICENCE.txt</code> files in each subdirectory.</p>
+<section id="run-the-development-server" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-development-server">3. Run the Development Server</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--</span> uvicorn app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>View the Swagger UI documentation at <code>http://127.0.0.1:8000/docs</code>.</p>
+<hr>
+</section>
+</section>
+<section id="manual-frontend-setup" class="level2">
+<h2 class="anchored" data-anchor-id="manual-frontend-setup">Manual Frontend Setup</h2>
+<p>The frontend is a Flutter web application.</p>
+<section id="setup-environment-variables" class="level3">
+<h3 class="anchored" data-anchor-id="setup-environment-variables">1. Setup Environment Variables</h3>
+<p>Create a <code>.env</code> file in the root of the <code>prism-flutter-web-frontend</code> directory to link your backend:</p>
+<pre class="env"><code>API_BASE_URL=http://127.0.0.1:8000</code></pre>
+</section>
+<section id="flutter-version-management-fvm" class="level3">
+<h3 class="anchored" data-anchor-id="flutter-version-management-fvm">2. Flutter Version Management (FVM)</h3>
+<p>The project utilizes <a href="https://fvm.app/">FVM</a> to ensure version consistency. Install it via <code>dart pub global activate fvm</code> or <code>brew install fvm</code>.</p>
+</section>
+<section id="run-the-app" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-app">3. Run the App</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run tests with <code>flutter test</code> or integration tests via <code>flutter drive</code>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -641,4 +701,4 @@ gtag('config', 'G-Z7E5C7LLKG', { 'anonymize_ip': true});
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
