@@ -25,7 +25,7 @@ jobs:
             "prism-setup"
             "prism-flutter-backend"
             "prism-flutter-web-frontend"
-            "prism-wear-os"
+            "prism-wearos-app"
             "prism-ml"
             "vcv-classifier"
             "hp-electric"
