@@ -1,0 +1,22 @@
+---
+title: "Background"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+
+PRISM is a web-based application that allows users to upload and analyze audio data. It is built with FastAPI and Flutter, and uses Firebase for authentication and database storage.
+
+## Benchmarks
+
+## TESTS
+
+
+
+## Data
+
+## Models
+
+{{< include _ml_readme.qmd >}}
