@@ -49,13 +49,13 @@ jobs:
               -o "$BASE_DIR/$REPO/README.md"
           done
 
-      # - name: Debug - Verify fetched files and includes
-      #   run: |
+      - name: Debug - Verify fetched files and includes
+        run: |
       #     echo "=== Fetched README files ==="
       #     find .deps -type f -exec echo "--- {} ---" \; -exec wc -l {} \; -exec head -5 {} \;
       #     echo ""
       #     echo "=== Running sync-docs.sh ==="
-      #     bash sync-docs.sh
+          bash sync-docs.sh
       #     echo ""
       #     echo "=== Generated include files ==="
       #     for f in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd; do
