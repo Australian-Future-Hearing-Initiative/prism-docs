@@ -5,38 +5,26 @@ execute:
   output: false
 ---
 
-**PRISM** is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, models, and tools developed for the "Australian Future Hearing Initiative". 
+**PRISM** is a comprehensive framework designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, machine learning models, and tools developed by and for the "Australian Future Hearing Initiative". 
 
 PRISM might stand for:
 
-* **PRedicting Interaction difficulty using Sensors and Micro-EMA"**
-* **Personalized Real-time Interaction difficulty for Sounds Measurement**
-* **Platform for Research In Situational Momentary assessment**. 
+* **PR**edicting **I**nteraction difficulty using **S**ensors and **M**icro-EMA
+* **P**ersonalized **R**eal-time **I**nteraction difficulty for **S**ound **M**easurement
+* **P**latform for **R**esearch **I**n **S**ituational **M**omentary assessment.
 
-Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.
-
-### What is "Ecological Momentary Assessment" (EMA)?
-EMA is used to "catch you in the moment." When you interact with the PRISM app, we capture a snapshot of your real-world environment. This includes:
-- **Audio**: A short 30-second clip of the sound around you.
-- **Context**: Your rating of how hard it was to hear speech.
-
-This data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.
-
-### Key Resources
-- **Paper:** [A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet](https://arxiv.org/abs/2508.10360) (arXiv:2508.10360)
-- **Datasets:**
-    - [**AHEAD-DS** (HuggingFace)](https://huggingface.co/datasets/hzhongresearch/ahead_ds): The primary dataset for training and benchmarking.
-    - [**AHEAD-DS Unmixed** (HuggingFace)](https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed): Component audio files before mixing, useful for custom augmentation strategies.
-- **Models:**
-    - [**OpenYAMNet Models** (HuggingFace)](https://huggingface.co/hzhongresearch/yamnetp_ahead_ds): Pre-trained models ready for inference or fine-tuning.
+Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.
 
 ## Capabilities
-- **Benchmark New Models:** Use the standardized `ahead_ds` split to compare your model's performance against the OpenYAMNet baseline.
-- **Fine-Tuning:** Leverage pre-trained YAMNet+ weights to adapt the model to new acoustic domains with minimal data.
-- **Reproducibility:** Full scripts for dataset generation (`prism-ml-dataset-ahead-ds`) and model training (`prism-ml-yamnetp-tune`) are provided.
+
+- A web portal for researchers to run experiments and view results.
+- An Android mobile and Watch app for participant data collection.
+- A backend server for data storage and processing.
+- A set of machine learning models for auditory scene analysis.
+
 
 ## Citation
-If you use this code, model, or dataset in your research, please cite:
+If you use these capabilities from the code, model, or datasets in your research, please cite:
 
 ```bibtex
 @misc{zhong2026datasetmodelauditoryscene,
@@ -51,7 +39,7 @@ If you use this code, model, or dataset in your research, please cite:
 ```
 
 ## License
-Code is licensed under the **MIT License** or **Apache 2.0** depending on the component. Please check individual `LICENCE.txt` files in each subdirectory.
+Code is licensed under the **MIT License** or **Apache 2.0** depending on the component. Please check individual `LICENCE` files in each repository.
 
 
 

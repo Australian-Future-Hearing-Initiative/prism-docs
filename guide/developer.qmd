@@ -22,7 +22,7 @@ The easiest way to install and run both the PRISM Backend and Frontend is via th
 
 ## Manual Backend Setup
 
-If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed inthe [`prism-flutter-backend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend).
+If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed in the [`prism-flutter-backend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend).
 
 {{< include _flutter-backend_readme.qmd >}}
 

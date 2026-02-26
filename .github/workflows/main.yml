@@ -21,44 +21,53 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Create sibling directories to match local structure
-          mkdir -p .deps/prism-setup
-          mkdir -p .deps/prism-flutter-backend
-          mkdir -p .deps/prism-flutter-web-frontend
-          
-          # Download single files securely using the token in the header
-          # -f = fail on HTTP errors, -S = show errors even with -s
-          curl -fsSL -H "Authorization: token $ORG_PAT" \
-            "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-setup/main/README.md" \
-            -o .deps/prism-setup/README.md
-            
-          curl -fsSL -H "Authorization: token $ORG_PAT" \
-            "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-backend/refs/heads/main/README.md" \
-            -o .deps/prism-flutter-backend/README.md
+          REPOS=(
+            "prism-setup"
+            "prism-flutter-backend"
+            "prism-flutter-web-frontend"
+            "prism-wear-os"
+            "prism-ml"
+            "vcv-classifier"
+            "hp-electric"
+            "hp-acoustic"
+          )
 
-          curl -fsSL -H "Authorization: token $ORG_PAT" \
-            "https://raw.githubusercontent.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend/main/README.md" \
-            -o .deps/prism-flutter-web-frontend/README.md
+          ORG="Australian-Future-Hearing-Initiative"
+          BASE_DIR=".deps"
 
-      - name: Debug - Verify fetched files and includes
-        run: |
-          echo "=== Fetched README files ==="
-          find .deps -type f -exec echo "--- {} ---" \; -exec wc -l {} \; -exec head -5 {} \;
-          echo ""
-          echo "=== Running sync-docs.sh ==="
-          bash sync-docs.sh
-          echo ""
-          echo "=== Generated include files ==="
-          for f in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd; do
-            echo "--- $f ---"
-            if [ -f "$f" ]; then
-              echo "Lines: $(wc -l < "$f")"
-              head -10 "$f"
-            else
-              echo "FILE NOT FOUND!"
-            fi
-            echo ""
+          # 2. Loop through the array to create directories and fetch files
+          for REPO in "${REPOS[@]}"; do
+            echo "Processing $REPO..."
+
+            # Create the target directory
+            mkdir -p "$BASE_DIR/$REPO"
+
+            # Download the README
+            # Note: Using 'main' as the default branch; change to 'master' if needed.
+            curl -fsSL -H "Authorization: token $ORG_PAT" \
+              "https://raw.githubusercontent.com/$ORG/$REPO/main/README.md" \
+              -o "$BASE_DIR/$REPO/README.md"
           done
+
+      # - name: Debug - Verify fetched files and includes
+      #   run: |
+      #     echo "=== Fetched README files ==="
+      #     find .deps -type f -exec echo "--- {} ---" \; -exec wc -l {} \; -exec head -5 {} \;
+      #     echo ""
+      #     echo "=== Running sync-docs.sh ==="
+      #     bash sync-docs.sh
+      #     echo ""
+      #     echo "=== Generated include files ==="
+      #     for f in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd; do
+      #       echo "--- $f ---"
+      #       if [ -f "$f" ]; then
+      #         echo "Lines: $(wc -l < "$f")"
+      #         head -10 "$f"
+      #       else
+      #         echo "FILE NOT FOUND!"
+      #       fi
+      #       echo ""
+      #     done
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2

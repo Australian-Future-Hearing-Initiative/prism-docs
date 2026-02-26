@@ -1,8 +1,8 @@
 project:
   type: website
   pre-render: bash sync-docs.sh
-  resources:
-    - styles.css
+  # resources:
+  #   - styles.css
 
 website:
   title: "PRISM" 
@@ -14,6 +14,8 @@ website:
         text: Admin Guide
       - href: guide/user.qmd
         text: User Guide
+      - href: guide/background.qmd
+        text: Background
   google-analytics:
     tracking-id: "G-XXXXXXXX"
     storage: cookies
@@ -24,4 +26,10 @@ website:
 format:
   html:
     # css: styles.css
+    toc: true
+    toc-depth: 2
     code-overflow: wrap
+    respect-user-color-scheme: true
+    theme:
+      light: flatly
+      dark: darkly

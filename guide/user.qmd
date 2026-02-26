@@ -6,15 +6,13 @@ format:
     toc-depth: 3
 ---
 
-## Introduction to the PRISM Ecosystem
+This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the [Developer Guide](developer.qmd), and you have access to it.
 
-**PRISM** is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, models, and tools developed for the "Australian Future Hearing Initiative". 
-
-PRISM helps researchers collect real-world data ("catch you in the moment") through the smartphone application. When a participant interacts with the PRISM app, we capture a snapshot of your real-world environment. This includes:
+PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:
 - **Audio**: A short 30-second clip of the sound around you.
 - **Context**: Your rating of how hard it was to hear speech.
 
-This data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.
+This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.
 
 The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.
 

@@ -20,6 +20,7 @@ done
 tail -n +5 "$BASE/prism-setup/README.md" | sed 's/^#/##/' | sed 's/^---$/<hr>/' > guide/_setup_readme.qmd
 tail -n +8 "$BASE/prism-flutter-backend/README.md" | sed 's/^#/##/' | sed 's/^---$/<hr>/' > guide/_flutter-backend_readme.qmd
 tail -n +2 "$BASE/prism-flutter-web-frontend/README.md" | sed 's/^#/##/' | sed 's/^---$/<hr>/' > guide/_flutter-web-frontend_readme.qmd
+tail -n +2 "$BASE/prism-ml/README.md" | sed 's/^#/##/' | sed 's/^---$/<hr>/' > guide/_ml_readme.qmd
 
 # Validate output files were generated with content
 for out in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd; do
