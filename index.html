@@ -72,10 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3c649c312f1393fb0a5cd15b6be9e629.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-bf780066b1fca8c22222318b3da0bfdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e5eeef9e8c139ec4f16a8aa0ad0425fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-bf780066b1fca8c22222318b3da0bfdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,7 +120,178 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -134,20 +309,21 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./guide/developer.html"> 
-<span class="menu-text">Developer Guide</span></a>
+<span class="menu-text">Admin Guide</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./guide/user.html"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./guide/background.html"> 
+<span class="menu-text">Background</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -156,9 +332,20 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#capabilities" id="toc-capabilities" class="nav-link active" data-scroll-target="#capabilities">Capabilities</a></li>
+  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -179,45 +366,26 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p><strong>PRISM</strong> is a comprehensive machine learning toolkit designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, models, and tools developed for the “Australian Future Hearing Initiative”.</p>
+<p><strong>PRISM</strong> is a comprehensive framework designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, machine learning models, and tools developed by and for the “Australian Future Hearing Initiative”.</p>
 <p>PRISM might stand for:</p>
 <ul>
-<li><strong>PRedicting Interaction difficulty using Sensors and Micro-EMA”</strong></li>
-<li><strong>Personalized Real-time Interaction difficulty for Sounds Measurement</strong></li>
-<li><strong>Platform for Research In Situational Momentary assessment</strong>.</li>
+<li><strong>PR</strong>edicting <strong>I</strong>nteraction difficulty using <strong>S</strong>ensors and <strong>M</strong>icro-EMA</li>
+<li><strong>P</strong>ersonalized <strong>R</strong>eal-time <strong>I</strong>nteraction difficulty for <strong>S</strong>ound <strong>M</strong>easurement</li>
+<li><strong>P</strong>latform for <strong>R</strong>esearch <strong>I</strong>n <strong>S</strong>ituational <strong>M</strong>omentary assessment.</li>
 </ul>
-<p>Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. This technology bridges the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
-<section id="what-is-ecological-momentary-assessment-ema" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-ecological-momentary-assessment-ema">What is “Ecological Momentary Assessment” (EMA)?</h3>
-<p>EMA is used to “catch you in the moment.” When you interact with the PRISM app, we capture a snapshot of your real-world environment. This includes: - <strong>Audio</strong>: A short 30-second clip of the sound around you. - <strong>Context</strong>: Your rating of how hard it was to hear speech.</p>
-<p>This data trains a Machine Learning models to automatically recognize difficult listening situations and adjust hearing aids in real-time.</p>
-</section>
-<section id="key-resources" class="level3">
-<h3 class="anchored" data-anchor-id="key-resources">Key Resources</h3>
-<ul>
-<li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2508.10360">A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet</a> (arXiv:2508.10360)</li>
-<li><strong>Datasets:</strong>
-<ul>
-<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds"><strong>AHEAD-DS</strong> (HuggingFace)</a>: The primary dataset for training and benchmarking.</li>
-<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed"><strong>AHEAD-DS Unmixed</strong> (HuggingFace)</a>: Component audio files before mixing, useful for custom augmentation strategies.</li>
-</ul></li>
-<li><strong>Models:</strong>
-<ul>
-<li><a href="https://huggingface.co/hzhongresearch/yamnetp_ahead_ds"><strong>OpenYAMNet Models</strong> (HuggingFace)</a>: Pre-trained models ready for inference or fine-tuning.</li>
-</ul></li>
-</ul>
-</section>
+<p>Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
 <section id="capabilities" class="level2">
 <h2 class="anchored" data-anchor-id="capabilities">Capabilities</h2>
 <ul>
-<li><strong>Benchmark New Models:</strong> Use the standardized <code>ahead_ds</code> split to compare your model’s performance against the OpenYAMNet baseline.</li>
-<li><strong>Fine-Tuning:</strong> Leverage pre-trained YAMNet+ weights to adapt the model to new acoustic domains with minimal data.</li>
-<li><strong>Reproducibility:</strong> Full scripts for dataset generation (<code>prism-ml-dataset-ahead-ds</code>) and model training (<code>prism-ml-yamnetp-tune</code>) are provided.</li>
+<li>A web portal for researchers to run experiments and view results.</li>
+<li>An Android mobile and Watch app for participant data collection.</li>
+<li>A backend server for data storage and processing.</li>
+<li>A set of machine learning models for auditory scene analysis.</li>
 </ul>
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>If you use this code, model, or dataset in your research, please cite:</p>
+<p>If you use these capabilities from the code, model, or datasets in your research, please cite:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">zhong2026datasetmodelauditoryscene</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span>={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">author</span>={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},</span>
@@ -230,7 +398,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </section>
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">License</h2>
-<p>Code is licensed under the <strong>MIT License</strong> or <strong>Apache 2.0</strong> depending on the component. Please check individual <code>LICENCE.txt</code> files in each subdirectory.</p>
+<p>Code is licensed under the <strong>MIT License</strong> or <strong>Apache 2.0</strong> depending on the component. Please check individual <code>LICENCE</code> files in each repository.</p>
 
 
 </section>
@@ -238,6 +406,19 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -641,4 +822,4 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

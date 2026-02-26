@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>User Guide – PRISM</title>
+<title>Background – PRISM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -278,11 +278,11 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <span class="menu-text">Admin Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../guide/user.html" aria-current="page"> 
+    <a class="nav-link" href="../guide/user.html"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../guide/background.html"> 
+    <a class="nav-link active" href="../guide/background.html" aria-current="page"> 
 <span class="menu-text">Background</span></a>
   </li>  
 </ul>
@@ -302,36 +302,20 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#experimenter-flow" id="toc-experimenter-flow" class="nav-link active" data-scroll-target="#experimenter-flow">Experimenter Flow</a>
+  <li><a href="#benchmarks" id="toc-benchmarks" class="nav-link active" data-scroll-target="#benchmarks">Benchmarks</a></li>
+  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">TESTS</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a>
   <ul class="collapse">
-  <li><a href="#step-1-sign-up" id="toc-step-1-sign-up" class="nav-link" data-scroll-target="#step-1-sign-up">Step 1: Sign up</a></li>
-  <li><a href="#step-2-notification" id="toc-step-2-notification" class="nav-link" data-scroll-target="#step-2-notification">Step 2: Notification</a></li>
-  <li><a href="#step-3-setup-the-first-experiment" id="toc-step-3-setup-the-first-experiment" class="nav-link" data-scroll-target="#step-3-setup-the-first-experiment">Step 3: Setup the first experiment</a></li>
-  <li><a href="#step-4-fill-up-the-basic-information" id="toc-step-4-fill-up-the-basic-information" class="nav-link" data-scroll-target="#step-4-fill-up-the-basic-information">Step 4: Fill up the basic information</a></li>
-  <li><a href="#step-5-fill-up-sensor-details" id="toc-step-5-fill-up-sensor-details" class="nav-link" data-scroll-target="#step-5-fill-up-sensor-details">Step 5: Fill up sensor details</a></li>
-  <li><a href="#step-6-feedback-buttons" id="toc-step-6-feedback-buttons" class="nav-link" data-scroll-target="#step-6-feedback-buttons">Step 6: Feedback Buttons</a></li>
-  <li><a href="#step-7-optional-give-a-google-form-survey-link" id="toc-step-7-optional-give-a-google-form-survey-link" class="nav-link" data-scroll-target="#step-7-optional-give-a-google-form-survey-link">Step 7: (Optional) Give a google form survey link</a></li>
-  <li><a href="#step-7b-new-asking-for-ml-model" id="toc-step-7b-new-asking-for-ml-model" class="nav-link" data-scroll-target="#step-7b-new-asking-for-ml-model">Step 7B (New): Asking for ML Model</a></li>
-  <li><a href="#step-7c-new-triggers" id="toc-step-7c-new-triggers" class="nav-link" data-scroll-target="#step-7c-new-triggers">Step 7C (New): Triggers</a></li>
-  <li><a href="#step-8-confirm-the-detail" id="toc-step-8-confirm-the-detail" class="nav-link" data-scroll-target="#step-8-confirm-the-detail">Step 8: Confirm the detail</a></li>
-  <li><a href="#step-9-view-all-experiments" id="toc-step-9-view-all-experiments" class="nav-link" data-scroll-target="#step-9-view-all-experiments">Step 9: View all experiments</a></li>
-  <li><a href="#step-10-add-participants" id="toc-step-10-add-participants" class="nav-link" data-scroll-target="#step-10-add-participants">Step 10: Add participants</a></li>
-  </ul></li>
-  <li><a href="#participant-flow" id="toc-participant-flow" class="nav-link" data-scroll-target="#participant-flow">Participant Flow</a>
-  <ul class="collapse">
-  <li><a href="#step-1-join-the-experiment" id="toc-step-1-join-the-experiment" class="nav-link" data-scroll-target="#step-1-join-the-experiment">Step 1: Join the experiment</a></li>
-  <li><a href="#step-2-starting-the-experiment" id="toc-step-2-starting-the-experiment" class="nav-link" data-scroll-target="#step-2-starting-the-experiment">Step 2: Starting the experiment</a></li>
-  <li><a href="#step-3-sending-a-recording" id="toc-step-3-sending-a-recording" class="nav-link" data-scroll-target="#step-3-sending-a-recording">Step 3: Sending a recording</a></li>
-  <li><a href="#step-4-finish-the-session" id="toc-step-4-finish-the-session" class="nav-link" data-scroll-target="#step-4-finish-the-session">Step 4: Finish the session</a></li>
-  </ul></li>
-  <li><a href="#experimenter-flow-continued" id="toc-experimenter-flow-continued" class="nav-link" data-scroll-target="#experimenter-flow-continued">Experimenter Flow (Continued)</a>
-  <ul class="collapse">
-  <li><a href="#step-11-check-recording" id="toc-step-11-check-recording" class="nav-link" data-scroll-target="#step-11-check-recording">Step 11: Check recording</a></li>
-  <li><a href="#step-12-view-the-recordings" id="toc-step-12-view-the-recordings" class="nav-link" data-scroll-target="#step-12-view-the-recordings">Step 12: View the recordings</a></li>
-  <li><a href="#step-13-download-recordings" id="toc-step-13-download-recordings" class="nav-link" data-scroll-target="#step-13-download-recordings">Step 13: Download recordings</a></li>
+  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
+  <li><a href="#project-map" id="toc-project-map" class="nav-link" data-scroll-target="#project-map">Project Map</a></li>
+  <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a></li>
+  <li><a href="#paper-data-and-models" id="toc-paper-data-and-models" class="nav-link" data-scroll-target="#paper-data-and-models">Paper, Data and Models</a></li>
+  <li><a href="#licence" id="toc-licence" class="nav-link" data-scroll-target="#licence">Licence</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/user.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/background.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -339,7 +323,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">User Guide</h1>
+<h1 class="title">Background</h1>
 </div>
 
 
@@ -356,317 +340,55 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p>This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the <a href="../guide/developer.html">Developer Guide</a>, and you have access to it.</p>
-<p>PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes: - <strong>Audio</strong>: A short 30-second clip of the sound around you. - <strong>Context</strong>: Your rating of how hard it was to hear speech.</p>
-<p>This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.</p>
-<p>The <strong>PRISM web frontend</strong> serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.</p>
-<hr>
-<section id="experimenter-flow" class="level2">
-<h2 class="anchored" data-anchor-id="experimenter-flow">Experimenter Flow</h2>
-<section id="step-1-sign-up" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-sign-up">Step 1: Sign up</h3>
-<p>Click “Sign up with Email”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image28.png" class="img-fluid figure-img"></p>
-<figcaption>Sign up</figcaption>
-</figure>
-</div>
-<p>Then you should receive a verification email:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image17.png" class="img-fluid figure-img"></p>
-<figcaption>Verification email</figcaption>
-</figure>
-</div>
-<p>Note: If you try to click “Sign up” again, it will show you “An account with this email already exists.” You won’t be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image20.png" class="img-fluid figure-img"></p>
-<figcaption>Verification prompt</figcaption>
-</figure>
-</div>
+<p>PRISM is a web-based application that allows users to upload and analyze audio data. It is built with FastAPI and Flutter, and uses Firebase for authentication and database storage.</p>
+<section id="benchmarks" class="level2">
+<h2 class="anchored" data-anchor-id="benchmarks">Benchmarks</h2>
 </section>
-<section id="step-2-notification" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-notification">Step 2: Notification</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image6.png" class="img-fluid figure-img"></p>
-<figcaption>Notification</figcaption>
-</figure>
-</div>
-<p>Click “Set up”, it will guide you to the first page.</p>
+<section id="tests" class="level2">
+<h2 class="anchored" data-anchor-id="tests">TESTS</h2>
 </section>
-<section id="step-3-setup-the-first-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-setup-the-first-experiment">Step 3: Setup the first experiment</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image8.png" class="img-fluid figure-img"></p>
-<figcaption>Setup the first experiment</figcaption>
-</figure>
-</div>
-<p>Click “Create experiment”.</p>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
 </section>
-<section id="step-4-fill-up-the-basic-information" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-fill-up-the-basic-information">Step 4: Fill up the basic information</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image11.png" class="img-fluid figure-img"></p>
-<figcaption>Fill up the basic information</figcaption>
-</figure>
-</div>
+<section id="models" class="level2">
+<h2 class="anchored" data-anchor-id="models">Models</h2>
+<p>Tools and scripts for AuditoryHuM auditory scene clustering, AHEAD-DS data preparation and OpenYAMNet(YAMNet+) training/inference.</p>
+<section id="about" class="level3">
+<h3 class="anchored" data-anchor-id="about">About</h3>
+<p>This repo supports the AuditoryHuM/AHEAD-DS/OpenYAMNet papers by providing: - clustering pipline for AuditoryHuM - dataset build scripts for AHEAD-DS and AHEAD-DS-unmixed - training pipeline for OpenYAMNet/YAMNet+ on those datasets - legacy YAMNet conversion utilities</p>
 </section>
-<section id="step-5-fill-up-sensor-details" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-fill-up-sensor-details">Step 5: Fill up sensor details</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image22.png" class="img-fluid figure-img"></p>
-<figcaption>Fill up sensor details</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image23.png" class="img-fluid figure-img"></p>
-<figcaption>Step 5 (New): Fill up sensor details</figcaption>
-</figure>
-</div>
+<section id="project-map" class="level3">
+<h3 class="anchored" data-anchor-id="project-map">Project Map</h3>
+<ul>
+<li><code>prism-ml-auditoryhum/</code>: auditory scene label discovery and clustering using MLLM label generation and zero-shot learning.</li>
+<li><code>prism-ml-dataset-ahead-ds/</code>: build AHEAD-DS and AHEAD-DS-unmixed from raw sources (large downloads). See that README for full instructions and warnings about size/time.</li>
+<li><code>prism-ml-yamnetp-tune/</code>: train and evaluate OpenYAMNet/YAMNet+ using AHEAD-DS, plus inference and TFLite conversion.</li>
+<li><code>prism-ml-yamnet-legacy/</code>: convert the original YAMNet weights to TF SavedModel format compatible with TF 2.16+.</li>
+</ul>
 </section>
-<section id="step-6-feedback-buttons" class="level3">
-<h3 class="anchored" data-anchor-id="step-6-feedback-buttons">Step 6: Feedback Buttons</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image12.png" class="img-fluid figure-img"></p>
-<figcaption>Feedback Buttons</figcaption>
-</figure>
-</div>
-<p>Confirm your feedback buttons.</p>
+<section id="quick-start" class="level3">
+<h3 class="anchored" data-anchor-id="quick-start">Quick Start</h3>
+<p>Follow the relevant README: - Auditory scene clustering: <code>prism-ml-auditoryhum/README.md</code> - Dataset build: <code>prism-ml-dataset-ahead-ds/README.md</code> - Model training/inference: <code>prism-ml-yamnetp-tune/README.md</code> - Legacy YAMNet conversion: <code>prism-ml-yamnet-legacy/README.md</code></p>
 </section>
-<section id="step-7-optional-give-a-google-form-survey-link" class="level3">
-<h3 class="anchored" data-anchor-id="step-7-optional-give-a-google-form-survey-link">Step 7: (Optional) Give a google form survey link</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image4.png" class="img-fluid figure-img"></p>
-<figcaption>Google form survey link</figcaption>
-</figure>
-</div>
+<section id="paper-data-and-models" class="level3">
+<h3 class="anchored" data-anchor-id="paper-data-and-models">Paper, Data and Models</h3>
+<ul>
+<li>AuditoryHuM paper: https://arxiv.org/abs/2602.19409</li>
+<li>AuditoryHuM supplementary data: https://huggingface.co/datasets/hzhongresearch/auditoryhum_supplementary</li>
+<li>AuditoryHuM demo website with alignment samples: https://huggingface.co/spaces/hzhongresearch/auditoryhum_samples</li>
+<li>AHEAD-DS and OpenYAMNet paper: https://arxiv.org/abs/2508.10360</li>
+<li>AHEAD-DS: https://huggingface.co/datasets/hzhongresearch/ahead_ds</li>
+<li>AHEAD-DS (unmixed): https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed</li>
+<li>OpenYAMNet/YAMNet+ models: https://huggingface.co/hzhongresearch/yamnetp_ahead_ds</li>
+</ul>
 </section>
-<section id="step-7b-new-asking-for-ml-model" class="level3">
-<h3 class="anchored" data-anchor-id="step-7b-new-asking-for-ml-model">Step 7B (New): Asking for ML Model</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image5.png" class="img-fluid figure-img"></p>
-<figcaption>Asking for ML Model</figcaption>
-</figure>
-</div>
+<section id="licence" class="level3">
+<h3 class="anchored" data-anchor-id="licence">Licence</h3>
+<p>See <code>LICENCE.txt</code> in each subproject.</p>
 </section>
-<section id="step-7c-new-triggers" class="level3">
-<h3 class="anchored" data-anchor-id="step-7c-new-triggers">Step 7C (New): Triggers</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image21.png" class="img-fluid figure-img"></p>
-<figcaption>Triggers</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image18.png" class="img-fluid figure-img"></p>
-<figcaption>Triggers 2</figcaption>
-</figure>
-</div>
-<section id="sensor-lists" class="level4">
-<h4 class="anchored" data-anchor-id="sensor-lists">Sensor Lists</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Sensor Source (Input)</th>
-<th>Allowed Metrics (Units)</th>
-<th>Allowed Operators</th>
-<th>Compatible Target Models (Output)</th>
-<th>Min/Max Threshold Range (Validation)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Phone Microphone</td>
-<td>Decibel (dB)</td>
-<td>&gt;</td>
-<td>e.g., YAMNet+, WONU? All?</td>
-<td>e.g., 0 - 120 dB</td>
-</tr>
-<tr class="even">
-<td>Heart Rate</td>
-<td>BPM</td>
-<td>&gt;, &lt;</td>
-<td>e.g., YAMNet+ only? All?</td>
-<td>e.g., 30 - 220 BPM</td>
-</tr>
-<tr class="odd">
-<td>Temperature</td>
-<td>Celsius (°C)</td>
-<td>e.g., &gt;, &lt;</td>
-<td>e.g., All?</td>
-<td>e.g., -10 - 50 °C</td>
-</tr>
-<tr class="even">
-<td>Watch Microphone</td>
-<td>Decibel (dB)</td>
-<td>&gt;</td>
-<td>e.g., All?</td>
-<td>e.g., 0 - 120 dB</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="step-8-confirm-the-detail" class="level3">
-<h3 class="anchored" data-anchor-id="step-8-confirm-the-detail">Step 8: Confirm the detail</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image27.png" class="img-fluid figure-img"></p>
-<figcaption>Confirm the detail</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-9-view-all-experiments" class="level3">
-<h3 class="anchored" data-anchor-id="step-9-view-all-experiments">Step 9: View all experiments</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image13.png" class="img-fluid figure-img"></p>
-<figcaption>View all experiments</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-10-add-participants" class="level3">
-<h3 class="anchored" data-anchor-id="step-10-add-participants">Step 10: Add participants</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image13.png" class="img-fluid figure-img"></p>
-<figcaption>View all experiments</figcaption>
-</figure>
-</div>
-<p>Click “My First Experiment”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image1.png" class="img-fluid figure-img"></p>
-<figcaption>Save and add participants</figcaption>
-</figure>
-</div>
-<p>Confirm it by clicking “Save and add participants”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image9.png" class="img-fluid figure-img"></p>
-<figcaption>CSV Upload</figcaption>
-</figure>
-</div>
-<p>Example CSV file formatting:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image7.png" class="img-fluid figure-img"></p>
-<figcaption>Example CSV</figcaption>
-</figure>
-</div>
-<p>Drag your csv file then you should be able to see participants.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image25.png" class="img-fluid figure-img"></p>
-<figcaption>See participants</figcaption>
-</figure>
-</div>
-<p>You can edit participants by clicking on it and you should be able to see “Email”, “View data”, “Remove”. Note: Here the “View data” is disabled, that’s because there’s no response for that participant yet.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image26.png" class="img-fluid figure-img"></p>
-<figcaption>Edit participants</figcaption>
-</figure>
-</div>
-<p>Click save, it will show “Saving…”. Afterward it will guide you back to the experiment list.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image14.png" class="img-fluid figure-img"></p>
-<figcaption>Experiment list</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-</section>
-<section id="participant-flow" class="level2">
-<h2 class="anchored" data-anchor-id="participant-flow">Participant Flow</h2>
-<section id="step-1-join-the-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-join-the-experiment">Step 1: Join the experiment</h3>
-<p>Once the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image2.png" class="img-fluid figure-img"></p>
-<figcaption>Join the experiment</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-2-starting-the-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-starting-the-experiment">Step 2: Starting the experiment</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image10.png" class="img-fluid figure-img"></p>
-<figcaption>Starting the experiment</figcaption>
-</figure>
-</div>
-<p><strong>The Recording Period</strong>: This is the block of time (Like a 4 hour window) <strong>The Recording Session</strong>: Those are the individual “sessions” (short recordings) that happen inside it.</p>
-</section>
-<section id="step-3-sending-a-recording" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-sending-a-recording">Step 3: Sending a recording</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image3.png" class="img-fluid figure-img"></p>
-<figcaption>Sending a recording</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-4-finish-the-session" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-finish-the-session">Step 4: Finish the session</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image16.png" class="img-fluid figure-img"></p>
-<figcaption>Finish the session</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-</section>
-<section id="experimenter-flow-continued" class="level2">
-<h2 class="anchored" data-anchor-id="experimenter-flow-continued">Experimenter Flow (Continued)</h2>
-<section id="step-11-check-recording" class="level3">
-<h3 class="anchored" data-anchor-id="step-11-check-recording">Step 11: Check recording</h3>
-<p>Click “View data” for a particular participant.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image15.png" class="img-fluid figure-img"></p>
-<figcaption>Check recording</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-12-view-the-recordings" class="level3">
-<h3 class="anchored" data-anchor-id="step-12-view-the-recordings">Step 12: View the recordings</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image24.png" class="img-fluid figure-img"></p>
-<figcaption>View the recordings</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-13-download-recordings" class="level3">
-<h3 class="anchored" data-anchor-id="step-13-download-recordings">Step 13: Download recordings</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image19.png" class="img-fluid figure-img"></p>
-<figcaption>Download recordings</figcaption>
-</figure>
-</div>
+<section id="contact" class="level3">
+<h3 class="anchored" data-anchor-id="contact">Contact</h3>
+<p>For questions, feedback, or collaboration opportunities, please contact: - <strong>Name:</strong> Romaric Bouveret - <strong>Email:</strong> <a href="mailto:romaric.bouveret@mq.edu.au">romaric.bouveret@mq.edu.au</a></p>
 
 
 </section>
@@ -1091,4 +813,4 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/user.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/background.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

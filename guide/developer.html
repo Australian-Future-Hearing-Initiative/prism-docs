@@ -72,10 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3c649c312f1393fb0a5cd15b6be9e629.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-bf780066b1fca8c22222318b3da0bfdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e5eeef9e8c139ec4f16a8aa0ad0425fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-bf780066b1fca8c22222318b3da0bfdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,7 +120,178 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -134,20 +309,21 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="../guide/developer.html" aria-current="page"> 
-<span class="menu-text">Developer Guide</span></a>
+<span class="menu-text">Admin Guide</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../guide/user.html"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/background.html"> 
+<span class="menu-text">Background</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -170,7 +346,11 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   <li><a href="#credential-setup-troubleshooting" id="toc-credential-setup-troubleshooting" class="nav-link" data-scroll-target="#credential-setup-troubleshooting">🔐 Credential Setup Troubleshooting</a></li>
   <li><a href="#how-to-start-the-app" id="toc-how-to-start-the-app" class="nav-link" data-scroll-target="#how-to-start-the-app">How to Start the App</a></li>
   </ul></li>
-  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a></li>
+  <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a>
+  <ul class="collapse">
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">📁 Project Structure</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">📬 Contact</a></li>
+  </ul></li>
   <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a>
   <ul class="collapse">
   <li><a href="#for-researchers" id="toc-for-researchers" class="nav-link" data-scroll-target="#for-researchers">For Researchers</a></li>
@@ -181,6 +361,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -211,8 +392,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </section>
 <section id="unified-setup-via-docker" class="level2">
 <h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
-<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code></a> repository, which uses Docker Compose.</p>
-<p>here!</p>
+<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code> repository</a>, which uses Docker Compose.</p>
 <section id="prerequisites-do-this-first" class="level3">
 <h3 class="anchored" data-anchor-id="prerequisites-do-this-first">1. Prerequisites (Do this first!)</h3>
 <p>Before running the installer, you must install the “engine” that powers the app.</p>
@@ -286,16 +466,177 @@ Windows: You may need to run this in “Git Bash” or manually clone the repos.
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Wait until it finishes, then:<br>
 Frontend Dashboard: http://localhost:3000 Backend API: http://localhost:8000</p>
-<p>XXXXXXXXXXXXxEnd here!</p>
 </section>
 </section>
 <section id="manual-backend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-backend-setup">Manual Backend Setup</h2>
-<p>If you wish to run the FastAPI backend independently without Docker:</p>
+<p>If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed in the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend"><code>prism-flutter-backend</code> repository</a>.</p>
+<section id="set-up-a-virtual-environment" class="level4">
+<h4 class="anchored" data-anchor-id="set-up-a-virtual-environment">1. Set up a virtual environment</h4>
+<section id="option-1-using-uv-recommended-for-speed" class="level5">
+<h5 class="anchored" data-anchor-id="option-1-using-uv-recommended-for-speed">Option 1: Using <code>uv</code> (recommended for speed)</h5>
+<ol type="1">
+<li>Make sure <code>uv</code> is installed:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If not installed:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv             <span class="co"># macOS (Homebrew)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> install uv             <span class="co"># cross-platform alternative</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Create a virtual environment</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li>Activate</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="option-2-using-venv" class="level5">
+<h5 class="anchored" data-anchor-id="option-2-using-venv">Option 2: Using <code>venv</code></h5>
+<ol start="0" type="1">
+<li>Delete the current virtual environment (If you created a virtual environment in another project)</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> .venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Create and activate the virtual environment</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Activate the virtual environment</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate  <span class="co"># On Windows: venv\Scripts\activate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Q: <strong>Why use a virtual environment?</strong> A: It ensures isolated package versions, so dependencies from one project don’t affect another.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="add-dependencies" class="level4">
+<h4 class="anchored" data-anchor-id="add-dependencies">2. Add dependencies</h4>
+<p>Use</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="co"># This will install all dependencies that you need for the project</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Tips: How to add new dependencies:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add your_dependency</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="firebase-environment-variables-setup" class="level4">
+<h4 class="anchored" data-anchor-id="firebase-environment-variables-setup">3. Firebase &amp; Environment variables Setup</h4>
+<section id="firebase_key_path" class="level5">
+<h5 class="anchored" data-anchor-id="firebase_key_path"><code>FIREBASE_KEY_PATH</code></h5>
+<p>If you don’t have the access to the Firebase, please contact your firebase admin. For firebase Admin: They need to have “Editor” or “Owner” to be able to get the private key.</p>
+<ol type="1">
+<li>In Firebase Console: <strong>PrismData → Project settings → Service accounts → Firebase Admin SDK → Generate new private key</strong>.</li>
+<li>Save the downloaded file as <code>serviceAccountKey.json</code> in this <strong>backend repo root</strong>.</li>
+<li>Add <code>.env</code> by using</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">touch</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open your <code>.env</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and add:</p>
+<pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code></pre>
+</section>
+<section id="firebase_api_key" class="level5">
+<h5 class="anchored" data-anchor-id="firebase_api_key"><code>FIREBASE_API_KEY</code></h5>
+<p>Find it in <strong>Project settings → General → prism (web) -&gt; apiKey</strong>, then add:</p>
+<pre class="dotenv"><code>FIREBASE_API_KEY=YOUR_WEB_API_KEY</code></pre>
+</section>
+<section id="jwt_secret" class="level5">
+<h5 class="anchored" data-anchor-id="jwt_secret"><code>JWT_SECRET</code></h5>
+<p>Generate a long random string by going to this website: https://jwtsecretkeygenerator.com/</p>
+<p>Once you have got the JWT then copy it to here:</p>
+<pre class="dotenv"><code>JWT_SECRET=YOUR_RANDOM_SECRET</code></pre>
+</section>
+<section id="example-.env" class="level5">
+<h5 class="anchored" data-anchor-id="example-.env">Example <code>.env</code></h5>
+<pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json
+FIREBASE_API_KEY=AIza...yourkey
+JWT_SECRET=paste_a_long_random_string_here</code></pre>
+</section>
+<section id="email-smtp-setup" class="level5">
+<h5 class="anchored" data-anchor-id="email-smtp-setup"><code>Email (SMTP) Setup</code></h5>
+<p>Add these to your .env to enable outbound email:</p>
+<p>Option 1. Via Mailgun: Get your API key from <a href="https://app.mailgun.com/settings/api_security">Mailgun API Key page</a>, and setup Mailgun with a domain you can send from.</p>
+<pre class="dotenv"><code>MAILGUN_API_KEY=your_mailgun_api_key
+MAILGUN_AUTHORIZED_DOMAIN=yourdomain.com</code></pre>
+<p>Option 2. Via Gmail’s SMTP server</p>
+<pre class="dotenv"><code>MAIL_USERNAME=your@gmail.com
+MAIL_FROM=your@gmail.com            # must match or be a verified alias
+MAIL_PASSWORD=xxxxxxxxxxxxxxxx      # 16‑char Google App Password
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=587
+MAIL_STARTTLS=True                  # or: MAIL_PORT=465 + MAIL_SSL_TLS=True
+MAIL_SSL_TLS=False
+MAIL_FROM_NAME=PRISM
+USE_CREDENTIALS=True
+VALIDATE_CERTS=True</code></pre>
+<p>MAIL_PASSWORD=xxxxxxxxxxxxxxxx: Google.com -&gt; Google Account → Security → turn 2‑Step Verification ON → App passwords → generate one, copy the 16‑char code (no spaces) into MAIL_PASSWORD.</p>
+<p>Troubleshooting (535 BadCredentials): use the app password (not your login), choose exactly one TLS mode (587+STARTTLS or 465+SSL/TLS), restart after .env changes, and ensure MAIL_FROM is allowed.</p>
+</section>
+</section>
+<section id="run-the-development-server" class="level4">
+<h4 class="anchored" data-anchor-id="run-the-development-server">3. Run the development server</h4>
+<p>Navigate to the directory where <code>main.py</code> is located, then run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--</span> uvicorn app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uvicorn</span> app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="deactivate-the-virtual-environment-when-youre-done" class="level4">
+<h4 class="anchored" data-anchor-id="deactivate-the-virtual-environment-when-youre-done">4. Deactivate the virtual environment when you’re done</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This returns your shell to the global Python environment.</p>
+<hr>
+</section>
+<section id="view-api-documentation" class="level4">
+<h4 class="anchored" data-anchor-id="view-api-documentation">5. View API documentation</h4>
+<p>Once the server is running, you can explore the API docs at:</p>
+<ul>
+<li><strong>Swagger UI</strong>: <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a><br>
+</li>
+<li><strong>ReDoc</strong>: <a href="http://127.0.0.1:8000/redoc">http://127.0.0.1:8000/redoc</a></li>
+</ul>
+<p>These documents list all available endpoints and describe how to interact with them.</p>
+<hr>
+</section>
+<section id="debug" class="level4">
+<h4 class="anchored" data-anchor-id="debug">6. Debug</h4>
+<p>You should go to the root and run</p>
+<pre><code>uv run -- python -m debugpy --listen 127.0.0.1:5678 --wait-for-client \
+  -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000</code></pre>
+<p>Then you can run the debugger.</p>
+</section>
+<section id="test" class="level4">
+<h4 class="anchored" data-anchor-id="test">7. Test</h4>
+<pre><code>uv run pytest</code></pre>
+</section>
+<section id="project-structure" class="level3">
+<h3 class="anchored" data-anchor-id="project-structure">📁 Project Structure</h3>
+<pre class="plaintext"><code>app/
+├── main.py                 # FastAPI application entry point
+├── api/
+│   └── routes/             # Route definitions (e.g., /experiments, /participants)
+├── domain/                 # Pydantic models and schemas
+├── services/               # Core business logic (e.g., experiment handling, exports)
+├── infrastructure/         # Integrations with Firebase, Firestore, and email
+└── utils/                  # Helper functions (e.g., CSV export utilities)
+
+requirements.txt            # Python package dependencies
+.env                        # Environment variable configuration (not committed)
+README.md                   # Project overview and instructions</code></pre>
+<p>This structure follows a modular design that separates concerns across routing, logic, data modeling, and infrastructure. It ensures maintainability and scalability of the backend.</p>
+<hr>
+</section>
+<section id="contact" class="level3">
+<h3 class="anchored" data-anchor-id="contact">📬 Contact</h3>
+<p><strong>Alan Wang</strong></p>
+</section>
 </section>
 <section id="manual-frontend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-frontend-setup">Manual Frontend Setup</h2>
-<p>The frontend is a Flutter web application.</p>
+<p>If you wish to run the front end Flutter web application without docker, follow the instructions as detailed in the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend"><code>prism-flutter-web-frontend</code> repository</a>.</p>
 <p>The PRISM web frontend serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem as part of the <a href="https://github.com/Australian-Future-Hearing-Initiative">Australian Future Hearing Initiative</a>.</p>
 <hr>
 <section id="for-researchers" class="level3">
@@ -329,11 +670,11 @@ API_BASE_URL=http://127.0.0.1:8000</code></pre>
 <section id="run-the-app" class="level4">
 <h4 class="anchored" data-anchor-id="run-the-app">4. Run the App</h4>
 <p>Execute the following commands from the root of this repository:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome             <span class="co"># Run the app in Chrome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome             <span class="co"># Run the app in Chrome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="testing-architecture" class="level4">
 <h4 class="anchored" data-anchor-id="testing-architecture">🧪 Testing &amp; Architecture</h4>
@@ -356,6 +697,19 @@ API_BASE_URL=http://127.0.0.1:8000</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
