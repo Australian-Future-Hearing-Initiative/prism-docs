@@ -51,23 +51,23 @@ jobs:
 
       - name: Debug - Verify fetched files and includes
         run: |
-      #     echo "=== Fetched README files ==="
-      #     find .deps -type f -exec echo "--- {} ---" \; -exec wc -l {} \; -exec head -5 {} \;
-      #     echo ""
-      #     echo "=== Running sync-docs.sh ==="
+          echo "=== Fetched README files ==="
+          find .deps -type f -exec echo "--- {} ---" \; -exec wc -l {} \; -exec head -5 {} \;
+          echo ""
+          echo "=== Running sync-docs.sh ==="
           bash sync-docs.sh
-      #     echo ""
-      #     echo "=== Generated include files ==="
-      #     for f in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd; do
-      #       echo "--- $f ---"
-      #       if [ -f "$f" ]; then
-      #         echo "Lines: $(wc -l < "$f")"
-      #         head -10 "$f"
-      #       else
-      #         echo "FILE NOT FOUND!"
-      #       fi
-      #       echo ""
-      #     done
+          echo ""
+          echo "=== Generated include files ==="
+          for f in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd; do
+            echo "--- $f ---"
+            if [ -f "$f" ]; then
+              echo "Lines: $(wc -l < "$f")"
+              head -10 "$f"
+            else
+              echo "FILE NOT FOUND!"
+            fi
+            echo ""
+          done
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
