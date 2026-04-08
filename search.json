@@ -35,6 +35,41 @@
     "text": "Manual Frontend Setup\nIf you wish to run the front end Flutter web application without docker, follow the instructions as detailed in the prism-flutter-web-frontend repository.\nThe PRISM web frontend serves as the interface for data collection and study management for Researchers conducting “experiments” within the PRISM ecosystem as part of the Australian Future Hearing Initiative.\n\n\nFor Researchers\nResearchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.\nHow to use: 1. Login: Access the researcher dashboard securely. 2. Manage Projects: Create new projects to house specific studies or experiments. 3. Configure Experiments: * Set up various experiment types (e.g., Ecological Momentary Assessment (EMA) surveys, sensor-thresholds). * Define parameters and logical flows for the experiments. 4. Manage Participants: * Add new participants to the system. * Assign participants to specific projects/cohorts. * Monitor participant progress through assigned tasks. * Email participants. * Download audiograms\nSee the complete userguide: https://docs.google.com/document/d/1_FZVBiN1QqhP50A2izS7KlW_Y021koJM45pSYcHEkMw/edit?tab=t.0#heading=h.qbhdu5cvo4bq\n\n\n\nDeveloper Instructions\n\n1. Launch the Backend Server\nThis frontend relies on the prism-flutter-backend. See the repo for launch instructions.\n\n\n2. Configure Environment\nCreate a .env file in the root directory and add the URL of the backedn server, e.g.:\n## Base URL for API calls when running locally\nAPI_BASE_URL=http://127.0.0.1:8000\n\n\n3. Install FVM (Flutter Version Management)\nWe use FVM to ensure consistent Flutter versions.\n\nOption 1 Dart Pub: dart pub global activate fvm\nOption 2 Homebrew: brew tap leoafarias/fvm && brew install fvm\nOption 3 Install Script: curl -fsSL https://fvm.app/install.sh | bash\n\n\n\n4. Run the App\nExecute the following commands from the root of this repository:\nfvm flutter channel stable\nfvm flutter upgrade\nfvm flutter pub get\n## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes\nfvm flutter run -d chrome             # Run the app in Chrome\n\n\n🧪 Testing & Architecture\n\nUnit & Widget Tests: flutter test\nSpecific Test: flutter test &lt;path/to/test.dart&gt;\nIntegration Tests:\nflutter drive --driver=test_driver/integration_test.dart --target=integration_test/participant_flow_test.dart -d chrome\nNote: Web integration tests inject bytes directly as WebDriver screens cannot handle drag-and-drop.\nCoverage: flutter test --coverage\n\nKey Directory Structure: * lib/ui: Contains all screens and widgets, separated by feature (e.g., experiment, participant, auth). * lib/domain: Business logic and models. * lib/data: Data repositories and API services.\n\n\nTODO: Deployment Instructions"
   },
   {
+    "objectID": "guide/extended.html",
+    "href": "guide/extended.html",
+    "title": "Hearing Tools",
+    "section": "",
+    "text": "Take your own hearing test at:\nhttps://afhi-consonant-confusion.streamlit.app/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PRISM",
+    "section": "",
+    "text": "PRISM is a comprehensive framework designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, machine learning models, and tools developed by and for the “Australian Future Hearing Initiative”.\nPRISM might stand for:\nModern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users."
+  },
+  {
+    "objectID": "index.html#capabilities",
+    "href": "index.html#capabilities",
+    "title": "PRISM",
+    "section": "Capabilities",
+    "text": "Capabilities\n\nA web portal for researchers to run experiments and view results.\nAn Android mobile and Watch app for participant data collection.\nA backend server for data storage and processing.\nA set of machine learning models for auditory scene analysis."
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "PRISM",
+    "section": "Citation",
+    "text": "Citation\nIf you use these capabilities from the code, model, or datasets in your research, please cite:\n@misc{zhong2026datasetmodelauditoryscene,\n      title={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, \n      author={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},\n      year={2026},\n      eprint={2508.10360},\n      archivePrefix={arXiv},\n      primaryClass={cs.SD},\n      url={https://arxiv.org/abs/2508.10360}, \n}"
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "PRISM",
+    "section": "License",
+    "text": "License\nCode is licensed under the MIT License or Apache 2.0 depending on the component. Please check individual LICENCE files in each repository."
+  },
+  {
     "objectID": "guide/background.html",
     "href": "guide/background.html",
     "title": "Background",
@@ -96,34 +131,6 @@
     "title": "Background",
     "section": "Models",
     "text": "Models\nTools and scripts for AuditoryHuM auditory scene clustering, AHEAD-DS data preparation and OpenYAMNet(YAMNet+) training/inference.\n\nAbout\nThis repo supports the AuditoryHuM/AHEAD-DS/OpenYAMNet papers by providing: - clustering pipline for AuditoryHuM - dataset build scripts for AHEAD-DS and AHEAD-DS-unmixed - training pipeline for OpenYAMNet/YAMNet+ on those datasets - legacy YAMNet conversion utilities\n\n\nProject Map\n\nprism-ml-auditoryhum/: auditory scene label discovery and clustering using MLLM label generation and zero-shot learning.\nprism-ml-dataset-ahead-ds/: build AHEAD-DS and AHEAD-DS-unmixed from raw sources (large downloads). See that README for full instructions and warnings about size/time.\nprism-ml-yamnetp-tune/: train and evaluate OpenYAMNet/YAMNet+ using AHEAD-DS, plus inference and TFLite conversion.\nprism-ml-yamnet-legacy/: convert the original YAMNet weights to TF SavedModel format compatible with TF 2.16+.\n\n\n\nQuick Start\nFollow the relevant README: - Auditory scene clustering: prism-ml-auditoryhum/README.md - Dataset build: prism-ml-dataset-ahead-ds/README.md - Model training/inference: prism-ml-yamnetp-tune/README.md - Legacy YAMNet conversion: prism-ml-yamnet-legacy/README.md\n\n\nPaper, Data and Models\n\nAuditoryHuM paper: https://arxiv.org/abs/2602.19409\nAuditoryHuM supplementary data: https://huggingface.co/datasets/hzhongresearch/auditoryhum_supplementary\nAuditoryHuM demo website with alignment samples: https://huggingface.co/spaces/hzhongresearch/auditoryhum_samples\nAHEAD-DS and OpenYAMNet paper: https://arxiv.org/abs/2508.10360\nAHEAD-DS: https://huggingface.co/datasets/hzhongresearch/ahead_ds\nAHEAD-DS (unmixed): https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed\nOpenYAMNet/YAMNet+ models: https://huggingface.co/hzhongresearch/yamnetp_ahead_ds\n\n\n\nLicence\nSee LICENCE.txt in each subproject.\n\n\nContact\nFor questions, feedback, or collaboration opportunities, please contact: - Name: Romaric Bouveret - Email: romaric.bouveret@mq.edu.au"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PRISM",
-    "section": "",
-    "text": "PRISM is a comprehensive framework designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, machine learning models, and tools developed by and for the “Australian Future Hearing Initiative”.\nPRISM might stand for:\nModern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users."
-  },
-  {
-    "objectID": "index.html#capabilities",
-    "href": "index.html#capabilities",
-    "title": "PRISM",
-    "section": "Capabilities",
-    "text": "Capabilities\n\nA web portal for researchers to run experiments and view results.\nAn Android mobile and Watch app for participant data collection.\nA backend server for data storage and processing.\nA set of machine learning models for auditory scene analysis."
-  },
-  {
-    "objectID": "index.html#citation",
-    "href": "index.html#citation",
-    "title": "PRISM",
-    "section": "Citation",
-    "text": "Citation\nIf you use these capabilities from the code, model, or datasets in your research, please cite:\n@misc{zhong2026datasetmodelauditoryscene,\n      title={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, \n      author={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},\n      year={2026},\n      eprint={2508.10360},\n      archivePrefix={arXiv},\n      primaryClass={cs.SD},\n      url={https://arxiv.org/abs/2508.10360}, \n}"
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "PRISM",
-    "section": "License",
-    "text": "License\nCode is licensed under the MIT License or Apache 2.0 depending on the component. Please check individual LICENCE files in each repository."
   },
   {
     "objectID": "guide/user.html",
