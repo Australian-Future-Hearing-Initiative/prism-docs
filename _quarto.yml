@@ -30,6 +30,7 @@ format:
     toc-depth: 2
     code-overflow: wrap
     respect-user-color-scheme: true
+    mainfont: '"Google Sans", "Roboto", sans-serif'
     theme:
-      light: flatly
-      dark: darkly
+      light: [flatly, custom.scss]
+      dark: [darkly, custom.scss]
