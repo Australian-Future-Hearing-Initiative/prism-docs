@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>User Guide – PRISM</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,19 +35,18 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bf780066b1fca8c22222318b3da0bfdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-e5eeef9e8c139ec4f16a8aa0ad0425fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-bf780066b1fca8c22222318b3da0bfdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fed1c2507d9b67b001c4088c66064da2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9d7a5eb6aeba760e2c5b0783d554bea3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-fed1c2507d9b67b001c4088c66064da2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -302,7 +304,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#experimenter-flow" id="toc-experimenter-flow" class="nav-link active" data-scroll-target="#experimenter-flow">Experimenter Flow</a>
+  <li><a href="#experiment-setup-guide" id="toc-experiment-setup-guide" class="nav-link active" data-scroll-target="#experiment-setup-guide">Experiment Setup Guide</a>
   <ul class="collapse">
   <li><a href="#step-1-sign-up" id="toc-step-1-sign-up" class="nav-link" data-scroll-target="#step-1-sign-up">Step 1: Sign up</a></li>
   <li><a href="#step-2-notification" id="toc-step-2-notification" class="nav-link" data-scroll-target="#step-2-notification">Step 2: Notification</a></li>
@@ -316,19 +318,16 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   <li><a href="#step-8-confirm-the-detail" id="toc-step-8-confirm-the-detail" class="nav-link" data-scroll-target="#step-8-confirm-the-detail">Step 8: Confirm the detail</a></li>
   <li><a href="#step-9-view-all-experiments" id="toc-step-9-view-all-experiments" class="nav-link" data-scroll-target="#step-9-view-all-experiments">Step 9: View all experiments</a></li>
   <li><a href="#step-10-add-participants" id="toc-step-10-add-participants" class="nav-link" data-scroll-target="#step-10-add-participants">Step 10: Add participants</a></li>
+  <li><a href="#step-11-check-recording" id="toc-step-11-check-recording" class="nav-link" data-scroll-target="#step-11-check-recording">Step 11: Check recording</a></li>
+  <li><a href="#step-12-view-the-recordings" id="toc-step-12-view-the-recordings" class="nav-link" data-scroll-target="#step-12-view-the-recordings">Step 12: View the recordings</a></li>
+  <li><a href="#step-13-download-recordings" id="toc-step-13-download-recordings" class="nav-link" data-scroll-target="#step-13-download-recordings">Step 13: Download recordings</a></li>
   </ul></li>
-  <li><a href="#participant-flow" id="toc-participant-flow" class="nav-link" data-scroll-target="#participant-flow">Participant Flow</a>
+  <li><a href="#participant-user-guide" id="toc-participant-user-guide" class="nav-link" data-scroll-target="#participant-user-guide">Participant User Guide</a>
   <ul class="collapse">
   <li><a href="#step-1-join-the-experiment" id="toc-step-1-join-the-experiment" class="nav-link" data-scroll-target="#step-1-join-the-experiment">Step 1: Join the experiment</a></li>
   <li><a href="#step-2-starting-the-experiment" id="toc-step-2-starting-the-experiment" class="nav-link" data-scroll-target="#step-2-starting-the-experiment">Step 2: Starting the experiment</a></li>
   <li><a href="#step-3-sending-a-recording" id="toc-step-3-sending-a-recording" class="nav-link" data-scroll-target="#step-3-sending-a-recording">Step 3: Sending a recording</a></li>
   <li><a href="#step-4-finish-the-session" id="toc-step-4-finish-the-session" class="nav-link" data-scroll-target="#step-4-finish-the-session">Step 4: Finish the session</a></li>
-  </ul></li>
-  <li><a href="#experimenter-flow-continued" id="toc-experimenter-flow-continued" class="nav-link" data-scroll-target="#experimenter-flow-continued">Experimenter Flow (Continued)</a>
-  <ul class="collapse">
-  <li><a href="#step-11-check-recording" id="toc-step-11-check-recording" class="nav-link" data-scroll-target="#step-11-check-recording">Step 11: Check recording</a></li>
-  <li><a href="#step-12-view-the-recordings" id="toc-step-12-view-the-recordings" class="nav-link" data-scroll-target="#step-12-view-the-recordings">Step 12: View the recordings</a></li>
-  <li><a href="#step-13-download-recordings" id="toc-step-13-download-recordings" class="nav-link" data-scroll-target="#step-13-download-recordings">Step 13: Download recordings</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/user.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -357,12 +356,16 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 
 <p>This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the <a href="../guide/developer.html">Developer Guide</a>, and you have access to it.</p>
-<p>PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes: - <strong>Audio</strong>: A short 30-second clip of the sound around you. - <strong>Context</strong>: Your rating of how hard it was to hear speech.</p>
+<p>PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:</p>
+<ul>
+<li><strong>Audio</strong>: A short 30-second clip of the sound around you.</li>
+<li><strong>Context</strong>: Your rating of how hard it was to hear speech.</li>
+</ul>
 <p>This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.</p>
-<p>The <strong>PRISM web frontend</strong> serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.</p>
+<p>The <strong>PRISM web frontend</strong> serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to <strong>Participants</strong>. It is the control center for your data collection needs.</p>
 <hr>
-<section id="experimenter-flow" class="level2">
-<h2 class="anchored" data-anchor-id="experimenter-flow">Experimenter Flow</h2>
+<section id="experiment-setup-guide" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-setup-guide">Experiment Setup Guide</h2>
 <section id="step-1-sign-up" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-sign-up">Step 1: Sign up</h3>
 <p>Click “Sign up with Email”.</p>
@@ -593,56 +596,10 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <figcaption>Experiment list</figcaption>
 </figure>
 </div>
-<hr>
 </section>
-</section>
-<section id="participant-flow" class="level2">
-<h2 class="anchored" data-anchor-id="participant-flow">Participant Flow</h2>
-<section id="step-1-join-the-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-join-the-experiment">Step 1: Join the experiment</h3>
-<p>Once the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image2.png" class="img-fluid figure-img"></p>
-<figcaption>Join the experiment</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-2-starting-the-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-starting-the-experiment">Step 2: Starting the experiment</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image10.png" class="img-fluid figure-img"></p>
-<figcaption>Starting the experiment</figcaption>
-</figure>
-</div>
-<p><strong>The Recording Period</strong>: This is the block of time (Like a 4 hour window) <strong>The Recording Session</strong>: Those are the individual “sessions” (short recordings) that happen inside it.</p>
-</section>
-<section id="step-3-sending-a-recording" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-sending-a-recording">Step 3: Sending a recording</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image3.png" class="img-fluid figure-img"></p>
-<figcaption>Sending a recording</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-4-finish-the-session" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-finish-the-session">Step 4: Finish the session</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image16.png" class="img-fluid figure-img"></p>
-<figcaption>Finish the session</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-</section>
-<section id="experimenter-flow-continued" class="level2">
-<h2 class="anchored" data-anchor-id="experimenter-flow-continued">Experimenter Flow (Continued)</h2>
 <section id="step-11-check-recording" class="level3">
 <h3 class="anchored" data-anchor-id="step-11-check-recording">Step 11: Check recording</h3>
-<p>Click “View data” for a particular participant.</p>
+<p>Once partipants have used the app and data collection has begun you can click “View data” for a particular participant.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image15.png" class="img-fluid figure-img"></p>
@@ -667,6 +624,54 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <figcaption>Download recordings</figcaption>
 </figure>
 </div>
+<p>Log back in to modify experiments and view the data at any time.</p>
+<hr>
+</section>
+</section>
+<section id="participant-user-guide" class="level2">
+<h2 class="anchored" data-anchor-id="participant-user-guide">Participant User Guide</h2>
+<p>Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.</p>
+<section id="step-1-join-the-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-join-the-experiment">Step 1: Join the experiment</h3>
+<p>Once the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.</p>
+<div class="quarto-figure quarto-figure-center" style="max-height: 400px;">
+<figure class="figure">
+<p><img src="images/image2.png" class="img-fluid figure-img"></p>
+<figcaption>Join the experiment</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-2-starting-the-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-starting-the-experiment">Step 2: Starting the experiment</h3>
+<div class="quarto-figure quarto-figure-center" style="max-height: 400px;">
+<figure class="figure">
+<p><img src="images/image10.png" class="img-fluid figure-img"></p>
+<figcaption>Starting the experiment</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>The Recording Period</strong>: This is the block of time (Like a 4 hour window)</li>
+<li><strong>The Recording Session</strong>: Those are the individual “sessions” (short recordings) that happen inside it.</li>
+</ul>
+</section>
+<section id="step-3-sending-a-recording" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-sending-a-recording">Step 3: Sending a recording</h3>
+<div class="quarto-figure quarto-figure-center" style="max-height: 400px;">
+<figure class="figure">
+<p><img src="images/image3.png" class="img-fluid figure-img"></p>
+<figcaption>Sending a recording</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-4-finish-the-session" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-finish-the-session">Step 4: Finish the session</h3>
+<div class="quarto-figure quarto-figure-center" style="max-height: 400px;">
+<figure class="figure">
+<p><img src="images/image16.png" class="img-fluid figure-img"></p>
+<figcaption>Finish the session</figcaption>
+</figure>
+</div>
+<hr>
 
 
 </section>
