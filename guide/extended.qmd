@@ -1,0 +1,11 @@
+---
+title: "Hearing Tools"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+Take your own hearing test at:
+
+https://afhi-consonant-confusion.streamlit.app/
