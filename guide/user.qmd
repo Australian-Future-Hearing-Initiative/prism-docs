@@ -9,16 +9,17 @@ format:
 This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the [Developer Guide](developer.qmd), and you have access to it.
 
 PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:
+
 - **Audio**: A short 30-second clip of the sound around you.
 - **Context**: Your rating of how hard it was to hear speech.
 
 This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.
 
-The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.
+The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to **Participants**. It is the control center for your data collection needs.
 
 ---
 
-## Experimenter Flow
+## Experiment Setup Guide
 
 ### Step 1: Sign up
 
@@ -121,38 +122,8 @@ Click save, it will show "Saving…". Afterward it will guide you back to the ex
 
 ![Experiment list](images/image14.png)
 
----
-
-## Participant Flow
-
-### Step 1: Join the experiment
-
-Once the participant clicks the invite link from their email, they will be able to see this interface. Click "Open".
-
-![Join the experiment](images/image2.png)
-
-### Step 2: Starting the experiment
-
-![Starting the experiment](images/image10.png)
-
-**The Recording Period**: This is the block of time (Like a 4 hour window)
-**The Recording Session**: Those are the individual "sessions" (short recordings) that happen inside it.
-
-### Step 3: Sending a recording
-
-![Sending a recording](images/image3.png)
-
-### Step 4: Finish the session
-
-![Finish the session](images/image16.png)
-
----
-
-## Experimenter Flow (Continued)
-
 ### Step 11: Check recording
-
-Click "View data" for a particular participant.
+Once partipants have used the app and data collection has begun you can click "View data" for a particular participant.
 
 ![Check recording](images/image15.png)
 
@@ -163,3 +134,35 @@ Click "View data" for a particular participant.
 ### Step 13: Download recordings
 
 ![Download recordings](images/image19.png)
+
+Log back in to modify experiments and view the data at any time.
+
+---
+
+## Participant User Guide
+
+Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.
+
+### Step 1: Join the experiment
+
+Once the participant clicks the invite link from their email, they will be able to see this interface. Click "Open".
+
+![Join the experiment](images/image2.png){style="max-height: 400px;"}
+
+
+### Step 2: Starting the experiment
+
+![Starting the experiment](images/image10.png){style="max-height: 400px;"}
+
+- **The Recording Period**: This is the block of time (Like a 4 hour window)
+- **The Recording Session**: Those are the individual "sessions" (short recordings) that happen inside it.
+
+### Step 3: Sending a recording
+
+![Sending a recording](images/image3.png){style="max-height: 400px;"}
+
+### Step 4: Finish the session
+
+![Finish the session](images/image16.png){style="max-height: 400px;"}
+
+---
