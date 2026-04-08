@@ -16,6 +16,9 @@ website:
         text: User Guide
       - href: guide/background.qmd
         text: Background
+      - href: guide/extended.qmd
+        text: Hearing Tools
+        
   google-analytics:
     tracking-id: "G-XXXXXXXX"
     storage: cookies
