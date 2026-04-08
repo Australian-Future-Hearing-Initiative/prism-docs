@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fed1c2507d9b67b001c4088c66064da2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9d7a5eb6aeba760e2c5b0783d554bea3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-fed1c2507d9b67b001c4088c66064da2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1498e448718568eb4e16cd8893ca0479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-bf4076c746f206438e97567afd0fa62b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-1498e448718568eb4e16cd8893ca0479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -304,9 +304,17 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#benchmarks" id="toc-benchmarks" class="nav-link active" data-scroll-target="#benchmarks">Benchmarks</a></li>
-  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">TESTS</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#the-problem-hearing-in-complex-environments" id="toc-the-problem-hearing-in-complex-environments" class="nav-link active" data-scroll-target="#the-problem-hearing-in-complex-environments">The Problem: Hearing in Complex Environments</a></li>
+  <li><a href="#ecological-momentary-assessment-ema" id="toc-ecological-momentary-assessment-ema" class="nav-link" data-scroll-target="#ecological-momentary-assessment-ema">Ecological Momentary Assessment (EMA)</a></li>
+  <li><a href="#multi-modal-sensor-data" id="toc-multi-modal-sensor-data" class="nav-link" data-scroll-target="#multi-modal-sensor-data">Multi-Modal Sensor Data</a></li>
+  <li><a href="#on-device-machine-learning" id="toc-on-device-machine-learning" class="nav-link" data-scroll-target="#on-device-machine-learning">On-Device Machine Learning</a>
+  <ul class="collapse">
+  <li><a href="#yamnet---acoustic-scene-classification" id="toc-yamnet---acoustic-scene-classification" class="nav-link" data-scroll-target="#yamnet---acoustic-scene-classification">YAMNet+ - Acoustic Scene Classification</a></li>
+  <li><a href="#wonu---communication-breakdown-detection" id="toc-wonu---communication-breakdown-detection" class="nav-link" data-scroll-target="#wonu---communication-breakdown-detection">WONU - Communication Breakdown Detection</a></li>
+  </ul></li>
+  <li><a href="#rule-based-triggers" id="toc-rule-based-triggers" class="nav-link" data-scroll-target="#rule-based-triggers">Rule-Based Triggers</a></li>
+  <li><a href="#data-pipeline" id="toc-data-pipeline" class="nav-link" data-scroll-target="#data-pipeline">Data Pipeline</a></li>
+  <li><a href="#why-prism" id="toc-why-prism" class="nav-link" data-scroll-target="#why-prism">Why PRISM?</a></li>
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a>
   <ul class="collapse">
   <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
@@ -342,15 +350,119 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p>PRISM is a web-based application that allows users to upload and analyze audio data. It is built with FastAPI and Flutter, and uses Firebase for authentication and database storage.</p>
-<section id="benchmarks" class="level2">
-<h2 class="anchored" data-anchor-id="benchmarks">Benchmarks</h2>
+<section id="the-problem-hearing-in-complex-environments" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-hearing-in-complex-environments">The Problem: Hearing in Complex Environments</h2>
+<p>Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to <strong>rapidly changing sound environments</strong> like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.</p>
+<p>Traditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs <em>in the wild</em>. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life.</p>
 </section>
-<section id="tests" class="level2">
-<h2 class="anchored" data-anchor-id="tests">TESTS</h2>
+<section id="ecological-momentary-assessment-ema" class="level2">
+<h2 class="anchored" data-anchor-id="ecological-momentary-assessment-ema">Ecological Momentary Assessment (EMA)</h2>
+<p>PRISM is built around the methodology of <strong>Ecological Momentary Assessment (EMA)</strong>, a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.</p>
+<p>In a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:</p>
+<ol type="1">
+<li><strong>Captures a brief audio snapshot</strong>, a short recording of the acoustic environment.</li>
+<li><strong>Prompts a self-report</strong>, the participant rates their current listening experience via simple feedback buttons (e.g., <em>Good</em>, <em>Okay</em>, <em>Bad</em>).</li>
+<li><strong>Collects wearable sensor data</strong>, physiological and inertial signals that provide additional context about the listener’s state and activity.</li>
+</ol>
+<p>This approach provides ecologically valid, time-stamped, multi-modal data that links <em>subjective</em> hearing difficulty to <em>objective</em> environmental and physiological measurements.</p>
 </section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
+<section id="multi-modal-sensor-data" class="level2">
+<h2 class="anchored" data-anchor-id="multi-modal-sensor-data">Multi-Modal Sensor Data</h2>
+<p>A key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sensor</th>
+<th>Device</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Microphone</strong></td>
+<td>Phone, Watch</td>
+<td>Captures environmental audio for acoustic scene classification</td>
+</tr>
+<tr class="even">
+<td><strong>Heart Rate</strong></td>
+<td>Watch</td>
+<td>Physiological indicator of stress or cognitive effort</td>
+</tr>
+<tr class="odd">
+<td><strong>Body Temperature</strong></td>
+<td>Watch</td>
+<td>Additional physiological context</td>
+</tr>
+<tr class="even">
+<td><strong>Accelerometer</strong></td>
+<td>Phone, Watch</td>
+<td>Activity recognition (walking, sitting, commuting)</td>
+</tr>
+<tr class="odd">
+<td><strong>Gyroscope</strong></td>
+<td>Phone, Watch</td>
+<td>Complements accelerometer for motion and posture estimation</td>
+</tr>
+</tbody>
+</table>
+<p>Each sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.</p>
+</section>
+<section id="on-device-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="on-device-machine-learning">On-Device Machine Learning</h2>
+<p>PRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:</p>
+<section id="yamnet---acoustic-scene-classification" class="level3">
+<h3 class="anchored" data-anchor-id="yamnet---acoustic-scene-classification">YAMNet+ - Acoustic Scene Classification</h3>
+<p><em>YAMNet+</em> is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., <em>open space</em>, <em>restaurant</em>, <em>traffic</em>, <em>quiet room</em>). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.</p>
+<p>This builds on the YAMNet architecture and is described in:</p>
+<blockquote class="blockquote">
+<p>Zhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., &amp; Lyon, R. (2026). <em>A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet.</em> <a href="https://arxiv.org/abs/2508.10360">arXiv:2508.10360</a></p>
+</blockquote>
+</section>
+<section id="wonu---communication-breakdown-detection" class="level3">
+<h3 class="anchored" data-anchor-id="wonu---communication-breakdown-detection">WONU - Communication Breakdown Detection</h3>
+<p>The <strong>Words of Not Understanding (WONU)</strong> model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as <em>“pardon?”</em>, <em>“sorry, what?”</em>, or <em>“can you repeat that?”</em> are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making <em>WONU</em> a complementary signal to the participant’s self-report.</p>
+</section>
+</section>
+<section id="rule-based-triggers" class="level2">
+<h2 class="anchored" data-anchor-id="rule-based-triggers">Rule-Based Triggers</h2>
+<p>Researchers can configure <strong>sensor-threshold triggers</strong> that automate data collection and model activation. A trigger is defined by:</p>
+<ul>
+<li>A <strong>sensor source</strong> (e.g., phone microphone, heart rate monitor).</li>
+<li>A <strong>metric and threshold</strong> (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).</li>
+<li>An <strong>action</strong> - what happens when the threshold is crossed:
+<ul>
+<li><strong>Activate an ML model</strong> - wake <em>YAMNet+</em> or <em>WONU</em> to classify the current moment.</li>
+<li><strong>Send a notification</strong> - prompt the participant to provide a self-report.</li>
+<li><strong>Launch a form</strong> - open an in-app or Google Form survey for richer contextual data.</li>
+</ul></li>
+</ul>
+<p>This trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting.</p>
+</section>
+<section id="data-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="data-pipeline">Data Pipeline</h2>
+<p>Data flows from participant devices through a cloud pipeline:</p>
+<ol type="1">
+<li><strong>On-device capture</strong> - the mobile app records audio, sensor streams, and self-reports, tagging each sample with experiment, participant, and device identifiers.</li>
+<li><strong>Cloud storage</strong> - files are uploaded to Firebase Storage using a structured path convention.</li>
+<li><strong>Automatic indexing</strong> - a Cloud Function mirrors each upload into Firestore, creating a searchable, filterable catalogue of responses with metadata including ML classification results, timestamps, and file sizes.</li>
+<li><strong>Researcher dashboard</strong> - the PRISM web frontend lets researchers browse, filter, play back, and download participant responses, grouped by experiment and data type (audio recordings, heart rate, accelerometer, gyroscope, body temperature).</li>
+</ol>
+</section>
+<section id="why-prism" class="level2">
+<h2 class="anchored" data-anchor-id="why-prism">Why PRISM?</h2>
+<p>PRISM addresses a key bottleneck in hearing science: <strong>the lack of large-scale, ecologically valid, multi-modal datasets</strong> linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:</p>
+<ul>
+<li>Study hearing difficulty <em>where it actually happens</em>, not just in the lab.</li>
+<li>Combine subjective self-reports with objective sensor and ML-derived features.</li>
+<li>Build and validate models that can eventually drive <strong>real-time, adaptive hearing-aid algorithms</strong>.</li>
+<li>Rapidly iterate on experiment designs through a configurable web interface.</li>
+</ul>
+<p>The long-term vision, as part of the <strong>Australian Future Hearing Initiative</strong>, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time — giving users seamless hearing across every environment they encounter.</p>
 </section>
 <section id="models" class="level2">
 <h2 class="anchored" data-anchor-id="models">Models</h2>

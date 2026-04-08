@@ -39,28 +39,56 @@
     "href": "guide/background.html",
     "title": "Background",
     "section": "",
-    "text": "PRISM is a web-based application that allows users to upload and analyze audio data. It is built with FastAPI and Flutter, and uses Firebase for authentication and database storage."
+    "text": "Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
   },
   {
-    "objectID": "guide/background.html#benchmarks",
-    "href": "guide/background.html#benchmarks",
+    "objectID": "guide/background.html#the-problem-hearing-in-complex-environments",
+    "href": "guide/background.html#the-problem-hearing-in-complex-environments",
     "title": "Background",
-    "section": "Benchmarks",
-    "text": "Benchmarks"
+    "section": "",
+    "text": "Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
   },
   {
-    "objectID": "guide/background.html#tests",
-    "href": "guide/background.html#tests",
+    "objectID": "guide/background.html#ecological-momentary-assessment-ema",
+    "href": "guide/background.html#ecological-momentary-assessment-ema",
     "title": "Background",
-    "section": "TESTS",
-    "text": "TESTS"
+    "section": "Ecological Momentary Assessment (EMA)",
+    "text": "Ecological Momentary Assessment (EMA)\nPRISM is built around the methodology of Ecological Momentary Assessment (EMA), a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.\nIn a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:\n\nCaptures a brief audio snapshot, a short recording of the acoustic environment.\nPrompts a self-report, the participant rates their current listening experience via simple feedback buttons (e.g., Good, Okay, Bad).\nCollects wearable sensor data, physiological and inertial signals that provide additional context about the listener’s state and activity.\n\nThis approach provides ecologically valid, time-stamped, multi-modal data that links subjective hearing difficulty to objective environmental and physiological measurements."
   },
   {
-    "objectID": "guide/background.html#data",
-    "href": "guide/background.html#data",
+    "objectID": "guide/background.html#multi-modal-sensor-data",
+    "href": "guide/background.html#multi-modal-sensor-data",
     "title": "Background",
-    "section": "Data",
-    "text": "Data"
+    "section": "Multi-Modal Sensor Data",
+    "text": "Multi-Modal Sensor Data\nA key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:\n\n\n\n\n\n\n\n\nSensor\nDevice\nPurpose\n\n\n\n\nMicrophone\nPhone, Watch\nCaptures environmental audio for acoustic scene classification\n\n\nHeart Rate\nWatch\nPhysiological indicator of stress or cognitive effort\n\n\nBody Temperature\nWatch\nAdditional physiological context\n\n\nAccelerometer\nPhone, Watch\nActivity recognition (walking, sitting, commuting)\n\n\nGyroscope\nPhone, Watch\nComplements accelerometer for motion and posture estimation\n\n\n\nEach sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered."
+  },
+  {
+    "objectID": "guide/background.html#on-device-machine-learning",
+    "href": "guide/background.html#on-device-machine-learning",
+    "title": "Background",
+    "section": "On-Device Machine Learning",
+    "text": "On-Device Machine Learning\nPRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:\n\nYAMNet+ - Acoustic Scene Classification\nYAMNet+ is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., open space, restaurant, traffic, quiet room). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.\nThis builds on the YAMNet architecture and is described in:\n\nZhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., & Lyon, R. (2026). A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet. arXiv:2508.10360\n\n\n\nWONU - Communication Breakdown Detection\nThe Words of Not Understanding (WONU) model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as “pardon?”, “sorry, what?”, or “can you repeat that?” are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making WONU a complementary signal to the participant’s self-report."
+  },
+  {
+    "objectID": "guide/background.html#rule-based-triggers",
+    "href": "guide/background.html#rule-based-triggers",
+    "title": "Background",
+    "section": "Rule-Based Triggers",
+    "text": "Rule-Based Triggers\nResearchers can configure sensor-threshold triggers that automate data collection and model activation. A trigger is defined by:\n\nA sensor source (e.g., phone microphone, heart rate monitor).\nA metric and threshold (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).\nAn action - what happens when the threshold is crossed:\n\nActivate an ML model - wake YAMNet+ or WONU to classify the current moment.\nSend a notification - prompt the participant to provide a self-report.\nLaunch a form - open an in-app or Google Form survey for richer contextual data.\n\n\nThis trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting."
+  },
+  {
+    "objectID": "guide/background.html#data-pipeline",
+    "href": "guide/background.html#data-pipeline",
+    "title": "Background",
+    "section": "Data Pipeline",
+    "text": "Data Pipeline\nData flows from participant devices through a cloud pipeline:\n\nOn-device capture - the mobile app records audio, sensor streams, and self-reports, tagging each sample with experiment, participant, and device identifiers.\nCloud storage - files are uploaded to Firebase Storage using a structured path convention.\nAutomatic indexing - a Cloud Function mirrors each upload into Firestore, creating a searchable, filterable catalogue of responses with metadata including ML classification results, timestamps, and file sizes.\nResearcher dashboard - the PRISM web frontend lets researchers browse, filter, play back, and download participant responses, grouped by experiment and data type (audio recordings, heart rate, accelerometer, gyroscope, body temperature)."
+  },
+  {
+    "objectID": "guide/background.html#why-prism",
+    "href": "guide/background.html#why-prism",
+    "title": "Background",
+    "section": "Why PRISM?",
+    "text": "Why PRISM?\nPRISM addresses a key bottleneck in hearing science: the lack of large-scale, ecologically valid, multi-modal datasets linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:\n\nStudy hearing difficulty where it actually happens, not just in the lab.\nCombine subjective self-reports with objective sensor and ML-derived features.\nBuild and validate models that can eventually drive real-time, adaptive hearing-aid algorithms.\nRapidly iterate on experiment designs through a configurable web interface.\n\nThe long-term vision, as part of the Australian Future Hearing Initiative, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time — giving users seamless hearing across every environment they encounter."
   },
   {
     "objectID": "guide/background.html#models",
