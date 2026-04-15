@@ -6,6 +6,6 @@ format:
     toc-depth: 3
 ---
 
-Take your own hearing test at:
+* Take your own hearing test at [https://afhi-consonant-confusion.streamlit.app/](https://afhi-consonant-confusion.streamlit.app/)
 
-https://afhi-consonant-confusion.streamlit.app/
+* Explore acoustic and hearing related models: [https://github.com/Australian-Future-Hearing-Initiative/prism-ml](https://github.com/Australian-Future-Hearing-Initiative/prism-ml)

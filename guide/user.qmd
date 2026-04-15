@@ -147,22 +147,22 @@ Download the PRISM App to your device. Then follow the instructions to participa
 
 Once the participant clicks the invite link from their email, they will be able to see this interface. Click "Open".
 
-![Join the experiment](images/image2.png){style="max-height: 400px;"}
+![Join the experiment](images/image2.png){height=400px}
 
 
 ### Step 2: Starting the experiment
 
-![Starting the experiment](images/image10.png){style="max-height: 400px;"}
+![Starting the experiment](images/image10.png){height=400px}
 
 - **The Recording Period**: This is the block of time (Like a 4 hour window)
 - **The Recording Session**: Those are the individual "sessions" (short recordings) that happen inside it.
 
 ### Step 3: Sending a recording
 
-![Sending a recording](images/image3.png){style="max-height: 400px;"}
+![Sending a recording](images/image3.png){height=400px}
 
 ### Step 4: Finish the session
 
-![Finish the session](images/image16.png){style="max-height: 400px;"}
+![Finish the session](images/image16.png){height=400px}
 
 ---
