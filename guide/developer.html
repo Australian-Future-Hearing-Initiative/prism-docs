@@ -354,13 +354,22 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#manual-backend-setup" id="toc-manual-backend-setup" class="nav-link" data-scroll-target="#manual-backend-setup">Manual Backend Setup</a>
   <ul class="collapse">
+  <li><a href="#set-up-a-virtual-environment" id="toc-set-up-a-virtual-environment" class="nav-link" data-scroll-target="#set-up-a-virtual-environment">1. Set up a virtual environment</a></li>
+  <li><a href="#add-dependencies" id="toc-add-dependencies" class="nav-link" data-scroll-target="#add-dependencies">2. Add dependencies</a></li>
+  <li><a href="#firebase-environment-variables-setup" id="toc-firebase-environment-variables-setup" class="nav-link" data-scroll-target="#firebase-environment-variables-setup">3. Firebase &amp; Environment variables Setup</a></li>
+  <li><a href="#run-the-development-server" id="toc-run-the-development-server" class="nav-link" data-scroll-target="#run-the-development-server">3. Run the development server</a></li>
+  <li><a href="#deactivate-the-virtual-environment-when-youre-done" id="toc-deactivate-the-virtual-environment-when-youre-done" class="nav-link" data-scroll-target="#deactivate-the-virtual-environment-when-youre-done">4. Deactivate the virtual environment when you’re done</a></li>
+  <li><a href="#view-api-documentation" id="toc-view-api-documentation" class="nav-link" data-scroll-target="#view-api-documentation">5. View API documentation</a></li>
+  <li><a href="#debug" id="toc-debug" class="nav-link" data-scroll-target="#debug">6. Debug</a></li>
+  <li><a href="#test" id="toc-test" class="nav-link" data-scroll-target="#test">7. Test</a></li>
   <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">📁 Project Structure</a></li>
   <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">📬 Contact</a></li>
   </ul></li>
   <li><a href="#manual-frontend-setup" id="toc-manual-frontend-setup" class="nav-link" data-scroll-target="#manual-frontend-setup">Manual Frontend Setup</a>
   <ul class="collapse">
-  <li><a href="#for-researchers" id="toc-for-researchers" class="nav-link" data-scroll-target="#for-researchers">For Researchers</a></li>
-  <li><a href="#developer-instructions" id="toc-developer-instructions" class="nav-link" data-scroll-target="#developer-instructions">Developer Instructions</a></li>
+  <li><a href="#for-researchers" id="toc-for-researchers" class="nav-link" data-scroll-target="#for-researchers">1. For Researchers</a></li>
+  <li><a href="#developer-instructions" id="toc-developer-instructions" class="nav-link" data-scroll-target="#developer-instructions">2. Developer Instructions</a></li>
+  <li><a href="#deploy-to-production-1" id="toc-deploy-to-production-1" class="nav-link" data-scroll-target="#deploy-to-production-1">3. Deploy to production</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -482,10 +491,10 @@ VALIDATE_CERTS=True</code></pre>
 <section id="manual-backend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-backend-setup">Manual Backend Setup</h2>
 <p>If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed in the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend"><code>prism-flutter-backend</code> repository</a>.</p>
-<section id="set-up-a-virtual-environment" class="level4">
-<h4 class="anchored" data-anchor-id="set-up-a-virtual-environment">1. Set up a virtual environment</h4>
-<section id="option-1-using-uv-recommended-for-speed" class="level5">
-<h5 class="anchored" data-anchor-id="option-1-using-uv-recommended-for-speed">Option 1: Using <code>uv</code> (recommended for speed)</h5>
+<section id="set-up-a-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-a-virtual-environment">1. Set up a virtual environment</h3>
+<section id="option-1-using-uv-recommended-for-speed" class="level4">
+<h4 class="anchored" data-anchor-id="option-1-using-uv-recommended-for-speed">Option 1: Using <code>uv</code> (recommended for speed)</h4>
 <ol type="1">
 <li>Make sure <code>uv</code> is installed:</li>
 </ol>
@@ -502,8 +511,8 @@ VALIDATE_CERTS=True</code></pre>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="option-2-using-venv" class="level5">
-<h5 class="anchored" data-anchor-id="option-2-using-venv">Option 2: Using <code>venv</code></h5>
+<section id="option-2-using-venv" class="level4">
+<h4 class="anchored" data-anchor-id="option-2-using-venv">Option 2: Using <code>venv</code></h4>
 <ol start="0" type="1">
 <li>Delete the current virtual environment (If you created a virtual environment in another project)</li>
 </ol>
@@ -526,18 +535,18 @@ VALIDATE_CERTS=True</code></pre>
 <hr>
 </section>
 </section>
-<section id="add-dependencies" class="level4">
-<h4 class="anchored" data-anchor-id="add-dependencies">2. Add dependencies</h4>
+<section id="add-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="add-dependencies">2. Add dependencies</h3>
 <p>Use</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="co"># This will install all dependencies that you need for the project</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Tips: How to add new dependencies:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add your_dependency</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="firebase-environment-variables-setup" class="level4">
-<h4 class="anchored" data-anchor-id="firebase-environment-variables-setup">3. Firebase &amp; Environment variables Setup</h4>
-<section id="firebase_key_path" class="level5">
-<h5 class="anchored" data-anchor-id="firebase_key_path"><code>FIREBASE_KEY_PATH</code></h5>
+<section id="firebase-environment-variables-setup" class="level3">
+<h3 class="anchored" data-anchor-id="firebase-environment-variables-setup">3. Firebase &amp; Environment variables Setup</h3>
+<section id="firebase_key_path" class="level4">
+<h4 class="anchored" data-anchor-id="firebase_key_path"><code>FIREBASE_KEY_PATH</code></h4>
 <p>If you don’t have the access to the Firebase, please contact your firebase admin. For firebase Admin: They need to have “Editor” or “Owner” to be able to get the private key.</p>
 <ol type="1">
 <li>In Firebase Console: <strong>PrismData → Project settings → Service accounts → Firebase Admin SDK → Generate new private key</strong>.</li>
@@ -550,25 +559,25 @@ VALIDATE_CERTS=True</code></pre>
 <p>and add:</p>
 <pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json</code></pre>
 </section>
-<section id="firebase_api_key" class="level5">
-<h5 class="anchored" data-anchor-id="firebase_api_key"><code>FIREBASE_API_KEY</code></h5>
+<section id="firebase_api_key" class="level4">
+<h4 class="anchored" data-anchor-id="firebase_api_key"><code>FIREBASE_API_KEY</code></h4>
 <p>Find it in <strong>Project settings → General → prism (web) -&gt; apiKey</strong>, then add:</p>
 <pre class="dotenv"><code>FIREBASE_API_KEY=YOUR_WEB_API_KEY</code></pre>
 </section>
-<section id="jwt_secret" class="level5">
-<h5 class="anchored" data-anchor-id="jwt_secret"><code>JWT_SECRET</code></h5>
+<section id="jwt_secret" class="level4">
+<h4 class="anchored" data-anchor-id="jwt_secret"><code>JWT_SECRET</code></h4>
 <p>Generate a long random string by going to this website: https://jwtsecretkeygenerator.com/</p>
 <p>Once you have got the JWT then copy it to here:</p>
 <pre class="dotenv"><code>JWT_SECRET=YOUR_RANDOM_SECRET</code></pre>
 </section>
-<section id="example-.env" class="level5">
-<h5 class="anchored" data-anchor-id="example-.env">Example <code>.env</code></h5>
+<section id="example-.env" class="level4">
+<h4 class="anchored" data-anchor-id="example-.env">Example <code>.env</code></h4>
 <pre class="dotenv"><code>FIREBASE_KEY_PATH=./serviceAccountKey.json
 FIREBASE_API_KEY=AIza...yourkey
 JWT_SECRET=paste_a_long_random_string_here</code></pre>
 </section>
-<section id="email-smtp-setup" class="level5">
-<h5 class="anchored" data-anchor-id="email-smtp-setup"><code>Email (SMTP) Setup</code></h5>
+<section id="email-smtp-setup" class="level4">
+<h4 class="anchored" data-anchor-id="email-smtp-setup"><code>Email (SMTP) Setup</code></h4>
 <p>Add these to your .env to enable outbound email:</p>
 <p>Option 1. Via Mailgun: Get your API key from <a href="https://app.mailgun.com/settings/api_security">Mailgun API Key page</a>, and setup Mailgun with a domain you can send from.</p>
 <pre class="dotenv"><code>MAILGUN_API_KEY=your_mailgun_api_key
@@ -588,21 +597,21 @@ VALIDATE_CERTS=True</code></pre>
 <p>Troubleshooting (535 BadCredentials): use the app password (not your login), choose exactly one TLS mode (587+STARTTLS or 465+SSL/TLS), restart after .env changes, and ensure MAIL_FROM is allowed.</p>
 </section>
 </section>
-<section id="run-the-development-server" class="level4">
-<h4 class="anchored" data-anchor-id="run-the-development-server">3. Run the development server</h4>
+<section id="run-the-development-server" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-development-server">3. Run the development server</h3>
 <p>Navigate to the directory where <code>main.py</code> is located, then run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--</span> uvicorn app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>or</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uvicorn</span> app.main:app <span class="at">--reload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="deactivate-the-virtual-environment-when-youre-done" class="level4">
-<h4 class="anchored" data-anchor-id="deactivate-the-virtual-environment-when-youre-done">4. Deactivate the virtual environment when you’re done</h4>
+<section id="deactivate-the-virtual-environment-when-youre-done" class="level3">
+<h3 class="anchored" data-anchor-id="deactivate-the-virtual-environment-when-youre-done">4. Deactivate the virtual environment when you’re done</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This returns your shell to the global Python environment.</p>
 <hr>
 </section>
-<section id="view-api-documentation" class="level4">
-<h4 class="anchored" data-anchor-id="view-api-documentation">5. View API documentation</h4>
+<section id="view-api-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="view-api-documentation">5. View API documentation</h3>
 <p>Once the server is running, you can explore the API docs at:</p>
 <ul>
 <li><strong>Swagger UI</strong>: <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a><br>
@@ -612,15 +621,15 @@ VALIDATE_CERTS=True</code></pre>
 <p>These documents list all available endpoints and describe how to interact with them.</p>
 <hr>
 </section>
-<section id="debug" class="level4">
-<h4 class="anchored" data-anchor-id="debug">6. Debug</h4>
+<section id="debug" class="level3">
+<h3 class="anchored" data-anchor-id="debug">6. Debug</h3>
 <p>You should go to the root and run</p>
 <pre><code>uv run -- python -m debugpy --listen 127.0.0.1:5678 --wait-for-client \
   -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000</code></pre>
 <p>Then you can run the debugger.</p>
 </section>
-<section id="test" class="level4">
-<h4 class="anchored" data-anchor-id="test">7. Test</h4>
+<section id="test" class="level3">
+<h3 class="anchored" data-anchor-id="test">7. Test</h3>
 <pre><code>uv run pytest</code></pre>
 </section>
 <section id="project-structure" class="level3">
@@ -648,29 +657,44 @@ README.md                   # Project overview and instructions</code></pre>
 <section id="manual-frontend-setup" class="level2">
 <h2 class="anchored" data-anchor-id="manual-frontend-setup">Manual Frontend Setup</h2>
 <p>If you wish to run the front end Flutter web application without docker, follow the instructions as detailed in the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend"><code>prism-flutter-web-frontend</code> repository</a>.</p>
-<p>The PRISM web frontend serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem as part of the <a href="https://github.com/Australian-Future-Hearing-Initiative">Australian Future Hearing Initiative</a>.</p>
-<hr>
+<p>The PRISM web frontend serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem as part of the <a href="https://github.com/Australian-Future-Hearing-Initiative"><strong>Australian Future Hearing Initiative</strong></a>.</p>
 <section id="for-researchers" class="level3">
-<h3 class="anchored" data-anchor-id="for-researchers">For Researchers</h3>
-<p>Researchers use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.</p>
-<p><strong>How to use:</strong> 1. <strong>Login</strong>: Access the researcher dashboard securely. 2. <strong>Manage Projects</strong>: Create new projects to house specific studies or experiments. 3. <strong>Configure Experiments</strong>: * Set up various experiment types (e.g., Ecological Momentary Assessment (EMA) surveys, sensor-thresholds). * Define parameters and logical flows for the experiments. 4. <strong>Manage Participants</strong>: * Add new participants to the system. * Assign participants to specific projects/cohorts. * Monitor participant progress through assigned tasks. * Email participants. * Download audiograms</p>
-See the complete userguide: https://docs.google.com/document/d/1_FZVBiN1QqhP50A2izS7KlW_Y021koJM45pSYcHEkMw/edit?tab=t.0#heading=h.qbhdu5cvo4bq
-<hr>
+<h3 class="anchored" data-anchor-id="for-researchers">1. For Researchers</h3>
+<p>Researchers can use this application to design experiments, manage study cohorts, and deploy tasks to participants. It is the control center for your data collection needs.</p>
+<p><strong>Features:</strong></p>
+<ol type="1">
+<li><strong>Login</strong>: Access the researcher dashboard securely.</li>
+<li><strong>Manage Projects</strong>: Create new projects to house specific studies or experiments.</li>
+<li><strong>Configure Experiments</strong>:
+<ul>
+<li>Set up various experiment types (e.g., Ecological Momentary Assessment (EMA) surveys, sensor-thresholds).</li>
+<li>Define parameters and logical flows for the experiments.</li>
+</ul></li>
+<li><strong>Manage Participants</strong>:
+<ul>
+<li>Add new participants to the system.</li>
+<li>Assign participants to specific projects/cohorts.</li>
+<li>Monitor participant progress through assigned tasks.</li>
+<li>Email participants.</li>
+<li>Download audiograms.</li>
+</ul></li>
+</ol>
+<p>Follow the userguide for more information: <a href="https://australian-future-hearing-initiative.github.io/prism-docs/">https://australian-future-hearing-initiative.github.io/prism-docs/</a></p>
 </section>
 <section id="developer-instructions" class="level3">
-<h3 class="anchored" data-anchor-id="developer-instructions">Developer Instructions</h3>
+<h3 class="anchored" data-anchor-id="developer-instructions">2. Developer Instructions</h3>
 <section id="launch-the-backend-server" class="level4">
-<h4 class="anchored" data-anchor-id="launch-the-backend-server">1. Launch the Backend Server</h4>
-<p>This frontend relies on the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend/blob/main/README.md">prism-flutter-backend</a>. See the repo for launch instructions.</p>
+<h4 class="anchored" data-anchor-id="launch-the-backend-server">1. <strong>Launch the Backend Server</strong></h4>
+<p>This frontend relies on the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend/blob/main/README.md"><strong>prism-flutter-backend</strong></a>. See the repo for launch instructions.</p>
 </section>
 <section id="configure-environment" class="level4">
-<h4 class="anchored" data-anchor-id="configure-environment">2. Configure Environment</h4>
-<p>Create a <code>.env</code> file in the <strong>root directory</strong> and add the URL of the backedn server, e.g.:</p>
-<pre class="env"><code>## Base URL for API calls when running locally
+<h4 class="anchored" data-anchor-id="configure-environment">2. <strong>Configure Environment</strong></h4>
+<p>Create a <code>.env</code> file in the <strong>root directory</strong> and add the URL of the backend server, e.g.:</p>
+<pre class="dotenv"><code># Base URL for API calls when running locally
 API_BASE_URL=http://127.0.0.1:8000</code></pre>
 </section>
 <section id="install-fvm-flutter-version-management" class="level4">
-<h4 class="anchored" data-anchor-id="install-fvm-flutter-version-management">3. Install FVM (Flutter Version Management)</h4>
+<h4 class="anchored" data-anchor-id="install-fvm-flutter-version-management">3. <strong>Install FVM (Flutter Version Management)</strong></h4>
 <p>We use FVM to ensure consistent Flutter versions.</p>
 <ul>
 <li>Option 1 <strong>Dart Pub</strong>: <code>dart pub global activate fvm</code></li>
@@ -679,31 +703,39 @@ API_BASE_URL=http://127.0.0.1:8000</code></pre>
 </ul>
 </section>
 <section id="run-the-app" class="level4">
-<h4 class="anchored" data-anchor-id="run-the-app">4. Run the App</h4>
+<h4 class="anchored" data-anchor-id="run-the-app">4. <strong>Run the App</strong></h4>
 <p>Execute the following commands from the root of this repository:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter channel stable</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter upgrade</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter pub get</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">## fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fvm dart run build_runner watch -d    # Optional: watch freezed/json files for changes</span></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fvm</span> flutter run <span class="at">-d</span> chrome             <span class="co"># Run the app in Chrome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="testing-architecture" class="level4">
-<h4 class="anchored" data-anchor-id="testing-architecture">🧪 Testing &amp; Architecture</h4>
+<h4 class="anchored" data-anchor-id="testing-architecture">5. <strong>Testing &amp; Architecture</strong></h4>
 <ul>
 <li><p><strong>Unit &amp; Widget Tests</strong>: <code>flutter test</code></p></li>
 <li><p><strong>Specific Test</strong>: <code>flutter test &lt;path/to/test.dart&gt;</code></p></li>
 <li><p><strong>Integration Tests</strong>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">flutter</span> drive <span class="at">--driver</span><span class="op">=</span>test_driver/integration_test.dart <span class="at">--target</span><span class="op">=</span>integration_test/participant_flow_test.dart <span class="at">-d</span> chrome</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><em>Note: Web integration tests inject bytes directly as WebDriver screens cannot handle drag-and-drop.</em></p></li>
+<blockquote class="blockquote">
+<p>Web integration tests inject bytes directly as WebDriver screens cannot handle drag-and-drop.</p>
+</blockquote></li>
 <li><p><strong>Coverage</strong>: <code>flutter test --coverage</code></p></li>
 </ul>
-<p><strong>Key Directory Structure:</strong> * <code>lib/ui</code>: Contains all screens and widgets, separated by feature (e.g., <code>experiment</code>, <code>participant</code>, <code>auth</code>). * <code>lib/domain</code>: Business logic and models. * <code>lib/data</code>: Data repositories and API services.</p>
+<p><strong>Key Directory Structure:</strong></p>
+<ul>
+<li><code>lib/ui</code>: Contains all screens and widgets, separated by feature (e.g., <code>experiment</code>, <code>participant</code>, <code>auth</code>).</li>
+<li><code>lib/domain</code>: Business logic and models.</li>
+<li><code>lib/data</code>: Data repositories and API services.</li>
+</ul>
 </section>
-<section id="todo-deployment-instructions" class="level4">
-<h4 class="anchored" data-anchor-id="todo-deployment-instructions">TODO: Deployment Instructions</h4>
+</section>
+<section id="deploy-to-production-1" class="level3">
+<h3 class="anchored" data-anchor-id="deploy-to-production-1">3. Deploy to production</h3>
+<p>TODO</p>
 
 
-</section>
 </section>
 </section>
 
