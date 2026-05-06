@@ -6,10 +6,11 @@ format:
     toc-depth: 3
 ---
 
-The PRISM Ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.
+The PRISM ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.
 
 ## Firebase
-Get a paid project on [Firebase](https://firebase.google.com/docs/projects/learn-more) and make a new project.
+
+The PRISM ecosystem is designed to use Firebase to securely store user data. To create your own instance of PRISM you will need a **paid Firebase project**. [Get a Firebase account and make a new project as described here](https://firebase.google.com/docs/projects/learn-more). Then follow the directions below to create your own PRISM instance.
 
 ## Unified Setup via Docker
 
