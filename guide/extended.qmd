@@ -8,4 +8,6 @@ format:
 
 * Take your own hearing test at [https://afhi-consonant-confusion.streamlit.app/](https://afhi-consonant-confusion.streamlit.app/)
 
+* Find the Demo release of the Pure-Tone Audiometry here: [https://afhi-pure-tone-audiometry.streamlit.app/](https://afhi-pure-tone-audiometry.streamlit.app/)
+
 * Explore acoustic and hearing related models: [https://github.com/Australian-Future-Hearing-Initiative/prism-ml](https://github.com/Australian-Future-Hearing-Initiative/prism-ml)
