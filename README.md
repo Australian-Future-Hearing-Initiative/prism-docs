@@ -1,6 +1,6 @@
 # PRISM Documentation
 
-Documentation for the PRISM ecosystem within the Australian Future Hearing Initiative. This site is built using [Quarto](https://quarto.org/) and hosted on [GitHub Pages](https://miniature-carnival-v9nmwzn.pages.github.io/).
+Documentation for the PRISM ecosystem within the Australian Future Hearing Initiative. This site is built using [Quarto](https://quarto.org/) and hosted on [GitHub Pages](https://miniature-carnival-v9nmwzn.pages.github.io/). 
 
 
 ## Local Development
