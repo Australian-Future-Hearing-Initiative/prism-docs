@@ -6,20 +6,29 @@ format:
     toc-depth: 3
 ---
 
-This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the [Developer Guide](developer.qmd), and you have access to it.
+This guide assumes you are a researcher conducting experiments, or a participant in a study using PRISM. It is expected that an instance of PRISM is running, as described in the [Setup Guide](developer.qmd), and you have access to it.
 
-PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:
+The **PRISM Research Portal** serves as the control center for designing experiments, managing study cohorts, and reviewing participant data.
 
-- **Audio**: A short 30-second clip of the sound around you.
-- **Context**: Your rating of how hard it was to hear speech.
+### Study Workflow Overview
 
-This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.
+Running a PRISM study follows four major phases:
 
-The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to **Participants**. It is the control center for your data collection needs.
+```mermaid
+flowchart TD
+    A["1. Experiment Setup"] --> B["2. Adding Participants"]
+    B --> C["3. Deployment"]
+    C --> D["4. Monitoring & Export"]
+```
+
+1. **Experiment Setup**: Configure basic information, sensor parameters, rule-based triggers, and feedback buttons in the Research Portal.
+2. **Adding Participants**: Upload a participant roster via CSV and send automated email invitations.
+3. **Deployment**: Participants receive invitation emails, install the Android app, and click the link to sync their device config automatically.
+4. **Monitoring & Export**: Review participant compliance, view real-time wearable graphs, and download raw data or audio recordings.
 
 ---
 
-## Experiment Setup Guide
+## 1. Experiment Setup
 
 ### Step 1: Sign up
 
@@ -98,6 +107,10 @@ Confirm the summary configuration draft before publishing.
 
 ![Confirm the detail](images/image27.png)
 
+---
+
+## 2. Adding Participants
+
 ### Step 11: View all experiments
 
 ![View all experiments](images/image13.png)
@@ -130,6 +143,20 @@ Click save, it will show "Saving…". Afterward it will guide you back to the ex
 
 ![Experiment list](images/image14.png)
 
+---
+
+## 3. Deployment
+
+Once you have added participants to the Research Portal and clicked **Invite**, the PRISM system manages deployment to devices automatically:
+
+1. **Invitation Email**: The backend sends an automated invitation email to each participant.
+2. **Download App**: The email instructs the participant to download the PRISM Android/Watch app.
+3. **Activation Link**: When the participant clicks the unique invite link on their phone, it registers their participant ID and downloads the experiment's specific configuration rules (sampling rates, triggers, models) from Firestore to their device. No manual device side setup is required by the researcher.
+
+---
+
+## 4. During & Post-Experiment
+
 ### Step 13: Check Session Recordings
 Once participants have used the app and data collection has begun you can click "View data" for a particular participant.
 
@@ -149,9 +176,12 @@ Log back in to modify experiments and view the data at any time.
 
 ---
 
-## Participant User Guide
+## 5. Participant User Guide
 
 Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.
+
+> [!TIP]
+> Most researchers will print out or share a customized version of this section as a one-page guide for their study cohort.
 
 ### Step 1: Join the experiment
 
@@ -174,5 +204,3 @@ Once the participant clicks the invite link from their email, they will be able 
 ### Step 4: Finish the session
 
 ![Finish the session](images/image16.png){height=400px}
-
----
