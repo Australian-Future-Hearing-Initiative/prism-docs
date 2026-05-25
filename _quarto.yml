@@ -10,14 +10,14 @@ website:
     left:
       # - href: index.qmd
       #   text: Home
-      - href: guide/developer.qmd
-        text: Admin Guide
-      - href: guide/user.qmd
-        text: User Guide
       - href: guide/background.qmd
         text: Background
+      - href: guide/developer.qmd
+        text: Setup Guide
+      - href: guide/user.qmd
+        text: User Guide
       - href: guide/extended.qmd
-        text: Hearing Tools
+        text: Other Tools
         
   google-analytics:
     tracking-id: "G-XXXXXXXX"
