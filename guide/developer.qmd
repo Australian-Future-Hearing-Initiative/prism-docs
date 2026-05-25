@@ -1,5 +1,5 @@
 ---
-title: "Developer Guide"
+title: "Setup Guide"
 format:
   html:
     toc: true
@@ -8,9 +8,15 @@ format:
 
 The PRISM ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.
 
-## Firebase
+## Which setup should I use?
 
-The PRISM ecosystem is designed to use Firebase to securely store user data. To create your own instance of PRISM you will need a **paid Firebase project**. [Get a Firebase account and make a new project as described here](https://firebase.google.com/docs/projects/learn-more). Then follow the directions below to create your own PRISM instance.
+For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the quickest and most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring language runtimes.
+
+You should only use the **Manual Setup** if:
+* You are a developer planning to modify the backend code or the Flutter frontend web app code directly.
+* You need to debug a specific service locally outside of a container environment.
+
+---
 
 ## Unified Setup via Docker
 
@@ -18,17 +24,43 @@ The easiest way to install and run both the PRISM Backend and Frontend is via th
 
 {{< include _setup_readme.qmd >}}
 
+---
 
-## Manual Backend Setup
+## Manual Setup
 
-If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed in the [`prism-flutter-backend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend).
+If you prefer to run and develop the services independently without Docker, follow the manual instructions below.
+
+### System Architecture Overview
+
+The PRISM platform is split into two components:
+1. **Backend Server (FastAPI)**: A Python-based REST API that communicates with Firebase Auth, Firestore, and handles data storage/exports.
+2. **Research Portal Frontend (Flutter)**: A web-based user interface used by researchers to manage experiments and view participant session data.
+
+Both components connect to the same **Firebase** project, which must be created before starting the setup.
+
+### Manual Backend Setup
+
+Follow these instructions to run the FastAPI backend independently.
 
 {{< include _flutter-backend_readme.qmd >}}
 
+### Manual Frontend Setup
 
-## Manual Frontend Setup
-
-If you wish to run the front end Flutter web application without docker, follow the instructions as detailed in the [`prism-flutter-web-frontend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend).
+Follow these instructions to run the Flutter web portal independently.
 
 {{< include _flutter-web-frontend_readme.qmd >}}
+
+---
+
+## Setup Checklist
+
+Before deploying or launching PRISM, verify that you have completed all setup steps:
+
+- [ ] Created a Firebase project with paid (Blaze) usage enabled.
+- [ ] Registered a Web App within your Firebase project.
+- [ ] Generated and saved the Firebase Service Account key as `serviceAccountKey.json`.
+- [ ] Added the Firebase Web API Key to your configuration/environment variables.
+- [ ] Set up SMTP credentials (Mailgun or Gmail App Password) for participant invite emails.
+- [ ] Created a secure random string for `JWT_SECRET`.
+- [ ] Configured matching API URLs between the frontend and backend (for manual setups).
 
