@@ -5,9 +5,17 @@ execute:
   output: false
 ---
 
-**PRISM** is an open-source, multi-sensor mHealth platform for ecological momentary assessment, just-in-time interventions, and passive sensing. It enables researchers to collect real-world self-report, audio-context, physiological, behavioural, and environmental data from smartphones, smartwatches, and connected devices.
+**PRISM** is an open-source, multi-sensor health platform for ecological momentary assessment, just-in-time interventions, and passive sensing. It enables researchers to collect real-world self-report, audio-context, physiological, behavioural, and environmental data from smartphones, smartwatches, and connected devices.
 
 The platform was initially developed for hearing and communication research, where understanding listening difficulty in everyday environments requires real-time, context-rich measurement. However, the architecture is designed to support broader health and behavioural research applications.
+
+PRISM might stand for:
+
+* **PR**edicting **I**nteraction difficulty using **S**ensors and **M**icro-EMA
+* **P**ersonalized **R**eal-time **I**nteraction difficulty for **S**ound **M**easurement
+* **P**latform for **R**esearch **I**n **S**ituational **M**omentary assessment.
+
+Modern hearing aids often struggle to adapt to rapidly changing sound environments, like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.
 
 ## Capabilities
 
@@ -15,6 +23,13 @@ The platform was initially developed for hearing and communication research, whe
 - An Android mobile and Watch app for participant data collection.
 - A backend server for data storage and processing.
 - A set of machine learning models for auditory scene analysis.
+
+## Get started
+
+* Read about the motivation and science behind the PRISM ecosystem in the: [Background documentation.](guide/background.qmd)
+* Learn how to deploy your own experiments using PRISM in the: [Setup Guide documentation.](guide/developer.qmd)
+* Get help using the PRISM app and explore its functionality in the: [User Guide documentation.](guide/user.qmd)
+* Dive deeper in the *Australian Future Hearing Initiative* and live hearing tests you can take in the: [Other Tools documentation.](guide/extended.qmd)
 
 
 ## Citation

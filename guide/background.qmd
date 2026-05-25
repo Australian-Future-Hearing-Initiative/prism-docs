@@ -12,8 +12,6 @@ Hearing loss affects over 1.5 billion people worldwide and is one of the leading
 
 Traditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs *in the wild*. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user's everyday life.
 
----
-
 ## What is PRISM?
 
 ### Ecological Momentary Assessment (EMA)
@@ -38,8 +36,6 @@ PRISM addresses a key bottleneck in hearing science: **the lack of large-scale, 
 - Rapidly iterate on experiment designs through a configurable web interface.
 
 The long-term vision, as part of the **Australian Future Hearing Initiative**, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time — giving users seamless hearing across every environment they encounter.
-
----
 
 ## Features
 
@@ -89,8 +85,6 @@ Researchers can configure **sensor-threshold triggers** that automate data colle
     - **Launch a form** - open an in-app or Google Form survey for richer contextual data.
 
 This trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting.
-
----
 
 ## Architecture
 

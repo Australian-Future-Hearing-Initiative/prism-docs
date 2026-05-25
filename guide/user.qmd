@@ -10,6 +10,15 @@ This guide assumes you are a researcher conducting experiments, or a participant
 
 The **PRISM Research Portal** serves as the control center for designing experiments, managing study cohorts, and reviewing participant data.
 
+PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:
+
+- **Audio**: A short 30-second clip of the sound around you.
+- **Context**: Your rating of how hard it was to hear speech.
+
+This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.
+
+The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to **Participants**. It is the control center for your data collection needs.
+
 ### Study Workflow Overview
 
 Running a PRISM study follows four major phases:
@@ -181,7 +190,7 @@ Log back in to modify experiments and view the data at any time.
 Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.
 
 > [!TIP]
-> Most researchers will print out or share a customized version of this section as a one-page guide for their study cohort.
+> Most researchers will print out or share a customised version of this section as a one-page guide for their study cohort.
 
 ### Step 1: Join the experiment
 

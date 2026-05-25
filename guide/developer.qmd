@@ -12,11 +12,11 @@ The PRISM ecosystem consists of a backend server built with FastAPI and a web fr
 
 For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the quickest and most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring language runtimes.
 
-You should only use the **Manual Setup** if:
-* You are a developer planning to modify the backend code or the Flutter frontend web app code directly.
-* You need to debug a specific service locally outside of a container environment.
+You likely want to use the **Manual Setup** only if:
 
----
+* You are a developer planning to modify the backend code or the Flutter frontend web app code directly.
+* You need to run and debug a specific service locally outside of a Docker container environment.
+
 
 ## Unified Setup via Docker
 
@@ -24,7 +24,6 @@ The easiest way to install and run both the PRISM Backend and Frontend is via th
 
 {{< include _setup_readme.qmd >}}
 
----
 
 ## Manual Setup
 
@@ -33,6 +32,7 @@ If you prefer to run and develop the services independently without Docker, foll
 ### System Architecture Overview
 
 The PRISM platform is split into two components:
+
 1. **Backend Server (FastAPI)**: A Python-based REST API that communicates with Firebase Auth, Firestore, and handles data storage/exports.
 2. **Research Portal Frontend (Flutter)**: A web-based user interface used by researchers to manage experiments and view participant session data.
 
@@ -49,18 +49,4 @@ Follow these instructions to run the FastAPI backend independently.
 Follow these instructions to run the Flutter web portal independently.
 
 {{< include _flutter-web-frontend_readme.qmd >}}
-
----
-
-## Setup Checklist
-
-Before deploying or launching PRISM, verify that you have completed all setup steps:
-
-- [ ] Created a Firebase project with paid (Blaze) usage enabled.
-- [ ] Registered a Web App within your Firebase project.
-- [ ] Generated and saved the Firebase Service Account key as `serviceAccountKey.json`.
-- [ ] Added the Firebase Web API Key to your configuration/environment variables.
-- [ ] Set up SMTP credentials (Mailgun or Gmail App Password) for participant invite emails.
-- [ ] Created a secure random string for `JWT_SECRET`.
-- [ ] Configured matching API URLs between the frontend and backend (for manual setups).
 
