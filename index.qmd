@@ -5,15 +5,9 @@ execute:
   output: false
 ---
 
-**PRISM** is a comprehensive framework designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, machine learning models, and tools developed by and for the "Australian Future Hearing Initiative". 
+**PRISM** is an open-source, multi-sensor mHealth platform for ecological momentary assessment, just-in-time interventions, and passive sensing. It enables researchers to collect real-world self-report, audio-context, physiological, behavioural, and environmental data from smartphones, smartwatches, and connected devices.
 
-PRISM might stand for:
-
-* **PR**edicting **I**nteraction difficulty using **S**ensors and **M**icro-EMA
-* **P**ersonalized **R**eal-time **I**nteraction difficulty for **S**ound **M**easurement
-* **P**latform for **R**esearch **I**n **S**ituational **M**omentary assessment.
-
-Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.
+The platform was initially developed for hearing and communication research, where understanding listening difficulty in everyday environments requires real-time, context-rich measurement. However, the architecture is designed to support broader health and behavioural research applications.
 
 ## Capabilities
 

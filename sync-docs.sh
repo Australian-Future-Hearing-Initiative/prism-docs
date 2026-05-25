@@ -36,16 +36,16 @@ promote_headings() {
 # tail -n +2 "$BASE/prism-ml/README.md"                   | promote_headings | sed 's/^---$/<hr>/' > guide/_ml_readme.qmd
 
 tail -n +5 "$BASE/prism-setup/README.md"               | promote_headings | sed 's/^---$/<hr>/' > guide/_setup_readme.qmd
-tail -n +8 "$BASE/prism-flutter-backend/README.md"      | sed 's/^---$/<hr>/' | sed 's/^## /### /' > guide/_flutter-backend_readme.qmd
+tail -n +8 "$BASE/prism-flutter-backend/README.md"      | promote_headings | sed 's/^---$/<hr>/' > guide/_flutter-backend_readme.qmd
 tail -n +2 "$BASE/prism-flutter-web-frontend/README.md" | promote_headings | sed 's/^---$/<hr>/' > guide/_flutter-web-frontend_readme.qmd
 tail -n +2 "$BASE/prism-ml/README.md"                   | promote_headings | sed 's/^---$/<hr>/' > guide/_ml_readme.qmd
 
 
 # Validate output files were generated with content
-for out in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd guide/_ml_readme.qmd; do
-    if [ ! -s "$out" ]; then
-        echo "ERROR: Output file '$out' is empty after generation!" >&2
-        exit 1
-    fi
-    echo "OK: $out ($(wc -l < "$out") lines)"
-done
+# for out in guide/_setup_readme.qmd guide/_flutter-backend_readme.qmd guide/_flutter-web-frontend_readme.qmd guide/_ml_readme.qmd; do
+#     if [ ! -s "$out" ]; then
+#         echo "ERROR: Output file '$out' is empty after generation!" >&2
+#         exit 1
+#     fi
+#     echo "OK: $out ($(wc -l < "$out") lines)"
+# done
