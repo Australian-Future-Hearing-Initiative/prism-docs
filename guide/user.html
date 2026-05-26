@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>User Guide – PRISM</title>
+<title>Researcher Guide – PRISM</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -39,9 +39,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-1cabde9831c1453a51d489fcb25f047e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -276,20 +276,24 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../guide/developer.html"> 
-<span class="menu-text">Admin Guide</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../guide/user.html" aria-current="page"> 
-<span class="menu-text">User Guide</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../guide/background.html"> 
 <span class="menu-text">Background</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../guide/developer.html"> 
+<span class="menu-text">Setup Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../guide/user.html" aria-current="page"> 
+<span class="menu-text">Researcher Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/participant.html"> 
+<span class="menu-text">Participant Guide</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../guide/extended.html"> 
-<span class="menu-text">Hearing Tools</span></a>
+<span class="menu-text">Other Tools</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -308,30 +312,30 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#experiment-setup-guide" id="toc-experiment-setup-guide" class="nav-link active" data-scroll-target="#experiment-setup-guide">Experiment Setup Guide</a>
+  <li><a href="#experiment-setup-on-the-research-portal" id="toc-experiment-setup-on-the-research-portal" class="nav-link active" data-scroll-target="#experiment-setup-on-the-research-portal">Experiment Setup on the Research Portal</a>
   <ul class="collapse">
   <li><a href="#step-1-sign-up" id="toc-step-1-sign-up" class="nav-link" data-scroll-target="#step-1-sign-up">Step 1: Sign up</a></li>
   <li><a href="#step-2-notification" id="toc-step-2-notification" class="nav-link" data-scroll-target="#step-2-notification">Step 2: Notification</a></li>
   <li><a href="#step-3-setup-the-first-experiment" id="toc-step-3-setup-the-first-experiment" class="nav-link" data-scroll-target="#step-3-setup-the-first-experiment">Step 3: Setup the first experiment</a></li>
   <li><a href="#step-4-fill-up-the-basic-information" id="toc-step-4-fill-up-the-basic-information" class="nav-link" data-scroll-target="#step-4-fill-up-the-basic-information">Step 4: Fill up the basic information</a></li>
-  <li><a href="#step-5-fill-up-sensor-details" id="toc-step-5-fill-up-sensor-details" class="nav-link" data-scroll-target="#step-5-fill-up-sensor-details">Step 5: Fill up sensor details</a></li>
-  <li><a href="#step-6-feedback-buttons" id="toc-step-6-feedback-buttons" class="nav-link" data-scroll-target="#step-6-feedback-buttons">Step 6: Feedback Buttons</a></li>
-  <li><a href="#step-7-optional-give-a-google-form-survey-link" id="toc-step-7-optional-give-a-google-form-survey-link" class="nav-link" data-scroll-target="#step-7-optional-give-a-google-form-survey-link">Step 7: (Optional) Give a google form survey link</a></li>
-  <li><a href="#step-7b-new-asking-for-ml-model" id="toc-step-7b-new-asking-for-ml-model" class="nav-link" data-scroll-target="#step-7b-new-asking-for-ml-model">Step 7B (New): Asking for ML Model</a></li>
-  <li><a href="#step-7c-new-triggers" id="toc-step-7c-new-triggers" class="nav-link" data-scroll-target="#step-7c-new-triggers">Step 7C (New): Triggers</a></li>
-  <li><a href="#step-8-confirm-the-detail" id="toc-step-8-confirm-the-detail" class="nav-link" data-scroll-target="#step-8-confirm-the-detail">Step 8: Confirm the detail</a></li>
-  <li><a href="#step-9-view-all-experiments" id="toc-step-9-view-all-experiments" class="nav-link" data-scroll-target="#step-9-view-all-experiments">Step 9: View all experiments</a></li>
-  <li><a href="#step-10-add-participants" id="toc-step-10-add-participants" class="nav-link" data-scroll-target="#step-10-add-participants">Step 10: Add participants</a></li>
-  <li><a href="#step-11-check-recording" id="toc-step-11-check-recording" class="nav-link" data-scroll-target="#step-11-check-recording">Step 11: Check recording</a></li>
-  <li><a href="#step-12-view-the-recordings" id="toc-step-12-view-the-recordings" class="nav-link" data-scroll-target="#step-12-view-the-recordings">Step 12: View the recordings</a></li>
-  <li><a href="#step-13-download-recordings" id="toc-step-13-download-recordings" class="nav-link" data-scroll-target="#step-13-download-recordings">Step 13: Download recordings</a></li>
+  <li><a href="#step-5-configure-sensor-details" id="toc-step-5-configure-sensor-details" class="nav-link" data-scroll-target="#step-5-configure-sensor-details">Step 5: Configure Sensor Details</a></li>
+  <li><a href="#step-6-select-ml-models" id="toc-step-6-select-ml-models" class="nav-link" data-scroll-target="#step-6-select-ml-models">Step 6: Select ML Models</a></li>
+  <li><a href="#step-7-define-automation-triggers" id="toc-step-7-define-automation-triggers" class="nav-link" data-scroll-target="#step-7-define-automation-triggers">Step 7: Define Automation Triggers</a></li>
+  <li><a href="#step-8-customise-feedback-buttons" id="toc-step-8-customise-feedback-buttons" class="nav-link" data-scroll-target="#step-8-customise-feedback-buttons">Step 8: Customise Feedback Buttons</a></li>
+  <li><a href="#step-9-optional-add-google-form-survey-link" id="toc-step-9-optional-add-google-form-survey-link" class="nav-link" data-scroll-target="#step-9-optional-add-google-form-survey-link">Step 9: (Optional) Add Google Form Survey Link</a></li>
+  <li><a href="#step-10-review-and-confirm-details" id="toc-step-10-review-and-confirm-details" class="nav-link" data-scroll-target="#step-10-review-and-confirm-details">Step 10: Review and Confirm Details</a></li>
   </ul></li>
-  <li><a href="#participant-user-guide" id="toc-participant-user-guide" class="nav-link" data-scroll-target="#participant-user-guide">Participant User Guide</a>
+  <li><a href="#adding-participants-to-your-experiment" id="toc-adding-participants-to-your-experiment" class="nav-link" data-scroll-target="#adding-participants-to-your-experiment">Adding Participants to Your Experiment</a>
   <ul class="collapse">
-  <li><a href="#step-1-join-the-experiment" id="toc-step-1-join-the-experiment" class="nav-link" data-scroll-target="#step-1-join-the-experiment">Step 1: Join the experiment</a></li>
-  <li><a href="#step-2-starting-the-experiment" id="toc-step-2-starting-the-experiment" class="nav-link" data-scroll-target="#step-2-starting-the-experiment">Step 2: Starting the experiment</a></li>
-  <li><a href="#step-3-sending-a-recording" id="toc-step-3-sending-a-recording" class="nav-link" data-scroll-target="#step-3-sending-a-recording">Step 3: Sending a recording</a></li>
-  <li><a href="#step-4-finish-the-session" id="toc-step-4-finish-the-session" class="nav-link" data-scroll-target="#step-4-finish-the-session">Step 4: Finish the session</a></li>
+  <li><a href="#step-11-view-all-experiments" id="toc-step-11-view-all-experiments" class="nav-link" data-scroll-target="#step-11-view-all-experiments">Step 11: View all experiments</a></li>
+  <li><a href="#step-12-add-and-manage-participants" id="toc-step-12-add-and-manage-participants" class="nav-link" data-scroll-target="#step-12-add-and-manage-participants">Step 12: Add and Manage Participants</a></li>
+  </ul></li>
+  <li><a href="#experiment-deployment" id="toc-experiment-deployment" class="nav-link" data-scroll-target="#experiment-deployment">Experiment Deployment</a></li>
+  <li><a href="#during-post-experiment-monitoring" id="toc-during-post-experiment-monitoring" class="nav-link" data-scroll-target="#during-post-experiment-monitoring">During &amp; Post-Experiment Monitoring</a>
+  <ul class="collapse">
+  <li><a href="#step-13-check-session-recordings" id="toc-step-13-check-session-recordings" class="nav-link" data-scroll-target="#step-13-check-session-recordings">Step 13: Check Session Recordings</a></li>
+  <li><a href="#step-14-view-the-recordings" id="toc-step-14-view-the-recordings" class="nav-link" data-scroll-target="#step-14-view-the-recordings">Step 14: View the Recordings</a></li>
+  <li><a href="#step-15-download-datasets" id="toc-step-15-download-datasets" class="nav-link" data-scroll-target="#step-15-download-datasets">Step 15: Download Datasets</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/user.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -342,7 +346,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">User Guide</h1>
+<h1 class="title">Researcher Guide</h1>
 </div>
 
 
@@ -359,17 +363,17 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p>This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the <a href="../guide/developer.html">Developer Guide</a>, and you have access to it.</p>
-<p>PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:</p>
+<p>PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch participants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:</p>
 <ul>
 <li><strong>Audio</strong>: A short 30-second clip of the sound around you.</li>
 <li><strong>Context</strong>: Your rating of how hard it was to hear speech.</li>
 </ul>
 <p>This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.</p>
-<p>The <strong>PRISM web frontend</strong> serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to <strong>Participants</strong>. It is the control center for your data collection needs.</p>
-<hr>
-<section id="experiment-setup-guide" class="level2">
-<h2 class="anchored" data-anchor-id="experiment-setup-guide">Experiment Setup Guide</h2>
+<p>The <strong>PRISM Research Portal</strong> serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to <strong>Participants</strong>. It is the control center for your data collection needs.</p>
+<p>The <strong>PRISM Android App</strong> and <strong>PRISM WearOS App</strong> serve as the interface for <strong>Participants</strong> to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the <strong>PRISM Research Portal</strong>. See the <a href="guide/participant.qmd">Participant Guide</a> for more information on how to use the PRISM App.</p>
+<p>This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it. See the <a href="guide/developer.qmd">Setup Guide</a> for more information on how to set up and connect to the PRISM Research Portal.</p>
+<section id="experiment-setup-on-the-research-portal" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-setup-on-the-research-portal">Experiment Setup on the Research Portal</h2>
 <section id="step-1-sign-up" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-sign-up">Step 1: Sign up</h3>
 <p>Click “Sign up with Email”.</p>
@@ -423,8 +427,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-5-fill-up-sensor-details" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-fill-up-sensor-details">Step 5: Fill up sensor details</h3>
+<section id="step-5-configure-sensor-details" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-configure-sensor-details">Step 5: Configure Sensor Details</h3>
+<p>Enable or disable independent tracking for <strong>Smartphone</strong> and <strong>Smartwatch</strong> hardware layers. You can specify a custom sampling frequency (Hz) for physiological sensors and explicitly opt-in to <strong>Upload Raw Audio</strong> (privacy warning: sends un-processed audio streams directly to cloud storage).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image22.png" class="img-fluid figure-img"></p>
@@ -438,27 +443,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-6-feedback-buttons" class="level3">
-<h3 class="anchored" data-anchor-id="step-6-feedback-buttons">Step 6: Feedback Buttons</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image12.png" class="img-fluid figure-img"></p>
-<figcaption>Feedback Buttons</figcaption>
-</figure>
-</div>
-<p>Confirm your feedback buttons.</p>
-</section>
-<section id="step-7-optional-give-a-google-form-survey-link" class="level3">
-<h3 class="anchored" data-anchor-id="step-7-optional-give-a-google-form-survey-link">Step 7: (Optional) Give a google form survey link</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image4.png" class="img-fluid figure-img"></p>
-<figcaption>Google form survey link</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-7b-new-asking-for-ml-model" class="level3">
-<h3 class="anchored" data-anchor-id="step-7b-new-asking-for-ml-model">Step 7B (New): Asking for ML Model</h3>
+<section id="step-6-select-ml-models" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-select-ml-models">Step 6: Select ML Models</h3>
+<p>Select and configure on-device analytical models for the experiment: - <strong>YAMNet+ Environment Analysis</strong>: Classifies real-time acoustic environments (e.g., open space, food court) using normalized <code>float32</code> input buffers. - <strong>Words of Not Understanding (WONU)</strong>: Detects spoken linguistic cues (e.g., <em>“pardon?”</em>, <em>“sorry, what?”</em>) signaling a communication breakdown.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image5.png" class="img-fluid figure-img"></p>
@@ -466,8 +453,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-7c-new-triggers" class="level3">
-<h3 class="anchored" data-anchor-id="step-7c-new-triggers">Step 7C (New): Triggers</h3>
+<section id="step-7-define-automation-triggers" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-define-automation-triggers">Step 7: Define Automation Triggers</h3>
+<p>Build rule-based triggers automating model inference and user prompt generation using the visual builder:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image21.png" class="img-fluid figure-img"></p>
@@ -495,45 +483,67 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <th>Sensor Source (Input)</th>
 <th>Allowed Metrics (Units)</th>
 <th>Allowed Operators</th>
-<th>Compatible Target Models (Output)</th>
-<th>Min/Max Threshold Range (Validation)</th>
+<th>Compatible Target Models / Actions</th>
+<th>Threshold Guidance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Phone Microphone</td>
+<td><strong>Phone Microphone</strong></td>
 <td>Decibel (dB)</td>
-<td>&gt;</td>
-<td>e.g., YAMNet+, WONU? All?</td>
-<td>e.g., 0 - 120 dB</td>
+<td><code>&gt;</code>, <code>&lt;</code>, <code>=</code></td>
+<td>Wake YAMNet+ / WONU, or Launch Form</td>
+<td>e.g., <code>0 - 120 dB</code></td>
 </tr>
 <tr class="even">
-<td>Heart Rate</td>
-<td>BPM</td>
-<td>&gt;, &lt;</td>
-<td>e.g., YAMNet+ only? All?</td>
-<td>e.g., 30 - 220 BPM</td>
+<td><strong>Watch Microphone</strong></td>
+<td>Decibel (dB)</td>
+<td><code>&gt;</code>, <code>&lt;</code>, <code>=</code></td>
+<td>Wake YAMNet+ / WONU, or Launch Form</td>
+<td>e.g., <code>0 - 120 dB</code></td>
 </tr>
 <tr class="odd">
-<td>Temperature</td>
-<td>Celsius (°C)</td>
-<td>e.g., &gt;, &lt;</td>
-<td>e.g., All?</td>
-<td>e.g., -10 - 50 °C</td>
+<td><strong>Heart Rate</strong></td>
+<td>BPM</td>
+<td><code>&gt;</code>, <code>&lt;</code>, <code>=</code></td>
+<td>Wake YAMNet+ / WONU, or Launch Form</td>
+<td>e.g., <code>30 - 220 BPM</code></td>
 </tr>
 <tr class="even">
-<td>Watch Microphone</td>
-<td>Decibel (dB)</td>
-<td>&gt;</td>
-<td>e.g., All?</td>
-<td>e.g., 0 - 120 dB</td>
+<td><strong>Temperature</strong></td>
+<td>Celsius (°C)</td>
+<td><code>&gt;</code>, <code>&lt;</code>, <code>=</code></td>
+<td>Wake YAMNet+ / WONU, or Launch Form</td>
+<td>e.g., <code>-10 - 50 °C</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="step-8-confirm-the-detail" class="level3">
-<h3 class="anchored" data-anchor-id="step-8-confirm-the-detail">Step 8: Confirm the detail</h3>
+<section id="step-8-customise-feedback-buttons" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-customise-feedback-buttons">Step 8: Customise Feedback Buttons</h3>
+<p>Configure simple categorical labels for ecological momentary self-reports presented to users during an assessment moment (default labels: <em>Good</em>, <em>Okay</em>, <em>Poor</em>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image12.png" class="img-fluid figure-img"></p>
+<figcaption>Feedback Buttons</figcaption>
+</figure>
+</div>
+<p>Confirm your feedback buttons.</p>
+</section>
+<section id="step-9-optional-add-google-form-survey-link" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-optional-add-google-form-survey-link">Step 9: (Optional) Add Google Form Survey Link</h3>
+<p>Prompt users to complete an external web survey (e.g., Google Forms) for deeper subjective commentary following their recording session.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image4.png" class="img-fluid figure-img"></p>
+<figcaption>Google form survey link</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-10-review-and-confirm-details" class="level3">
+<h3 class="anchored" data-anchor-id="step-10-review-and-confirm-details">Step 10: Review and Confirm Details</h3>
+<p>Confirm the summary configuration draft before publishing.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image27.png" class="img-fluid figure-img"></p>
@@ -541,8 +551,11 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-9-view-all-experiments" class="level3">
-<h3 class="anchored" data-anchor-id="step-9-view-all-experiments">Step 9: View all experiments</h3>
+</section>
+<section id="adding-participants-to-your-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="adding-participants-to-your-experiment">Adding Participants to Your Experiment</h2>
+<section id="step-11-view-all-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="step-11-view-all-experiments">Step 11: View all experiments</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image13.png" class="img-fluid figure-img"></p>
@@ -550,8 +563,8 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-10-add-participants" class="level3">
-<h3 class="anchored" data-anchor-id="step-10-add-participants">Step 10: Add participants</h3>
+<section id="step-12-add-and-manage-participants" class="level3">
+<h3 class="anchored" data-anchor-id="step-12-add-and-manage-participants">Step 12: Add and Manage Participants</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image13.png" class="img-fluid figure-img"></p>
@@ -572,21 +585,21 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <figcaption>CSV Upload</figcaption>
 </figure>
 </div>
-<p>Example CSV file formatting:</p>
+<p>Example CSV file formatting (expected columns: <code>email</code>, <code>name</code>):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image7.png" class="img-fluid figure-img"></p>
 <figcaption>Example CSV</figcaption>
 </figure>
 </div>
-<p>Drag your csv file then you should be able to see participants.</p>
+<p>Drag your csv file then you should be able to see participants. Once loaded, researchers can trigger batch email invitations to all assigned members.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image25.png" class="img-fluid figure-img"></p>
 <figcaption>See participants</figcaption>
 </figure>
 </div>
-<p>You can edit participants by clicking on it and you should be able to see “Email”, “View data”, “Remove”. Note: Here the “View data” is disabled, that’s because there’s no response for that participant yet.</p>
+<p>You can edit participants by clicking on it and you should be able to see “Email”, “View data”, “Remove”. Note: Here the “View data” is disabled, that’s because there’s no response for that participant yet. Removing a participant permanently deletes all associated response records and audio storage payloads.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image26.png" class="img-fluid figure-img"></p>
@@ -601,9 +614,21 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-11-check-recording" class="level3">
-<h3 class="anchored" data-anchor-id="step-11-check-recording">Step 11: Check recording</h3>
-<p>Once partipants have used the app and data collection has begun you can click “View data” for a particular participant.</p>
+</section>
+<section id="experiment-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-deployment">Experiment Deployment</h2>
+<p>Once you have added participants to the Research Portal and clicked <strong>Invite</strong>, the PRISM system manages deployment to devices automatically:</p>
+<ol type="1">
+<li><strong>Invitation Email</strong>: The backend sends an automated invitation email to each participant.</li>
+<li><strong>Download App</strong>: The email instructs the participant to download the PRISM Android/Watch app.</li>
+<li><strong>Activation Link</strong>: When the participant clicks the unique invite link on their phone, it registers their participant ID and downloads the experiment’s specific configuration rules (sampling rates, triggers, models) from Firestore to their device. No manual device side setup is required by the researcher.</li>
+</ol>
+</section>
+<section id="during-post-experiment-monitoring" class="level2">
+<h2 class="anchored" data-anchor-id="during-post-experiment-monitoring">During &amp; Post-Experiment Monitoring</h2>
+<section id="step-13-check-session-recordings" class="level3">
+<h3 class="anchored" data-anchor-id="step-13-check-session-recordings">Step 13: Check Session Recordings</h3>
+<p>Once participants have used the app and data collection has begun you can click “View data” for a particular participant.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image15.png" class="img-fluid figure-img"></p>
@@ -611,8 +636,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-12-view-the-recordings" class="level3">
-<h3 class="anchored" data-anchor-id="step-12-view-the-recordings">Step 12: View the recordings</h3>
+<section id="step-14-view-the-recordings" class="level3">
+<h3 class="anchored" data-anchor-id="step-14-view-the-recordings">Step 14: View the Recordings</h3>
+<p>Review detailed time-series graphs and metadata attributes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image24.png" class="img-fluid figure-img"></p>
@@ -620,8 +646,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
-<section id="step-13-download-recordings" class="level3">
-<h3 class="anchored" data-anchor-id="step-13-download-recordings">Step 13: Download recordings</h3>
+<section id="step-15-download-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="step-15-download-datasets">Step 15: Download Datasets</h3>
+<p>Download signed raw sensor archives and audio files directly via temporary short-lived pre-signed secure URLs.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image19.png" class="img-fluid figure-img"></p>
@@ -629,53 +656,6 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </figure>
 </div>
 <p>Log back in to modify experiments and view the data at any time.</p>
-<hr>
-</section>
-</section>
-<section id="participant-user-guide" class="level2">
-<h2 class="anchored" data-anchor-id="participant-user-guide">Participant User Guide</h2>
-<p>Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.</p>
-<section id="step-1-join-the-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-join-the-experiment">Step 1: Join the experiment</h3>
-<p>Once the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image2.png" height="400" class="figure-img"></p>
-<figcaption>Join the experiment</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-2-starting-the-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-starting-the-experiment">Step 2: Starting the experiment</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image10.png" height="400" class="figure-img"></p>
-<figcaption>Starting the experiment</figcaption>
-</figure>
-</div>
-<ul>
-<li><strong>The Recording Period</strong>: This is the block of time (Like a 4 hour window)</li>
-<li><strong>The Recording Session</strong>: Those are the individual “sessions” (short recordings) that happen inside it.</li>
-</ul>
-</section>
-<section id="step-3-sending-a-recording" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-sending-a-recording">Step 3: Sending a recording</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image3.png" height="400" class="figure-img"></p>
-<figcaption>Sending a recording</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-4-finish-the-session" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-finish-the-session">Step 4: Finish the session</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image16.png" height="400" class="figure-img"></p>
-<figcaption>Finish the session</figcaption>
-</figure>
-</div>
-<hr>
 
 
 </section>

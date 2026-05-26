@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,9 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-1cabde9831c1453a51d489fcb25f047e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -311,20 +311,24 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./guide/developer.html"> 
-<span class="menu-text">Admin Guide</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./guide/user.html"> 
-<span class="menu-text">User Guide</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./guide/background.html"> 
 <span class="menu-text">Background</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./guide/developer.html"> 
+<span class="menu-text">Setup Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./guide/user.html"> 
+<span class="menu-text">Researcher Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./guide/participant.html"> 
+<span class="menu-text">Participant Guide</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./guide/extended.html"> 
-<span class="menu-text">Hearing Tools</span></a>
+<span class="menu-text">Other Tools</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -344,6 +348,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
    
   <ul class="collapse">
   <li><a href="#capabilities" id="toc-capabilities" class="nav-link active" data-scroll-target="#capabilities">Capabilities</a></li>
+  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
   </ul>
@@ -372,14 +377,15 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p><strong>PRISM</strong> is a comprehensive framework designed to advance auditory scene analysis (Ecological Momentary Assessment) for hearing devices. This repository contains the code, machine learning models, and tools developed by and for the “Australian Future Hearing Initiative”.</p>
+<p><strong>PRISM</strong> is an open-source, multi-sensor health platform for ecological momentary assessment, just-in-time interventions, and passive sensing. It enables researchers to collect real-world self-report, audio-context, physiological, behavioural, and environmental data from smartphones, smartwatches, and connected devices.</p>
+<p>The platform was initially developed for hearing and communication research, where understanding listening difficulty in everyday environments requires real-time, context-rich measurement. However, the architecture is designed to support broader health and behavioural research applications.</p>
 <p>PRISM might stand for:</p>
 <ul>
 <li><strong>PR</strong>edicting <strong>I</strong>nteraction difficulty using <strong>S</strong>ensors and <strong>M</strong>icro-EMA</li>
 <li><strong>P</strong>ersonalized <strong>R</strong>eal-time <strong>I</strong>nteraction difficulty for <strong>S</strong>ound <strong>M</strong>easurement</li>
 <li><strong>P</strong>latform for <strong>R</strong>esearch <strong>I</strong>n <strong>S</strong>ituational <strong>M</strong>omentary assessment.</li>
 </ul>
-<p>Modern hearing aids often struggle to adapt to rapidly changing sound environments—like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
+<p>Modern hearing aids often struggle to adapt to rapidly changing sound environments, like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
 <section id="capabilities" class="level2">
 <h2 class="anchored" data-anchor-id="capabilities">Capabilities</h2>
 <ul>
@@ -387,6 +393,15 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <li>An Android mobile and Watch app for participant data collection.</li>
 <li>A backend server for data storage and processing.</li>
 <li>A set of machine learning models for auditory scene analysis.</li>
+</ul>
+</section>
+<section id="get-started" class="level2">
+<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<ul>
+<li>Read about the motivation and science behind the PRISM ecosystem in the: <a href="./guide/background.html">Background documentation.</a></li>
+<li>Learn how to deploy your own experiments using PRISM in the: <a href="./guide/developer.html">Setup Guide documentation.</a></li>
+<li>Get help using the PRISM app and explore its functionality in the: <a href="./guide/user.html">User Guide documentation.</a></li>
+<li>Dive deeper in the <em>Australian Future Hearing Initiative</em> and live hearing tests you can take in the: <a href="./guide/extended.html">Other Tools documentation.</a></li>
 </ul>
 </section>
 <section id="citation" class="level2">

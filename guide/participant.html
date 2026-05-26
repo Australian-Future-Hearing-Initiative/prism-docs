@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Setup Guide – PRISM</title>
+<title>Participant Guide – PRISM</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -118,9 +83,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -318,7 +280,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <span class="menu-text">Background</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../guide/developer.html" aria-current="page"> 
+    <a class="nav-link" href="../guide/developer.html"> 
 <span class="menu-text">Setup Guide</span></a>
   </li>  
   <li class="nav-item">
@@ -326,7 +288,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <span class="menu-text">Researcher Guide</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../guide/participant.html"> 
+    <a class="nav-link active" href="../guide/participant.html" aria-current="page"> 
 <span class="menu-text">Participant Guide</span></a>
   </li>  
   <li class="nav-item">
@@ -350,17 +312,12 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unified-setup-via-docker" id="toc-unified-setup-via-docker" class="nav-link active" data-scroll-target="#unified-setup-via-docker">Unified Setup via Docker</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">1. Prerequisites</a></li>
-  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository">2.Clone the repository</a></li>
-  <li><a href="#gather-your-credentials" id="toc-gather-your-credentials" class="nav-link" data-scroll-target="#gather-your-credentials">3. Gather your credentials</a></li>
-  <li><a href="#run-the-installer" id="toc-run-the-installer" class="nav-link" data-scroll-target="#run-the-installer">4. Run the installer</a></li>
-  <li><a href="#deploy-to-production" id="toc-deploy-to-production" class="nav-link" data-scroll-target="#deploy-to-production">5. Deploy to production</a></li>
-  </ul></li>
-  <li><a href="#manual-setup" id="toc-manual-setup" class="nav-link" data-scroll-target="#manual-setup">Manual Setup</a></li>
+  <li><a href="#step-1-join-the-experiment" id="toc-step-1-join-the-experiment" class="nav-link active" data-scroll-target="#step-1-join-the-experiment">Step 1: Join the experiment</a></li>
+  <li><a href="#step-2-starting-the-experiment" id="toc-step-2-starting-the-experiment" class="nav-link" data-scroll-target="#step-2-starting-the-experiment">Step 2: Starting the experiment</a></li>
+  <li><a href="#step-3-sending-a-recording" id="toc-step-3-sending-a-recording" class="nav-link" data-scroll-target="#step-3-sending-a-recording">Step 3: Sending a recording</a></li>
+  <li><a href="#step-4-finish-the-session" id="toc-step-4-finish-the-session" class="nav-link" data-scroll-target="#step-4-finish-the-session">Step 4: Finish the session</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/participant.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -368,7 +325,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Setup Guide</h1>
+<h1 class="title">Participant Guide</h1>
 </div>
 
 
@@ -385,125 +342,51 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p>The PRISM Research Portal is how researchers can configure and run studies. This guide provides instructions on how to set up the PRISM Research Portal locally for development or deployment. The PRISM Research Portal is split into two main components:</p>
-<ol type="1">
-<li><strong>Backend Server (FastAPI)</strong>: A Python-based REST API that communicates with Firebase Auth, Firestore, and handles data storage/exports.</li>
-<li><strong>Frontend (Flutter)</strong>: A web-based user interface used by researchers to manage experiments and view participant session data.</li>
-</ol>
-<p>Both components connect to the same <strong>Firebase</strong> project for authentication and database storage, which must be created before starting the setup.</p>
-<p>Additionally, an <strong>Android</strong> mobile and <strong>WearOS</strong> app exists to collect data from participants. Documentation on <em>building</em> the PRISM Android mobile and WearOS app can be found in the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-app">GitHub Repo</a>, documentation on <em>using</em> the app can be found in the user guide <a href="guide/user.qmd">here</a>.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    n1@{ label: "Firebase" }
-    
-    subgraph s1["Research Portal"]
-        n2@{ label: "Backend" }
-        n3@{ label: "Frontend" }
-    end
-
-    subgraph s2["App"]
-        n4@{ label: "Android" }
-        n5@{ label: "WearOS" }
-    end
-    
-    n1 &lt;--&gt; s1
-    n1 &lt;--&gt; s2
-    n2 &lt;--&gt; n3
-    n4 --- n5
-</pre>
+<p>Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.</p>
+<p>All data user data is stored securely in a Firebase project.</p>
+<blockquote class="blockquote">
+<p>[!TIP] Most researchers will print out or share a customised version of this section as a one-page guide for their study cohort.</p>
+</blockquote>
+<section id="step-1-join-the-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-join-the-experiment">Step 1: Join the experiment</h3>
+<p>Once the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image2.png" height="400" class="figure-img"></p>
+<figcaption>Join the experiment</figcaption>
+</figure>
 </div>
-<p></p></figure><p></p>
+</section>
+<section id="step-2-starting-the-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-starting-the-experiment">Step 2: Starting the experiment</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image10.png" height="400" class="figure-img"></p>
+<figcaption>Starting the experiment</figcaption>
+</figure>
 </div>
-</div>
-</div>
-<p>For most users and researchers, we recommend using the <strong>Unified Setup via Docker</strong>. It is the most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring installation options.</p>
-<p>You likely want to use the <strong>Manual Setup</strong> only if:</p>
 <ul>
-<li>You are a developer planning to modify the backend code or the Flutter frontend web app code directly.</li>
-<li>You need to run and debug a specific service locally outside of a Docker container environment.</li>
-</ul>
-<section id="unified-setup-via-docker" class="level2">
-<h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
-<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code> repository</a> which uses Docker Compose. These instructions are detailed here:</p>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">1. Prerequisites</h3>
-<p>Ensure the following are installed and running:</p>
-<ul>
-<li><a href="https://desktop.docker.com/"><strong>Docker Desktop</strong></a> - must be installed and <strong>running</strong>!</li>
-<li><a href="https://git-scm.com/download/win"><strong>Git</strong> for Windows</a>, or for Mac and Linux git is pre-installed.</li>
-<li><a href="https://console.firebase.google.com/">A <strong>Firebase</strong> project</a> with paid usage enabled.</li>
-<li><a href="https://www.mailgun.com/">A <strong>Mailgun</strong> account</a> or a <a href="https://myaccount.google.com/apppasswords"><strong>Gmail</strong> account</a> for sending emails.</li>
+<li><strong>The Recording Period</strong>: This is the block of time (Like a 4 hour window)</li>
+<li><strong>The Recording Session</strong>: Those are the individual “sessions” (short recordings) that happen inside it.</li>
 </ul>
 </section>
-<section id="clone-the-repository" class="level3">
-<h3 class="anchored" data-anchor-id="clone-the-repository">2.Clone the repository</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="step-3-sending-a-recording" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-sending-a-recording">Step 3: Sending a recording</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image3.png" height="400" class="figure-img"></p>
+<figcaption>Sending a recording</figcaption>
+</figure>
+</div>
 </section>
-<section id="gather-your-credentials" class="level3">
-<h3 class="anchored" data-anchor-id="gather-your-credentials">3. Gather your credentials</h3>
-<p>Before running the installer, have the following ready — the script will prompt you for each one.</p>
-<section id="firebase-web-api-key" class="level4">
-<h4 class="anchored" data-anchor-id="firebase-web-api-key">Firebase Web API Key</h4>
-<p>From the Firebase Console in your project (e.g.&nbsp;<strong>PrismData</strong>): <strong>Settings → General</strong></p>
-<p>Scroll down to <strong>Your apps → Web apps → prism (web) → Config → apiKey</strong> and save it.</p>
-</section>
-<section id="firebase-service-account-key" class="level4">
-<h4 class="anchored" data-anchor-id="firebase-service-account-key">Firebase Service Account Key</h4>
-<p>From the Firebase Console in your project (e.g.&nbsp;<strong>PrismData</strong>): <strong>Settings → Service accounts</strong></p>
-<p>Select the <strong>Firebase Admin SDK</strong> section and click <strong>Generate new private key</strong>.</p>
-<p>Rename the downloaded file to <code>serviceAccountKey.json</code> and place it in the root of the <code>prism-setup</code> folder.</p>
-</section>
-<section id="email-settings" class="level4">
-<h4 class="anchored" data-anchor-id="email-settings">Email Settings</h4>
-<p><strong>Option 1: Mailgun</strong></p>
-<ol type="1">
-<li>Sign up for a free account at https://www.mailgun.com/</li>
-<li>Follow the instructions to <a href="https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide">add a domain</a> and verify your email address.</li>
-<li>Save the API key and domain name — the setup prompt will ask for them.</li>
-</ol>
-<blockquote class="blockquote">
-<p>The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> You must have a web domain hosted somewhere to use this service.</p>
-</blockquote>
-<p><strong>Option 2: Gmail SMTP</strong></p>
-<p>Enable 2-Step Verification, then generate an App Password:</p>
-<ul>
-<li><a href="https://myaccount.google.com/security">Google Account</a> → Security → 2-Step Verification → ON</li>
-<li><a href="https://myaccount.google.com/apppasswords">App passwords</a> → create a new app (<code>PRISM</code>) → copy the 16-char code</li>
-</ul>
-<p>Save your Gmail address and the 16-char App Password — the setup prompt will ask for them.</p>
-<blockquote class="blockquote">
-<p>Gmail allows up to 100 emails per day, but can’t easily be changed.</p>
-</blockquote>
-</section>
-</section>
-<section id="run-the-installer" class="level3">
-<h3 class="anchored" data-anchor-id="run-the-installer">4. Run the installer</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> install.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script will prompt for your credentials, build the Docker containers, and open PRISM in your browser automatically.</p>
-</section>
-<section id="deploy-to-production" class="level3">
-<h3 class="anchored" data-anchor-id="deploy-to-production">5. Deploy to production</h3>
-<p>Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the containers when you need to access the experiment.</p>
-<p>To stop the services:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To start them again (without rebuilding):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then navigate your browser to http://127.0.0.1:8000 (assuming default ports) to access the PRISM Research Portal.</p>
-</section>
-</section>
-<section id="manual-setup" class="level2">
-<h2 class="anchored" data-anchor-id="manual-setup">Manual Setup</h2>
-<p>If you prefer to run and develop the services independently without Docker, follow the manual instructions documented at <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend">prism-flutter-backend repo</a> and the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend">prism-flutter-web-frontend repo</a>.</p>
+<section id="step-4-finish-the-session" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-finish-the-session">Step 4: Finish the session</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image16.png" height="400" class="figure-img"></p>
+<figcaption>Finish the session</figcaption>
+</figure>
+</div>
 
 
 </section>
@@ -927,4 +810,4 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/developer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/participant.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
