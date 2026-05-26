@@ -1,11 +1,29 @@
 ---
-title: "Hearing Tools"
+title: "Other Tools"
 format:
   html:
     toc: true
     toc-depth: 3
 ---
 
-* Take your own hearing test at [https://afhi-consonant-confusion.streamlit.app/](https://afhi-consonant-confusion.streamlit.app/)
+## About AFHI
 
-* Explore acoustic and hearing related models: [https://github.com/Australian-Future-Hearing-Initiative/prism-ml](https://github.com/Australian-Future-Hearing-Initiative/prism-ml)
+Visit the [Australian Future Hearing Initiative](https://australianfuturehearing.org/) website for more information about the project.
+
+## Hearing Tests
+
+The Australian Future Hearing Initiative provides a [suite of web-based hearing tests and demos](hhttps://afhi-hearing-tests.streamlit.app/) including:
+
+* *Pure-Tone Audiometry*
+* *Pip Pure-Tone Audiometry*
+* *Consonant Confusion*
+* *Categorical Loudness Scaling*
+* *Tone Generator & Calibration*
+
+
+Explore the source code at the [AFHI GitHub repository](https://github.com/Australian-Future-Hearing-Initiative/afhi-hearing-tests-public) (licensed under CC-BY-NC).
+
+
+## Acoustic & Hearing Machine Learning Models
+
+* Explore models and datasets at the [prism-ml repository](https://github.com/Australian-Future-Hearing-Initiative/prism-ml)

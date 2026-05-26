@@ -12,7 +12,9 @@ Hearing loss affects over 1.5 billion people worldwide and is one of the leading
 
 Traditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs *in the wild*. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user's everyday life.
 
-## Ecological Momentary Assessment (EMA)
+## What is PRISM?
+
+### Ecological Momentary Assessment (EMA)
 
 PRISM is built around the methodology of **Ecological Momentary Assessment (EMA)**, a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.
 
@@ -24,7 +26,20 @@ In a PRISM experiment, participants carry a smartphone (and optionally a smartwa
 
 This approach provides ecologically valid, time-stamped, multi-modal data that links *subjective* hearing difficulty to *objective* environmental and physiological measurements.
 
-## Multi-Modal Sensor Data
+### Why PRISM?
+
+PRISM addresses a key bottleneck in hearing science: **the lack of large-scale, ecologically valid, multi-modal datasets** linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:
+
+- Study hearing difficulty *where it actually happens*, not just in the lab.
+- Combine subjective self-reports with objective sensor and ML-derived features.
+- Build and validate models that can eventually drive **real-time, adaptive hearing-aid algorithms**.
+- Rapidly iterate on experiment designs through a configurable web interface.
+
+The long-term vision, as part of the **Australian Future Hearing Initiative**, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter.
+
+## Features
+
+### Multi-Modal Sensor Data Collection
 
 A key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:
 
@@ -38,11 +53,11 @@ A key design principle of PRISM is that hearing difficulty cannot be understood 
 
 Each sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.
 
-## On-Device Machine Learning
+### On-Device Machine Learning
 
 PRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:
 
-### YAMNet+ - Acoustic Scene Classification
+#### YAMNet+ - Acoustic Scene Classification
 
 *YAMNet+* is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., *open space*, *restaurant*, *traffic*, *quiet room*). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.
 
@@ -50,11 +65,21 @@ This builds on the YAMNet architecture and is described in:
 
 > Zhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., & Lyon, R. (2026). *A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet.* [arXiv:2508.10360](https://arxiv.org/abs/2508.10360)
 
-### WONU - Communication Breakdown Detection
+#### WONU - Communication Breakdown Detection
 
 The **Words of Not Understanding (WONU)** model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as *"pardon?"*, *"sorry, what?"*, or *"can you repeat that?"* are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making *WONU* a complementary signal to the participant's self-report.
 
-## Rule-Based Triggers
+#### ML Models List
+
+- [AuditoryHuM paper](https://arxiv.org/abs/2602.19409)
+- [AuditoryHuM supplementary data](https://huggingface.co/datasets/hzhongresearch/auditoryhum_supplementary)
+- [AuditoryHuM demo website with alignment samples](https://huggingface.co/spaces/hzhongresearch/auditoryhum_samples)
+- [AHEAD-DS and OpenYAMNet paper](https://arxiv.org/abs/2508.10360)
+- [AHEAD-DS](https://huggingface.co/datasets/hzhongresearch/ahead_ds)
+- [AHEAD-DS (unmixed)](https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed)
+- [OpenYAMNet/YAMNet+ models](https://huggingface.co/hzhongresearch/yamnetp_ahead_ds)
+
+### Rule-Based Triggers
 
 Researchers can configure **sensor-threshold triggers** that automate data collection and model activation. A trigger is defined by:
 
@@ -67,26 +92,65 @@ Researchers can configure **sensor-threshold triggers** that automate data colle
 
 This trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting.
 
-## Data Pipeline
+## PRISM Study/Experiment Workflow Overview
 
-Data flows from participant devices through a cloud pipeline:
+Running a PRISM study requires 3 main components:
 
-1. **On-device capture** - the mobile app records audio, sensor streams, and self-reports, tagging each sample with experiment, participant, and device identifiers.
-2. **Cloud storage** - files are uploaded to Firebase Storage using a structured path convention.
-3. **Automatic indexing** - a Cloud Function mirrors each upload into Firestore, creating a searchable, filterable catalogue of responses with metadata including ML classification results, timestamps, and file sizes.
-4. **Researcher dashboard** - the PRISM web frontend lets researchers browse, filter, play back, and download participant responses, grouped by experiment and data type (audio recordings, heart rate, accelerometer, gyroscope, body temperature).
+```{mermaid}
+flowchart TD
+    subgraph s1["Firebase"]
+        direction LR
+        n1@{ shape: "hex", label: "Create Firebase Project" }
+    end
 
-## Why PRISM?
+    subgraph s2["Research Portal"]
+        direction TB
+        n2@{ label: "Backend" }
+        n3@{ label: "Frontend" }
+        n2 <--> n3
+        n4@{ shape: "hex", label: "Install Research Portal" }
+        n5@{ shape: "hex", label: "Configure and deploy experiments" }
+        n6@{ shape: "hex", label: "Experimenter monitors study" }
+        n4 --> n5
+        n5 --> n6
+    end
 
-PRISM addresses a key bottleneck in hearing science: **the lack of large-scale, ecologically valid, multi-modal datasets** linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:
+    subgraph s3["App"]
+        direction TB
+        n7@{ label: "Android" }
+        n8@{ label: "WearOS" }
+        n7 --> n8
+        n9@{ shape: "hex", label: "Build and Distribute App" }
+        n10@{ shape: "hex", label: "Users interact with App" }
+        n9 --> n10
+    end
+    
+    s1 <--> s2
+    s1 <--> s3
 
-- Study hearing difficulty *where it actually happens*, not just in the lab.
-- Combine subjective self-reports with objective sensor and ML-derived features.
-- Build and validate models that can eventually drive **real-time, adaptive hearing-aid algorithms**.
-- Rapidly iterate on experiment designs through a configurable web interface.
+    style n1 fill:#FAD2CF
+    style n2 fill:#FEEFC3
+    style n3 fill:#FEEFC3
+    style n4 fill:#FAD2CF
+    style n5 fill:#FAD2CF
+    style n6 fill:#FAD2CF
+    style n7 fill:#FEEFC3
+    style n8 fill:#FEEFC3
+    style n9 fill:#FAD2CF
+    style n10 fill:#FAD2CF
+    style s1 fill:#D2E3FC
+    style s2 fill:#CEEAD6
+    style s3 fill:#CEEAD6
 
-The long-term vision, as part of the **Australian Future Hearing Initiative**, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time — giving users seamless hearing across every environment they encounter.
 
-## Models
+```
 
-{{< include _ml_readme.qmd >}}
+1. **Firebase project**: you must [create a Firebase project](https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_registering_apps) for the authentication and secure storage for a PRISM experiment.
+2. **Research Portal**: you must [install the PRISM Research Portal](guide/developer.qmd) from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.
+3. **App**: Users must install the app so they can interact with the PRISM experiment.
+
+## Contact
+For questions, feedback, or collaboration opportunities, please contact:
+
+- **Name:** Romaric Bouveret
+- **Email:** [romaric.bouveret@mq.edu.au](mailto:romaric.bouveret@mq.edu.au)

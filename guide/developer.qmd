@@ -1,34 +1,135 @@
 ---
-title: "Developer Guide"
+title: "Setup Guide"
 format:
   html:
     toc: true
     toc-depth: 3
 ---
 
-The PRISM ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment.
+The PRISM Research Portal is how researchers can configure and run studies. This guide provides instructions on how to set up the PRISM Research Portal locally for development or deployment. The PRISM Research Portal is split into two main components:
 
-## Firebase
+1. **Backend Server (FastAPI)**: A Python-based REST API that communicates with Firebase Auth, Firestore, and handles data storage/exports.
+2. **Frontend (Flutter)**: A web-based user interface used by researchers to manage experiments and view participant session data.
 
-The PRISM ecosystem is designed to use Firebase to securely store user data. To create your own instance of PRISM you will need a **paid Firebase project**. [Get a Firebase account and make a new project as described here](https://firebase.google.com/docs/projects/learn-more). Then follow the directions below to create your own PRISM instance.
+Both components connect to the same **Firebase** project for authentication and database storage, which must be created before starting the setup. 
+
+Additionally, an **Android** mobile and **WearOS** app exists to collect data from participants. Documentation on *building* the PRISM Android mobile and WearOS app can be found in the [GitHub Repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-app), documentation on *using* the app can be found in the user guide [here](guide/user.qmd).
+
+```{mermaid}
+flowchart TD
+	n1@{ label: "Firebase" }
+    
+	subgraph s1["Research Portal"]
+		n2@{ label: "Backend" }
+        n3@{ label: "Frontend" }
+	end
+
+    subgraph s2["App"]
+		n4@{ label: "Android" }
+        n5@{ label: "WearOS" }
+	end
+    
+	n1 <--> s1
+    n1 <--> s2
+    n2 <--> n3
+    n4 --- n5
+```
+
+For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring installation options.
+
+You likely want to use the **Manual Setup** only if:
+
+* You are a developer planning to modify the backend code or the Flutter frontend web app code directly.
+* You need to run and debug a specific service locally outside of a Docker container environment.
 
 ## Unified Setup via Docker
 
-The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-setup), which uses Docker Compose.
+The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) which uses Docker Compose. These instructions are detailed here:
 
-{{< include _setup_readme.qmd >}}
+### 1. Prerequisites
+Ensure the following are installed and running:
 
+- [**Docker Desktop**](https://desktop.docker.com/) - must be installed and **running**!
+- [**Git** for Windows](https://git-scm.com/download/win), or for Mac and Linux git is pre-installed.
+- [A **Firebase** project](https://console.firebase.google.com/) with paid usage enabled.
+- [A **Mailgun** account](https://www.mailgun.com/) or a [**Gmail** account](https://myaccount.google.com/apppasswords) for sending emails.
 
-## Manual Backend Setup
+### 2.Clone the repository
 
-If you wish to run the FastAPI backend independently without Docker, follow the instructions as detailed in the [`prism-flutter-backend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend).
+```bash
+git clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git
+cd prism-setup
+```
 
-{{< include _flutter-backend_readme.qmd >}}
+### 3. Gather your credentials
 
+Before running the installer, have the following ready — the script will prompt you for each one.
 
-## Manual Frontend Setup
+#### Firebase Web API Key
 
-If you wish to run the front end Flutter web application without docker, follow the instructions as detailed in the [`prism-flutter-web-frontend` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend).
+From the Firebase Console in your project (e.g. **PrismData**): **Settings → General**
 
-{{< include _flutter-web-frontend_readme.qmd >}}
+Scroll down to **Your apps → Web apps → prism (web) → Config → apiKey** and save it.
+
+#### Firebase Service Account Key
+
+From the Firebase Console in your project (e.g. **PrismData**): **Settings → Service accounts**
+
+Select the **Firebase Admin SDK** section and click **Generate new private key**.
+
+Rename the downloaded file to `serviceAccountKey.json` and place it in the root of the `prism-setup` folder.
+
+#### Email Settings
+
+**Option 1: Mailgun**
+
+1. Sign up for a free account at https://www.mailgun.com/
+2. Follow the instructions to [add a domain](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) and verify your email address.
+3. Save the API key and domain name — the setup prompt will ask for them.
+
+> The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially.
+
+> **Note:** You must have a web domain hosted somewhere to use this service.
+
+**Option 2: Gmail SMTP**
+
+Enable 2-Step Verification, then generate an App Password:
+
+- [Google Account](https://myaccount.google.com/security) → Security → 2-Step Verification → ON
+- [App passwords](https://myaccount.google.com/apppasswords) → create a new app (`PRISM`) → copy the 16-char code
+
+Save your Gmail address and the 16-char App Password — the setup prompt will ask for them.
+
+> Gmail allows up to 100 emails per day, but can't easily be changed.
+
+### 4. Run the installer
+
+```bash
+bash install.sh
+```
+
+The script will prompt for your credentials, build the Docker containers, and open PRISM in your browser automatically.
+
+### 5. Deploy to production
+
+Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the containers when you need to access the experiment.
+
+To stop the services:
+```bash
+cd prism-setup
+docker compose down
+```
+
+To start them again (without rebuilding):
+```bash
+cd prism-setup
+docker compose up
+```
+
+Then navigate your browser to http://127.0.0.1:8000 (assuming default ports) to access the PRISM Research Portal.
+
+## Manual Setup
+
+If you prefer to run and develop the services independently without Docker, follow the manual instructions documented at [prism-flutter-backend repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend) and the [prism-flutter-web-frontend repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend).
+
 

@@ -1,25 +1,25 @@
 ---
-title: "User Guide"
+title: "Researcher Guide"
 format:
   html:
     toc: true
     toc-depth: 3
 ---
 
-This guide assumes you are a researcher or participant in an experiment using PRISM. It is expected a local instance of PRISM is running, as described in the [Developer Guide](developer.qmd), and you have access to it.
-
-PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch particiopants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:
+PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch participants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:
 
 - **Audio**: A short 30-second clip of the sound around you.
 - **Context**: Your rating of how hard it was to hear speech.
 
 This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.
 
-The **PRISM web frontend** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to **Participants**. It is the control center for your data collection needs.
+The **PRISM Research Portal** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to **Participants**. It is the control center for your data collection needs.
 
----
+The **PRISM Android App** and **PRISM WearOS App** serve as the interface for **Participants** to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the **PRISM Research Portal**. See the [Participant Guide](guide/participant.qmd) for more information on how to use the PRISM App.
 
-## Experiment Setup Guide
+This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it. See the [Setup Guide](guide/developer.qmd) for more information on how to set up and connect to the PRISM Research Portal.
+
+## Experiment Setup on the Research Portal
 
 ### Step 1: Sign up
 
@@ -51,27 +51,22 @@ Click "Create experiment".
 
 ![Fill up the basic information](images/image11.png)
 
-### Step 5: Fill up sensor details
+### Step 5: Configure Sensor Details
+Enable or disable independent tracking for **Smartphone** and **Smartwatch** hardware layers. You can specify a custom sampling frequency (Hz) for physiological sensors and explicitly opt-in to **Upload Raw Audio** (privacy warning: sends un-processed audio streams directly to cloud storage).
 
 ![Fill up sensor details](images/image22.png)
 
 ![Step 5 (New): Fill up sensor details](images/image23.png)
 
-### Step 6: Feedback Buttons
-
-![Feedback Buttons](images/image12.png)
-
-Confirm your feedback buttons.
-
-### Step 7: (Optional) Give a google form survey link
-
-![Google form survey link](images/image4.png)
-
-### Step 7B (New): Asking for ML Model
+### Step 6: Select ML Models
+Select and configure on-device analytical models for the experiment:
+- **YAMNet+ Environment Analysis**: Classifies real-time acoustic environments (e.g., open space, food court) using normalized `float32` input buffers.
+- **Words of Not Understanding (WONU)**: Detects spoken linguistic cues (e.g., *"pardon?"*, *"sorry, what?"*) signaling a communication breakdown.
 
 ![Asking for ML Model](images/image5.png)
 
-### Step 7C (New): Triggers
+### Step 7: Define Automation Triggers
+Build rule-based triggers automating model inference and user prompt generation using the visual builder:
 
 ![Triggers](images/image21.png)
 
@@ -79,22 +74,38 @@ Confirm your feedback buttons.
 
 #### Sensor Lists
 
-| Sensor Source (Input) | Allowed Metrics (Units) | Allowed Operators | Compatible Target Models (Output) | Min/Max Threshold Range (Validation) |
+| Sensor Source (Input) | Allowed Metrics (Units) | Allowed Operators | Compatible Target Models / Actions | Threshold Guidance |
 |---|---|---|---|---|
-| Phone Microphone | Decibel (dB) | > | e.g., YAMNet+, WONU? All? | e.g., 0 - 120 dB |
-| Heart Rate | BPM | >, < | e.g., YAMNet+ only? All? | e.g., 30 - 220 BPM |
-| Temperature | Celsius (°C) | e.g., >, < | e.g., All? | e.g., -10 - 50 °C |
-| Watch Microphone | Decibel (dB) | > | e.g., All? | e.g., 0 - 120 dB |
+| **Phone Microphone** | Decibel (dB) | `>`, `<`, `=` | Wake YAMNet+ / WONU, or Launch Form | e.g., `0 - 120 dB` |
+| **Watch Microphone** | Decibel (dB) | `>`, `<`, `=` | Wake YAMNet+ / WONU, or Launch Form | e.g., `0 - 120 dB` |
+| **Heart Rate** | BPM | `>`, `<`, `=` | Wake YAMNet+ / WONU, or Launch Form | e.g., `30 - 220 BPM` |
+| **Temperature** | Celsius (°C) | `>`, `<`, `=` | Wake YAMNet+ / WONU, or Launch Form | e.g., `-10 - 50 °C` |
 
-### Step 8: Confirm the detail
+### Step 8: Customise Feedback Buttons
+Configure simple categorical labels for ecological momentary self-reports presented to users during an assessment moment (default labels: *Good*, *Okay*, *Poor*).
+
+![Feedback Buttons](images/image12.png)
+
+Confirm your feedback buttons.
+
+### Step 9: (Optional) Add Google Form Survey Link
+Prompt users to complete an external web survey (e.g., Google Forms) for deeper subjective commentary following their recording session.
+
+![Google form survey link](images/image4.png)
+
+### Step 10: Review and Confirm Details
+Confirm the summary configuration draft before publishing.
 
 ![Confirm the detail](images/image27.png)
 
-### Step 9: View all experiments
+
+## Adding Participants to Your Experiment
+
+### Step 11: View all experiments
 
 ![View all experiments](images/image13.png)
 
-### Step 10: Add participants
+### Step 12: Add and Manage Participants
 
 ![View all experiments](images/image13.png)
 
@@ -106,15 +117,15 @@ Confirm it by clicking "Save and add participants".
 
 ![CSV Upload](images/image9.png)
 
-Example CSV file formatting:
+Example CSV file formatting (expected columns: `email`, `name`):
 
 ![Example CSV](images/image7.png)
 
-Drag your csv file then you should be able to see participants.
+Drag your csv file then you should be able to see participants. Once loaded, researchers can trigger batch email invitations to all assigned members.
 
 ![See participants](images/image25.png)
 
-You can edit participants by clicking on it and you should be able to see "Email", "View data", "Remove". Note: Here the "View data" is disabled, that’s because there’s no response for that participant yet.
+You can edit participants by clicking on it and you should be able to see "Email", "View data", "Remove". Note: Here the "View data" is disabled, that’s because there’s no response for that participant yet. Removing a participant permanently deletes all associated response records and audio storage payloads.
 
 ![Edit participants](images/image26.png)
 
@@ -122,47 +133,32 @@ Click save, it will show "Saving…". Afterward it will guide you back to the ex
 
 ![Experiment list](images/image14.png)
 
-### Step 11: Check recording
-Once partipants have used the app and data collection has begun you can click "View data" for a particular participant.
+## Experiment Deployment
+
+Once you have added participants to the Research Portal and clicked **Invite**, the PRISM system manages deployment to devices automatically:
+
+1. **Invitation Email**: The backend sends an automated invitation email to each participant.
+2. **Download App**: The email instructs the participant to download the PRISM Android/Watch app.
+3. **Activation Link**: When the participant clicks the unique invite link on their phone, it registers their participant ID and downloads the experiment's specific configuration rules (sampling rates, triggers, models) from Firestore to their device. No manual device side setup is required by the researcher.
+
+
+## During & Post-Experiment Monitoring
+
+### Step 13: Check Session Recordings
+Once participants have used the app and data collection has begun you can click "View data" for a particular participant.
 
 ![Check recording](images/image15.png)
 
-### Step 12: View the recordings
+### Step 14: View the Recordings
+Review detailed time-series graphs and metadata attributes.
 
 ![View the recordings](images/image24.png)
 
-### Step 13: Download recordings
+### Step 15: Download Datasets
+Download signed raw sensor archives and audio files directly via temporary short-lived pre-signed secure URLs.
 
 ![Download recordings](images/image19.png)
 
 Log back in to modify experiments and view the data at any time.
 
----
 
-## Participant User Guide
-
-Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.
-
-### Step 1: Join the experiment
-
-Once the participant clicks the invite link from their email, they will be able to see this interface. Click "Open".
-
-![Join the experiment](images/image2.png){height=400px}
-
-
-### Step 2: Starting the experiment
-
-![Starting the experiment](images/image10.png){height=400px}
-
-- **The Recording Period**: This is the block of time (Like a 4 hour window)
-- **The Recording Session**: Those are the individual "sessions" (short recordings) that happen inside it.
-
-### Step 3: Sending a recording
-
-![Sending a recording](images/image3.png){height=400px}
-
-### Step 4: Finish the session
-
-![Finish the session](images/image16.png){height=400px}
-
----
