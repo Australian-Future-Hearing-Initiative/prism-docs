@@ -15,7 +15,9 @@ website:
       - href: guide/developer.qmd
         text: Setup Guide
       - href: guide/user.qmd
-        text: User Guide
+        text: Researcher Guide
+      - href: guide/participant.qmd
+        text: Participant Guide
       - href: guide/extended.qmd
         text: Other Tools
         

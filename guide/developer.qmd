@@ -6,14 +6,34 @@ format:
     toc-depth: 3
 ---
 
-The PRISM ecosystem consists of a backend server built with FastAPI and a web frontend built with Flutter. Both rely on Firebase for authentication and database storage. This guide provides instructions on how to set up the PRISM system locally for development or deployment. The PRISM platform is split into two components:
+The PRISM Research Portal is how researchers can configure and run studies. This guide provides instructions on how to set up the PRISM Research Portal locally for development or deployment. The PRISM Research Portal is split into two main components:
 
 1. **Backend Server (FastAPI)**: A Python-based REST API that communicates with Firebase Auth, Firestore, and handles data storage/exports.
-2. **Research Portal Frontend (Flutter)**: A web-based user interface used by researchers to manage experiments and view participant session data.
+2. **Frontend (Flutter)**: A web-based user interface used by researchers to manage experiments and view participant session data.
 
-Both components connect to the same **Firebase** project, which must be created before starting the setup.
+Both components connect to the same **Firebase** project for authentication and database storage, which must be created before starting the setup. 
 
-## Which setup should I use?
+Additionally, an **Android** mobile and **WearOS** app exists to collect data from participants. Documentation on *building* the PRISM Android mobile and WearOS app can be found in the [GitHub Repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-app), documentation on *using* the app can be found in the user guide [here](guide/user.qmd).
+
+```{mermaid}
+flowchart TD
+	n1@{ label: "Firebase" }
+    
+	subgraph s1["Research Portal"]
+		n2@{ label: "Backend" }
+        n3@{ label: "Frontend" }
+	end
+
+    subgraph s2["App"]
+		n4@{ label: "Android" }
+        n5@{ label: "WearOS" }
+	end
+    
+	n1 <--> s1
+    n1 <--> s2
+    n2 <--> n3
+    n4 --- n5
+```
 
 For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring installation options.
 
@@ -21,7 +41,6 @@ You likely want to use the **Manual Setup** only if:
 
 * You are a developer planning to modify the backend code or the Flutter frontend web app code directly.
 * You need to run and debug a specific service locally outside of a Docker container environment.
-
 
 ## Unified Setup via Docker
 
@@ -58,7 +77,7 @@ From the Firebase Console in your project (e.g. **PrismData**): **Settings → S
 
 Select the **Firebase Admin SDK** section and click **Generate new private key**.
 
-Rename the downloaded file to `serviceAccountKey.json` and place it in the `prism-setup` folder.
+Rename the downloaded file to `serviceAccountKey.json` and place it in the root of the `prism-setup` folder.
 
 #### Email Settings
 
@@ -67,6 +86,10 @@ Rename the downloaded file to `serviceAccountKey.json` and place it in the `pris
 1. Sign up for a free account at https://www.mailgun.com/
 2. Follow the instructions to [add a domain](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) and verify your email address.
 3. Save the API key and domain name — the setup prompt will ask for them.
+
+> The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially.
+
+> **Note:** You must have a web domain hosted somewhere to use this service.
 
 **Option 2: Gmail SMTP**
 
@@ -77,6 +100,7 @@ Enable 2-Step Verification, then generate an App Password:
 
 Save your Gmail address and the 16-char App Password — the setup prompt will ask for them.
 
+> Gmail allows up to 100 emails per day, but can't easily be changed.
 
 ### 4. Run the installer
 
@@ -92,13 +116,17 @@ Your Firebase project houses the experiment. The front and backend allow you to 
 
 To stop the services:
 ```bash
+cd prism-setup
 docker compose down
 ```
 
 To start them again (without rebuilding):
 ```bash
+cd prism-setup
 docker compose up
 ```
+
+Then navigate your browser to http://127.0.0.1:8000 (assuming default ports) to access the PRISM Research Portal.
 
 ## Manual Setup
 

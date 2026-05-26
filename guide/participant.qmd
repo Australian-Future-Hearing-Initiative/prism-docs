@@ -1,0 +1,37 @@
+
+---
+title: "Participant Guide"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.
+
+All data user data is stored securely in a Firebase project.
+
+> [!TIP]
+> Most researchers will print out or share a customised version of this section as a one-page guide for their study cohort.
+
+### Step 1: Join the experiment
+
+Once the participant clicks the invite link from their email, they will be able to see this interface. Click "Open".
+
+![Join the experiment](images/image2.png){height=400px}
+
+
+### Step 2: Starting the experiment
+
+![Starting the experiment](images/image10.png){height=400px}
+
+- **The Recording Period**: This is the block of time (Like a 4 hour window)
+- **The Recording Session**: Those are the individual "sessions" (short recordings) that happen inside it.
+
+### Step 3: Sending a recording
+
+![Sending a recording](images/image3.png){height=400px}
+
+### Step 4: Finish the session
+
+![Finish the session](images/image16.png){height=400px}

@@ -35,7 +35,7 @@ PRISM addresses a key bottleneck in hearing science: **the lack of large-scale, 
 - Build and validate models that can eventually drive **real-time, adaptive hearing-aid algorithms**.
 - Rapidly iterate on experiment designs through a configurable web interface.
 
-The long-term vision, as part of the **Australian Future Hearing Initiative**, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time — giving users seamless hearing across every environment they encounter.
+The long-term vision, as part of the **Australian Future Hearing Initiative**, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter.
 
 ## Features
 
@@ -71,7 +71,13 @@ The **Words of Not Understanding (WONU)** model detects linguistic cues in speec
 
 #### ML Models List
 
-{{< include _ml_readme.qmd >}}
+- [AuditoryHuM paper](https://arxiv.org/abs/2602.19409)
+- [AuditoryHuM supplementary data](https://huggingface.co/datasets/hzhongresearch/auditoryhum_supplementary)
+- [AuditoryHuM demo website with alignment samples](https://huggingface.co/spaces/hzhongresearch/auditoryhum_samples)
+- [AHEAD-DS and OpenYAMNet paper](https://arxiv.org/abs/2508.10360)
+- [AHEAD-DS](https://huggingface.co/datasets/hzhongresearch/ahead_ds)
+- [AHEAD-DS (unmixed)](https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed)
+- [OpenYAMNet/YAMNet+ models](https://huggingface.co/hzhongresearch/yamnetp_ahead_ds)
 
 ### Rule-Based Triggers
 
@@ -86,13 +92,65 @@ Researchers can configure **sensor-threshold triggers** that automate data colle
 
 This trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting.
 
-## Architecture
+## PRISM Study/Experiment Workflow Overview
 
-### Data Pipeline
+Running a PRISM study requires 3 main components:
 
-Data flows from participant devices through a cloud pipeline:
+```{mermaid}
+flowchart TD
+    subgraph s1["Firebase"]
+        direction LR
+        n1@{ shape: "hex", label: "Create Firebase Project" }
+    end
 
-1. **On-device capture** - the mobile app records audio, sensor streams, and self-reports, tagging each sample with experiment, participant, and device identifiers.
-2. **Cloud storage** - files are uploaded to Firebase Storage using a structured path convention.
-3. **Automatic indexing** - a Cloud Function mirrors each upload into Firestore, creating a searchable, filterable catalogue of responses with metadata including ML classification results, timestamps, and file sizes.
-4. **Researcher dashboard** - the [PRISM Research Portal](user.qmd) lets researchers browse, filter, play back, and download participant responses, grouped by experiment and data type (audio recordings, heart rate, accelerometer, gyroscope, body temperature).
+    subgraph s2["Research Portal"]
+        direction TB
+        n2@{ label: "Backend" }
+        n3@{ label: "Frontend" }
+        n2 <--> n3
+        n4@{ shape: "hex", label: "Install Research Portal" }
+        n5@{ shape: "hex", label: "Configure and deploy experiments" }
+        n6@{ shape: "hex", label: "Experimenter monitors study" }
+        n4 --> n5
+        n5 --> n6
+    end
+
+    subgraph s3["App"]
+        direction TB
+        n7@{ label: "Android" }
+        n8@{ label: "WearOS" }
+        n7 --> n8
+        n9@{ shape: "hex", label: "Build and Distribute App" }
+        n10@{ shape: "hex", label: "Users interact with App" }
+        n9 --> n10
+    end
+    
+    s1 <--> s2
+    s1 <--> s3
+
+    style n1 fill:#FAD2CF
+    style n2 fill:#FEEFC3
+    style n3 fill:#FEEFC3
+    style n4 fill:#FAD2CF
+    style n5 fill:#FAD2CF
+    style n6 fill:#FAD2CF
+    style n7 fill:#FEEFC3
+    style n8 fill:#FEEFC3
+    style n9 fill:#FAD2CF
+    style n10 fill:#FAD2CF
+    style s1 fill:#D2E3FC
+    style s2 fill:#CEEAD6
+    style s3 fill:#CEEAD6
+
+
+```
+
+1. **Firebase project**: you must [create a Firebase project](https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_registering_apps) for the authentication and secure storage for a PRISM experiment.
+2. **Research Portal**: you must [install the PRISM Research Portal](guide/developer.qmd) from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.
+3. **App**: Users must install the app so they can interact with the PRISM experiment.
+
+## Contact
+For questions, feedback, or collaboration opportunities, please contact:
+
+- **Name:** Romaric Bouveret
+- **Email:** [romaric.bouveret@mq.edu.au](mailto:romaric.bouveret@mq.edu.au)
