@@ -276,10 +276,6 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../guide/background.html"> 
-<span class="menu-text">Background</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../guide/developer.html"> 
 <span class="menu-text">Setup Guide</span></a>
   </li>  
@@ -317,7 +313,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   <li><a href="#step-1-sign-up" id="toc-step-1-sign-up" class="nav-link" data-scroll-target="#step-1-sign-up">Step 1: Sign up</a></li>
   <li><a href="#step-2-notification" id="toc-step-2-notification" class="nav-link" data-scroll-target="#step-2-notification">Step 2: Notification</a></li>
   <li><a href="#step-3-setup-the-first-experiment" id="toc-step-3-setup-the-first-experiment" class="nav-link" data-scroll-target="#step-3-setup-the-first-experiment">Step 3: Setup the first experiment</a></li>
-  <li><a href="#step-4-fill-up-the-basic-information" id="toc-step-4-fill-up-the-basic-information" class="nav-link" data-scroll-target="#step-4-fill-up-the-basic-information">Step 4: Fill up the basic information</a></li>
+  <li><a href="#step-4-fill-in-the-basic-information" id="toc-step-4-fill-in-the-basic-information" class="nav-link" data-scroll-target="#step-4-fill-in-the-basic-information">Step 4: Fill in the basic information</a></li>
   <li><a href="#step-5-configure-sensor-details" id="toc-step-5-configure-sensor-details" class="nav-link" data-scroll-target="#step-5-configure-sensor-details">Step 5: Configure Sensor Details</a></li>
   <li><a href="#step-6-select-ml-models" id="toc-step-6-select-ml-models" class="nav-link" data-scroll-target="#step-6-select-ml-models">Step 6: Select ML Models</a></li>
   <li><a href="#step-7-define-automation-triggers" id="toc-step-7-define-automation-triggers" class="nav-link" data-scroll-target="#step-7-define-automation-triggers">Step 7: Define Automation Triggers</a></li>
@@ -325,10 +321,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
   <li><a href="#step-9-optional-add-google-form-survey-link" id="toc-step-9-optional-add-google-form-survey-link" class="nav-link" data-scroll-target="#step-9-optional-add-google-form-survey-link">Step 9: (Optional) Add Google Form Survey Link</a></li>
   <li><a href="#step-10-review-and-confirm-details" id="toc-step-10-review-and-confirm-details" class="nav-link" data-scroll-target="#step-10-review-and-confirm-details">Step 10: Review and Confirm Details</a></li>
   </ul></li>
-  <li><a href="#adding-participants-to-your-experiment" id="toc-adding-participants-to-your-experiment" class="nav-link" data-scroll-target="#adding-participants-to-your-experiment">Adding Participants to Your Experiment</a>
+  <li><a href="#managing-experiments-and-participants" id="toc-managing-experiments-and-participants" class="nav-link" data-scroll-target="#managing-experiments-and-participants">Managing Experiments and Participants</a>
   <ul class="collapse">
-  <li><a href="#step-11-view-all-experiments" id="toc-step-11-view-all-experiments" class="nav-link" data-scroll-target="#step-11-view-all-experiments">Step 11: View all experiments</a></li>
-  <li><a href="#step-12-add-and-manage-participants" id="toc-step-12-add-and-manage-participants" class="nav-link" data-scroll-target="#step-12-add-and-manage-participants">Step 12: Add and Manage Participants</a></li>
+  <li><a href="#step-12-view-experiments-and-add-and-manage-participants" id="toc-step-12-view-experiments-and-add-and-manage-participants" class="nav-link" data-scroll-target="#step-12-view-experiments-and-add-and-manage-participants">Step 12: View experiments and Add and Manage Participants</a></li>
   </ul></li>
   <li><a href="#experiment-deployment" id="toc-experiment-deployment" class="nav-link" data-scroll-target="#experiment-deployment">Experiment Deployment</a></li>
   <li><a href="#during-post-experiment-monitoring" id="toc-during-post-experiment-monitoring" class="nav-link" data-scroll-target="#during-post-experiment-monitoring">During &amp; Post-Experiment Monitoring</a>
@@ -369,9 +364,9 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <li><strong>Context</strong>: Your rating of how hard it was to hear speech.</li>
 </ul>
 <p>This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.</p>
-<p>The <strong>PRISM Research Portal</strong> serves as the interface for data collection and study management for <strong>Researchers</strong> conducting “experiments” within the <strong>PRISM</strong> ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to <strong>Participants</strong>. It is the control center for your data collection needs.</p>
-<p>The <strong>PRISM Android App</strong> and <strong>PRISM WearOS App</strong> serve as the interface for <strong>Participants</strong> to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the <strong>PRISM Research Portal</strong>. See the <a href="guide/participant.qmd">Participant Guide</a> for more information on how to use the PRISM App.</p>
-<p>This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it. See the <a href="guide/developer.qmd">Setup Guide</a> for more information on how to set up and connect to the PRISM Research Portal.</p>
+<p>The <strong>PRISM Research Portal</strong> serves as the interface for data collection and study management for <em>Researchers</em> conducting “experiments” within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to <em>Participants</em>. It is the control center for your data collection needs.</p>
+<p>The <strong>PRISM Android App</strong> and <strong>PRISM WearOS App</strong> serve as the interface for Participants to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the PRISM Research Portal. See the <a href="guide/participant.qmd">Participant Guide</a> for more information on how to use the PRISM App.</p>
+<p>This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it (likely at <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>). See the <a href="guide/developer.qmd">Setup Guide</a> for more information on how to set up and connect to the PRISM Research Portal.</p>
 <section id="experiment-setup-on-the-research-portal" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-setup-on-the-research-portal">Experiment Setup on the Research Portal</h2>
 <section id="step-1-sign-up" class="level3">
@@ -393,7 +388,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <p>Note: If you try to click “Sign up” again, it will show you “An account with this email already exists.” You won’t be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/image20.png" class="img-fluid figure-img"></p>
+<p><img src="images/image20.png" height="200" class="figure-img"></p>
 <figcaption>Verification prompt</figcaption>
 </figure>
 </div>
@@ -418,12 +413,12 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </div>
 <p>Click “Create experiment”.</p>
 </section>
-<section id="step-4-fill-up-the-basic-information" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-fill-up-the-basic-information">Step 4: Fill up the basic information</h3>
+<section id="step-4-fill-in-the-basic-information" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-fill-in-the-basic-information">Step 4: Fill in the basic information</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image11.png" class="img-fluid figure-img"></p>
-<figcaption>Fill up the basic information</figcaption>
+<figcaption>Fill in the experiment information</figcaption>
 </figure>
 </div>
 </section>
@@ -433,13 +428,13 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image22.png" class="img-fluid figure-img"></p>
-<figcaption>Fill up sensor details</figcaption>
+<figcaption>Set sensor details</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image23.png" class="img-fluid figure-img"></p>
-<figcaption>Step 5 (New): Fill up sensor details</figcaption>
+<figcaption>Set sensor details</figcaption>
 </figure>
 </div>
 </section>
@@ -552,26 +547,18 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </div>
 </section>
 </section>
-<section id="adding-participants-to-your-experiment" class="level2">
-<h2 class="anchored" data-anchor-id="adding-participants-to-your-experiment">Adding Participants to Your Experiment</h2>
-<section id="step-11-view-all-experiments" class="level3">
-<h3 class="anchored" data-anchor-id="step-11-view-all-experiments">Step 11: View all experiments</h3>
+<section id="managing-experiments-and-participants" class="level2">
+<h2 class="anchored" data-anchor-id="managing-experiments-and-participants">Managing Experiments and Participants</h2>
+<section id="step-12-view-experiments-and-add-and-manage-participants" class="level3">
+<h3 class="anchored" data-anchor-id="step-12-view-experiments-and-add-and-manage-participants">Step 12: View experiments and Add and Manage Participants</h3>
+<p>When logging in now you will see the experiment cards.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image13.png" class="img-fluid figure-img"></p>
 <figcaption>View all experiments</figcaption>
 </figure>
 </div>
-</section>
-<section id="step-12-add-and-manage-participants" class="level3">
-<h3 class="anchored" data-anchor-id="step-12-add-and-manage-participants">Step 12: Add and Manage Participants</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/image13.png" class="img-fluid figure-img"></p>
-<figcaption>View all experiments</figcaption>
-</figure>
-</div>
-<p>Click “My First Experiment”.</p>
+<p>Click “My First Experiment” (or the experiment you want to manage).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image1.png" class="img-fluid figure-img"></p>
@@ -588,7 +575,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <p>Example CSV file formatting (expected columns: <code>email</code>, <code>name</code>):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/image7.png" class="img-fluid figure-img"></p>
+<p><img src="images/image7.png" height="200" class="figure-img"></p>
 <figcaption>Example CSV</figcaption>
 </figure>
 </div>

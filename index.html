@@ -118,6 +118,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -311,10 +314,6 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./guide/background.html"> 
-<span class="menu-text">Background</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./guide/developer.html"> 
 <span class="menu-text">Setup Guide</span></a>
   </li>  
@@ -347,10 +346,15 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#capabilities" id="toc-capabilities" class="nav-link active" data-scroll-target="#capabilities">Capabilities</a></li>
-  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
+  <li><a href="#get-started" id="toc-get-started" class="nav-link active" data-scroll-target="#get-started">Get started</a></li>
+  <li><a href="#capabilities" id="toc-capabilities" class="nav-link" data-scroll-target="#capabilities">Capabilities</a></li>
+  <li><a href="#the-problem-hearing-in-complex-environments" id="toc-the-problem-hearing-in-complex-environments" class="nav-link" data-scroll-target="#the-problem-hearing-in-complex-environments">The Problem: Hearing in Complex Environments</a></li>
+  <li><a href="#what-is-prism" id="toc-what-is-prism" class="nav-link" data-scroll-target="#what-is-prism">What is PRISM?</a></li>
+  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
+  <li><a href="#prism-studyexperiment-workflow-overview" id="toc-prism-studyexperiment-workflow-overview" class="nav-link" data-scroll-target="#prism-studyexperiment-workflow-overview">PRISM Study/Experiment Workflow Overview</a></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -386,6 +390,16 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <li><strong>P</strong>latform for <strong>R</strong>esearch <strong>I</strong>n <strong>S</strong>ituational <strong>M</strong>omentary assessment.</li>
 </ul>
 <p>Modern hearing aids often struggle to adapt to rapidly changing sound environments, like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users.</p>
+<section id="get-started" class="level2">
+<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<ul>
+<li>Learn how to host your own instance of the PRISM Research Portal: <a href="./guide/developer.html">Setup Guide documentation.</a></li>
+<li>Learn how to design and deploy your own PRISM experiments from the Research Portal: <a href="./guide/user.html">Researcher Guide documentation.</a></li>
+<li>Learn how to use the PRISM App to feedback data to an experiment: <a href="./guide/participant.html">Participant Guide documentation.</a></li>
+<li>Dive deeper in the <em>Australian Future Hearing Initiative</em> and live hearing tests you can take: <a href="./guide/extended.html">Other Tools documentation.</a></li>
+<li>Read about the motivation and science behind the PRISM platform below!</li>
+</ul>
+</section>
 <section id="capabilities" class="level2">
 <h2 class="anchored" data-anchor-id="capabilities">Capabilities</h2>
 <ul>
@@ -395,14 +409,193 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <li>A set of machine learning models for auditory scene analysis.</li>
 </ul>
 </section>
-<section id="get-started" class="level2">
-<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<section id="the-problem-hearing-in-complex-environments" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-hearing-in-complex-environments">The Problem: Hearing in Complex Environments</h2>
+<p>Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to <strong>rapidly changing sound environments</strong> like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.</p>
+<p>Traditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs <em>in the wild</em>. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life.</p>
+</section>
+<section id="what-is-prism" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-prism">What is PRISM?</h2>
+<section id="ecological-momentary-assessment-ema" class="level3">
+<h3 class="anchored" data-anchor-id="ecological-momentary-assessment-ema">Ecological Momentary Assessment (EMA)</h3>
+<p>PRISM is built around the methodology of <strong>Ecological Momentary Assessment (EMA)</strong>, a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.</p>
+<p>In a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:</p>
+<ol type="1">
+<li><strong>Captures a brief audio snapshot</strong>, a short recording of the acoustic environment.</li>
+<li><strong>Prompts a self-report</strong>, the participant rates their current listening experience via simple feedback buttons (e.g., <em>Good</em>, <em>Okay</em>, <em>Bad</em>).</li>
+<li><strong>Collects wearable sensor data</strong>, physiological and inertial signals that provide additional context about the listener’s state and activity.</li>
+</ol>
+<p>This approach provides ecologically valid, time-stamped, multi-modal data that links <em>subjective</em> hearing difficulty to <em>objective</em> environmental and physiological measurements.</p>
+</section>
+<section id="why-prism" class="level3">
+<h3 class="anchored" data-anchor-id="why-prism">Why PRISM?</h3>
+<p>PRISM addresses a key bottleneck in hearing science: <strong>the lack of large-scale, ecologically valid, multi-modal datasets</strong> linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:</p>
 <ul>
-<li>Read about the motivation and science behind the PRISM ecosystem in the: <a href="./guide/background.html">Background documentation.</a></li>
-<li>Learn how to deploy your own experiments using PRISM in the: <a href="./guide/developer.html">Setup Guide documentation.</a></li>
-<li>Get help using the PRISM app and explore its functionality in the: <a href="./guide/user.html">User Guide documentation.</a></li>
-<li>Dive deeper in the <em>Australian Future Hearing Initiative</em> and live hearing tests you can take in the: <a href="./guide/extended.html">Other Tools documentation.</a></li>
+<li>Study hearing difficulty <em>where it actually happens</em>, not just in the lab.</li>
+<li>Combine subjective self-reports with objective sensor and ML-derived features.</li>
+<li>Build and validate models that can eventually drive <strong>real-time, adaptive hearing-aid algorithms</strong>.</li>
+<li>Rapidly iterate on experiment designs through a configurable web interface.</li>
 </ul>
+<p>The long-term vision, as part of the <strong>Australian Future Hearing Initiative</strong>, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter.</p>
+</section>
+</section>
+<section id="features" class="level2">
+<h2 class="anchored" data-anchor-id="features">Features</h2>
+<section id="multi-modal-sensor-data-collection" class="level3">
+<h3 class="anchored" data-anchor-id="multi-modal-sensor-data-collection">Multi-Modal Sensor Data Collection</h3>
+<p>A key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sensor</th>
+<th>Device</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Microphone</strong></td>
+<td>Phone, Watch</td>
+<td>Captures environmental audio for acoustic scene classification</td>
+</tr>
+<tr class="even">
+<td><strong>Heart Rate</strong></td>
+<td>Watch</td>
+<td>Physiological indicator of stress or cognitive effort</td>
+</tr>
+<tr class="odd">
+<td><strong>Body Temperature</strong></td>
+<td>Watch</td>
+<td>Additional physiological context</td>
+</tr>
+<tr class="even">
+<td><strong>Accelerometer</strong></td>
+<td>Phone, Watch</td>
+<td>Activity recognition (walking, sitting, commuting)</td>
+</tr>
+<tr class="odd">
+<td><strong>Gyroscope</strong></td>
+<td>Phone, Watch</td>
+<td>Complements accelerometer for motion and posture estimation</td>
+</tr>
+</tbody>
+</table>
+<p>Each sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.</p>
+</section>
+<section id="on-device-machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="on-device-machine-learning">On-Device Machine Learning</h3>
+<p>PRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:</p>
+<section id="yamnet---acoustic-scene-classification" class="level4">
+<h4 class="anchored" data-anchor-id="yamnet---acoustic-scene-classification">YAMNet+ - Acoustic Scene Classification</h4>
+<p><em>YAMNet+</em> is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., <em>open space</em>, <em>restaurant</em>, <em>traffic</em>, <em>quiet room</em>). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.</p>
+<p>This builds on the YAMNet architecture and is described in:</p>
+<blockquote class="blockquote">
+<p>Zhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., &amp; Lyon, R. (2026). <em>A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet.</em> <a href="https://arxiv.org/abs/2508.10360">arXiv:2508.10360</a></p>
+</blockquote>
+</section>
+<section id="wonu---communication-breakdown-detection" class="level4">
+<h4 class="anchored" data-anchor-id="wonu---communication-breakdown-detection">WONU - Communication Breakdown Detection</h4>
+<p>The <strong>Words of Not Understanding (WONU)</strong> model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as <em>“pardon?”</em>, <em>“sorry, what?”</em>, or <em>“can you repeat that?”</em> are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making <em>WONU</em> a complementary signal to the participant’s self-report.</p>
+</section>
+<section id="ml-models-list" class="level4">
+<h4 class="anchored" data-anchor-id="ml-models-list">ML Models List</h4>
+<ul>
+<li><a href="https://arxiv.org/abs/2602.19409">AuditoryHuM paper</a></li>
+<li><a href="https://huggingface.co/datasets/hzhongresearch/auditoryhum_supplementary">AuditoryHuM supplementary data</a></li>
+<li><a href="https://huggingface.co/spaces/hzhongresearch/auditoryhum_samples">AuditoryHuM demo website with alignment samples</a></li>
+<li><a href="https://arxiv.org/abs/2508.10360">AHEAD-DS and OpenYAMNet paper</a></li>
+<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds">AHEAD-DS</a></li>
+<li><a href="https://huggingface.co/datasets/hzhongresearch/ahead_ds_unmixed">AHEAD-DS (unmixed)</a></li>
+<li><a href="https://huggingface.co/hzhongresearch/yamnetp_ahead_ds">OpenYAMNet/YAMNet+ models</a></li>
+</ul>
+</section>
+</section>
+<section id="rule-based-triggers" class="level3">
+<h3 class="anchored" data-anchor-id="rule-based-triggers">Rule-Based Triggers</h3>
+<p>Researchers can configure <strong>sensor-threshold triggers</strong> that automate data collection and model activation. A trigger is defined by:</p>
+<ul>
+<li>A <strong>sensor source</strong> (e.g., phone microphone, heart rate monitor).</li>
+<li>A <strong>metric and threshold</strong> (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).</li>
+<li>An <strong>action</strong> - what happens when the threshold is crossed:
+<ul>
+<li><strong>Activate an ML model</strong> - wake <em>YAMNet+</em> or <em>WONU</em> to classify the current moment.</li>
+<li><strong>Send a notification</strong> - prompt the participant to provide a self-report.</li>
+<li><strong>Launch a form</strong> - open an in-app or Google Form survey for richer contextual data.</li>
+</ul></li>
+</ul>
+<p>This trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting.</p>
+</section>
+</section>
+<section id="prism-studyexperiment-workflow-overview" class="level2">
+<h2 class="anchored" data-anchor-id="prism-studyexperiment-workflow-overview">PRISM Study/Experiment Workflow Overview</h2>
+<p>Running a PRISM study requires 3 main components:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph s1["Firebase"]
+        direction LR
+        n1@{ shape: "hex", label: "Create Firebase Project" }
+    end
+
+    subgraph s2["Research Portal"]
+        direction TB
+        n2@{ label: "Backend" }
+        n3@{ label: "Frontend" }
+        n2 &lt;--&gt; n3
+        n4@{ shape: "hex", label: "Install Research Portal" }
+        n5@{ shape: "hex", label: "Configure and deploy experiments" }
+        n6@{ shape: "hex", label: "Experimenter monitors study" }
+        n4 --&gt; n5
+        n5 --&gt; n6
+    end
+
+    subgraph s3["App"]
+        direction TB
+        n7@{ label: "Android" }
+        n8@{ label: "WearOS" }
+        n7 --&gt; n8
+        n9@{ shape: "hex", label: "Build and Distribute App" }
+        n10@{ shape: "hex", label: "Users interact with App" }
+        n9 --&gt; n10
+    end
+    
+    s1 &lt;--&gt; s2
+    s1 &lt;--&gt; s3
+
+    style n1 fill:#FAD2CF
+    style n2 fill:#FEEFC3
+    style n3 fill:#FEEFC3
+    style n4 fill:#FAD2CF
+    style n5 fill:#FAD2CF
+    style n6 fill:#FAD2CF
+    style n7 fill:#FEEFC3
+    style n8 fill:#FEEFC3
+    style n9 fill:#FAD2CF
+    style n10 fill:#FAD2CF
+    style s1 fill:#D2E3FC
+    style s2 fill:#CEEAD6
+    style s3 fill:#CEEAD6
+
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><strong>Firebase project</strong>: you must <a href="https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_registering_apps">create a Firebase project</a> for the authentication and secure storage for a PRISM experiment.</li>
+<li><strong>Research Portal</strong>: you must <a href="./guide/developer.html">install the PRISM Research Portal</a> from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.</li>
+<li><strong>App</strong>: Users must install the app so they can interact with the PRISM experiment.</li>
+</ol>
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
@@ -420,6 +613,14 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">License</h2>
 <p>Code is licensed under the <strong>MIT License</strong> or <strong>Apache 2.0</strong> depending on the component. Please check individual <code>LICENCE</code> files in each repository.</p>
+</section>
+<section id="contact" class="level2">
+<h2 class="anchored" data-anchor-id="contact">Contact</h2>
+<p>For questions, feedback, or collaboration opportunities, please contact:</p>
+<ul>
+<li><strong>Name:</strong> Romaric Bouveret</li>
+<li><strong>Email:</strong> <a href="mailto:romaric.bouveret@mq.edu.au">romaric.bouveret@mq.edu.au</a></li>
+</ul>
 
 
 </section>

@@ -314,10 +314,6 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../guide/background.html"> 
-<span class="menu-text">Background</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="../guide/developer.html" aria-current="page"> 
 <span class="menu-text">Setup Guide</span></a>
   </li>  
@@ -402,25 +398,34 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     
     subgraph s1["Research Portal"]
         n2@{ label: "Backend" }
-        n3@{ label: "Frontend" }
+    n3@{ label: "Frontend" }
+    n2 &lt;--&gt; n3
     end
 
     subgraph s2["App"]
         n4@{ label: "Android" }
-        n5@{ label: "WearOS" }
+    n5@{ label: "WearOS" }
+    n4 --&gt; n5
     end
     
     n1 &lt;--&gt; s1
-    n1 &lt;--&gt; s2
-    n2 &lt;--&gt; n3
-    n4 --- n5
+  n1 &lt;--&gt; s2
+  
+  style n1 fill:#D2E3FC
+  style s1 fill:#CEEAD6
+  style s2 fill:#CEEAD6
+  style n2 fill:#FEEFC3
+  style n3 fill:#FEEFC3
+  style n4 fill:#FEEFC3
+  style n5 fill:#FEEFC3
+  
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>For most users and researchers, we recommend using the <strong>Unified Setup via Docker</strong>. It is the most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring installation options.</p>
+<p>For most users and researchers, we recommend using the <strong>Unified Setup via Docker</strong>. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.</p>
 <p>You likely want to use the <strong>Manual Setup</strong> only if:</p>
 <ul>
 <li>You are a developer planning to modify the backend code or the Flutter frontend web app code directly.</li>
@@ -428,19 +433,20 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </ul>
 <section id="unified-setup-via-docker" class="level2">
 <h2 class="anchored" data-anchor-id="unified-setup-via-docker">Unified Setup via Docker</h2>
-<p>The easiest way to install and run both the PRISM Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code> repository</a> which uses Docker Compose. These instructions are detailed here:</p>
+<p>The easiest way to install and run both the PRISM Research Portal Backend and Frontend is via the <a href="https://github.com/Australian-Future-Hearing-Initiative/prism-setup"><code>prism-setup</code> repository</a> which uses Docker Compose. These instructions are detailed here.</p>
 <section id="prerequisites" class="level3">
 <h3 class="anchored" data-anchor-id="prerequisites">1. Prerequisites</h3>
 <p>Ensure the following are installed and running:</p>
 <ul>
-<li><a href="https://desktop.docker.com/"><strong>Docker Desktop</strong></a> - must be installed and <strong>running</strong>!</li>
+<li><a href="https://www.docker.com/products/docker-desktop/"><strong>Docker Desktop</strong></a> - must be installed and <strong>running</strong>!</li>
 <li><a href="https://git-scm.com/download/win"><strong>Git</strong> for Windows</a>, or for Mac and Linux git is pre-installed.</li>
-<li><a href="https://console.firebase.google.com/">A <strong>Firebase</strong> project</a> with paid usage enabled.</li>
 <li><a href="https://www.mailgun.com/">A <strong>Mailgun</strong> account</a> or a <a href="https://myaccount.google.com/apppasswords"><strong>Gmail</strong> account</a> for sending emails.</li>
+<li><a href="https://console.firebase.google.com/">A <strong>Firebase</strong> project</a> with paid usage enabled.</li>
 </ul>
 </section>
 <section id="clone-the-repository" class="level3">
 <h3 class="anchored" data-anchor-id="clone-the-repository">2.Clone the repository</h3>
+<p>Execute the following commands in your terminal to download the repository and move into the folder:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -467,10 +473,7 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <li>Save the API key and domain name — the setup prompt will ask for them.</li>
 </ol>
 <blockquote class="blockquote">
-<p>The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> You must have a web domain hosted somewhere to use this service.</p>
+<p>The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially. <strong>Note:</strong> You must have a web domain hosted somewhere to use this service.</p>
 </blockquote>
 <p><strong>Option 2: Gmail SMTP</strong></p>
 <p>Enable 2-Step Verification, then generate an App Password:</p>
@@ -486,12 +489,12 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 </section>
 <section id="run-the-installer" class="level3">
 <h3 class="anchored" data-anchor-id="run-the-installer">4. Run the installer</h3>
+<p>Execute the install script from the <code>prism-setup</code> directory. Follow the prompts to enter your credentials. The script will build the Docker containers and start the PRISM Research Portal automatically:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> install.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script will prompt for your credentials, build the Docker containers, and open PRISM in your browser automatically.</p>
 </section>
 <section id="deploy-to-production" class="level3">
 <h3 class="anchored" data-anchor-id="deploy-to-production">5. Deploy to production</h3>
-<p>Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the containers when you need to access the experiment.</p>
+<p>Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the docker containers when you need to access the experiment.</p>
 <p>To stop the services:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> prism-setup</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
