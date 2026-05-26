@@ -12,7 +12,7 @@ Visit the [Australian Future Hearing Initiative](https://australianfuturehearing
 
 ## Hearing Tests
 
-The Australian Future Hearing Initiative provides a [suite of web-based hearing tests and demos](hhttps://afhi-hearing-tests.streamlit.app/) including:
+The Australian Future Hearing Initiative provides a [suite of web-based hearing tests and demos](https://afhi-hearing-tests.streamlit.app/) including:
 
 * *Pure-Tone Audiometry*
 * *Pip Pure-Tone Audiometry*

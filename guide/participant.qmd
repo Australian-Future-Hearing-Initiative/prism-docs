@@ -4,7 +4,7 @@ title: "Participant Guide"
 format:
   html:
     toc: true
-    toc-depth: 3
+    toc-depth: 2
 ---
 
 Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.
