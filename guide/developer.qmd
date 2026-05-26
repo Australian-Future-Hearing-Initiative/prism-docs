@@ -13,7 +13,7 @@ The PRISM Research Portal is how researchers can configure and run studies. This
 
 Both components connect to the same **Firebase** project for authentication and database storage, which must be created before starting the setup. 
 
-Additionally, an **Android** mobile and **WearOS** app exists to collect data from participants. Documentation on *building* the PRISM Android mobile and WearOS app can be found in the [GitHub Repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-app), documentation on *using* the app can be found in the user guide [here](guide/user.qmd).
+Additionally, an **Android** mobile and **WearOS** app exists to collect data from participants. Documentation on *building* the PRISM Android mobile and WearOS app can be found in the [GitHub Repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-app), documentation on *using* the app can be found in the [Researcher Guide](user.qmd).
 
 ```{mermaid}
 flowchart TD
@@ -44,7 +44,7 @@ flowchart TD
   
 ```
 
-For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.
+For most users we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.
 
 You likely want to use the **Manual Setup** only if:
 

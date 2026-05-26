@@ -11,8 +11,7 @@ Download the PRISM App to your device. Then follow the instructions to participa
 
 All data user data is stored securely in a Firebase project.
 
-> [!TIP]
-> Most researchers will print out or share a customised version of this section as a one-page guide for their study cohort.
+> You may wish to share a customised version of this section as a one-page guide for your study cohort.
 
 ### Step 1: Join the experiment
 

@@ -15,9 +15,9 @@ This data helps build the PRISM machine learning framework to automatically reco
 
 The **PRISM Research Portal** serves as the interface for data collection and study management for *Researchers* conducting "experiments" within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to *Participants*. It is the control center for your data collection needs.
 
-The **PRISM Android App** and **PRISM WearOS App** serve as the interface for Participants to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the PRISM Research Portal. See the [Participant Guide](guide/participant.qmd) for more information on how to use the PRISM App.
+The **PRISM Android App** and **PRISM WearOS App** serve as the interface for Participants to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the PRISM Research Portal. See the [Participant Guide](participant.qmd) for more information on how to use the PRISM App.
 
-This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it (likely at [http://127.0.0.1:8000](http://127.0.0.1:8000)). See the [Setup Guide](guide/developer.qmd) for more information on how to set up and connect to the PRISM Research Portal.
+This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it (likely at [http://127.0.0.1:8000](http://127.0.0.1:8000)). See the [Setup Guide](developer.qmd) for more information on how to set up and connect to the PRISM Research Portal.
 
 ## Experiment Setup on the Research Portal
 
