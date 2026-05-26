@@ -21,7 +21,7 @@ The Australian Future Hearing Initiative provides a [suite of web-based hearing 
 * *Tone Generator & Calibration*
 
 
-Explore the source code at the [AFHI GitHub repository](https://github.com/Australian-Future-Hearing-Initiative/afhi-hearing-tests-public) (licensed under CC-BY-NC).
+Explore the source code at the [AFHI hearing tests GitHub repository](https://github.com/Australian-Future-Hearing-Initiative/afhi-hearing-tests-public) (licensed under CC-BY-NC).
 
 
 ## Acoustic & Hearing Machine Learning Models

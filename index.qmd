@@ -22,7 +22,7 @@ Modern hearing aids often struggle to adapt to rapidly changing sound environmen
 * Learn how to host your own instance of the PRISM Research Portal: [Setup Guide documentation.](guide/developer.qmd)
 * Learn how to design and deploy your own PRISM experiments from the Research Portal: [Researcher Guide documentation.](guide/user.qmd)
 * Learn how to use the PRISM App to feedback data to an experiment: [Participant Guide documentation.](guide/participant.qmd)
-* Dive deeper in the *Australian Future Hearing Initiative* and live hearing tests you can take: [Other Tools documentation.](guide/extended.qmd)
+* Dive deeper in the [Australian Future Hearing Initiative](https://australianfuturehearing.org/) and live hearing tests you can take: [Other Tools documentation.](guide/extended.qmd)
 * Read about the motivation and science behind the PRISM platform below!
 
 ## Capabilities
