@@ -10,8 +10,8 @@ website:
     left:
       # - href: index.qmd
       #   text: Home
-      - href: guide/background.qmd
-        text: Background
+      # - href: guide/background.qmd
+      #   text: Background
       - href: guide/developer.qmd
         text: Setup Guide
       - href: guide/user.qmd

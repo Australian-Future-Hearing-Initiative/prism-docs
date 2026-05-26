@@ -21,21 +21,30 @@ flowchart TD
     
 	subgraph s1["Research Portal"]
 		n2@{ label: "Backend" }
-        n3@{ label: "Frontend" }
+    n3@{ label: "Frontend" }
+    n2 <--> n3
 	end
 
     subgraph s2["App"]
 		n4@{ label: "Android" }
-        n5@{ label: "WearOS" }
+    n5@{ label: "WearOS" }
+    n4 --> n5
 	end
     
 	n1 <--> s1
-    n1 <--> s2
-    n2 <--> n3
-    n4 --- n5
+  n1 <--> s2
+  
+  style n1 fill:#D2E3FC
+  style s1 fill:#CEEAD6
+  style s2 fill:#CEEAD6
+  style n2 fill:#FEEFC3
+  style n3 fill:#FEEFC3
+  style n4 fill:#FEEFC3
+  style n5 fill:#FEEFC3
+  
 ```
 
-For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the entire PRISM ecosystem (both frontend and backend) without manually configuring installation options.
+For most users and researchers, we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.
 
 You likely want to use the **Manual Setup** only if:
 
@@ -44,17 +53,19 @@ You likely want to use the **Manual Setup** only if:
 
 ## Unified Setup via Docker
 
-The easiest way to install and run both the PRISM Backend and Frontend is via the [`prism-setup` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) which uses Docker Compose. These instructions are detailed here:
+The easiest way to install and run both the PRISM Research Portal Backend and Frontend is via the [`prism-setup` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) which uses Docker Compose. These instructions are detailed here.
 
 ### 1. Prerequisites
 Ensure the following are installed and running:
 
-- [**Docker Desktop**](https://desktop.docker.com/) - must be installed and **running**!
+- [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) - must be installed and **running**!
 - [**Git** for Windows](https://git-scm.com/download/win), or for Mac and Linux git is pre-installed.
-- [A **Firebase** project](https://console.firebase.google.com/) with paid usage enabled.
 - [A **Mailgun** account](https://www.mailgun.com/) or a [**Gmail** account](https://myaccount.google.com/apppasswords) for sending emails.
+- [A **Firebase** project](https://console.firebase.google.com/) with paid usage enabled.
 
 ### 2.Clone the repository
+
+Execute the following commands in your terminal to download the repository and move into the folder:
 
 ```bash
 git clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git
@@ -88,7 +99,6 @@ Rename the downloaded file to `serviceAccountKey.json` and place it in the root 
 3. Save the API key and domain name — the setup prompt will ask for them.
 
 > The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially.
-
 > **Note:** You must have a web domain hosted somewhere to use this service.
 
 **Option 2: Gmail SMTP**
@@ -104,15 +114,16 @@ Save your Gmail address and the 16-char App Password — the setup prompt will a
 
 ### 4. Run the installer
 
+Execute the install script from the `prism-setup` directory. Follow the prompts to enter your credentials. The script will build the Docker containers and start the PRISM Research Portal automatically:
+
 ```bash
 bash install.sh
 ```
 
-The script will prompt for your credentials, build the Docker containers, and open PRISM in your browser automatically.
 
 ### 5. Deploy to production
 
-Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the containers when you need to access the experiment.
+Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the docker containers when you need to access the experiment.
 
 To stop the services:
 ```bash

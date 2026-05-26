@@ -13,11 +13,11 @@ PRISM helps researchers collect real-world data through a smartphone application
 
 This data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.
 
-The **PRISM Research Portal** serves as the interface for data collection and study management for **Researchers** conducting "experiments" within the **PRISM** ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to **Participants**. It is the control center for your data collection needs.
+The **PRISM Research Portal** serves as the interface for data collection and study management for *Researchers* conducting "experiments" within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to *Participants*. It is the control center for your data collection needs.
 
-The **PRISM Android App** and **PRISM WearOS App** serve as the interface for **Participants** to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the **PRISM Research Portal**. See the [Participant Guide](guide/participant.qmd) for more information on how to use the PRISM App.
+The **PRISM Android App** and **PRISM WearOS App** serve as the interface for Participants to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the PRISM Research Portal. See the [Participant Guide](guide/participant.qmd) for more information on how to use the PRISM App.
 
-This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it. See the [Setup Guide](guide/developer.qmd) for more information on how to set up and connect to the PRISM Research Portal.
+This guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it (likely at [http://127.0.0.1:8000](http://127.0.0.1:8000)). See the [Setup Guide](guide/developer.qmd) for more information on how to set up and connect to the PRISM Research Portal.
 
 ## Experiment Setup on the Research Portal
 
@@ -33,7 +33,7 @@ Then you should receive a verification email:
 
 Note: If you try to click "Sign up" again, it will show you "An account with this email already exists." You won't be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:
 
-![Verification prompt](images/image20.png)
+![Verification prompt](images/image20.png){height=200px}
 
 ### Step 2: Notification
 
@@ -47,16 +47,16 @@ Click "Set up", it will guide you to the first page.
 
 Click "Create experiment".
 
-### Step 4: Fill up the basic information
+### Step 4: Fill in the basic information
 
-![Fill up the basic information](images/image11.png)
+![Fill in the experiment information](images/image11.png)
 
 ### Step 5: Configure Sensor Details
 Enable or disable independent tracking for **Smartphone** and **Smartwatch** hardware layers. You can specify a custom sampling frequency (Hz) for physiological sensors and explicitly opt-in to **Upload Raw Audio** (privacy warning: sends un-processed audio streams directly to cloud storage).
 
-![Fill up sensor details](images/image22.png)
+![Set sensor details](images/image22.png)
 
-![Step 5 (New): Fill up sensor details](images/image23.png)
+![Set sensor details](images/image23.png)
 
 ### Step 6: Select ML Models
 Select and configure on-device analytical models for the experiment:
@@ -99,17 +99,15 @@ Confirm the summary configuration draft before publishing.
 ![Confirm the detail](images/image27.png)
 
 
-## Adding Participants to Your Experiment
+## Managing Experiments and Participants
 
-### Step 11: View all experiments
+### Step 12: View experiments and Add and Manage Participants
 
-![View all experiments](images/image13.png)
-
-### Step 12: Add and Manage Participants
+When logging in now you will see the experiment cards.
 
 ![View all experiments](images/image13.png)
 
-Click "My First Experiment".
+Click "My First Experiment" (or the experiment you want to manage).
 
 ![Save and add participants](images/image1.png)
 
@@ -119,7 +117,7 @@ Confirm it by clicking "Save and add participants".
 
 Example CSV file formatting (expected columns: `email`, `name`):
 
-![Example CSV](images/image7.png)
+![Example CSV](images/image7.png){height=200px}
 
 Drag your csv file then you should be able to see participants. Once loaded, researchers can trigger batch email invitations to all assigned members.
 
