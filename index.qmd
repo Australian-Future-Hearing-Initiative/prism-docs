@@ -171,7 +171,7 @@ flowchart TD
 
 ```
 
-1. **Firebase project**: you must [create a Firebase project](https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_registering_apps) for the authentication and secure storage for a PRISM experiment.
+1. **Firebase project**: you must [create a Firebase project](guide/firebase.qmd) for the authentication and secure storage for a PRISM experiment.
 2. **Research Portal**: you must [install the PRISM Research Portal](guide/developer.qmd) from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.
 3. **App**: Users must install the app so they can interact with the PRISM experiment.
 

@@ -1,0 +1,155 @@
+---
+title: "Firebase Setup"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+lightbox: true
+---
+
+PRISM stores its researcher accounts, experiments and participant data in a **Firebase** project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the [Setup Guide](developer.qmd).
+
+By the end of this guide you will have:
+
+- A Firebase project on the pay-as-you-go **Blaze** plan.
+- A registered **Android app** and its `google-services.json` file.
+- A registered **web app** and its **Web API Key** (`apiKey`).
+
+You will need a Google account, plus a payment method or access to an existing Cloud Billing account.
+
+## Create a Firebase project
+
+### Step 1: Name your project
+
+Open the [Firebase Console](https://console.firebase.google.com/), sign in with your Google account and create a new project.
+
+Enter a **Project name** (this example uses `prism-nat1`). Firebase creates a **project ID** from the name, shown underneath it. The project ID can't be changed later and becomes part of your project's web addresses (e.g. `prism-nat1.web.app`), so click the pencil icon if you'd like to edit it now. Click **Continue**.
+
+![Name your project](images/firebase/01-create-project-name.png)
+
+### Step 2: Skip Gemini in Firebase
+
+Gemini in Firebase is an optional AI assistant for the Firebase Console. PRISM doesn't need it, so turning it on is up to you (this example leaves it off). Click **Continue**.
+
+![Gemini in Firebase is optional](images/firebase/02-create-project-gemini.png)
+
+### Step 3: Turn off Google Analytics
+
+PRISM doesn't use Google Analytics either. Switch off **Enable Google Analytics for this project** (it's on by default) and the **Continue** button changes to **Create project**. Click it, then wait for Firebase to finish creating your project.
+
+::: {layout-ncol=2}
+![Before: Analytics on (default)](images/firebase/03-create-project-analytics-on.png)
+
+![After: Analytics off](images/firebase/04-create-project-analytics-off.png)
+:::
+
+## Upgrade to the Blaze plan
+
+New projects start on the free **Spark** plan. PRISM relies on paid Firebase services such as Cloud Functions, so your project must be on the pay-as-you-go **Blaze** plan. Blaze still includes the no-cost quota; you only pay for usage beyond it.
+
+### Step 4: Select the Blaze plan
+
+When your project opens, click **Upgrade** at the bottom of the left-hand menu.
+
+![Your new project, on the Spark plan](images/firebase/05-overview-spark-plan.png)
+
+In the **Firebase pricing plans** dialog, click **Select plan** under **Pay as you go (Blaze plan)**.
+
+![Firebase pricing plans](images/firebase/06-upgrade-pricing-plans.png)
+
+### Step 5: Choose a billing account
+
+Select an existing Cloud Billing account from the list, or click **Create a Cloud Billing account** and follow the prompts to add a payment method. If your organisation manages Google Cloud billing centrally, ask your administrator which account to use.
+
+![Choose a Cloud Billing account](images/firebase/07-upgrade-billing-account.png)
+
+### Step 6: Set a budget alert
+
+Enter a **Budget amount in USD** (this example uses $5) and click **Continue**, or click **Skip this step**.
+
+::: {.callout-note}
+A budget doesn't cap your spending. It only emails the billing account's administrators when the project's costs approach or exceed the amount you set.
+:::
+
+![Set a billing budget](images/firebase/08-upgrade-billing-budget.png)
+
+### Step 7: Link the billing account
+
+Review the summary and click **Link Cloud Billing account**.
+
+![Link Cloud Billing account](images/firebase/09-upgrade-link-billing.png)
+
+Click **Done** to close the confirmation.
+
+![Plan change completed](images/firebase/10-upgrade-complete.png)
+
+The badge next to your project name now reads **Blaze plan**.
+
+![Your project, now on the Blaze plan](images/firebase/11-overview-blaze-plan.png)
+
+## Register the Android app
+
+The PRISM Android app connects to your Firebase project using a `google-services.json` file. You only need to register the app and download this file; the PRISM installer takes care of the rest, so you don't need Android Studio.
+
+### Step 8: Add an Android app
+
+On the project overview, click **+ Add app** and choose **Android**. Enter:
+
+- **Android package name**: a unique identifier for your build of the app, written in reverse-domain format such as `com.yourorg.prism` (this example uses `com.nat.prism`). It can't be changed after you register the app, and the PRISM installer builds the app with this name.
+- **App nickname** (optional): a label that only appears in the Firebase Console, such as `PRISM Android`.
+
+Click **Register app**.
+
+![Register the Android app](images/firebase/12-android-register-app.png)
+
+### Step 9: Download `google-services.json`
+
+Click **Download google-services.json** and keep the file somewhere handy, since the PRISM installer will ask for it. You can ignore the Android Studio instructions. Click **Next**.
+
+![Download google-services.json](images/firebase/13-android-download-config.png)
+
+### Step 10: Skip the SDK setup
+
+The next screen explains how to add the Firebase SDK with Gradle. **Skip these instructions**: the PRISM installer configures the app for you. Click **Next**.
+
+![Firebase SDK instructions (not needed)](images/firebase/14-android-add-sdk.png)
+
+Click **Continue to console**.
+
+![Finish adding the Android app](images/firebase/15-android-next-steps.png)
+
+### Step 11: Find your Android app settings
+
+Your Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to download `google-services.json` again or to copy its **App ID** (only needed if you distribute the app through Firebase App Distribution).
+
+![The registered Android app](images/firebase/16-overview-android-app.png)
+
+## Register the web app
+
+The PRISM Research Portal signs researchers in through Firebase using your project's **Web API Key**. You get this key by registering a web app.
+
+### Step 12: Add a web app
+
+On the project overview, click **+ Add app** and choose **Web** (`</>`). Enter an **App nickname**; we suggest `prism`, which is the name the [Setup Guide](developer.qmd) uses. Leave **Also set up Firebase Hosting** unticked (it can be set up later). Click **Register app**.
+
+![Register the web app](images/firebase/17-web-register-app.png)
+
+### Step 13: Copy the Web API Key
+
+Firebase shows a `firebaseConfig` code snippet. Copy the value of **`apiKey`** (a long string beginning with `AIza`) and save it, since the PRISM installer will ask for it. You don't need to run `npm install` or add this code anywhere. Click **Continue to console**.
+
+![Copy the apiKey from the web app config](images/firebase/18-web-app-config.png)
+
+::: {.callout-tip}
+You can find the key again at any time under **Settings → General → Your apps → (your web app) → Config**.
+:::
+
+## Next steps
+
+Your Firebase project is ready. You should now have:
+
+- The `google-services.json` file for your Android app (Step 9).
+- Your Web API Key (Step 13).
+
+Continue to the [Setup Guide](developer.qmd), which explains how to generate a **Firebase Service Account Key** and run the PRISM installer.
+
