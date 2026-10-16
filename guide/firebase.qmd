@@ -17,6 +17,44 @@ By the end of this guide you will have:
 
 You will need a Google account, plus a payment method or access to an existing Cloud Billing account.
 
+## Data storage and privacy
+
+PRISM collects audio and health data from participants. Most of it is stored in the Firebase project owned by the researcher that you create in this guide, which is hosted by Google. See [Privacy and Security in Firebase](https://firebase.google.com/support/privacy) and the [Firebase Data Processing and Security Terms](https://firebase.google.com/terms/data-processing-terms) for details.
+
+### What the app uploads
+
+While a recording session is open, the participant's phone records audio continuously. Each time the participant presses a rating button, the app uploads:
+
+- An unprocessed audio clip of up to 30 seconds, ending at the button press.
+- Heart-rate variability and skin temperature readings from the previous 30 minutes, if the participant has allowed access to Android Health Connect.
+- If a watch is used, an audio clip from the watch, plus its accelerometer, gyroscope, heart-rate and ambient-temperature readings.
+
+PRISM doesn't collect location data, and its apps and Research Portal don't use analytics or crash reporting.
+
+::: {.callout-warning}
+The **Upload Raw Audio** and other sensor settings in the Research Portal don't currently change what the app collects; everything listed above is uploaded with every rating.
+:::
+
+### Where data is stored
+
+| Where | What's stored |
+|---|---|
+| **Firebase Authentication** | Researchers' email addresses and password hashes. Participants' Google account email, name and profile photo URL, from signing in to the app with Google. |
+| **Cloud Firestore** (database) | Experiment settings. Participants' names, email addresses and invitation status. A record of each uploaded file: rating, sound classification, time, size and the phone's Android device ID. |
+| **Cloud Storage** (files) | The uploaded files. File names include the date and time, rating, participant's user ID, experiment ID and Android device ID, but not the participant's name or email address. |
+| **Cloud Logging** | Server logs containing participants' user IDs and device IDs, kept for 30 days by default. |
+| **Participant's phone** | Audio recorded since the last rating, which stays on the phone after the session ends, and any files that failed to upload. Uploaded files are deleted. Sound classification runs on the phone. |
+| **Participant's watch** | Audio clips, which the watch app doesn't currently delete. The watch uploads nothing directly; its data goes via the phone. |
+| **Your computer / server host** | Any files you download. If you run PRISM locally, also its credentials, including the service account key, which gives full access to all study data. |
+| **Email provider** (Mailgun or Gmail) | Invited participants' email addresses, your invitation text and the experiment link. |
+| **Google Forms** (optional) | Whatever your survey asks. PRISM doesn't pass any participant details to the form. |
+
+### Location, security and retention
+
+- **Location:** you choose where Firestore and Cloud Storage keep data when you set them up (for example `australia-southeast1`, Sydney), and you can't change it later. Firebase Authentication doesn't offer a choice of location. See [Firebase locations](https://firebase.google.com/docs/projects/locations).
+- **Security:** Firestore and Cloud Storage encrypt data in transit and at rest. Anyone with access to your Firebase project or service account key can see all study data, so keep that group small.
+- **Retention and withdrawal:** data stays until you delete it. Removing a participant in the Research Portal deletes their uploaded files and records, and deleting an experiment deletes all of its data. Participants' sign-in accounts aren't deleted automatically (delete them under **Authentication** in the Firebase console), and you'll need to delete any downloaded copies yourself. Participants can't delete their data or leave an experiment from the app, so your withdrawal procedure should ask them to contact you.
+
 ## Create a Firebase project
 
 ### Step 1: Name your project
