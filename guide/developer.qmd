@@ -61,7 +61,7 @@ Ensure the following are installed and running:
 - [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) - must be installed and **running**!
 - [**Git** for Windows](https://git-scm.com/download/win), or for Mac and Linux git is pre-installed.
 - [A **Mailgun** account](https://www.mailgun.com/) or a [**Gmail** account](https://myaccount.google.com/apppasswords) for sending emails.
-- [A **Firebase** project](https://console.firebase.google.com/) with paid usage enabled.
+- [A **Firebase** project](https://console.firebase.google.com/) with paid usage enabled. See the [Firebase Setup](firebase.qmd) guide.
 
 ### 2.Clone the repository
 
