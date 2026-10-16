@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/participant.html</loc>
+    <lastmod>2026-10-16T01:25:30.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/firebase.html</loc>
+    <lastmod>2026-10-16T01:25:29.993Z</lastmod>
+  </url>
+  <url>
     <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/background.html</loc>
-    <lastmod>2026-05-26T05:58:03.862Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/developer.html</loc>
-    <lastmod>2026-05-26T05:58:03.862Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/user.html</loc>
-    <lastmod>2026-05-26T05:58:03.884Z</lastmod>
+    <lastmod>2026-10-16T01:25:29.992Z</lastmod>
   </url>
   <url>
     <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/index.html</loc>
-    <lastmod>2026-05-26T05:58:03.884Z</lastmod>
+    <lastmod>2026-10-16T01:25:30.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/developer.html</loc>
+    <lastmod>2026-10-16T01:25:29.993Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/user.html</loc>
+    <lastmod>2026-10-16T01:25:30.036Z</lastmod>
   </url>
   <url>
     <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/extended.html</loc>
-    <lastmod>2026-05-26T05:58:03.862Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Australian-Future-Hearing-Initiative.github.io/prism-docs/guide/participant.html</loc>
-    <lastmod>2026-05-26T05:58:03.884Z</lastmod>
+    <lastmod>2026-10-16T01:25:29.993Z</lastmod>
   </url>
 </urlset>

@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "guide/participant.html",
+    "href": "guide/participant.html",
+    "title": "Participant Guide",
+    "section": "",
+    "text": "Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.\nAll data user data is stored securely in a Firebase project.\n\nYou may wish to share a customised version of this section as a one-page guide for your study cohort.\n\n\nStep 1: Join the experiment\nOnce the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.\n\n\n\nJoin the experiment\n\n\n\n\nStep 2: Starting the experiment\n\n\n\nStarting the experiment\n\n\n\nThe Recording Period: This is the block of time (Like a 4 hour window)\nThe Recording Session: Those are the individual “sessions” (short recordings) that happen inside it.\n\n\n\nStep 3: Sending a recording\n\n\n\nSending a recording\n\n\n\n\nStep 4: Finish the session\n\n\n\nFinish the session"
+  },
+  {
+    "objectID": "guide/firebase.html",
+    "href": "guide/firebase.html",
+    "title": "Firebase Setup",
+    "section": "",
+    "text": "PRISM stores its researcher accounts, experiments and participant data in a Firebase project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the Setup Guide.\nBy the end of this guide you will have:\nYou will need a Google account, plus a payment method or access to an existing Cloud Billing account."
+  },
+  {
+    "objectID": "guide/firebase.html#create-a-firebase-project",
+    "href": "guide/firebase.html#create-a-firebase-project",
+    "title": "Firebase Setup",
+    "section": "Create a Firebase project",
+    "text": "Create a Firebase project\n\nStep 1: Name your project\nOpen the Firebase Console, sign in with your Google account and create a new project.\nEnter a Project name (this example uses prism-nat1). Firebase creates a project ID from the name, shown underneath it. The project ID can’t be changed later and becomes part of your project’s web addresses (e.g. prism-nat1.web.app), so click the pencil icon if you’d like to edit it now. Click Continue.\n\n\n\nName your project\n\n\n\n\nStep 2: Skip Gemini in Firebase\nGemini in Firebase is an optional AI assistant for the Firebase Console. PRISM doesn’t need it, so turning it on is up to you (this example leaves it off). Click Continue.\n\n\n\nGemini in Firebase is optional\n\n\n\n\nStep 3: Turn off Google Analytics\nPRISM doesn’t use Google Analytics either. Switch off Enable Google Analytics for this project (it’s on by default) and the Continue button changes to Create project. Click it, then wait for Firebase to finish creating your project.\n\n\n\n\n\n\nBefore: Analytics on (default)\n\n\n\n\n\n\n\nAfter: Analytics off"
+  },
+  {
+    "objectID": "guide/firebase.html#upgrade-to-the-blaze-plan",
+    "href": "guide/firebase.html#upgrade-to-the-blaze-plan",
+    "title": "Firebase Setup",
+    "section": "Upgrade to the Blaze plan",
+    "text": "Upgrade to the Blaze plan\nNew projects start on the free Spark plan. PRISM relies on paid Firebase services such as Cloud Functions, so your project must be on the pay-as-you-go Blaze plan. Blaze still includes the no-cost quota; you only pay for usage beyond it.\n\nStep 4: Select the Blaze plan\nWhen your project opens, click Upgrade at the bottom of the left-hand menu.\n\n\n\nYour new project, on the Spark plan\n\n\nIn the Firebase pricing plans dialog, click Select plan under Pay as you go (Blaze plan).\n\n\n\nFirebase pricing plans\n\n\n\n\nStep 5: Choose a billing account\nSelect an existing Cloud Billing account from the list, or click Create a Cloud Billing account and follow the prompts to add a payment method. If your organisation manages Google Cloud billing centrally, ask your administrator which account to use.\n\n\n\nChoose a Cloud Billing account\n\n\n\n\nStep 6: Set a budget alert\nEnter a Budget amount in USD (this example uses $5) and click Continue, or click Skip this step.\n\n\n\n\n\n\nNote\n\n\n\nA budget doesn’t cap your spending. It only emails the billing account’s administrators when the project’s costs approach or exceed the amount you set.\n\n\n\n\n\nSet a billing budget\n\n\n\n\nStep 7: Link the billing account\nReview the summary and click Link Cloud Billing account.\n\n\n\nLink Cloud Billing account\n\n\nClick Done to close the confirmation.\n\n\n\nPlan change completed\n\n\nThe badge next to your project name now reads Blaze plan.\n\n\n\nYour project, now on the Blaze plan"
+  },
+  {
+    "objectID": "guide/firebase.html#register-the-android-app",
+    "href": "guide/firebase.html#register-the-android-app",
+    "title": "Firebase Setup",
+    "section": "Register the Android app",
+    "text": "Register the Android app\nThe PRISM Android app connects to your Firebase project using a google-services.json file. You only need to register the app and download this file; the PRISM installer takes care of the rest, so you don’t need Android Studio.\n\nStep 8: Add an Android app\nOn the project overview, click + Add app and choose Android. Enter:\n\nAndroid package name: a unique identifier for your build of the app, written in reverse-domain format such as com.yourorg.prism (this example uses com.nat.prism). It can’t be changed after you register the app, and the PRISM installer builds the app with this name.\nApp nickname (optional): a label that only appears in the Firebase Console, such as PRISM Android.\n\nClick Register app.\n\n\n\nRegister the Android app\n\n\n\n\nStep 9: Download google-services.json\nClick Download google-services.json and keep the file somewhere handy, since the PRISM installer will ask for it. You can ignore the Android Studio instructions. Click Next.\n\n\n\nDownload google-services.json\n\n\n\n\nStep 10: Skip the SDK setup\nThe next screen explains how to add the Firebase SDK with Gradle. Skip these instructions: the PRISM installer configures the app for you. Click Next.\n\n\n\nFirebase SDK instructions (not needed)\n\n\nClick Continue to console.\n\n\n\nFinish adding the Android app\n\n\n\n\nStep 11: Find your Android app settings\nYour Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to download google-services.json again or to copy its App ID (only needed if you distribute the app through Firebase App Distribution).\n\n\n\nThe registered Android app"
+  },
+  {
+    "objectID": "guide/firebase.html#register-the-web-app",
+    "href": "guide/firebase.html#register-the-web-app",
+    "title": "Firebase Setup",
+    "section": "Register the web app",
+    "text": "Register the web app\nThe PRISM Research Portal signs researchers in through Firebase using your project’s Web API Key. You get this key by registering a web app.\n\nStep 12: Add a web app\nOn the project overview, click + Add app and choose Web (&lt;/&gt;). Enter an App nickname; we suggest prism, which is the name the Setup Guide uses. Leave Also set up Firebase Hosting unticked (it can be set up later). Click Register app.\n\n\n\nRegister the web app\n\n\n\n\nStep 13: Copy the Web API Key\nFirebase shows a firebaseConfig code snippet. Copy the value of apiKey (a long string beginning with AIza) and save it, since the PRISM installer will ask for it. You don’t need to run npm install or add this code anywhere. Click Continue to console.\n\n\n\nCopy the apiKey from the web app config\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find the key again at any time under Settings → General → Your apps → (your web app) → Config."
+  },
+  {
+    "objectID": "guide/firebase.html#next-steps",
+    "href": "guide/firebase.html#next-steps",
+    "title": "Firebase Setup",
+    "section": "Next steps",
+    "text": "Next steps\nYour Firebase project is ready. You should now have:\n\nThe google-services.json file for your Android app (Step 9).\nYour Web API Key (Step 13).\n\nContinue to the Setup Guide, which explains how to generate a Firebase Service Account Key and run the PRISM installer."
+  },
+  {
     "objectID": "guide/background.html",
     "href": "guide/background.html",
     "title": "Background",
@@ -40,62 +89,6 @@
     "title": "Background",
     "section": "Contact",
     "text": "Contact\nFor questions, feedback, or collaboration opportunities, please contact:\n\nName: Romaric Bouveret\nEmail: romaric.bouveret@mq.edu.au"
-  },
-  {
-    "objectID": "guide/developer.html",
-    "href": "guide/developer.html",
-    "title": "Setup Guide",
-    "section": "",
-    "text": "The PRISM Research Portal is how researchers can configure and run studies. This guide provides instructions on how to set up the PRISM Research Portal locally for development or deployment. The PRISM Research Portal is split into two main components:\nBoth components connect to the same Firebase project for authentication and database storage, which must be created before starting the setup.\nAdditionally, an Android mobile and WearOS app exists to collect data from participants. Documentation on building the PRISM Android mobile and WearOS app can be found in the GitHub Repo, documentation on using the app can be found in the Researcher Guide.\nflowchart TD\n    n1@{ label: \"Firebase\" }\n    \n    subgraph s1[\"Research Portal\"]\n        n2@{ label: \"Backend\" }\n    n3@{ label: \"Frontend\" }\n    n2 &lt;--&gt; n3\n    end\n\n    subgraph s2[\"App\"]\n        n4@{ label: \"Android\" }\n    n5@{ label: \"WearOS\" }\n    n4 --&gt; n5\n    end\n    \n    n1 &lt;--&gt; s1\n  n1 &lt;--&gt; s2\n  \n  style n1 fill:#D2E3FC\n  style s1 fill:#CEEAD6\n  style s2 fill:#CEEAD6\n  style n2 fill:#FEEFC3\n  style n3 fill:#FEEFC3\n  style n4 fill:#FEEFC3\n  style n5 fill:#FEEFC3\nFor most users we recommend using the Unified Setup via Docker. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.\nYou likely want to use the Manual Setup only if:"
-  },
-  {
-    "objectID": "guide/developer.html#unified-setup-via-docker",
-    "href": "guide/developer.html#unified-setup-via-docker",
-    "title": "Setup Guide",
-    "section": "Unified Setup via Docker",
-    "text": "Unified Setup via Docker\nThe easiest way to install and run both the PRISM Research Portal Backend and Frontend is via the prism-setup repository which uses Docker Compose. These instructions are detailed here.\n\n1. Prerequisites\nEnsure the following are installed and running:\n\nDocker Desktop - must be installed and running!\nGit for Windows, or for Mac and Linux git is pre-installed.\nA Mailgun account or a Gmail account for sending emails.\nA Firebase project with paid usage enabled.\n\n\n\n2.Clone the repository\nExecute the following commands in your terminal to download the repository and move into the folder:\ngit clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git\ncd prism-setup\n\n\n3. Gather your credentials\nBefore running the installer, have the following ready — the script will prompt you for each one.\n\nFirebase Web API Key\nFrom the Firebase Console in your project (e.g. PrismData): Settings → General\nScroll down to Your apps → Web apps → prism (web) → Config → apiKey and save it.\n\n\nFirebase Service Account Key\nFrom the Firebase Console in your project (e.g. PrismData): Settings → Service accounts\nSelect the Firebase Admin SDK section and click Generate new private key.\nRename the downloaded file to serviceAccountKey.json and place it in the root of the prism-setup folder.\n\n\nEmail Settings\nOption 1: Mailgun\n\nSign up for a free account at https://www.mailgun.com/\nFollow the instructions to add a domain and verify your email address.\nSave the API key and domain name — the setup prompt will ask for them.\n\n\nThe free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially. Note: You must have a web domain hosted somewhere to use this service.\n\nOption 2: Gmail SMTP\nEnable 2-Step Verification, then generate an App Password:\n\nGoogle Account → Security → 2-Step Verification → ON\nApp passwords → create a new app (PRISM) → copy the 16-char code\n\nSave your Gmail address and the 16-char App Password — the setup prompt will ask for them.\n\nGmail allows up to 100 emails per day, but can’t easily be changed.\n\n\n\n\n4. Run the installer\nExecute the install script from the prism-setup directory. Follow the prompts to enter your credentials. The script will build the Docker containers and start the PRISM Research Portal automatically:\nbash install.sh\n\n\n5. Deploy to production\nYour Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the docker containers when you need to access the experiment.\nTo stop the services:\ncd prism-setup\ndocker compose down\nTo start them again (without rebuilding):\ncd prism-setup\ndocker compose up\nThen navigate your browser to http://127.0.0.1:8000 (assuming default ports) to access the PRISM Research Portal."
-  },
-  {
-    "objectID": "guide/developer.html#manual-setup",
-    "href": "guide/developer.html#manual-setup",
-    "title": "Setup Guide",
-    "section": "Manual Setup",
-    "text": "Manual Setup\nIf you prefer to run and develop the services independently without Docker, follow the manual instructions documented at prism-flutter-backend repo and the prism-flutter-web-frontend repo."
-  },
-  {
-    "objectID": "guide/user.html",
-    "href": "guide/user.html",
-    "title": "Researcher Guide",
-    "section": "",
-    "text": "PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch participants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:\nThis data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.\nThe PRISM Research Portal serves as the interface for data collection and study management for Researchers conducting “experiments” within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to Participants. It is the control center for your data collection needs.\nThe PRISM Android App and PRISM WearOS App serve as the interface for Participants to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the PRISM Research Portal. See the Participant Guide for more information on how to use the PRISM App.\nThis guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it (likely at http://127.0.0.1:8000). See the Setup Guide for more information on how to set up and connect to the PRISM Research Portal."
-  },
-  {
-    "objectID": "guide/user.html#experiment-setup-on-the-research-portal",
-    "href": "guide/user.html#experiment-setup-on-the-research-portal",
-    "title": "Researcher Guide",
-    "section": "Experiment Setup on the Research Portal",
-    "text": "Experiment Setup on the Research Portal\n\nStep 1: Sign up\nClick “Sign up with Email”.\n\n\n\nSign up\n\n\nThen you should receive a verification email:\n\n\n\nVerification email\n\n\nNote: If you try to click “Sign up” again, it will show you “An account with this email already exists.” You won’t be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:\n\n\n\nVerification prompt\n\n\n\n\nStep 2: Notification\n\n\n\nNotification\n\n\nClick “Set up”, it will guide you to the first page.\n\n\nStep 3: Setup the first experiment\n\n\n\nSetup the first experiment\n\n\nClick “Create experiment”.\n\n\nStep 4: Fill in the basic information\n\n\n\nFill in the experiment information\n\n\n\n\nStep 5: Configure Sensor Details\nEnable or disable independent tracking for Smartphone and Smartwatch hardware layers. You can specify a custom sampling frequency (Hz) for physiological sensors and explicitly opt-in to Upload Raw Audio (privacy warning: sends un-processed audio streams directly to cloud storage).\n\n\n\nSet sensor details\n\n\n\n\n\nSet sensor details\n\n\n\n\nStep 6: Select ML Models\nSelect and configure on-device analytical models for the experiment: - YAMNet+ Environment Analysis: Classifies real-time acoustic environments (e.g., open space, food court) using normalized float32 input buffers. - Words of Not Understanding (WONU): Detects spoken linguistic cues (e.g., “pardon?”, “sorry, what?”) signaling a communication breakdown.\n\n\n\nAsking for ML Model\n\n\n\n\nStep 7: Define Automation Triggers\nBuild rule-based triggers automating model inference and user prompt generation using the visual builder:\n\n\n\nTriggers\n\n\n\n\n\nTriggers 2\n\n\n\nSensor Lists\n\n\n\n\n\n\n\n\n\n\nSensor Source (Input)\nAllowed Metrics (Units)\nAllowed Operators\nCompatible Target Models / Actions\nThreshold Guidance\n\n\n\n\nPhone Microphone\nDecibel (dB)\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., 0 - 120 dB\n\n\nWatch Microphone\nDecibel (dB)\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., 0 - 120 dB\n\n\nHeart Rate\nBPM\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., 30 - 220 BPM\n\n\nTemperature\nCelsius (°C)\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., -10 - 50 °C\n\n\n\n\n\n\nStep 8: Customise Feedback Buttons\nConfigure simple categorical labels for ecological momentary self-reports presented to users during an assessment moment (default labels: Good, Okay, Poor).\n\n\n\nFeedback Buttons\n\n\nConfirm your feedback buttons.\n\n\nStep 9: (Optional) Add Google Form Survey Link\nPrompt users to complete an external web survey (e.g., Google Forms) for deeper subjective commentary following their recording session.\n\n\n\nGoogle form survey link\n\n\n\n\nStep 10: Review and Confirm Details\nConfirm the summary configuration draft before publishing.\n\n\n\nConfirm the detail"
-  },
-  {
-    "objectID": "guide/user.html#managing-experiments-and-participants",
-    "href": "guide/user.html#managing-experiments-and-participants",
-    "title": "Researcher Guide",
-    "section": "Managing Experiments and Participants",
-    "text": "Managing Experiments and Participants\n\nStep 12: View experiments and Add and Manage Participants\nWhen logging in now you will see the experiment cards.\n\n\n\nView all experiments\n\n\nClick “My First Experiment” (or the experiment you want to manage).\n\n\n\nSave and add participants\n\n\nConfirm it by clicking “Save and add participants”.\n\n\n\nCSV Upload\n\n\nExample CSV file formatting (expected columns: email, name):\n\n\n\nExample CSV\n\n\nDrag your csv file then you should be able to see participants. Once loaded, researchers can trigger batch email invitations to all assigned members.\n\n\n\nSee participants\n\n\nYou can edit participants by clicking on it and you should be able to see “Email”, “View data”, “Remove”. Note: Here the “View data” is disabled, that’s because there’s no response for that participant yet. Removing a participant permanently deletes all associated response records and audio storage payloads.\n\n\n\nEdit participants\n\n\nClick save, it will show “Saving…”. Afterward it will guide you back to the experiment list.\n\n\n\nExperiment list"
-  },
-  {
-    "objectID": "guide/user.html#experiment-deployment",
-    "href": "guide/user.html#experiment-deployment",
-    "title": "Researcher Guide",
-    "section": "Experiment Deployment",
-    "text": "Experiment Deployment\nOnce you have added participants to the Research Portal and clicked Invite, the PRISM system manages deployment to devices automatically:\n\nInvitation Email: The backend sends an automated invitation email to each participant.\nDownload App: The email instructs the participant to download the PRISM Android/Watch app.\nActivation Link: When the participant clicks the unique invite link on their phone, it registers their participant ID and downloads the experiment’s specific configuration rules (sampling rates, triggers, models) from Firestore to their device. No manual device side setup is required by the researcher."
-  },
-  {
-    "objectID": "guide/user.html#during-post-experiment-monitoring",
-    "href": "guide/user.html#during-post-experiment-monitoring",
-    "title": "Researcher Guide",
-    "section": "During & Post-Experiment Monitoring",
-    "text": "During & Post-Experiment Monitoring\n\nStep 13: Check Session Recordings\nOnce participants have used the app and data collection has begun you can click “View data” for a particular participant.\n\n\n\nCheck recording\n\n\n\n\nStep 14: View the Recordings\nReview detailed time-series graphs and metadata attributes.\n\n\n\nView the recordings\n\n\n\n\nStep 15: Download Datasets\nDownload signed raw sensor archives and audio files directly via temporary short-lived pre-signed secure URLs.\n\n\n\nDownload recordings\n\n\nLog back in to modify experiments and view the data at any time."
   },
   {
     "objectID": "index.html",
@@ -168,6 +161,62 @@
     "text": "Contact\nFor questions, feedback, or collaboration opportunities, please contact:\n\nName: Romaric Bouveret\nEmail: romaric.bouveret@mq.edu.au"
   },
   {
+    "objectID": "guide/developer.html",
+    "href": "guide/developer.html",
+    "title": "Setup Guide",
+    "section": "",
+    "text": "The PRISM Research Portal is how researchers can configure and run studies. This guide provides instructions on how to set up the PRISM Research Portal locally for development or deployment. The PRISM Research Portal is split into two main components:\nBoth components connect to the same Firebase project for authentication and database storage, which must be created before starting the setup.\nAdditionally, an Android mobile and WearOS app exists to collect data from participants. Documentation on building the PRISM Android mobile and WearOS app can be found in the GitHub Repo, documentation on using the app can be found in the Researcher Guide.\nflowchart TD\n    n1@{ label: \"Firebase\" }\n    \n    subgraph s1[\"Research Portal\"]\n        n2@{ label: \"Backend\" }\n    n3@{ label: \"Frontend\" }\n    n2 &lt;--&gt; n3\n    end\n\n    subgraph s2[\"App\"]\n        n4@{ label: \"Android\" }\n    n5@{ label: \"WearOS\" }\n    n4 --&gt; n5\n    end\n    \n    n1 &lt;--&gt; s1\n  n1 &lt;--&gt; s2\n  \n  style n1 fill:#D2E3FC\n  style s1 fill:#CEEAD6\n  style s2 fill:#CEEAD6\n  style n2 fill:#FEEFC3\n  style n3 fill:#FEEFC3\n  style n4 fill:#FEEFC3\n  style n5 fill:#FEEFC3\nFor most users we recommend using the Unified Setup via Docker. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.\nYou likely want to use the Manual Setup only if:"
+  },
+  {
+    "objectID": "guide/developer.html#unified-setup-via-docker",
+    "href": "guide/developer.html#unified-setup-via-docker",
+    "title": "Setup Guide",
+    "section": "Unified Setup via Docker",
+    "text": "Unified Setup via Docker\nThe easiest way to install and run both the PRISM Research Portal Backend and Frontend is via the prism-setup repository which uses Docker Compose. These instructions are detailed here.\n\n1. Prerequisites\nEnsure the following are installed and running:\n\nDocker Desktop - must be installed and running!\nGit for Windows, or for Mac and Linux git is pre-installed.\nA Mailgun account or a Gmail account for sending emails.\nA Firebase project with paid usage enabled. See the Firebase Setup guide.\n\n\n\n2.Clone the repository\nExecute the following commands in your terminal to download the repository and move into the folder:\ngit clone https://github.com/Australian-Future-Hearing-Initiative/prism-setup.git\ncd prism-setup\n\n\n3. Gather your credentials\nBefore running the installer, have the following ready — the script will prompt you for each one.\n\nFirebase Web API Key\nFrom the Firebase Console in your project (e.g. PrismData): Settings → General\nScroll down to Your apps → Web apps → prism (web) → Config → apiKey and save it.\n\n\nFirebase Service Account Key\nFrom the Firebase Console in your project (e.g. PrismData): Settings → Service accounts\nSelect the Firebase Admin SDK section and click Generate new private key.\nRename the downloaded file to serviceAccountKey.json and place it in the root of the prism-setup folder.\n\n\nEmail Settings\nOption 1: Mailgun\n\nSign up for a free account at https://www.mailgun.com/\nFollow the instructions to add a domain and verify your email address.\nSave the API key and domain name — the setup prompt will ask for them.\n\n\nThe free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially. Note: You must have a web domain hosted somewhere to use this service.\n\nOption 2: Gmail SMTP\nEnable 2-Step Verification, then generate an App Password:\n\nGoogle Account → Security → 2-Step Verification → ON\nApp passwords → create a new app (PRISM) → copy the 16-char code\n\nSave your Gmail address and the 16-char App Password — the setup prompt will ask for them.\n\nGmail allows up to 100 emails per day, but can’t easily be changed.\n\n\n\n\n4. Run the installer\nExecute the install script from the prism-setup directory. Follow the prompts to enter your credentials. The script will build the Docker containers and start the PRISM Research Portal automatically:\nbash install.sh\n\n\n5. Deploy to production\nYour Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the docker containers when you need to access the experiment.\nTo stop the services:\ncd prism-setup\ndocker compose down\nTo start them again (without rebuilding):\ncd prism-setup\ndocker compose up\nThen navigate your browser to http://127.0.0.1:8000 (assuming default ports) to access the PRISM Research Portal."
+  },
+  {
+    "objectID": "guide/developer.html#manual-setup",
+    "href": "guide/developer.html#manual-setup",
+    "title": "Setup Guide",
+    "section": "Manual Setup",
+    "text": "Manual Setup\nIf you prefer to run and develop the services independently without Docker, follow the manual instructions documented at prism-flutter-backend repo and the prism-flutter-web-frontend repo."
+  },
+  {
+    "objectID": "guide/user.html",
+    "href": "guide/user.html",
+    "title": "Researcher Guide",
+    "section": "",
+    "text": "PRISM helps researchers collect real-world data through a smartphone application aimed to gently catch participants in a moment of hearing difficulty. PRISM can capture a snapshot of your real-world environment in that moment. This includes:\nThis data helps build the PRISM machine learning framework to automatically recognise difficult listening situations and adjust hearing aids in real-time.\nThe PRISM Research Portal serves as the interface for data collection and study management for Researchers conducting “experiments” within the PRISM ecosystem. Researchers use this application to design experiments, manage study cohorts, and deploy tasks to Participants. It is the control center for your data collection needs.\nThe PRISM Android App and PRISM WearOS App serve as the interface for Participants to contribute data to a PRISM experiment. Participants can install the app and then participate in experiments by clicking the link in an invitation email sent through the PRISM Research Portal. See the Participant Guide for more information on how to use the PRISM App.\nThis guide assumes you are a researcher conducting experiments and the PRISM Research Portal is running and you are connected to it (likely at http://127.0.0.1:8000). See the Setup Guide for more information on how to set up and connect to the PRISM Research Portal."
+  },
+  {
+    "objectID": "guide/user.html#experiment-setup-on-the-research-portal",
+    "href": "guide/user.html#experiment-setup-on-the-research-portal",
+    "title": "Researcher Guide",
+    "section": "Experiment Setup on the Research Portal",
+    "text": "Experiment Setup on the Research Portal\n\nStep 1: Sign up\nClick “Sign up with Email”.\n\n\n\nSign up\n\n\nThen you should receive a verification email:\n\n\n\nVerification email\n\n\nNote: If you try to click “Sign up” again, it will show you “An account with this email already exists.” You won’t be able to sign in unless you click the link to verify it. Once you have verified your email by clicking the link, you can see the following prompt:\n\n\n\nVerification prompt\n\n\n\n\nStep 2: Notification\n\n\n\nNotification\n\n\nClick “Set up”, it will guide you to the first page.\n\n\nStep 3: Setup the first experiment\n\n\n\nSetup the first experiment\n\n\nClick “Create experiment”.\n\n\nStep 4: Fill in the basic information\n\n\n\nFill in the experiment information\n\n\n\n\nStep 5: Configure Sensor Details\nEnable or disable independent tracking for Smartphone and Smartwatch hardware layers. You can specify a custom sampling frequency (Hz) for physiological sensors and explicitly opt-in to Upload Raw Audio (privacy warning: sends un-processed audio streams directly to cloud storage).\n\n\n\nSet sensor details\n\n\n\n\n\nSet sensor details\n\n\n\n\nStep 6: Select ML Models\nSelect and configure on-device analytical models for the experiment: - YAMNet+ Environment Analysis: Classifies real-time acoustic environments (e.g., open space, food court) using normalized float32 input buffers. - Words of Not Understanding (WONU): Detects spoken linguistic cues (e.g., “pardon?”, “sorry, what?”) signaling a communication breakdown.\n\n\n\nAsking for ML Model\n\n\n\n\nStep 7: Define Automation Triggers\nBuild rule-based triggers automating model inference and user prompt generation using the visual builder:\n\n\n\nTriggers\n\n\n\n\n\nTriggers 2\n\n\n\nSensor Lists\n\n\n\n\n\n\n\n\n\n\nSensor Source (Input)\nAllowed Metrics (Units)\nAllowed Operators\nCompatible Target Models / Actions\nThreshold Guidance\n\n\n\n\nPhone Microphone\nDecibel (dB)\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., 0 - 120 dB\n\n\nWatch Microphone\nDecibel (dB)\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., 0 - 120 dB\n\n\nHeart Rate\nBPM\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., 30 - 220 BPM\n\n\nTemperature\nCelsius (°C)\n&gt;, &lt;, =\nWake YAMNet+ / WONU, or Launch Form\ne.g., -10 - 50 °C\n\n\n\n\n\n\nStep 8: Customise Feedback Buttons\nConfigure simple categorical labels for ecological momentary self-reports presented to users during an assessment moment (default labels: Good, Okay, Poor).\n\n\n\nFeedback Buttons\n\n\nConfirm your feedback buttons.\n\n\nStep 9: (Optional) Add Google Form Survey Link\nPrompt users to complete an external web survey (e.g., Google Forms) for deeper subjective commentary following their recording session.\n\n\n\nGoogle form survey link\n\n\n\n\nStep 10: Review and Confirm Details\nConfirm the summary configuration draft before publishing.\n\n\n\nConfirm the detail"
+  },
+  {
+    "objectID": "guide/user.html#managing-experiments-and-participants",
+    "href": "guide/user.html#managing-experiments-and-participants",
+    "title": "Researcher Guide",
+    "section": "Managing Experiments and Participants",
+    "text": "Managing Experiments and Participants\n\nStep 12: View experiments and Add and Manage Participants\nWhen logging in now you will see the experiment cards.\n\n\n\nView all experiments\n\n\nClick “My First Experiment” (or the experiment you want to manage).\n\n\n\nSave and add participants\n\n\nConfirm it by clicking “Save and add participants”.\n\n\n\nCSV Upload\n\n\nExample CSV file formatting (expected columns: email, name):\n\n\n\nExample CSV\n\n\nDrag your csv file then you should be able to see participants. Once loaded, researchers can trigger batch email invitations to all assigned members.\n\n\n\nSee participants\n\n\nYou can edit participants by clicking on it and you should be able to see “Email”, “View data”, “Remove”. Note: Here the “View data” is disabled, that’s because there’s no response for that participant yet. Removing a participant permanently deletes all associated response records and audio storage payloads.\n\n\n\nEdit participants\n\n\nClick save, it will show “Saving…”. Afterward it will guide you back to the experiment list.\n\n\n\nExperiment list"
+  },
+  {
+    "objectID": "guide/user.html#experiment-deployment",
+    "href": "guide/user.html#experiment-deployment",
+    "title": "Researcher Guide",
+    "section": "Experiment Deployment",
+    "text": "Experiment Deployment\nOnce you have added participants to the Research Portal and clicked Invite, the PRISM system manages deployment to devices automatically:\n\nInvitation Email: The backend sends an automated invitation email to each participant.\nDownload App: The email instructs the participant to download the PRISM Android/Watch app.\nActivation Link: When the participant clicks the unique invite link on their phone, it registers their participant ID and downloads the experiment’s specific configuration rules (sampling rates, triggers, models) from Firestore to their device. No manual device side setup is required by the researcher."
+  },
+  {
+    "objectID": "guide/user.html#during-post-experiment-monitoring",
+    "href": "guide/user.html#during-post-experiment-monitoring",
+    "title": "Researcher Guide",
+    "section": "During & Post-Experiment Monitoring",
+    "text": "During & Post-Experiment Monitoring\n\nStep 13: Check Session Recordings\nOnce participants have used the app and data collection has begun you can click “View data” for a particular participant.\n\n\n\nCheck recording\n\n\n\n\nStep 14: View the Recordings\nReview detailed time-series graphs and metadata attributes.\n\n\n\nView the recordings\n\n\n\n\nStep 15: Download Datasets\nDownload signed raw sensor archives and audio files directly via temporary short-lived pre-signed secure URLs.\n\n\n\nDownload recordings\n\n\nLog back in to modify experiments and view the data at any time."
+  },
+  {
     "objectID": "guide/extended.html",
     "href": "guide/extended.html",
     "title": "Other Tools",
@@ -194,12 +243,5 @@
     "title": "Other Tools",
     "section": "Acoustic & Hearing Machine Learning Models",
     "text": "Acoustic & Hearing Machine Learning Models\n\nExplore models and datasets at the prism-ml repository"
-  },
-  {
-    "objectID": "guide/participant.html",
-    "href": "guide/participant.html",
-    "title": "Participant Guide",
-    "section": "",
-    "text": "Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.\nAll data user data is stored securely in a Firebase project.\n\nYou may wish to share a customised version of this section as a one-page guide for your study cohort.\n\n\nStep 1: Join the experiment\nOnce the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.\n\n\n\nJoin the experiment\n\n\n\n\nStep 2: Starting the experiment\n\n\n\nStarting the experiment\n\n\n\nThe Recording Period: This is the block of time (Like a 4 hour window)\nThe Recording Session: Those are the individual “sessions” (short recordings) that happen inside it.\n\n\n\nStep 3: Sending a recording\n\n\n\nSending a recording\n\n\n\n\nStep 4: Finish the session\n\n\n\nFinish the session"
   }
 ]

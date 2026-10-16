@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Firebase Setup – PRISM</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c86ac85dedf9dbbd9d1d63753e56cef6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b2d9e204a3b1b3f820053a7db669d83e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c86ac85dedf9dbbd9d1d63753e56cef6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">PRISM</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../guide/firebase.html" aria-current="page"> 
+<span class="menu-text">Firebase Setup</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/developer.html"> 
+<span class="menu-text">Setup Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/user.html"> 
+<span class="menu-text">Researcher Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/participant.html"> 
+<span class="menu-text">Participant Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../guide/extended.html"> 
+<span class="menu-text">Other Tools</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#create-a-firebase-project" id="toc-create-a-firebase-project" class="nav-link active" data-scroll-target="#create-a-firebase-project">Create a Firebase project</a>
+  <ul class="collapse">
+  <li><a href="#step-1-name-your-project" id="toc-step-1-name-your-project" class="nav-link" data-scroll-target="#step-1-name-your-project">Step 1: Name your project</a></li>
+  <li><a href="#step-2-skip-gemini-in-firebase" id="toc-step-2-skip-gemini-in-firebase" class="nav-link" data-scroll-target="#step-2-skip-gemini-in-firebase">Step 2: Skip Gemini in Firebase</a></li>
+  <li><a href="#step-3-turn-off-google-analytics" id="toc-step-3-turn-off-google-analytics" class="nav-link" data-scroll-target="#step-3-turn-off-google-analytics">Step 3: Turn off Google Analytics</a></li>
+  </ul></li>
+  <li><a href="#upgrade-to-the-blaze-plan" id="toc-upgrade-to-the-blaze-plan" class="nav-link" data-scroll-target="#upgrade-to-the-blaze-plan">Upgrade to the Blaze plan</a>
+  <ul class="collapse">
+  <li><a href="#step-4-select-the-blaze-plan" id="toc-step-4-select-the-blaze-plan" class="nav-link" data-scroll-target="#step-4-select-the-blaze-plan">Step 4: Select the Blaze plan</a></li>
+  <li><a href="#step-5-choose-a-billing-account" id="toc-step-5-choose-a-billing-account" class="nav-link" data-scroll-target="#step-5-choose-a-billing-account">Step 5: Choose a billing account</a></li>
+  <li><a href="#step-6-set-a-budget-alert" id="toc-step-6-set-a-budget-alert" class="nav-link" data-scroll-target="#step-6-set-a-budget-alert">Step 6: Set a budget alert</a></li>
+  <li><a href="#step-7-link-the-billing-account" id="toc-step-7-link-the-billing-account" class="nav-link" data-scroll-target="#step-7-link-the-billing-account">Step 7: Link the billing account</a></li>
+  </ul></li>
+  <li><a href="#register-the-android-app" id="toc-register-the-android-app" class="nav-link" data-scroll-target="#register-the-android-app">Register the Android app</a>
+  <ul class="collapse">
+  <li><a href="#step-8-add-an-android-app" id="toc-step-8-add-an-android-app" class="nav-link" data-scroll-target="#step-8-add-an-android-app">Step 8: Add an Android app</a></li>
+  <li><a href="#step-9-download-google-services.json" id="toc-step-9-download-google-services.json" class="nav-link" data-scroll-target="#step-9-download-google-services.json">Step 9: Download <code>google-services.json</code></a></li>
+  <li><a href="#step-10-skip-the-sdk-setup" id="toc-step-10-skip-the-sdk-setup" class="nav-link" data-scroll-target="#step-10-skip-the-sdk-setup">Step 10: Skip the SDK setup</a></li>
+  <li><a href="#step-11-find-your-android-app-settings" id="toc-step-11-find-your-android-app-settings" class="nav-link" data-scroll-target="#step-11-find-your-android-app-settings">Step 11: Find your Android app settings</a></li>
+  </ul></li>
+  <li><a href="#register-the-web-app" id="toc-register-the-web-app" class="nav-link" data-scroll-target="#register-the-web-app">Register the web app</a>
+  <ul class="collapse">
+  <li><a href="#step-12-add-a-web-app" id="toc-step-12-add-a-web-app" class="nav-link" data-scroll-target="#step-12-add-a-web-app">Step 12: Add a web app</a></li>
+  <li><a href="#step-13-copy-the-web-api-key" id="toc-step-13-copy-the-web-api-key" class="nav-link" data-scroll-target="#step-13-copy-the-web-api-key">Step 13: Copy the Web API Key</a></li>
+  </ul></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/firebase.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Firebase Setup</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>PRISM stores its researcher accounts, experiments and participant data in a <strong>Firebase</strong> project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the <a href="../guide/developer.html">Setup Guide</a>.</p>
+<p>By the end of this guide you will have:</p>
+<ul>
+<li>A Firebase project on the pay-as-you-go <strong>Blaze</strong> plan.</li>
+<li>A registered <strong>Android app</strong> and its <code>google-services.json</code> file.</li>
+<li>A registered <strong>web app</strong> and its <strong>Web API Key</strong> (<code>apiKey</code>).</li>
+</ul>
+<p>You will need a Google account, plus a payment method or access to an existing Cloud Billing account.</p>
+<section id="create-a-firebase-project" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-firebase-project">Create a Firebase project</h2>
+<section id="step-1-name-your-project" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-name-your-project">Step 1: Name your project</h3>
+<p>Open the <a href="https://console.firebase.google.com/">Firebase Console</a>, sign in with your Google account and create a new project.</p>
+<p>Enter a <strong>Project name</strong> (this example uses <code>prism-nat1</code>). Firebase creates a <strong>project ID</strong> from the name, shown underneath it. The project ID can’t be changed later and becomes part of your project’s web addresses (e.g.&nbsp;<code>prism-nat1.web.app</code>), so click the pencil icon if you’d like to edit it now. Click <strong>Continue</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/01-create-project-name.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Name your project"><img src="images/firebase/01-create-project-name.png" class="img-fluid figure-img" alt="Name your project"></a></p>
+<figcaption>Name your project</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-2-skip-gemini-in-firebase" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-skip-gemini-in-firebase">Step 2: Skip Gemini in Firebase</h3>
+<p>Gemini in Firebase is an optional AI assistant for the Firebase Console. PRISM doesn’t need it, so turning it on is up to you (this example leaves it off). Click <strong>Continue</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/02-create-project-gemini.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Gemini in Firebase is optional"><img src="images/firebase/02-create-project-gemini.png" class="img-fluid figure-img" alt="Gemini in Firebase is optional"></a></p>
+<figcaption>Gemini in Firebase is optional</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-3-turn-off-google-analytics" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-turn-off-google-analytics">Step 3: Turn off Google Analytics</h3>
+<p>PRISM doesn’t use Google Analytics either. Switch off <strong>Enable Google Analytics for this project</strong> (it’s on by default) and the <strong>Continue</strong> button changes to <strong>Create project</strong>. Click it, then wait for Firebase to finish creating your project.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/03-create-project-analytics-on.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Before: Analytics on (default)"><img src="images/firebase/03-create-project-analytics-on.png" class="img-fluid figure-img" alt="Before: Analytics on (default)"></a></p>
+<figcaption>Before: Analytics on (default)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/04-create-project-analytics-off.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="After: Analytics off"><img src="images/firebase/04-create-project-analytics-off.png" class="img-fluid figure-img" alt="After: Analytics off"></a></p>
+<figcaption>After: Analytics off</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="upgrade-to-the-blaze-plan" class="level2">
+<h2 class="anchored" data-anchor-id="upgrade-to-the-blaze-plan">Upgrade to the Blaze plan</h2>
+<p>New projects start on the free <strong>Spark</strong> plan. PRISM relies on paid Firebase services such as Cloud Functions, so your project must be on the pay-as-you-go <strong>Blaze</strong> plan. Blaze still includes the no-cost quota; you only pay for usage beyond it.</p>
+<section id="step-4-select-the-blaze-plan" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-select-the-blaze-plan">Step 4: Select the Blaze plan</h3>
+<p>When your project opens, click <strong>Upgrade</strong> at the bottom of the left-hand menu.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/05-overview-spark-plan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Your new project, on the Spark plan"><img src="images/firebase/05-overview-spark-plan.png" class="img-fluid figure-img" alt="Your new project, on the Spark plan"></a></p>
+<figcaption>Your new project, on the Spark plan</figcaption>
+</figure>
+</div>
+<p>In the <strong>Firebase pricing plans</strong> dialog, click <strong>Select plan</strong> under <strong>Pay as you go (Blaze plan)</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/06-upgrade-pricing-plans.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Firebase pricing plans"><img src="images/firebase/06-upgrade-pricing-plans.png" class="img-fluid figure-img" alt="Firebase pricing plans"></a></p>
+<figcaption>Firebase pricing plans</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-5-choose-a-billing-account" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-choose-a-billing-account">Step 5: Choose a billing account</h3>
+<p>Select an existing Cloud Billing account from the list, or click <strong>Create a Cloud Billing account</strong> and follow the prompts to add a payment method. If your organisation manages Google Cloud billing centrally, ask your administrator which account to use.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/07-upgrade-billing-account.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Choose a Cloud Billing account"><img src="images/firebase/07-upgrade-billing-account.png" class="img-fluid figure-img" alt="Choose a Cloud Billing account"></a></p>
+<figcaption>Choose a Cloud Billing account</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-6-set-a-budget-alert" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-set-a-budget-alert">Step 6: Set a budget alert</h3>
+<p>Enter a <strong>Budget amount in USD</strong> (this example uses $5) and click <strong>Continue</strong>, or click <strong>Skip this step</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A budget doesn’t cap your spending. It only emails the billing account’s administrators when the project’s costs approach or exceed the amount you set.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/08-upgrade-billing-budget.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Set a billing budget"><img src="images/firebase/08-upgrade-billing-budget.png" class="img-fluid figure-img" alt="Set a billing budget"></a></p>
+<figcaption>Set a billing budget</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-7-link-the-billing-account" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-link-the-billing-account">Step 7: Link the billing account</h3>
+<p>Review the summary and click <strong>Link Cloud Billing account</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/09-upgrade-link-billing.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Link Cloud Billing account"><img src="images/firebase/09-upgrade-link-billing.png" class="img-fluid figure-img" alt="Link Cloud Billing account"></a></p>
+<figcaption>Link Cloud Billing account</figcaption>
+</figure>
+</div>
+<p>Click <strong>Done</strong> to close the confirmation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/10-upgrade-complete.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Plan change completed"><img src="images/firebase/10-upgrade-complete.png" class="img-fluid figure-img" alt="Plan change completed"></a></p>
+<figcaption>Plan change completed</figcaption>
+</figure>
+</div>
+<p>The badge next to your project name now reads <strong>Blaze plan</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/11-overview-blaze-plan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Your project, now on the Blaze plan"><img src="images/firebase/11-overview-blaze-plan.png" class="img-fluid figure-img" alt="Your project, now on the Blaze plan"></a></p>
+<figcaption>Your project, now on the Blaze plan</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="register-the-android-app" class="level2">
+<h2 class="anchored" data-anchor-id="register-the-android-app">Register the Android app</h2>
+<p>The PRISM Android app connects to your Firebase project using a <code>google-services.json</code> file. You only need to register the app and download this file; the PRISM installer takes care of the rest, so you don’t need Android Studio.</p>
+<section id="step-8-add-an-android-app" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-add-an-android-app">Step 8: Add an Android app</h3>
+<p>On the project overview, click <strong>+ Add app</strong> and choose <strong>Android</strong>. Enter:</p>
+<ul>
+<li><strong>Android package name</strong>: a unique identifier for your build of the app, written in reverse-domain format such as <code>com.yourorg.prism</code> (this example uses <code>com.nat.prism</code>). It can’t be changed after you register the app, and the PRISM installer builds the app with this name.</li>
+<li><strong>App nickname</strong> (optional): a label that only appears in the Firebase Console, such as <code>PRISM Android</code>.</li>
+</ul>
+<p>Click <strong>Register app</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/12-android-register-app.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Register the Android app"><img src="images/firebase/12-android-register-app.png" class="img-fluid figure-img" alt="Register the Android app"></a></p>
+<figcaption>Register the Android app</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-9-download-google-services.json" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-download-google-services.json">Step 9: Download <code>google-services.json</code></h3>
+<p>Click <strong>Download google-services.json</strong> and keep the file somewhere handy, since the PRISM installer will ask for it. You can ignore the Android Studio instructions. Click <strong>Next</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/13-android-download-config.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Download google-services.json"><img src="images/firebase/13-android-download-config.png" class="img-fluid figure-img" alt="Download google-services.json"></a></p>
+<figcaption>Download google-services.json</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-10-skip-the-sdk-setup" class="level3">
+<h3 class="anchored" data-anchor-id="step-10-skip-the-sdk-setup">Step 10: Skip the SDK setup</h3>
+<p>The next screen explains how to add the Firebase SDK with Gradle. <strong>Skip these instructions</strong>: the PRISM installer configures the app for you. Click <strong>Next</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/14-android-add-sdk.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Firebase SDK instructions (not needed)"><img src="images/firebase/14-android-add-sdk.png" class="img-fluid figure-img" alt="Firebase SDK instructions (not needed)"></a></p>
+<figcaption>Firebase SDK instructions (not needed)</figcaption>
+</figure>
+</div>
+<p>Click <strong>Continue to console</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/15-android-next-steps.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Finish adding the Android app"><img src="images/firebase/15-android-next-steps.png" class="img-fluid figure-img" alt="Finish adding the Android app"></a></p>
+<figcaption>Finish adding the Android app</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-11-find-your-android-app-settings" class="level3">
+<h3 class="anchored" data-anchor-id="step-11-find-your-android-app-settings">Step 11: Find your Android app settings</h3>
+<p>Your Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to download <code>google-services.json</code> again or to copy its <strong>App ID</strong> (only needed if you distribute the app through Firebase App Distribution).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/16-overview-android-app.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="The registered Android app"><img src="images/firebase/16-overview-android-app.png" class="img-fluid figure-img" alt="The registered Android app"></a></p>
+<figcaption>The registered Android app</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="register-the-web-app" class="level2">
+<h2 class="anchored" data-anchor-id="register-the-web-app">Register the web app</h2>
+<p>The PRISM Research Portal signs researchers in through Firebase using your project’s <strong>Web API Key</strong>. You get this key by registering a web app.</p>
+<section id="step-12-add-a-web-app" class="level3">
+<h3 class="anchored" data-anchor-id="step-12-add-a-web-app">Step 12: Add a web app</h3>
+<p>On the project overview, click <strong>+ Add app</strong> and choose <strong>Web</strong> (<code>&lt;/&gt;</code>). Enter an <strong>App nickname</strong>; we suggest <code>prism</code>, which is the name the <a href="../guide/developer.html">Setup Guide</a> uses. Leave <strong>Also set up Firebase Hosting</strong> unticked (it can be set up later). Click <strong>Register app</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/17-web-register-app.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Register the web app"><img src="images/firebase/17-web-register-app.png" class="img-fluid figure-img" alt="Register the web app"></a></p>
+<figcaption>Register the web app</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-13-copy-the-web-api-key" class="level3">
+<h3 class="anchored" data-anchor-id="step-13-copy-the-web-api-key">Step 13: Copy the Web API Key</h3>
+<p>Firebase shows a <code>firebaseConfig</code> code snippet. Copy the value of <strong><code>apiKey</code></strong> (a long string beginning with <code>AIza</code>) and save it, since the PRISM installer will ask for it. You don’t need to run <code>npm install</code> or add this code anywhere. Click <strong>Continue to console</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/firebase/18-web-app-config.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Copy the apiKey from the web app config"><img src="images/firebase/18-web-app-config.png" class="img-fluid figure-img" alt="Copy the apiKey from the web app config"></a></p>
+<figcaption>Copy the apiKey from the web app config</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can find the key again at any time under <strong>Settings → General → Your apps → (your web app) → Config</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>Your Firebase project is ready. You should now have:</p>
+<ul>
+<li>The <code>google-services.json</code> file for your Android app (Step 9).</li>
+<li>Your Web API Key (Step 13).</li>
+</ul>
+<p>Continue to the <a href="../guide/developer.html">Setup Guide</a>, which explains how to generate a <strong>Firebase Service Account Key</strong> and run the PRISM installer.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Australian-Future-Hearing-Initiative\.github\.io\/prism-docs\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Australian-Future-Hearing-Initiative/prism-docs/edit/main/guide/firebase.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
