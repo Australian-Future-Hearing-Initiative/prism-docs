@@ -318,7 +318,13 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-a-firebase-project" id="toc-create-a-firebase-project" class="nav-link active" data-scroll-target="#create-a-firebase-project">Create a Firebase project</a>
+  <li><a href="#data-storage-and-privacy" id="toc-data-storage-and-privacy" class="nav-link active" data-scroll-target="#data-storage-and-privacy">Data storage and privacy</a>
+  <ul class="collapse">
+  <li><a href="#what-the-app-uploads" id="toc-what-the-app-uploads" class="nav-link" data-scroll-target="#what-the-app-uploads">What the app uploads</a></li>
+  <li><a href="#where-data-is-stored" id="toc-where-data-is-stored" class="nav-link" data-scroll-target="#where-data-is-stored">Where data is stored</a></li>
+  <li><a href="#location-security-and-retention" id="toc-location-security-and-retention" class="nav-link" data-scroll-target="#location-security-and-retention">Location, security and retention</a></li>
+  </ul></li>
+  <li><a href="#create-a-firebase-project" id="toc-create-a-firebase-project" class="nav-link" data-scroll-target="#create-a-firebase-project">Create a Firebase project</a>
   <ul class="collapse">
   <li><a href="#step-1-name-your-project" id="toc-step-1-name-your-project" class="nav-link" data-scroll-target="#step-1-name-your-project">Step 1: Name your project</a></li>
   <li><a href="#step-2-skip-gemini-in-firebase" id="toc-step-2-skip-gemini-in-firebase" class="nav-link" data-scroll-target="#step-2-skip-gemini-in-firebase">Step 2: Skip Gemini in Firebase</a></li>
@@ -378,6 +384,94 @@ gtag('config', 'G-XXXXXXXX', { 'anonymize_ip': true});
 <li>A registered <strong>web app</strong> and its <strong>Web API Key</strong> (<code>apiKey</code>).</li>
 </ul>
 <p>You will need a Google account, plus a payment method or access to an existing Cloud Billing account.</p>
+<section id="data-storage-and-privacy" class="level2">
+<h2 class="anchored" data-anchor-id="data-storage-and-privacy">Data storage and privacy</h2>
+<p>PRISM collects audio and health data from participants. Most of it is stored in the Firebase project owned by the researcher that you create in this guide, which is hosted by Google. See <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a> and the <a href="https://firebase.google.com/terms/data-processing-terms">Firebase Data Processing and Security Terms</a> for details.</p>
+<section id="what-the-app-uploads" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-app-uploads">What the app uploads</h3>
+<p>While a recording session is open, the participant’s phone records audio continuously. Each time the participant presses a rating button, the app uploads:</p>
+<ul>
+<li>An unprocessed audio clip of up to 30 seconds, ending at the button press.</li>
+<li>Heart-rate variability and skin temperature readings from the previous 30 minutes, if the participant has allowed access to Android Health Connect.</li>
+<li>If a watch is used, an audio clip from the watch, plus its accelerometer, gyroscope, heart-rate and ambient-temperature readings.</li>
+</ul>
+<p>PRISM doesn’t collect location data, and its apps and Research Portal don’t use analytics or crash reporting.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>Upload Raw Audio</strong> and other sensor settings in the Research Portal don’t currently change what the app collects; everything listed above is uploaded with every rating.</p>
+</div>
+</div>
+</section>
+<section id="where-data-is-stored" class="level3">
+<h3 class="anchored" data-anchor-id="where-data-is-stored">Where data is stored</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Where</th>
+<th>What’s stored</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Firebase Authentication</strong></td>
+<td>Researchers’ email addresses and password hashes. Participants’ Google account email, name and profile photo URL, from signing in to the app with Google.</td>
+</tr>
+<tr class="even">
+<td><strong>Cloud Firestore</strong> (database)</td>
+<td>Experiment settings. Participants’ names, email addresses and invitation status. A record of each uploaded file: rating, sound classification, time, size and the phone’s Android device ID.</td>
+</tr>
+<tr class="odd">
+<td><strong>Cloud Storage</strong> (files)</td>
+<td>The uploaded files. File names include the date and time, rating, participant’s user ID, experiment ID and Android device ID, but not the participant’s name or email address.</td>
+</tr>
+<tr class="even">
+<td><strong>Cloud Logging</strong></td>
+<td>Server logs containing participants’ user IDs and device IDs, kept for 30 days by default.</td>
+</tr>
+<tr class="odd">
+<td><strong>Participant’s phone</strong></td>
+<td>Audio recorded since the last rating, which stays on the phone after the session ends, and any files that failed to upload. Uploaded files are deleted. Sound classification runs on the phone.</td>
+</tr>
+<tr class="even">
+<td><strong>Participant’s watch</strong></td>
+<td>Audio clips, which the watch app doesn’t currently delete. The watch uploads nothing directly; its data goes via the phone.</td>
+</tr>
+<tr class="odd">
+<td><strong>Your computer / server host</strong></td>
+<td>Any files you download. If you run PRISM locally, also its credentials, including the service account key, which gives full access to all study data.</td>
+</tr>
+<tr class="even">
+<td><strong>Email provider</strong> (Mailgun or Gmail)</td>
+<td>Invited participants’ email addresses, your invitation text and the experiment link.</td>
+</tr>
+<tr class="odd">
+<td><strong>Google Forms</strong> (optional)</td>
+<td>Whatever your survey asks. PRISM doesn’t pass any participant details to the form.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="location-security-and-retention" class="level3">
+<h3 class="anchored" data-anchor-id="location-security-and-retention">Location, security and retention</h3>
+<ul>
+<li><strong>Location:</strong> you choose where Firestore and Cloud Storage keep data when you set them up (for example <code>australia-southeast1</code>, Sydney), and you can’t change it later. Firebase Authentication doesn’t offer a choice of location. See <a href="https://firebase.google.com/docs/projects/locations">Firebase locations</a>.</li>
+<li><strong>Security:</strong> Firestore and Cloud Storage encrypt data in transit and at rest. Anyone with access to your Firebase project or service account key can see all study data, so keep that group small.</li>
+<li><strong>Retention and withdrawal:</strong> data stays until you delete it. Removing a participant in the Research Portal deletes their uploaded files and records, and deleting an experiment deletes all of its data. Participants’ sign-in accounts aren’t deleted automatically (delete them under <strong>Authentication</strong> in the Firebase console), and you’ll need to delete any downloaded copies yourself. Participants can’t delete their data or leave an experiment from the app, so your withdrawal procedure should ask them to contact you.</li>
+</ul>
+</section>
+</section>
 <section id="create-a-firebase-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-firebase-project">Create a Firebase project</h2>
 <section id="step-1-name-your-project" class="level3">
