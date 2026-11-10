@@ -7,11 +7,14 @@ format:
 lightbox: true
 ---
 
-PRISM stores its researcher accounts, experiments and participant data in a **Firebase** project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the [Setup Guide](developer.qmd).
+PRISM stores its researcher accounts, experiments and participant data in a **Firebase** project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the [Setup Guide](developer.qmd), except the last section, [Add the signing fingerprints](#fingerprints), which you do during installation.
 
 By the end of this guide you will have:
 
 - A Firebase project on the pay-as-you-go **Blaze** plan.
+- Email/password and Google sign-in turned on.
+- A Firestore database and a Cloud Storage bucket, both in Sydney (`australia-southeast1`).
+- Firebase Hosting set up.
 - A registered **Android app** and its `google-services.json` file.
 - A registered **web app** and its **Web API Key** (`apiKey`).
 
@@ -51,7 +54,7 @@ The **Upload Raw Audio** and other sensor settings in the Research Portal don't 
 
 ### Location, security and retention
 
-- **Location:** you choose where Firestore and Cloud Storage keep data when you set them up (for example `australia-southeast1`, Sydney), and you can't change it later. Firebase Authentication doesn't offer a choice of location. See [Firebase locations](https://firebase.google.com/docs/projects/locations).
+- **Location:** you choose where Firestore and Cloud Storage keep data when you set them up in Steps 10 and 11 (this guide uses `australia-southeast1`, Sydney), and you can't change it later. Firebase Authentication doesn't offer a choice of location. See [Firebase locations](https://firebase.google.com/docs/projects/locations).
 - **Security:** Firestore and Cloud Storage encrypt data in transit and at rest. Anyone with access to your Firebase project or service account key can see all study data, so keep that group small.
 - **Retention and withdrawal:** data stays until you delete it. Removing a participant in the Research Portal deletes their uploaded files and records, and deleting an experiment deletes all of its data. Participants' sign-in accounts aren't deleted automatically (delete them under **Authentication** in the Firebase console), and you'll need to delete any downloaded copies yourself. Participants can't delete their data or leave an experiment from the app, so your withdrawal procedure should ask them to contact you.
 
@@ -125,11 +128,59 @@ The badge next to your project name now reads **Blaze plan**.
 
 ![Your project, now on the Blaze plan](images/firebase/11-overview-blaze-plan.png)
 
+## Turn on sign-in
+
+Researchers sign in to the Research Portal with an email address and password. Participants sign in to the phone app with their Google account. Turn on both before you register the Android app, so that the app's `google-services.json` file includes the Google sign-in details.
+
+### Step 8: Turn on Email/Password sign-in
+
+In the left-hand menu, open **Security → Authentication** and click **Get started**. On the **Sign-in method** tab, choose **Email/Password**. Switch on **Email/Password**, leave **Email link (passwordless sign-in)** off, and click **Save**.
+
+### Step 9: Turn on Google sign-in
+
+Still on the **Sign-in method** tab, click **Add new provider** and choose **Google**. Switch on **Enable**, then:
+
+- **Public-facing name for project**: participants see this name when they sign in with Google, so use something they'll recognise, such as your study or lab name.
+- **Support email for project**: choose an email address from the list. Google requires one.
+
+Click **Save**. If Firebase reminds you to add your app's SHA-1 fingerprint, you can ignore it for now; you'll add it in [Step 19](#fingerprints), once the PRISM installer has created your app's signing key.
+
+## Create the database and file storage
+
+PRISM keeps experiment settings and upload records in a **Cloud Firestore** database, and the uploaded audio and sensor files in **Cloud Storage**. This guide creates both in `australia-southeast1` (Sydney), which PRISM's deployment settings use by default. If you choose another location, the person deploying PRISM must change those settings to match.
+
+### Step 10: Create the Firestore database
+
+In the left-hand menu, open **Databases & Storage → Firestore** and click **Create database**. If you're asked to choose an edition, choose **Standard edition**. Then:
+
+- **Database ID**: leave it as `(default)`. PRISM only uses the default database.
+- **Location**: choose `australia-southeast1` (Sydney). It can't be changed later.
+- **Security rules**: choose **Start in production mode**. This blocks all access from apps and browsers until PRISM's own security rules are deployed, as described in the [Setup Guide](developer.qmd).
+
+Click **Create**.
+
+### Step 11: Create the Cloud Storage bucket
+
+In the left-hand menu, open **Databases & Storage → Storage** and click **Get started**. Then:
+
+- **Location**: choose `australia-southeast1` (Sydney), the same as Firestore. Firebase may suggest a no-cost US location instead; Sydney uses standard Cloud Storage pricing. The location matters because PRISM's functions that process each upload must run in the bucket's location. Click **Continue**.
+- **Security rules**: choose **Start in production mode**, for the same reason as Step 10.
+
+Click **Create**.
+
+## Set up Firebase Hosting
+
+Firebase Hosting gives your project a web address, `<project-id>.web.app` (for example `prism-nat1.web.app`). PRISM publishes the Research Portal there, and participants' invitation links use it to open the phone app.
+
+### Step 12: Get started with Hosting
+
+In the left-hand menu, open **Hosting & Serverless → Hosting** (not **App Hosting**) and click **Get started**. The next screens explain how to install the Firebase command-line tools and deploy a website. You don't need to run any of these commands, since PRISM's deploy script does this for you. Click **Next** on each screen, then **Continue to console**.
+
 ## Register the Android app
 
 The PRISM Android app connects to your Firebase project using a `google-services.json` file. You only need to register the app and download this file; the PRISM installer takes care of the rest, so you don't need Android Studio.
 
-### Step 8: Add an Android app
+### Step 13: Add an Android app
 
 On the project overview, click **+ Add app** and choose **Android**. Enter:
 
@@ -140,13 +191,13 @@ Click **Register app**.
 
 ![Register the Android app](images/firebase/12-android-register-app.png)
 
-### Step 9: Download `google-services.json`
+### Step 14: Download `google-services.json`
 
-Click **Download google-services.json** and keep the file somewhere handy, since the PRISM installer will ask for it. You can ignore the Android Studio instructions. Click **Next**.
+Click **Download google-services.json** and keep the file somewhere handy, since the PRISM installer will ask for it. Because you turned on Google sign-in in Step 9, the file includes the Google sign-in details the app needs. You'll download it again in [Step 20](#fingerprints), after adding your signing fingerprints. You can ignore the Android Studio instructions. Click **Next**.
 
 ![Download google-services.json](images/firebase/13-android-download-config.png)
 
-### Step 10: Skip the SDK setup
+### Step 15: Skip the SDK setup
 
 The next screen explains how to add the Firebase SDK with Gradle. **Skip these instructions**: the PRISM installer configures the app for you. Click **Next**.
 
@@ -156,9 +207,9 @@ Click **Continue to console**.
 
 ![Finish adding the Android app](images/firebase/15-android-next-steps.png)
 
-### Step 11: Find your Android app settings
+### Step 16: Find your Android app settings
 
-Your Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to download `google-services.json` again or to copy its **App ID** (only needed if you distribute the app through Firebase App Distribution).
+Your Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to add signing fingerprints, to download `google-services.json` again or to copy its **App ID** (only needed if you distribute the app through Firebase App Distribution).
 
 ![The registered Android app](images/firebase/16-overview-android-app.png)
 
@@ -166,13 +217,13 @@ Your Android app is now listed on the project overview. Click the gear icon (⚙
 
 The PRISM Research Portal signs researchers in through Firebase using your project's **Web API Key**. You get this key by registering a web app.
 
-### Step 12: Add a web app
+### Step 17: Add a web app
 
-On the project overview, click **+ Add app** and choose **Web** (`</>`). Enter an **App nickname**; we suggest `prism`, which is the name the [Setup Guide](developer.qmd) uses. Leave **Also set up Firebase Hosting** unticked (it can be set up later). Click **Register app**.
+On the project overview, click **+ Add app** and choose **Web** (`</>`). Enter an **App nickname**; we suggest `prism`, which is the name the [Setup Guide](developer.qmd) uses. Leave **Also set up Firebase Hosting** unticked (you already set up Hosting in Step 12). Click **Register app**.
 
 ![Register the web app](images/firebase/17-web-register-app.png)
 
-### Step 13: Copy the Web API Key
+### Step 18: Copy the Web API Key
 
 Firebase shows a `firebaseConfig` code snippet. Copy the value of **`apiKey`** (a long string beginning with `AIza`) and save it, since the PRISM installer will ask for it. You don't need to run `npm install` or add this code anywhere. Click **Continue to console**.
 
@@ -182,12 +233,35 @@ Firebase shows a `firebaseConfig` code snippet. Copy the value of **`apiKey`** (
 You can find the key again at any time under **Settings → General → Your apps → (your web app) → Config**.
 :::
 
+## Add the signing fingerprints {#fingerprints}
+
+Do this section during installation, when the PRISM installer shows your app's fingerprints.
+
+Every Android app is signed with a key, and each key has **fingerprints**: short codes that identify it. Firebase needs both of your key's fingerprints:
+
+- **SHA-1**, so participants can sign in to the app with Google.
+- **SHA-256**, so participants' invitation links open the PRISM app rather than a web page.
+
+The PRISM installer creates your app's signing key the first time it builds the app, then shows both fingerprints and asks you to add them. Back up the key files the installer names: you need the same key to sign every future version of the app.
+
+### Step 19: Add both fingerprints
+
+Open your Android app's settings (the gear icon on the app card, see Step 16). Under **SHA certificate fingerprints**, click **Add fingerprint**, paste the **SHA-1** value from the installer and click **Save**. Then click **Add fingerprint** again and do the same for the **SHA-256** value.
+
+### Step 20: Download `google-services.json` again
+
+On the same settings page, download `google-services.json` again and give it to the installer as it describes.
+
+::: {.callout-important}
+The installer copies settings from `google-services.json` into the app, including the Google sign-in details. Whenever you change sign-in methods or fingerprints, download the file again and re-run the installer, or participants may not be able to sign in.
+:::
+
 ## Next steps
 
 Your Firebase project is ready. You should now have:
 
-- The `google-services.json` file for your Android app (Step 9).
-- Your Web API Key (Step 13).
+- The `google-services.json` file for your Android app (Step 14).
+- Your Web API Key (Step 18).
 
-Continue to the [Setup Guide](developer.qmd), which explains how to generate a **Firebase Service Account Key** and run the PRISM installer.
+Continue to the [Setup Guide](developer.qmd), which explains how to generate a **Firebase Service Account Key** and run the PRISM installer. When the installer shows your app's signing fingerprints, come back to [Add the signing fingerprints](#fingerprints).
 
