@@ -1,171 +1,31 @@
 [
   {
-    "objectID": "guide/participant.html",
-    "href": "guide/participant.html",
-    "title": "Participant Guide",
+    "objectID": "guide/extended.html",
+    "href": "guide/extended.html",
+    "title": "Other Tools",
     "section": "",
-    "text": "Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.\nAll data user data is stored securely in a Firebase project.\n\nYou may wish to share a customised version of this section as a one-page guide for your study cohort.\n\n\nStep 1: Join the experiment\nOnce the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.\n\n\n\nJoin the experiment\n\n\n\n\nStep 2: Starting the experiment\n\n\n\nStarting the experiment\n\n\n\nThe Recording Period: This is the block of time (Like a 4 hour window)\nThe Recording Session: Those are the individual “sessions” (short recordings) that happen inside it.\n\n\n\nStep 3: Sending a recording\n\n\n\nSending a recording\n\n\n\n\nStep 4: Finish the session\n\n\n\nFinish the session"
+    "text": "Visit the Australian Future Hearing Initiative website for more information about the project."
   },
   {
-    "objectID": "guide/firebase.html",
-    "href": "guide/firebase.html",
-    "title": "Firebase Setup",
+    "objectID": "guide/extended.html#about-afhi",
+    "href": "guide/extended.html#about-afhi",
+    "title": "Other Tools",
     "section": "",
-    "text": "PRISM stores its researcher accounts, experiments and participant data in a Firebase project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the Setup Guide.\nBy the end of this guide you will have:\nYou will need a Google account, plus a payment method or access to an existing Cloud Billing account."
+    "text": "Visit the Australian Future Hearing Initiative website for more information about the project."
   },
   {
-    "objectID": "guide/firebase.html#data-storage-and-privacy",
-    "href": "guide/firebase.html#data-storage-and-privacy",
-    "title": "Firebase Setup",
-    "section": "Data storage and privacy",
-    "text": "Data storage and privacy\nPRISM collects audio and health data from participants. Most of it is stored in the Firebase project owned by the researcher that you create in this guide, which is hosted by Google. See Privacy and Security in Firebase and the Firebase Data Processing and Security Terms for details.\n\nWhat the app uploads\nWhile a recording session is open, the participant’s phone records audio continuously. Each time the participant presses a rating button, the app uploads:\n\nAn unprocessed audio clip of up to 30 seconds, ending at the button press.\nHeart-rate variability and skin temperature readings from the previous 30 minutes, if the participant has allowed access to Android Health Connect.\nIf a watch is used, an audio clip from the watch, plus its accelerometer, gyroscope, heart-rate and ambient-temperature readings.\n\nPRISM doesn’t collect location data, and its apps and Research Portal don’t use analytics or crash reporting.\n\n\n\n\n\n\nWarning\n\n\n\nThe Upload Raw Audio and other sensor settings in the Research Portal don’t currently change what the app collects; everything listed above is uploaded with every rating.\n\n\n\n\nWhere data is stored\n\n\n\n\n\n\n\nWhere\nWhat’s stored\n\n\n\n\nFirebase Authentication\nResearchers’ email addresses and password hashes. Participants’ Google account email, name and profile photo URL, from signing in to the app with Google.\n\n\nCloud Firestore (database)\nExperiment settings. Participants’ names, email addresses and invitation status. A record of each uploaded file: rating, sound classification, time, size and the phone’s Android device ID.\n\n\nCloud Storage (files)\nThe uploaded files. File names include the date and time, rating, participant’s user ID, experiment ID and Android device ID, but not the participant’s name or email address.\n\n\nCloud Logging\nServer logs containing participants’ user IDs and device IDs, kept for 30 days by default.\n\n\nParticipant’s phone\nAudio recorded since the last rating, which stays on the phone after the session ends, and any files that failed to upload. Uploaded files are deleted. Sound classification runs on the phone.\n\n\nParticipant’s watch\nAudio clips, which the watch app doesn’t currently delete. The watch uploads nothing directly; its data goes via the phone.\n\n\nYour computer / server host\nAny files you download. If you run PRISM locally, also its credentials, including the service account key, which gives full access to all study data.\n\n\nEmail provider (Mailgun or Gmail)\nInvited participants’ email addresses, your invitation text and the experiment link.\n\n\nGoogle Forms (optional)\nWhatever your survey asks. PRISM doesn’t pass any participant details to the form.\n\n\n\n\n\nLocation, security and retention\n\nLocation: you choose where Firestore and Cloud Storage keep data when you set them up (for example australia-southeast1, Sydney), and you can’t change it later. Firebase Authentication doesn’t offer a choice of location. See Firebase locations.\nSecurity: Firestore and Cloud Storage encrypt data in transit and at rest. Anyone with access to your Firebase project or service account key can see all study data, so keep that group small.\nRetention and withdrawal: data stays until you delete it. Removing a participant in the Research Portal deletes their uploaded files and records, and deleting an experiment deletes all of its data. Participants’ sign-in accounts aren’t deleted automatically (delete them under Authentication in the Firebase console), and you’ll need to delete any downloaded copies yourself. Participants can’t delete their data or leave an experiment from the app, so your withdrawal procedure should ask them to contact you."
+    "objectID": "guide/extended.html#hearing-tests",
+    "href": "guide/extended.html#hearing-tests",
+    "title": "Other Tools",
+    "section": "Hearing Tests",
+    "text": "Hearing Tests\nThe Australian Future Hearing Initiative provides a suite of web-based hearing tests and demos including:\n\nPure-Tone Audiometry\nPip Pure-Tone Audiometry\nConsonant Confusion\nCategorical Loudness Scaling\nTone Generator & Calibration\n\nExplore the source code at the AFHI hearing tests GitHub repository (licensed under CC-BY-NC)."
   },
   {
-    "objectID": "guide/firebase.html#create-a-firebase-project",
-    "href": "guide/firebase.html#create-a-firebase-project",
-    "title": "Firebase Setup",
-    "section": "Create a Firebase project",
-    "text": "Create a Firebase project\n\nStep 1: Name your project\nOpen the Firebase Console, sign in with your Google account and create a new project.\nEnter a Project name (this example uses prism-nat1). Firebase creates a project ID from the name, shown underneath it. The project ID can’t be changed later and becomes part of your project’s web addresses (e.g. prism-nat1.web.app), so click the pencil icon if you’d like to edit it now. Click Continue.\n\n\n\nName your project\n\n\n\n\nStep 2: Skip Gemini in Firebase\nGemini in Firebase is an optional AI assistant for the Firebase Console. PRISM doesn’t need it, so turning it on is up to you (this example leaves it off). Click Continue.\n\n\n\nGemini in Firebase is optional\n\n\n\n\nStep 3: Turn off Google Analytics\nPRISM doesn’t use Google Analytics either. Switch off Enable Google Analytics for this project (it’s on by default) and the Continue button changes to Create project. Click it, then wait for Firebase to finish creating your project.\n\n\n\n\n\n\nBefore: Analytics on (default)\n\n\n\n\n\n\n\nAfter: Analytics off"
-  },
-  {
-    "objectID": "guide/firebase.html#upgrade-to-the-blaze-plan",
-    "href": "guide/firebase.html#upgrade-to-the-blaze-plan",
-    "title": "Firebase Setup",
-    "section": "Upgrade to the Blaze plan",
-    "text": "Upgrade to the Blaze plan\nNew projects start on the free Spark plan. PRISM relies on paid Firebase services such as Cloud Functions, so your project must be on the pay-as-you-go Blaze plan. Blaze still includes the no-cost quota; you only pay for usage beyond it.\n\nStep 4: Select the Blaze plan\nWhen your project opens, click Upgrade at the bottom of the left-hand menu.\n\n\n\nYour new project, on the Spark plan\n\n\nIn the Firebase pricing plans dialog, click Select plan under Pay as you go (Blaze plan).\n\n\n\nFirebase pricing plans\n\n\n\n\nStep 5: Choose a billing account\nSelect an existing Cloud Billing account from the list, or click Create a Cloud Billing account and follow the prompts to add a payment method. If your organisation manages Google Cloud billing centrally, ask your administrator which account to use.\n\n\n\nChoose a Cloud Billing account\n\n\n\n\nStep 6: Set a budget alert\nEnter a Budget amount in USD (this example uses $5) and click Continue, or click Skip this step.\n\n\n\n\n\n\nNote\n\n\n\nA budget doesn’t cap your spending. It only emails the billing account’s administrators when the project’s costs approach or exceed the amount you set.\n\n\n\n\n\nSet a billing budget\n\n\n\n\nStep 7: Link the billing account\nReview the summary and click Link Cloud Billing account.\n\n\n\nLink Cloud Billing account\n\n\nClick Done to close the confirmation.\n\n\n\nPlan change completed\n\n\nThe badge next to your project name now reads Blaze plan.\n\n\n\nYour project, now on the Blaze plan"
-  },
-  {
-    "objectID": "guide/firebase.html#register-the-android-app",
-    "href": "guide/firebase.html#register-the-android-app",
-    "title": "Firebase Setup",
-    "section": "Register the Android app",
-    "text": "Register the Android app\nThe PRISM Android app connects to your Firebase project using a google-services.json file. You only need to register the app and download this file; the PRISM installer takes care of the rest, so you don’t need Android Studio.\n\nStep 8: Add an Android app\nOn the project overview, click + Add app and choose Android. Enter:\n\nAndroid package name: a unique identifier for your build of the app, written in reverse-domain format such as com.yourorg.prism (this example uses com.nat.prism). It can’t be changed after you register the app, and the PRISM installer builds the app with this name.\nApp nickname (optional): a label that only appears in the Firebase Console, such as PRISM Android.\n\nClick Register app.\n\n\n\nRegister the Android app\n\n\n\n\nStep 9: Download google-services.json\nClick Download google-services.json and keep the file somewhere handy, since the PRISM installer will ask for it. You can ignore the Android Studio instructions. Click Next.\n\n\n\nDownload google-services.json\n\n\n\n\nStep 10: Skip the SDK setup\nThe next screen explains how to add the Firebase SDK with Gradle. Skip these instructions: the PRISM installer configures the app for you. Click Next.\n\n\n\nFirebase SDK instructions (not needed)\n\n\nClick Continue to console.\n\n\n\nFinish adding the Android app\n\n\n\n\nStep 11: Find your Android app settings\nYour Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to download google-services.json again or to copy its App ID (only needed if you distribute the app through Firebase App Distribution).\n\n\n\nThe registered Android app"
-  },
-  {
-    "objectID": "guide/firebase.html#register-the-web-app",
-    "href": "guide/firebase.html#register-the-web-app",
-    "title": "Firebase Setup",
-    "section": "Register the web app",
-    "text": "Register the web app\nThe PRISM Research Portal signs researchers in through Firebase using your project’s Web API Key. You get this key by registering a web app.\n\nStep 12: Add a web app\nOn the project overview, click + Add app and choose Web (&lt;/&gt;). Enter an App nickname; we suggest prism, which is the name the Setup Guide uses. Leave Also set up Firebase Hosting unticked (it can be set up later). Click Register app.\n\n\n\nRegister the web app\n\n\n\n\nStep 13: Copy the Web API Key\nFirebase shows a firebaseConfig code snippet. Copy the value of apiKey (a long string beginning with AIza) and save it, since the PRISM installer will ask for it. You don’t need to run npm install or add this code anywhere. Click Continue to console.\n\n\n\nCopy the apiKey from the web app config\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find the key again at any time under Settings → General → Your apps → (your web app) → Config."
-  },
-  {
-    "objectID": "guide/firebase.html#next-steps",
-    "href": "guide/firebase.html#next-steps",
-    "title": "Firebase Setup",
-    "section": "Next steps",
-    "text": "Next steps\nYour Firebase project is ready. You should now have:\n\nThe google-services.json file for your Android app (Step 9).\nYour Web API Key (Step 13).\n\nContinue to the Setup Guide, which explains how to generate a Firebase Service Account Key and run the PRISM installer."
-  },
-  {
-    "objectID": "guide/background.html",
-    "href": "guide/background.html",
-    "title": "Background",
-    "section": "",
-    "text": "Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
-  },
-  {
-    "objectID": "guide/background.html#the-problem-hearing-in-complex-environments",
-    "href": "guide/background.html#the-problem-hearing-in-complex-environments",
-    "title": "Background",
-    "section": "",
-    "text": "Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
-  },
-  {
-    "objectID": "guide/background.html#what-is-prism",
-    "href": "guide/background.html#what-is-prism",
-    "title": "Background",
-    "section": "What is PRISM?",
-    "text": "What is PRISM?\n\nEcological Momentary Assessment (EMA)\nPRISM is built around the methodology of Ecological Momentary Assessment (EMA), a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.\nIn a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:\n\nCaptures a brief audio snapshot, a short recording of the acoustic environment.\nPrompts a self-report, the participant rates their current listening experience via simple feedback buttons (e.g., Good, Okay, Bad).\nCollects wearable sensor data, physiological and inertial signals that provide additional context about the listener’s state and activity.\n\nThis approach provides ecologically valid, time-stamped, multi-modal data that links subjective hearing difficulty to objective environmental and physiological measurements.\n\n\nWhy PRISM?\nPRISM addresses a key bottleneck in hearing science: the lack of large-scale, ecologically valid, multi-modal datasets linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:\n\nStudy hearing difficulty where it actually happens, not just in the lab.\nCombine subjective self-reports with objective sensor and ML-derived features.\nBuild and validate models that can eventually drive real-time, adaptive hearing-aid algorithms.\nRapidly iterate on experiment designs through a configurable web interface.\n\nThe long-term vision, as part of the Australian Future Hearing Initiative, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter."
-  },
-  {
-    "objectID": "guide/background.html#features",
-    "href": "guide/background.html#features",
-    "title": "Background",
-    "section": "Features",
-    "text": "Features\n\nMulti-Modal Sensor Data Collection\nA key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:\n\n\n\n\n\n\n\n\nSensor\nDevice\nPurpose\n\n\n\n\nMicrophone\nPhone, Watch\nCaptures environmental audio for acoustic scene classification\n\n\nHeart Rate\nWatch\nPhysiological indicator of stress or cognitive effort\n\n\nBody Temperature\nWatch\nAdditional physiological context\n\n\nAccelerometer\nPhone, Watch\nActivity recognition (walking, sitting, commuting)\n\n\nGyroscope\nPhone, Watch\nComplements accelerometer for motion and posture estimation\n\n\n\nEach sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.\n\n\nOn-Device Machine Learning\nPRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:\n\nYAMNet+ - Acoustic Scene Classification\nYAMNet+ is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., open space, restaurant, traffic, quiet room). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.\nThis builds on the YAMNet architecture and is described in:\n\nZhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., & Lyon, R. (2026). A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet. arXiv:2508.10360\n\n\n\nWONU - Communication Breakdown Detection\nThe Words of Not Understanding (WONU) model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as “pardon?”, “sorry, what?”, or “can you repeat that?” are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making WONU a complementary signal to the participant’s self-report.\n\n\nML Models List\n\nAuditoryHuM paper\nAuditoryHuM supplementary data\nAuditoryHuM demo website with alignment samples\nAHEAD-DS and OpenYAMNet paper\nAHEAD-DS\nAHEAD-DS (unmixed)\nOpenYAMNet/YAMNet+ models\n\n\n\n\nRule-Based Triggers\nResearchers can configure sensor-threshold triggers that automate data collection and model activation. A trigger is defined by:\n\nA sensor source (e.g., phone microphone, heart rate monitor).\nA metric and threshold (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).\nAn action - what happens when the threshold is crossed:\n\nActivate an ML model - wake YAMNet+ or WONU to classify the current moment.\nSend a notification - prompt the participant to provide a self-report.\nLaunch a form - open an in-app or Google Form survey for richer contextual data.\n\n\nThis trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting."
-  },
-  {
-    "objectID": "guide/background.html#prism-studyexperiment-workflow-overview",
-    "href": "guide/background.html#prism-studyexperiment-workflow-overview",
-    "title": "Background",
-    "section": "PRISM Study/Experiment Workflow Overview",
-    "text": "PRISM Study/Experiment Workflow Overview\nRunning a PRISM study requires 3 main components:\n\n\n\n\n\nflowchart TD\n    subgraph s1[\"Firebase\"]\n        direction LR\n        n1@{ shape: \"hex\", label: \"Create Firebase Project\" }\n    end\n\n    subgraph s2[\"Research Portal\"]\n        direction TB\n        n2@{ label: \"Backend\" }\n        n3@{ label: \"Frontend\" }\n        n2 &lt;--&gt; n3\n        n4@{ shape: \"hex\", label: \"Install Research Portal\" }\n        n5@{ shape: \"hex\", label: \"Configure and deploy experiments\" }\n        n6@{ shape: \"hex\", label: \"Experimenter monitors study\" }\n        n4 --&gt; n5\n        n5 --&gt; n6\n    end\n\n    subgraph s3[\"App\"]\n        direction TB\n        n7@{ label: \"Android\" }\n        n8@{ label: \"WearOS\" }\n        n7 --&gt; n8\n        n9@{ shape: \"hex\", label: \"Build and Distribute App\" }\n        n10@{ shape: \"hex\", label: \"Users interact with App\" }\n        n9 --&gt; n10\n    end\n    \n    s1 &lt;--&gt; s2\n    s1 &lt;--&gt; s3\n\n    style n1 fill:#FAD2CF\n    style n2 fill:#FEEFC3\n    style n3 fill:#FEEFC3\n    style n4 fill:#FAD2CF\n    style n5 fill:#FAD2CF\n    style n6 fill:#FAD2CF\n    style n7 fill:#FEEFC3\n    style n8 fill:#FEEFC3\n    style n9 fill:#FAD2CF\n    style n10 fill:#FAD2CF\n    style s1 fill:#D2E3FC\n    style s2 fill:#CEEAD6\n    style s3 fill:#CEEAD6\n\n\n\n\n\n\n\n\n\nFirebase project: you must create a Firebase project for the authentication and secure storage for a PRISM experiment.\nResearch Portal: you must install the PRISM Research Portal from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.\nApp: Users must install the app so they can interact with the PRISM experiment."
-  },
-  {
-    "objectID": "guide/background.html#contact",
-    "href": "guide/background.html#contact",
-    "title": "Background",
-    "section": "Contact",
-    "text": "Contact\nFor questions, feedback, or collaboration opportunities, please contact:\n\nName: Romaric Bouveret\nEmail: romaric.bouveret@mq.edu.au"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PRISM",
-    "section": "",
-    "text": "PRISM is an open-source, multi-sensor health platform for ecological momentary assessment, just-in-time interventions, and passive sensing. It enables researchers to collect real-world self-report, audio-context, physiological, behavioural, and environmental data from smartphones, smartwatches, and connected devices.\nThe platform was initially developed for hearing and communication research, where understanding listening difficulty in everyday environments requires real-time, context-rich measurement. However, the architecture is designed to support broader health and behavioural research applications.\nPRISM might stand for:\nModern hearing aids often struggle to adapt to rapidly changing sound environments, like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users."
-  },
-  {
-    "objectID": "index.html#get-started",
-    "href": "index.html#get-started",
-    "title": "PRISM",
-    "section": "Get started",
-    "text": "Get started\n\nLearn how to host your own instance of the PRISM Research Portal: Setup Guide documentation.\nLearn how to design and deploy your own PRISM experiments from the Research Portal: Researcher Guide documentation.\nLearn how to use the PRISM App to feedback data to an experiment: Participant Guide documentation.\nDive deeper in the Australian Future Hearing Initiative and live hearing tests you can take: Other Tools documentation.\nRead about the motivation and science behind the PRISM platform below!"
-  },
-  {
-    "objectID": "index.html#capabilities",
-    "href": "index.html#capabilities",
-    "title": "PRISM",
-    "section": "Capabilities",
-    "text": "Capabilities\n\nA web portal for researchers to run experiments and view results.\nAn Android mobile and Watch app for participant data collection.\nA backend server for data storage and processing.\nA set of machine learning models for auditory scene analysis."
-  },
-  {
-    "objectID": "index.html#the-problem-hearing-in-complex-environments",
-    "href": "index.html#the-problem-hearing-in-complex-environments",
-    "title": "PRISM",
-    "section": "The Problem: Hearing in Complex Environments",
-    "text": "The Problem: Hearing in Complex Environments\nHearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
-  },
-  {
-    "objectID": "index.html#what-is-prism",
-    "href": "index.html#what-is-prism",
-    "title": "PRISM",
-    "section": "What is PRISM?",
-    "text": "What is PRISM?\n\nEcological Momentary Assessment (EMA)\nPRISM is built around the methodology of Ecological Momentary Assessment (EMA), a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.\nIn a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:\n\nCaptures a brief audio snapshot, a short recording of the acoustic environment.\nPrompts a self-report, the participant rates their current listening experience via simple feedback buttons (e.g., Good, Okay, Bad).\nCollects wearable sensor data, physiological and inertial signals that provide additional context about the listener’s state and activity.\n\nThis approach provides ecologically valid, time-stamped, multi-modal data that links subjective hearing difficulty to objective environmental and physiological measurements.\n\n\nWhy PRISM?\nPRISM addresses a key bottleneck in hearing science: the lack of large-scale, ecologically valid, multi-modal datasets linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:\n\nStudy hearing difficulty where it actually happens, not just in the lab.\nCombine subjective self-reports with objective sensor and ML-derived features.\nBuild and validate models that can eventually drive real-time, adaptive hearing-aid algorithms.\nRapidly iterate on experiment designs through a configurable web interface.\n\nThe long-term vision, as part of the Australian Future Hearing Initiative, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter."
-  },
-  {
-    "objectID": "index.html#features",
-    "href": "index.html#features",
-    "title": "PRISM",
-    "section": "Features",
-    "text": "Features\n\nMulti-Modal Sensor Data Collection\nA key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:\n\n\n\n\n\n\n\n\nSensor\nDevice\nPurpose\n\n\n\n\nMicrophone\nPhone, Watch\nCaptures environmental audio for acoustic scene classification\n\n\nHeart Rate\nWatch\nPhysiological indicator of stress or cognitive effort\n\n\nBody Temperature\nWatch\nAdditional physiological context\n\n\nAccelerometer\nPhone, Watch\nActivity recognition (walking, sitting, commuting)\n\n\nGyroscope\nPhone, Watch\nComplements accelerometer for motion and posture estimation\n\n\n\nEach sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.\n\n\nOn-Device Machine Learning\nPRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:\n\nYAMNet+ - Acoustic Scene Classification\nYAMNet+ is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., open space, restaurant, traffic, quiet room). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.\nThis builds on the YAMNet architecture and is described in:\n\nZhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., & Lyon, R. (2026). A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet. arXiv:2508.10360\n\n\n\nWONU - Communication Breakdown Detection\nThe Words of Not Understanding (WONU) model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as “pardon?”, “sorry, what?”, or “can you repeat that?” are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making WONU a complementary signal to the participant’s self-report.\n\n\nML Models List\n\nAuditoryHuM paper\nAuditoryHuM supplementary data\nAuditoryHuM demo website with alignment samples\nAHEAD-DS and OpenYAMNet paper\nAHEAD-DS\nAHEAD-DS (unmixed)\nOpenYAMNet/YAMNet+ models\n\n\n\n\nRule-Based Triggers\nResearchers can configure sensor-threshold triggers that automate data collection and model activation. A trigger is defined by:\n\nA sensor source (e.g., phone microphone, heart rate monitor).\nA metric and threshold (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).\nAn action - what happens when the threshold is crossed:\n\nActivate an ML model - wake YAMNet+ or WONU to classify the current moment.\nSend a notification - prompt the participant to provide a self-report.\nLaunch a form - open an in-app or Google Form survey for richer contextual data.\n\n\nThis trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting."
-  },
-  {
-    "objectID": "index.html#prism-studyexperiment-workflow-overview",
-    "href": "index.html#prism-studyexperiment-workflow-overview",
-    "title": "PRISM",
-    "section": "PRISM Study/Experiment Workflow Overview",
-    "text": "PRISM Study/Experiment Workflow Overview\nRunning a PRISM study requires 3 main components:\n\n\n\n\n\nflowchart TD\n    subgraph s1[\"Firebase\"]\n        direction LR\n        n1@{ shape: \"hex\", label: \"Create Firebase Project\" }\n    end\n\n    subgraph s2[\"Research Portal\"]\n        direction TB\n        n2@{ label: \"Backend\" }\n        n3@{ label: \"Frontend\" }\n        n2 &lt;--&gt; n3\n        n4@{ shape: \"hex\", label: \"Install Research Portal\" }\n        n5@{ shape: \"hex\", label: \"Configure and deploy experiments\" }\n        n6@{ shape: \"hex\", label: \"Experimenter monitors study\" }\n        n4 --&gt; n5\n        n5 --&gt; n6\n    end\n\n    subgraph s3[\"App\"]\n        direction TB\n        n7@{ label: \"Android\" }\n        n8@{ label: \"WearOS\" }\n        n7 --&gt; n8\n        n9@{ shape: \"hex\", label: \"Build and Distribute App\" }\n        n10@{ shape: \"hex\", label: \"Users interact with App\" }\n        n9 --&gt; n10\n    end\n    \n    s1 &lt;--&gt; s2\n    s1 &lt;--&gt; s3\n\n    style n1 fill:#FAD2CF\n    style n2 fill:#FEEFC3\n    style n3 fill:#FEEFC3\n    style n4 fill:#FAD2CF\n    style n5 fill:#FAD2CF\n    style n6 fill:#FAD2CF\n    style n7 fill:#FEEFC3\n    style n8 fill:#FEEFC3\n    style n9 fill:#FAD2CF\n    style n10 fill:#FAD2CF\n    style s1 fill:#D2E3FC\n    style s2 fill:#CEEAD6\n    style s3 fill:#CEEAD6\n\n\n\n\n\n\n\n\n\nFirebase project: you must create a Firebase project for the authentication and secure storage for a PRISM experiment.\nResearch Portal: you must install the PRISM Research Portal from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.\nApp: Users must install the app so they can interact with the PRISM experiment."
-  },
-  {
-    "objectID": "index.html#citation",
-    "href": "index.html#citation",
-    "title": "PRISM",
-    "section": "Citation",
-    "text": "Citation\nIf you use these capabilities from the code, model, or datasets in your research, please cite:\n@misc{zhong2026datasetmodelauditoryscene,\n      title={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, \n      author={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},\n      year={2026},\n      eprint={2508.10360},\n      archivePrefix={arXiv},\n      primaryClass={cs.SD},\n      url={https://arxiv.org/abs/2508.10360}, \n}"
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "PRISM",
-    "section": "License",
-    "text": "License\nCode is licensed under the MIT License or Apache 2.0 depending on the component. Please check individual LICENCE files in each repository."
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "PRISM",
-    "section": "Contact",
-    "text": "Contact\nFor questions, feedback, or collaboration opportunities, please contact:\n\nName: Romaric Bouveret\nEmail: romaric.bouveret@mq.edu.au"
+    "objectID": "guide/extended.html#acoustic-hearing-machine-learning-models",
+    "href": "guide/extended.html#acoustic-hearing-machine-learning-models",
+    "title": "Other Tools",
+    "section": "Acoustic & Hearing Machine Learning Models",
+    "text": "Acoustic & Hearing Machine Learning Models\n\nExplore models and datasets at the prism-ml repository"
   },
   {
     "objectID": "guide/developer.html",
@@ -224,31 +84,171 @@
     "text": "During & Post-Experiment Monitoring\n\nStep 13: Check Session Recordings\nOnce participants have used the app and data collection has begun you can click “View data” for a particular participant.\n\n\n\nCheck recording\n\n\n\n\nStep 14: View the Recordings\nReview detailed time-series graphs and metadata attributes.\n\n\n\nView the recordings\n\n\n\n\nStep 15: Download Datasets\nDownload signed raw sensor archives and audio files directly via temporary short-lived pre-signed secure URLs.\n\n\n\nDownload recordings\n\n\nLog back in to modify experiments and view the data at any time."
   },
   {
-    "objectID": "guide/extended.html",
-    "href": "guide/extended.html",
-    "title": "Other Tools",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PRISM",
     "section": "",
-    "text": "Visit the Australian Future Hearing Initiative website for more information about the project."
+    "text": "PRISM is an open-source, multi-sensor health platform for ecological momentary assessment, just-in-time interventions, and passive sensing. It enables researchers to collect real-world self-report, audio-context, physiological, behavioural, and environmental data from smartphones, smartwatches, and connected devices.\nThe platform was initially developed for hearing and communication research, where understanding listening difficulty in everyday environments requires real-time, context-rich measurement. However, the architecture is designed to support broader health and behavioural research applications.\nPRISM might stand for:\nModern hearing aids often struggle to adapt to rapidly changing sound environments, like moving from a quiet room to a busy street or a noisy restaurant. PRISM and related technologies help bridge the gap between raw audio processing and intelligent environmental awareness, leading to a more seamless and personalised hearing experience for users."
   },
   {
-    "objectID": "guide/extended.html#about-afhi",
-    "href": "guide/extended.html#about-afhi",
-    "title": "Other Tools",
+    "objectID": "index.html#get-started",
+    "href": "index.html#get-started",
+    "title": "PRISM",
+    "section": "Get started",
+    "text": "Get started\n\nLearn how to host your own instance of the PRISM Research Portal: Setup Guide documentation.\nLearn how to design and deploy your own PRISM experiments from the Research Portal: Researcher Guide documentation.\nLearn how to use the PRISM App to feedback data to an experiment: Participant Guide documentation.\nDive deeper in the Australian Future Hearing Initiative and live hearing tests you can take: Other Tools documentation.\nRead about the motivation and science behind the PRISM platform below!"
+  },
+  {
+    "objectID": "index.html#capabilities",
+    "href": "index.html#capabilities",
+    "title": "PRISM",
+    "section": "Capabilities",
+    "text": "Capabilities\n\nA web portal for researchers to run experiments and view results.\nAn Android mobile and Watch app for participant data collection.\nA backend server for data storage and processing.\nA set of machine learning models for auditory scene analysis."
+  },
+  {
+    "objectID": "index.html#the-problem-hearing-in-complex-environments",
+    "href": "index.html#the-problem-hearing-in-complex-environments",
+    "title": "PRISM",
+    "section": "The Problem: Hearing in Complex Environments",
+    "text": "The Problem: Hearing in Complex Environments\nHearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
+  },
+  {
+    "objectID": "index.html#what-is-prism",
+    "href": "index.html#what-is-prism",
+    "title": "PRISM",
+    "section": "What is PRISM?",
+    "text": "What is PRISM?\n\nEcological Momentary Assessment (EMA)\nPRISM is built around the methodology of Ecological Momentary Assessment (EMA), a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.\nIn a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:\n\nCaptures a brief audio snapshot, a short recording of the acoustic environment.\nPrompts a self-report, the participant rates their current listening experience via simple feedback buttons (e.g., Good, Okay, Bad).\nCollects wearable sensor data, physiological and inertial signals that provide additional context about the listener’s state and activity.\n\nThis approach provides ecologically valid, time-stamped, multi-modal data that links subjective hearing difficulty to objective environmental and physiological measurements.\n\n\nWhy PRISM?\nPRISM addresses a key bottleneck in hearing science: the lack of large-scale, ecologically valid, multi-modal datasets linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:\n\nStudy hearing difficulty where it actually happens, not just in the lab.\nCombine subjective self-reports with objective sensor and ML-derived features.\nBuild and validate models that can eventually drive real-time, adaptive hearing-aid algorithms.\nRapidly iterate on experiment designs through a configurable web interface.\n\nThe long-term vision, as part of the Australian Future Hearing Initiative, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter."
+  },
+  {
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "PRISM",
+    "section": "Features",
+    "text": "Features\n\nMulti-Modal Sensor Data Collection\nA key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:\n\n\n\n\n\n\n\n\nSensor\nDevice\nPurpose\n\n\n\n\nMicrophone\nPhone, Watch\nCaptures environmental audio for acoustic scene classification\n\n\nHeart Rate\nWatch\nPhysiological indicator of stress or cognitive effort\n\n\nBody Temperature\nWatch\nAdditional physiological context\n\n\nAccelerometer\nPhone, Watch\nActivity recognition (walking, sitting, commuting)\n\n\nGyroscope\nPhone, Watch\nComplements accelerometer for motion and posture estimation\n\n\n\nEach sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.\n\n\nOn-Device Machine Learning\nPRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:\n\nYAMNet+ - Acoustic Scene Classification\nYAMNet+ is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., open space, restaurant, traffic, quiet room). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.\nThis builds on the YAMNet architecture and is described in:\n\nZhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., & Lyon, R. (2026). A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet. arXiv:2508.10360\n\n\n\nWONU - Communication Breakdown Detection\nThe Words of Not Understanding (WONU) model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as “pardon?”, “sorry, what?”, or “can you repeat that?” are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making WONU a complementary signal to the participant’s self-report.\n\n\nML Models List\n\nAuditoryHuM paper\nAuditoryHuM supplementary data\nAuditoryHuM demo website with alignment samples\nAHEAD-DS and OpenYAMNet paper\nAHEAD-DS\nAHEAD-DS (unmixed)\nOpenYAMNet/YAMNet+ models\n\n\n\n\nRule-Based Triggers\nResearchers can configure sensor-threshold triggers that automate data collection and model activation. A trigger is defined by:\n\nA sensor source (e.g., phone microphone, heart rate monitor).\nA metric and threshold (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).\nAn action - what happens when the threshold is crossed:\n\nActivate an ML model - wake YAMNet+ or WONU to classify the current moment.\nSend a notification - prompt the participant to provide a self-report.\nLaunch a form - open an in-app or Google Form survey for richer contextual data.\n\n\nThis trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting."
+  },
+  {
+    "objectID": "index.html#prism-studyexperiment-workflow-overview",
+    "href": "index.html#prism-studyexperiment-workflow-overview",
+    "title": "PRISM",
+    "section": "PRISM Study/Experiment Workflow Overview",
+    "text": "PRISM Study/Experiment Workflow Overview\nRunning a PRISM study requires 3 main components:\n\n\n\n\n\n\nflowchart TD\n    subgraph s1[\"Firebase\"]\n        direction LR\n        n1@{ shape: \"hex\", label: \"Create Firebase Project\" }\n    end\n\n    subgraph s2[\"Research Portal\"]\n        direction TB\n        n2@{ label: \"Backend\" }\n        n3@{ label: \"Frontend\" }\n        n2 &lt;--&gt; n3\n        n4@{ shape: \"hex\", label: \"Install Research Portal\" }\n        n5@{ shape: \"hex\", label: \"Configure and deploy experiments\" }\n        n6@{ shape: \"hex\", label: \"Experimenter monitors study\" }\n        n4 --&gt; n5\n        n5 --&gt; n6\n    end\n\n    subgraph s3[\"App\"]\n        direction TB\n        n7@{ label: \"Android\" }\n        n8@{ label: \"WearOS\" }\n        n7 --&gt; n8\n        n9@{ shape: \"hex\", label: \"Build and Distribute App\" }\n        n10@{ shape: \"hex\", label: \"Users interact with App\" }\n        n9 --&gt; n10\n    end\n    \n    s1 &lt;--&gt; s2\n    s1 &lt;--&gt; s3\n\n    style n1 fill:#FAD2CF\n    style n2 fill:#FEEFC3\n    style n3 fill:#FEEFC3\n    style n4 fill:#FAD2CF\n    style n5 fill:#FAD2CF\n    style n6 fill:#FAD2CF\n    style n7 fill:#FEEFC3\n    style n8 fill:#FEEFC3\n    style n9 fill:#FAD2CF\n    style n10 fill:#FAD2CF\n    style s1 fill:#D2E3FC\n    style s2 fill:#CEEAD6\n    style s3 fill:#CEEAD6\n\n\n\n\n\n\n\n\n\nFirebase project: you must create a Firebase project for the authentication and secure storage for a PRISM experiment.\nResearch Portal: you must install the PRISM Research Portal from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.\nApp: Users must install the app so they can interact with the PRISM experiment."
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "PRISM",
+    "section": "Citation",
+    "text": "Citation\nIf you use these capabilities from the code, model, or datasets in your research, please cite:\n@misc{zhong2026datasetmodelauditoryscene,\n      title={A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet}, \n      author={Henry Zhong and Jörg M. Buchholz and Julian Maclaren and Simon Carlile and Richard Lyon},\n      year={2026},\n      eprint={2508.10360},\n      archivePrefix={arXiv},\n      primaryClass={cs.SD},\n      url={https://arxiv.org/abs/2508.10360}, \n}"
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "PRISM",
+    "section": "License",
+    "text": "License\nCode is licensed under the MIT License or Apache 2.0 depending on the component. Please check individual LICENCE files in each repository."
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "PRISM",
+    "section": "Contact",
+    "text": "Contact\nFor questions, feedback, or collaboration opportunities, please contact:\n\nName: Romaric Bouveret\nEmail: romaric.bouveret@mq.edu.au"
+  },
+  {
+    "objectID": "guide/participant.html",
+    "href": "guide/participant.html",
+    "title": "Participant Guide",
     "section": "",
-    "text": "Visit the Australian Future Hearing Initiative website for more information about the project."
+    "text": "Download the PRISM App to your device. Then follow the instructions to participate in a research experiment.\nAll data user data is stored securely in a Firebase project.\n\nYou may wish to share a customised version of this section as a one-page guide for your study cohort.\n\n\nStep 1: Join the experiment\nOnce the participant clicks the invite link from their email, they will be able to see this interface. Click “Open”.\n\n\n\nJoin the experiment\n\n\n\n\nStep 2: Starting the experiment\n\n\n\nStarting the experiment\n\n\n\nThe Recording Period: This is the block of time (Like a 4 hour window)\nThe Recording Session: Those are the individual “sessions” (short recordings) that happen inside it.\n\n\n\nStep 3: Sending a recording\n\n\n\nSending a recording\n\n\n\n\nStep 4: Finish the session\n\n\n\nFinish the session"
   },
   {
-    "objectID": "guide/extended.html#hearing-tests",
-    "href": "guide/extended.html#hearing-tests",
-    "title": "Other Tools",
-    "section": "Hearing Tests",
-    "text": "Hearing Tests\nThe Australian Future Hearing Initiative provides a suite of web-based hearing tests and demos including:\n\nPure-Tone Audiometry\nPip Pure-Tone Audiometry\nConsonant Confusion\nCategorical Loudness Scaling\nTone Generator & Calibration\n\nExplore the source code at the AFHI hearing tests GitHub repository (licensed under CC-BY-NC)."
+    "objectID": "guide/background.html",
+    "href": "guide/background.html",
+    "title": "Background",
+    "section": "",
+    "text": "Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
   },
   {
-    "objectID": "guide/extended.html#acoustic-hearing-machine-learning-models",
-    "href": "guide/extended.html#acoustic-hearing-machine-learning-models",
-    "title": "Other Tools",
-    "section": "Acoustic & Hearing Machine Learning Models",
-    "text": "Acoustic & Hearing Machine Learning Models\n\nExplore models and datasets at the prism-ml repository"
+    "objectID": "guide/background.html#the-problem-hearing-in-complex-environments",
+    "href": "guide/background.html#the-problem-hearing-in-complex-environments",
+    "title": "Background",
+    "section": "",
+    "text": "Hearing loss affects over 1.5 billion people worldwide and is one of the leading contributors to reduced quality of life. Modern hearing aids are increasingly sophisticated, yet they still struggle to adapt to rapidly changing sound environments like moving from a quiet office to a busy street, a noisy restaurant, or a reverberant lecture hall.\nTraditional hearing-aid fitting is performed in a clinical setting with a controlled acoustic environment, but real-world listening situations are far more varied and unpredictable. There is a well-documented gap between how a hearing device performs in the clinic and how it performs in the wild. Bridging this gap requires understanding when, where, and why users experience difficulty — and that understanding can only come from data collected in the user’s everyday life."
+  },
+  {
+    "objectID": "guide/background.html#what-is-prism",
+    "href": "guide/background.html#what-is-prism",
+    "title": "Background",
+    "section": "What is PRISM?",
+    "text": "What is PRISM?\n\nEcological Momentary Assessment (EMA)\nPRISM is built around the methodology of Ecological Momentary Assessment (EMA), a research technique that captures data from participants in their natural environments, in real time, rather than relying on retrospective recall in a lab.\nIn a PRISM experiment, participants carry a smartphone (and optionally a smartwatch) that:\n\nCaptures a brief audio snapshot, a short recording of the acoustic environment.\nPrompts a self-report, the participant rates their current listening experience via simple feedback buttons (e.g., Good, Okay, Bad).\nCollects wearable sensor data, physiological and inertial signals that provide additional context about the listener’s state and activity.\n\nThis approach provides ecologically valid, time-stamped, multi-modal data that links subjective hearing difficulty to objective environmental and physiological measurements.\n\n\nWhy PRISM?\nPRISM addresses a key bottleneck in hearing science: the lack of large-scale, ecologically valid, multi-modal datasets linking real-world acoustic environments to user-reported hearing difficulty. By providing an end-to-end platform, from experiment design and participant recruitment through data collection and ML-assisted analysis, PRISM enables researchers to:\n\nStudy hearing difficulty where it actually happens, not just in the lab.\nCombine subjective self-reports with objective sensor and ML-derived features.\nBuild and validate models that can eventually drive real-time, adaptive hearing-aid algorithms.\nRapidly iterate on experiment designs through a configurable web interface.\n\nThe long-term vision, as part of the Australian Future Hearing Initiative, is a future where hearing devices automatically recognise difficult listening situations and adjust their processing in real time giving users seamless hearing across every environment they encounter."
+  },
+  {
+    "objectID": "guide/background.html#features",
+    "href": "guide/background.html#features",
+    "title": "Background",
+    "section": "Features",
+    "text": "Features\n\nMulti-Modal Sensor Data Collection\nA key design principle of PRISM is that hearing difficulty cannot be understood from audio alone. The platform collects data from multiple sensor modalities across phone and watch devices:\n\n\n\n\n\n\n\n\nSensor\nDevice\nPurpose\n\n\n\n\nMicrophone\nPhone, Watch\nCaptures environmental audio for acoustic scene classification\n\n\nHeart Rate\nWatch\nPhysiological indicator of stress or cognitive effort\n\n\nBody Temperature\nWatch\nAdditional physiological context\n\n\nAccelerometer\nPhone, Watch\nActivity recognition (walking, sitting, commuting)\n\n\nGyroscope\nPhone, Watch\nComplements accelerometer for motion and posture estimation\n\n\n\nEach sensor is independently configurable per experiment where researchers can set sampling rates, enable or disable raw data upload, and define thresholds that control when data collection or model inference is triggered.\n\n\nOn-Device Machine Learning\nPRISM integrates machine learning models that run alongside the data collection pipeline. These models serve two primary roles defined in the platform:\n\nYAMNet+ - Acoustic Scene Classification\nYAMNet+ is an environment analysis model that classifies the acoustic scene surrounding the participant (e.g., open space, restaurant, traffic, quiet room). It takes normalised float32 audio as input and produces scene labels, enriching each data sample with an automatic environmental context tag.\nThis builds on the YAMNet architecture and is described in:\n\nZhong, H., Buchholz, J. M., Maclaren, J., Carlile, S., & Lyon, R. (2026). A dataset and model for auditory scene recognition for hearing devices: AHEAD-DS and OpenYAMNet. arXiv:2508.10360\n\n\n\nWONU - Communication Breakdown Detection\nThe Words of Not Understanding (WONU) model detects linguistic cues in speech that indicate a communication breakdown. Phrases such as “pardon?”, “sorry, what?”, or “can you repeat that?” are examples of such cues. These cues are a direct, in-the-moment signal that a hearing-aid user is struggling to follow conversation, making WONU a complementary signal to the participant’s self-report.\n\n\nML Models List\n\nAuditoryHuM paper\nAuditoryHuM supplementary data\nAuditoryHuM demo website with alignment samples\nAHEAD-DS and OpenYAMNet paper\nAHEAD-DS\nAHEAD-DS (unmixed)\nOpenYAMNet/YAMNet+ models\n\n\n\n\nRule-Based Triggers\nResearchers can configure sensor-threshold triggers that automate data collection and model activation. A trigger is defined by:\n\nA sensor source (e.g., phone microphone, heart rate monitor).\nA metric and threshold (e.g., sound level &gt; 70 dB, heart rate &gt; 100 BPM, temperature &gt; 37 °C).\nAn action - what happens when the threshold is crossed:\n\nActivate an ML model - wake YAMNet+ or WONU to classify the current moment.\nSend a notification - prompt the participant to provide a self-report.\nLaunch a form - open an in-app or Google Form survey for richer contextual data.\n\n\nThis trigger system allows PRISM experiments to be event-driven rather than purely scheduled, capturing data precisely when listening conditions are most challenging or interesting."
+  },
+  {
+    "objectID": "guide/background.html#prism-studyexperiment-workflow-overview",
+    "href": "guide/background.html#prism-studyexperiment-workflow-overview",
+    "title": "Background",
+    "section": "PRISM Study/Experiment Workflow Overview",
+    "text": "PRISM Study/Experiment Workflow Overview\nRunning a PRISM study requires 3 main components:\n\n\n\n\n\n\nflowchart TD\n    subgraph s1[\"Firebase\"]\n        direction LR\n        n1@{ shape: \"hex\", label: \"Create Firebase Project\" }\n    end\n\n    subgraph s2[\"Research Portal\"]\n        direction TB\n        n2@{ label: \"Backend\" }\n        n3@{ label: \"Frontend\" }\n        n2 &lt;--&gt; n3\n        n4@{ shape: \"hex\", label: \"Install Research Portal\" }\n        n5@{ shape: \"hex\", label: \"Configure and deploy experiments\" }\n        n6@{ shape: \"hex\", label: \"Experimenter monitors study\" }\n        n4 --&gt; n5\n        n5 --&gt; n6\n    end\n\n    subgraph s3[\"App\"]\n        direction TB\n        n7@{ label: \"Android\" }\n        n8@{ label: \"WearOS\" }\n        n7 --&gt; n8\n        n9@{ shape: \"hex\", label: \"Build and Distribute App\" }\n        n10@{ shape: \"hex\", label: \"Users interact with App\" }\n        n9 --&gt; n10\n    end\n    \n    s1 &lt;--&gt; s2\n    s1 &lt;--&gt; s3\n\n    style n1 fill:#FAD2CF\n    style n2 fill:#FEEFC3\n    style n3 fill:#FEEFC3\n    style n4 fill:#FAD2CF\n    style n5 fill:#FAD2CF\n    style n6 fill:#FAD2CF\n    style n7 fill:#FEEFC3\n    style n8 fill:#FEEFC3\n    style n9 fill:#FAD2CF\n    style n10 fill:#FAD2CF\n    style s1 fill:#D2E3FC\n    style s2 fill:#CEEAD6\n    style s3 fill:#CEEAD6\n\n\n\n\n\n\n\n\n\nFirebase project: you must create a Firebase project for the authentication and secure storage for a PRISM experiment.\nResearch Portal: you must install the PRISM Research Portal from where you can confiure experiemtns, add and communicate with participants, and monitor progress of the data collection study.\nApp: Users must install the app so they can interact with the PRISM experiment."
+  },
+  {
+    "objectID": "guide/background.html#contact",
+    "href": "guide/background.html#contact",
+    "title": "Background",
+    "section": "Contact",
+    "text": "Contact\nFor questions, feedback, or collaboration opportunities, please contact:\n\nName: Romaric Bouveret\nEmail: romaric.bouveret@mq.edu.au"
+  },
+  {
+    "objectID": "guide/firebase.html",
+    "href": "guide/firebase.html",
+    "title": "Firebase Setup",
+    "section": "",
+    "text": "PRISM stores its researcher accounts, experiments and participant data in a Firebase project that you own. This guide walks you through creating that project in the Firebase Console and collecting the details the PRISM installer asks for. Complete it before following the Setup Guide.\nBy the end of this guide you will have:\nYou will need a Google account, plus a payment method or access to an existing Cloud Billing account."
+  },
+  {
+    "objectID": "guide/firebase.html#data-storage-and-privacy",
+    "href": "guide/firebase.html#data-storage-and-privacy",
+    "title": "Firebase Setup",
+    "section": "Data storage and privacy",
+    "text": "Data storage and privacy\nPRISM collects audio and health data from participants. Most of it is stored in the Firebase project owned by the researcher that you create in this guide, which is hosted by Google. See Privacy and Security in Firebase and the Firebase Data Processing and Security Terms for details.\n\nWhat the app uploads\nWhile a recording session is open, the participant’s phone records audio continuously. Each time the participant presses a rating button, the app uploads:\n\nAn unprocessed audio clip of up to 30 seconds, ending at the button press.\nHeart-rate variability and skin temperature readings from the previous 30 minutes, if the participant has allowed access to Android Health Connect.\nIf a watch is used, an audio clip from the watch, plus its accelerometer, gyroscope, heart-rate and ambient-temperature readings.\n\nPRISM doesn’t collect location data, and its apps and Research Portal don’t use analytics or crash reporting.\n\n\n\n\n\n\nWarning\n\n\n\nThe Upload Raw Audio and other sensor settings in the Research Portal don’t currently change what the app collects; everything listed above is uploaded with every rating.\n\n\n\n\nWhere data is stored\n\n\n\n\n\n\n\nWhere\nWhat’s stored\n\n\n\n\nFirebase Authentication\nResearchers’ email addresses and password hashes. Participants’ Google account email, name and profile photo URL, from signing in to the app with Google.\n\n\nCloud Firestore (database)\nExperiment settings. Participants’ names, email addresses and invitation status. A record of each uploaded file: rating, sound classification, time, size and the phone’s Android device ID.\n\n\nCloud Storage (files)\nThe uploaded files. File names include the date and time, rating, participant’s user ID, experiment ID and Android device ID, but not the participant’s name or email address.\n\n\nCloud Logging\nServer logs containing participants’ user IDs and device IDs, kept for 30 days by default.\n\n\nParticipant’s phone\nAudio recorded since the last rating, which stays on the phone after the session ends, and any files that failed to upload. Uploaded files are deleted. Sound classification runs on the phone.\n\n\nParticipant’s watch\nAudio clips, which the watch app doesn’t currently delete. The watch uploads nothing directly; its data goes via the phone.\n\n\nYour computer / server host\nAny files you download. If you run PRISM locally, also its credentials, including the service account key, which gives full access to all study data.\n\n\nEmail provider (Mailgun or Gmail)\nInvited participants’ email addresses, your invitation text and the experiment link.\n\n\nGoogle Forms (optional)\nWhatever your survey asks. PRISM doesn’t pass any participant details to the form.\n\n\n\n\n\nLocation, security and retention\n\nLocation: you choose where Firestore and Cloud Storage keep data when you set them up (for example australia-southeast1, Sydney), and you can’t change it later. Firebase Authentication doesn’t offer a choice of location. See Firebase locations.\nSecurity: Firestore and Cloud Storage encrypt data in transit and at rest. Anyone with access to your Firebase project or service account key can see all study data, so keep that group small.\nRetention and withdrawal: data stays until you delete it. Removing a participant in the Research Portal deletes their uploaded files and records, and deleting an experiment deletes all of its data. Participants’ sign-in accounts aren’t deleted automatically (delete them under Authentication in the Firebase console), and you’ll need to delete any downloaded copies yourself. Participants can’t delete their data or leave an experiment from the app, so your withdrawal procedure should ask them to contact you."
+  },
+  {
+    "objectID": "guide/firebase.html#create-a-firebase-project",
+    "href": "guide/firebase.html#create-a-firebase-project",
+    "title": "Firebase Setup",
+    "section": "Create a Firebase project",
+    "text": "Create a Firebase project\n\nStep 1: Name your project\nOpen the Firebase Console, sign in with your Google account and create a new project.\nEnter a Project name (this example uses prism-nat1). Firebase creates a project ID from the name, shown underneath it. The project ID can’t be changed later and becomes part of your project’s web addresses (e.g. prism-nat1.web.app), so click the pencil icon if you’d like to edit it now. Click Continue.\n\n\n\nName your project\n\n\n\n\nStep 2: Skip Gemini in Firebase\nGemini in Firebase is an optional AI assistant for the Firebase Console. PRISM doesn’t need it, so turning it on is up to you (this example leaves it off). Click Continue.\n\n\n\nGemini in Firebase is optional\n\n\n\n\nStep 3: Turn off Google Analytics\nPRISM doesn’t use Google Analytics either. Switch off Enable Google Analytics for this project (it’s on by default) and the Continue button changes to Create project. Click it, then wait for Firebase to finish creating your project.\n\n\n\n\n\n\nBefore: Analytics on (default)\n\n\n\n\n\n\n\nAfter: Analytics off"
+  },
+  {
+    "objectID": "guide/firebase.html#upgrade-to-the-blaze-plan",
+    "href": "guide/firebase.html#upgrade-to-the-blaze-plan",
+    "title": "Firebase Setup",
+    "section": "Upgrade to the Blaze plan",
+    "text": "Upgrade to the Blaze plan\nNew projects start on the free Spark plan. PRISM relies on paid Firebase services such as Cloud Functions, so your project must be on the pay-as-you-go Blaze plan. Blaze still includes the no-cost quota; you only pay for usage beyond it.\n\nStep 4: Select the Blaze plan\nWhen your project opens, click Upgrade at the bottom of the left-hand menu.\n\n\n\nYour new project, on the Spark plan\n\n\nIn the Firebase pricing plans dialog, click Select plan under Pay as you go (Blaze plan).\n\n\n\nFirebase pricing plans\n\n\n\n\nStep 5: Choose a billing account\nSelect an existing Cloud Billing account from the list, or click Create a Cloud Billing account and follow the prompts to add a payment method. If your organisation manages Google Cloud billing centrally, ask your administrator which account to use.\n\n\n\nChoose a Cloud Billing account\n\n\n\n\nStep 6: Set a budget alert\nEnter a Budget amount in USD (this example uses $5) and click Continue, or click Skip this step.\n\n\n\n\n\n\nNote\n\n\n\nA budget doesn’t cap your spending. It only emails the billing account’s administrators when the project’s costs approach or exceed the amount you set.\n\n\n\n\n\nSet a billing budget\n\n\n\n\nStep 7: Link the billing account\nReview the summary and click Link Cloud Billing account.\n\n\n\nLink Cloud Billing account\n\n\nClick Done to close the confirmation.\n\n\n\nPlan change completed\n\n\nThe badge next to your project name now reads Blaze plan.\n\n\n\nYour project, now on the Blaze plan"
+  },
+  {
+    "objectID": "guide/firebase.html#register-the-android-app",
+    "href": "guide/firebase.html#register-the-android-app",
+    "title": "Firebase Setup",
+    "section": "Register the Android app",
+    "text": "Register the Android app\nThe PRISM Android app connects to your Firebase project using a google-services.json file. You only need to register the app and download this file; the PRISM installer takes care of the rest, so you don’t need Android Studio.\n\nStep 8: Add an Android app\nOn the project overview, click + Add app and choose Android. Enter:\n\nAndroid package name: a unique identifier for your build of the app, written in reverse-domain format such as com.yourorg.prism (this example uses com.nat.prism). It can’t be changed after you register the app, and the PRISM installer builds the app with this name.\nApp nickname (optional): a label that only appears in the Firebase Console, such as PRISM Android.\n\nClick Register app.\n\n\n\nRegister the Android app\n\n\n\n\nStep 9: Download google-services.json\nClick Download google-services.json and keep the file somewhere handy, since the PRISM installer will ask for it. You can ignore the Android Studio instructions. Click Next.\n\n\n\nDownload google-services.json\n\n\n\n\nStep 10: Skip the SDK setup\nThe next screen explains how to add the Firebase SDK with Gradle. Skip these instructions: the PRISM installer configures the app for you. Click Next.\n\n\n\nFirebase SDK instructions (not needed)\n\n\nClick Continue to console.\n\n\n\nFinish adding the Android app\n\n\n\n\nStep 11: Find your Android app settings\nYour Android app is now listed on the project overview. Click the gear icon (⚙️) on the app card whenever you need its settings, for example to download google-services.json again or to copy its App ID (only needed if you distribute the app through Firebase App Distribution).\n\n\n\nThe registered Android app"
+  },
+  {
+    "objectID": "guide/firebase.html#register-the-web-app",
+    "href": "guide/firebase.html#register-the-web-app",
+    "title": "Firebase Setup",
+    "section": "Register the web app",
+    "text": "Register the web app\nThe PRISM Research Portal signs researchers in through Firebase using your project’s Web API Key. You get this key by registering a web app.\n\nStep 12: Add a web app\nOn the project overview, click + Add app and choose Web (&lt;/&gt;). Enter an App nickname; we suggest prism, which is the name the Setup Guide uses. Leave Also set up Firebase Hosting unticked (it can be set up later). Click Register app.\n\n\n\nRegister the web app\n\n\n\n\nStep 13: Copy the Web API Key\nFirebase shows a firebaseConfig code snippet. Copy the value of apiKey (a long string beginning with AIza) and save it, since the PRISM installer will ask for it. You don’t need to run npm install or add this code anywhere. Click Continue to console.\n\n\n\nCopy the apiKey from the web app config\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find the key again at any time under Settings → General → Your apps → (your web app) → Config."
+  },
+  {
+    "objectID": "guide/firebase.html#next-steps",
+    "href": "guide/firebase.html#next-steps",
+    "title": "Firebase Setup",
+    "section": "Next steps",
+    "text": "Next steps\nYour Firebase project is ready. You should now have:\n\nThe google-services.json file for your Android app (Step 9).\nYour Web API Key (Step 13).\n\nContinue to the Setup Guide, which explains how to generate a Firebase Service Account Key and run the PRISM installer."
   }
 ]
