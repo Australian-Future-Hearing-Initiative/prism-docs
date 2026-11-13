@@ -6,19 +6,19 @@ format:
     toc-depth: 3
 ---
 
-The PRISM Research Portal is how researchers can configure and run studies. This guide provides instructions on how to set up the PRISM Research Portal locally for development or deployment. The PRISM Research Portal is split into two main components:
+The PRISM Research Portal is how researchers configure and run studies. It has two main parts:
 
 1. **Backend Server (FastAPI)**: A Python-based REST API that communicates with Firebase Auth, Firestore, and handles data storage/exports.
 2. **Frontend (Flutter)**: A web-based user interface used by researchers to manage experiments and view participant session data.
 
-Both components connect to the same **Firebase** project for authentication and database storage, which must be created before starting the setup. 
+Both parts connect to your **Firebase** project for sign-in and data storage, so create it first with the [Firebase Setup](firebase.qmd) guide.
 
-Additionally, an **Android** mobile and **WearOS** app exists to collect data from participants. Documentation on *building* the PRISM Android mobile and WearOS app can be found in the [GitHub Repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-app), documentation on *using* the app can be found in the [Researcher Guide](user.qmd).
+Participants use the PRISM **Android** phone app and, optionally, the **Wear OS** watch app to collect data. See [Build the phone and watch apps](#build-the-phone-and-watch-apps) below, and the [Researcher Guide](user.qmd) for how to use them.
 
 ```{mermaid}
 flowchart TD
 	n1@{ label: "Firebase" }
-    
+
 	subgraph s1["Research Portal"]
 		n2@{ label: "Backend" }
     n3@{ label: "Frontend" }
@@ -30,10 +30,10 @@ flowchart TD
     n5@{ label: "WearOS" }
     n4 --> n5
 	end
-    
+
 	n1 <--> s1
   n1 <--> s2
-  
+
   style n1 fill:#D2E3FC
   style s1 fill:#CEEAD6
   style s2 fill:#CEEAD6
@@ -41,29 +41,223 @@ flowchart TD
   style n3 fill:#FEEFC3
   style n4 fill:#FEEFC3
   style n5 fill:#FEEFC3
-  
+
 ```
 
-For most users we recommend using the **Unified Setup via Docker**. It is the most reliable way to run the PRISM Research Portal (both frontend and backend) without manually configuring installation options.
+## Which path do I need?
 
-You likely want to use the **Manual Setup** only if:
+There are two ways to run the Research Portal. For a real study, deploy to Google Cloud.
 
-* You are a developer planning to modify the backend code or the Flutter frontend web app code directly.
-* You need to run and debug a specific service locally outside of a Docker container environment.
+|  | Run locally | Deploy to Google Cloud |
+|---|---|---|
+| **Use it for** | Development and testing | A real study |
+| **Where it runs** | Your computer, in Docker | Google Cloud: Cloud Run, Firebase Hosting and Cloud Functions |
+| **When it's available** | Only while your computer and Docker are running | Always on |
+| **Research Portal address** | `http://localhost:3000`, on your computer only | `https://YOUR_PROJECT_ID.web.app`, from anywhere |
+| **Sets up what the phone app needs** | No | Yes (Cloud Functions and Firebase Hosting) |
+| **Email for invites** | Mailgun or Gmail | Mailgun only |
+| **You run** | `install.sh` on your computer | `deploy_stack.sh` in Google Cloud Shell, in your browser |
 
-## Unified Setup via Docker
+Both paths use your Firebase project for accounts and data. Running locally doesn't keep study data on your computer. It only changes where the backend and Research Portal run.
 
-The easiest way to install and run both the PRISM Research Portal Backend and Frontend is via the [`prism-setup` repository](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) which uses Docker Compose. These instructions are detailed here.
+## Before you start
+
+You need these for either path.
+
+### Access to the PRISM code
+
+The setup scripts download PRISM's code from GitHub. These repositories are private, so you need a GitHub account that AFHI has given access to.
+
+### A Firebase project
+
+Follow the [Firebase Setup](firebase.qmd) guide first. You will need your **Web API Key** from that guide.
+
+### Firebase Service Account Key
+
+The backend uses this key to read and write your Firebase data.
+
+From the Firebase Console in your project: **Settings → Service accounts**. Select the **Firebase Admin SDK** section and click **Generate new private key**. A JSON file downloads.
+
+::: {.callout-warning}
+This key gives full access to all study data. Keep it private and never commit it to Git.
+:::
+
+### Email
+
+PRISM emails invitations to participants.
+
+**Mailgun** works for both paths:
+
+1. Sign up at <https://www.mailgun.com/>.
+2. [Add a sending domain](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) and verify it. Create the domain in Mailgun's **US** region, because PRISM sends through Mailgun's US address.
+3. Save the API key and the domain name (for example `mg.example.org`).
+
+You need your own web domain and access to its DNS settings. Verification can take a while, so start early. The free tier sends up to 100 emails a day.
+
+**Gmail** works only when you [run locally](#run-locally-development-and-testing). The cloud deploy supports Mailgun only.
+
+## Deploy to Google Cloud
+
+The `deploy_stack.sh` script in [`prism-setup`](https://github.com/Australian-Future-Hearing-Initiative/prism-setup) puts PRISM into your own Google Cloud project, the one behind your Firebase project. It deploys three parts:
+
+- **Backend** to **Cloud Run**, a Google service that runs it on demand.
+- **Research Portal** to **Firebase Hosting**, at `https://YOUR_PROJECT_ID.web.app`.
+- **Cloud Functions**, which the phone app uses to join a study, and which record each upload so it shows in the Research Portal.
+
+You run the script in **Google Cloud Shell**, a terminal in your web browser with the tools already installed. You don't need Docker. The first run takes about 15 minutes.
+
+### Before you deploy
+
+Check that you have:
+
+- A Firebase project on the **Blaze** plan, with **Authentication**, **Firestore**, **Storage** and **Hosting** set up (see [Firebase Setup](firebase.qmd)). For Hosting, click **Get started** once in the Firebase Console. The first deploy fails without it.
+- A Google account that is an **Owner** of the project. Whoever created the Firebase project is one.
+- These five values, which the script stores as secrets in Google Cloud Secret Manager:
+
+| Secret | What to paste |
+|---|---|
+| `jwt-secret` | A long random string. Make one in Cloud Shell with `openssl rand -hex 32`. |
+| `mailgun-api-key` | Your Mailgun API key. |
+| `mailgun-authorized-domain` | Your Mailgun sending domain, for example `mg.example.org`. |
+| `firebase-api-key` | Your Firebase **Web API Key**. |
+| `firebase-service-account-key` | The full contents of your service account key file. Open it in a text editor and copy everything. |
+
+::: {.callout-note}
+The scripts and backend are set up for the `australia-southeast1` (Sydney) region. Create Firestore and Storage there, and keep the default region when the script asks. Other regions need extra changes that this guide doesn't cover yet.
+:::
+
+### Step 1: Open Cloud Shell
+
+Go to <https://shell.cloud.google.com> and sign in with your Owner account.
+
+Cloud Shell closes after an hour without activity. Your home folder is kept, but other files (such as anything in `/tmp`) are lost.
+
+### Step 2: Sign in to Google Cloud, Firebase and GitHub
+
+Run these three commands. You need to do this once per Cloud Shell session.
+
+```bash
+gcloud auth login
+```
+
+Sign in with your Owner account.
+
+```bash
+firebase login --no-localhost
+```
+
+Open the link it prints, sign in, and paste the code back into Cloud Shell.
+
+```bash
+gh auth login
+```
+
+Choose **GitHub.com → HTTPS → Login with a web browser**. When asked whether to authenticate Git with your GitHub credentials, answer **Yes**, because the script uses Git to download PRISM's code.
+
+### Step 3: Download `prism-setup`
+
+```bash
+gh repo clone Australian-Future-Hearing-Initiative/prism-setup -- --depth 1
+cd prism-setup
+```
+
+### Step 4: Run the deploy script
+
+```bash
+bash deploy_stack.sh
+```
+
+Answer the prompts:
+
+| Prompt | What to enter |
+|---|---|
+| Which environment | `2` (**production**). This deploys the released code from the `main` branch. (`1` deploys `staging`, AFHI's work in progress.) |
+| GCP Project ID | Your Firebase project ID, for example `prism-mylab-1a2b3`. Find it in the Firebase Console under **Settings → General**. |
+| GCP Region | Press **Enter** to keep `australia-southeast1`. |
+| Firebase Project ID | The same project ID again. |
+| Cloud Run service name | Press **Enter** to keep `prism-backend`. |
+
+The script then asks for the five secrets. What you type is hidden. For the service account key, paste the JSON, press **Enter**, then press **Ctrl+D**.
+
+If you run the script again later, it skips any secret that already exists.
+
+Then the script:
+
+1. Turns on the Google Cloud services it needs: Cloud Run, Artifact Registry, Secret Manager and Cloud Build.
+2. Lets Cloud Run read the secrets, and lets Cloud Build deploy to Cloud Run.
+3. Saves the five secrets in Secret Manager.
+4. Builds the backend from `main` and deploys it to Cloud Run. It keeps only the 5 newest backend images, to limit storage costs.
+5. Installs Flutter in your Cloud Shell home folder (first run only), builds the Research Portal from `main` so it talks to your Cloud Run backend, and deploys it to Firebase Hosting.
+6. Installs Python 3.12 if needed and deploys the Cloud Functions.
+7. Prints your backend address, its API docs address and your Research Portal address.
+
+::: {.callout-warning}
+If the Cloud Functions step fails, the script only prints a warning and still ends with **Deployment complete**. Look for `Cloud Functions deploy failed` or `skipping Cloud Functions deploy` in the output. If you see one, run the command it prints. On a brand-new project the first functions deploy can fail while Google finishes setting up permissions. Wait a few minutes and try again.
+:::
+
+### Step 5: Deploy the security rules
+
+::: {.callout-important}
+`deploy_stack.sh` doesn't deploy the Firestore and Storage security rules yet, so do this step by hand.
+:::
+
+Security rules decide what the phone app may read and write. Until you deploy PRISM's rules, your project keeps the rules Firebase created. In production mode these block the phone app. In test mode they let anyone read and change your data.
+
+Right after the script finishes, in the same Cloud Shell session, run:
+
+```bash
+cd /tmp/prism-backend-deploy
+firebase deploy --only firestore,storage --project YOUR_PROJECT_ID
+```
+
+If Firebase asks whether Storage rules may read Firestore, answer **Yes**. The Storage rules check Firestore to confirm a participant has joined the study before accepting an upload.
+
+If Cloud Shell has restarted since the script ran, `/tmp/prism-backend-deploy` is gone. Download the backend again first:
+
+```bash
+gh repo clone Australian-Future-Hearing-Initiative/prism-flutter-backend /tmp/prism-backend-deploy -- --depth 1
+```
+
+### Step 6: Check it works
+
+1. Open `https://YOUR_PROJECT_ID.web.app`. Sign up as a researcher, click the link in the verification email, and log in. If the experiment list loads, the Research Portal, backend and Firestore are connected.
+2. Open the backend's API docs address that the script printed (it ends in `/docs`). The page should load.
+3. In the Firebase Console, open **Functions**. You should see six functions: `accept_invite`, `verify_invite`, `get_experiment_config`, `mirror_storage_to_firestore`, `delete_storage_from_firestore` and `cleanup_storage_on_response_delete`.
+4. Open **Firestore → Rules** and **Storage → Rules**. They should show PRISM's rules, not the defaults. For example, the Storage rules mention `checkParticipantInFirestore`.
+5. Create a test experiment and invite yourself as a participant (see the [Researcher Guide](user.qmd)). The invitation email should arrive. This checks Mailgun.
+
+To test the full study flow, you also need the phone app. See [Build the phone and watch apps](#build-the-phone-and-watch-apps).
+
+### Update to a newer version
+
+In Cloud Shell, sign in again (Step 2) if the session restarted, then run:
+
+```bash
+cd prism-setup
+git pull
+bash deploy_stack.sh
+```
+
+Choose `2` (production) again. The script downloads the latest `main` code and redeploys everything. Your secrets are kept. Then repeat [Step 5](#step-5-deploy-the-security-rules), in case the rules changed.
+
+To change a secret, for example a mistyped Mailgun key: in the Google Cloud Console, open **Security → Secret Manager**, select the secret and add a **New version**. Then run `deploy_stack.sh` again so the backend uses it.
+
+## Run locally (development and testing)
+
+This path runs the backend and Research Portal in Docker on your own computer, using the `install.sh` script in [`prism-setup`](https://github.com/Australian-Future-Hearing-Initiative/prism-setup). Use it to try PRISM or to work on its code.
+
+It stops when you stop Docker or turn off your computer. It doesn't deploy the Cloud Functions or Firebase Hosting that the phone app and invitation links need. For a real study, [deploy to Google Cloud](#deploy-to-google-cloud).
 
 ### 1. Prerequisites
+
 Ensure the following are installed and running:
 
 - [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) - must be installed and **running**!
 - [**Git** for Windows](https://git-scm.com/download/win), or for Mac and Linux git is pre-installed.
-- [A **Mailgun** account](https://www.mailgun.com/) or a [**Gmail** account](https://myaccount.google.com/apppasswords) for sending emails.
-- [A **Firebase** project](https://console.firebase.google.com/) with paid usage enabled. See the [Firebase Setup](firebase.qmd) guide.
+- **Python 3**, which the installer uses to check your files.
+- Everything in [Before you start](#before-you-start).
 
-### 2.Clone the repository
+### 2. Clone the repository
 
 Execute the following commands in your terminal to download the repository and move into the folder:
 
@@ -74,73 +268,70 @@ cd prism-setup
 
 ### 3. Gather your credentials
 
-Before running the installer, have the following ready — the script will prompt you for each one.
+The installer asks for each of these:
 
-#### Firebase Web API Key
+- Your **Firebase Service Account Key** file (see [Before you start](#firebase-service-account-key)). Drag it into the terminal window when asked.
+- Your Android app's **`google-services.json`** file (see [Firebase Setup](firebase.qmd)).
+- Your Firebase **Web API Key**.
+- Your email settings: Mailgun (see [Email](#email)) or Gmail.
 
-From the Firebase Console in your project (e.g. **PrismData**): **Settings → General**
-
-Scroll down to **Your apps → Web apps → prism (web) → Config → apiKey** and save it.
-
-#### Firebase Service Account Key
-
-From the Firebase Console in your project (e.g. **PrismData**): **Settings → Service accounts**
-
-Select the **Firebase Admin SDK** section and click **Generate new private key**.
-
-Rename the downloaded file to `serviceAccountKey.json` and place it in the root of the `prism-setup` folder.
-
-#### Email Settings
-
-**Option 1: Mailgun**
-
-1. Sign up for a free account at https://www.mailgun.com/
-2. Follow the instructions to [add a domain](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) and verify your email address.
-3. Save the API key and domain name — the setup prompt will ask for them.
-
-> The free-tier is capable of sending 100 emails per day, reasonably priced paid-tiers increase this substantially.
-> **Note:** You must have a web domain hosted somewhere to use this service.
-
-**Option 2: Gmail SMTP**
-
-Enable 2-Step Verification, then generate an App Password:
+To use **Gmail**, turn on 2-Step Verification, then make an App Password:
 
 - [Google Account](https://myaccount.google.com/security) → Security → 2-Step Verification → ON
-- [App passwords](https://myaccount.google.com/apppasswords) → create a new app (`PRISM`) → copy the 16-char code
+- [App passwords](https://myaccount.google.com/apppasswords) → create a new app (`PRISM`) → copy the 16-character code
 
-Save your Gmail address and the 16-char App Password — the setup prompt will ask for them.
-
-> Gmail allows up to 100 emails per day, but can't easily be changed.
+Save your Gmail address and the App Password. Gmail allows up to 100 emails a day, and you can't easily raise this.
 
 ### 4. Run the installer
 
-Execute the install script from the `prism-setup` directory. Follow the prompts to enter your credentials. The script will build the Docker containers and start the PRISM Research Portal automatically:
+::: {.callout-warning title="Known problems on the main branch"}
+The local path on `prism-setup`'s `main` branch has two known problems:
+
+- **The Research Portal can't reach the backend, so you can't log in.** A fix is on `prism-setup`'s `staging` branch. To use it, run `git switch staging` in the `prism-setup` folder before you run the installer. You can still choose **production** in the installer.
+- **Your email settings aren't saved on a first install.** After the installer finishes, open the `.env` file in the `prism-setup` folder. If `MAILGUN_API_KEY` and `MAILGUN_AUTHORIZED_DOMAIN` (or, for Gmail, `MAIL_USERNAME`, `MAIL_FROM` and `MAIL_PASSWORD`) are empty, fill them in. Then run `docker compose down` and `docker compose up -d`.
+:::
+
+Run the install script from the `prism-setup` folder:
 
 ```bash
 bash install.sh
 ```
 
+When it asks:
 
-### 5. Deploy to production
+- **Which environment:** choose **production**. This uses the released code from the `main` branch. (**staging** is AFHI's work in progress.)
+- **Cloud Functions region:** press **Enter** to keep `australia-southeast1`.
+- **Firebase Android App ID:** press **Enter** to skip. It's only needed for Firebase App Distribution.
+- **Apply Firebase environment configuration:** choose **Yes** the first time.
+- **Build the Android app** and **build the WearOS app:** choose **No**, unless you are building the apps (see [below](#build-the-phone-and-watch-apps)).
+- **Start the Docker stack:** choose **Yes**.
 
-Your Firebase project houses the experiment. The front and backend allow you to interface with that project. So the most likely deployment scenario is building this on a local machine and spinning up/down the docker containers when you need to access the experiment.
+The installer builds the Docker containers, starts them, and opens the Research Portal at <http://localhost:3000>.
+
+### 5. Stop and start
 
 To stop the services:
+
 ```bash
 cd prism-setup
 docker compose down
 ```
 
 To start them again (without rebuilding):
+
 ```bash
 cd prism-setup
-docker compose up
+docker compose up -d
 ```
 
-Then navigate your browser to http://127.0.0.1:8000 (assuming default ports) to access the PRISM Research Portal.
+Then open <http://localhost:3000> for the Research Portal. The backend API docs are at <http://localhost:8000/docs>.
 
-## Manual Setup
+### Without Docker
 
 If you prefer to run and develop the services independently without Docker, follow the manual instructions documented at [prism-flutter-backend repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-backend) and the [prism-flutter-web-frontend repo](https://github.com/Australian-Future-Hearing-Initiative/prism-flutter-web-frontend).
 
+## Build the phone and watch apps
 
+You build the phone and watch apps on your own computer, not in Cloud Shell. Run `bash install.sh`, choose the same environment as above, and answer **Yes** when it asks to build the Android app and the WearOS app.
+
+The apps rely on the Cloud Functions and Firebase Hosting from [Deploy to Google Cloud](#deploy-to-google-cloud), so deploy first.
