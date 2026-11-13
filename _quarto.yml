@@ -1,6 +1,5 @@
 project:
   type: website
-  pre-render: bash sync-docs.sh
   # resources:
   #   - styles.css
 
